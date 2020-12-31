@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="ohZ0A8YKJu755suq7WOIJkLGDfj3BGU4isb8RKI5Cj8">
+  <meta name="baidu-site-verification" content="I63O4XWtSs">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"youngjuning.js.org","root":"/","scheme":"Gemini","version":"7.7.1","exturl":true,"sidebar":{"position":"left","width":310,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="React Native 架构面面观">
+<meta property="og:url" content="http://youngjuning.js.org/2020/02/React-Native-%E6%9E%B6%E6%9E%84%E9%9D%A2%E9%9D%A2%E8%A7%82/">
+<meta property="og:site_name" content="杨俊宁的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/02/24/hPsv4Q87zlIrX6x.png">
+<meta property="og:image" content="https://i.loli.net/2020/02/21/Sy3OjWBKbMdYgoH.png">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2020/2/24/17074acbb24c7412?w=200&h=200&f=jpeg&s=17183">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2020/2/24/17074acbb26af8e1?w=200&h=200&f=png&s=39093">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2020/2/24/17074acbb338c643?w=698&h=700&f=png&s=315492">
+<meta property="article:published_time" content="2020-02-23T09:26:09.000Z">
+<meta property="article:modified_time" content="2020-02-23T09:26:09.000Z">
+<meta property="article:author" content="杨俊宁">
+<meta property="article:tag" content="最佳实践">
+<meta property="article:tag" content="架构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/02/24/hPsv4Q87zlIrX6x.png">
+
+<link rel="canonical" href="http://youngjuning.js.org/2020/02/React-Native-%E6%9E%B6%E6%9E%84%E9%9D%A2%E9%9D%A2%E8%A7%82/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>React Native 架构面面观 | 杨俊宁的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158205277-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-158205277-1');
+      }
+    </script>
+
+
+  <script pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a1319c6a7cb0e5cc6572a6181c7e949c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="杨俊宁的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨俊宁的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">怕什么真理无穷，进一寸有一寸的欢喜</h1>
+      
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">64</span></a>
+
+  </li>
+        <li class="menu-item menu-item-书单">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+
+  </li>
+        <li class="menu-item menu-item-歌单">
+
+    <a href="/music/" rel="section"><i class="fa fa-fw fa-music"></i>歌单</a>
+
+  </li>
+        <li class="menu-item menu-item-收藏夹">
+
+    <a href="/collections/" rel="section"><i class="fa fa-fw fa-star"></i>收藏夹</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://youngjuning.js.org/2020/02/React-Native-%E6%9E%B6%E6%9E%84%E9%9D%A2%E9%9D%A2%E8%A7%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="杨俊宁">
+      <meta itemprop="description" content="前端工程师、终身学习践行者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨俊宁的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          React Native 架构面面观<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL3lvdW5nanVuaW5nL3RyZWUvbWFzdGVyL3NvdXJjZS9fcG9zdHMvMjAyMC8wMi9SZWFjdC1OYXRpdmUt5p625p6E6Z2i6Z2i6KeCLm1k" title="编辑"><i class="fa fa-pencil"></i></span>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-23 17:26:09" itemprop="dateCreated datePublished" datetime="2020-02-23T17:26:09+08:00">2020-02-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hybrid/" itemprop="url" rel="index">
+                    <span itemprop="name">Hybrid</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hybrid/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>15k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>14 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://github.com/sigmayun/react-native-template-typescript"><img src="https://i.loli.net/2020/02/24/hPsv4Q87zlIrX6x.png" style="zoom:36%;" /></a></p>
+<a id="more"></a>
+
+<h2 id="sigmayun-react-native-template-typescript"><a href="#sigmayun-react-native-template-typescript" class="headerlink" title="@sigmayun/react-native-template-typescript"></a>@sigmayun/react-native-template-typescript</h2><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NpZ21heXVuL3JlYWN0LW5hdGl2ZS10ZW1wbGF0ZS10eXBlc2NyaXB0" title="https://github.com/sigmayun/react-native-template-typescript">@sigmayun/react-native-template-typescript<i class="fa fa-external-link"></i></span>是基于 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLXRlbXBsYXRlLXR5cGVzY3JpcHQ=" title="https://github.com/react-native-community/react-native-template-typescript">react-native-community/react-native-template-typescript<i class="fa fa-external-link"></i></span> 二次开发的模板脚手架。本文的架构方案融进了该模板。你甚至不需要阅读本文的内容即可使用本文中的最佳实践！！！</p>
+<h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><p>既然都引入 TypeScript 了，就不用再担心给全局对象添加属性不小心污染它了，但是需要我们进行一些配置。</p>
+<p>1、在项目根目录新建 <code>types</code>,并新建 <code>global.d.ts</code> 文件名，添加一下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">declare const global: &#123;</span><br><span class="line">  HermesInternal: null | &#123;&#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、为了防止和 <code>@types/node</code> 的 <code>Global</code> 声明冲突，需要把 <code>tsconfig.json</code> 中的 <code>skipLibCheck</code> 的值设置为 <code>true</code></p>
+<blockquote>
+<p>该部分示例代码涉及 <code>global.ts</code>、<code>types/global.d.ts</code>、<code>tsconfig.json</code>，请到 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NpZ21heXVuL3JlYWN0LW5hdGl2ZS10ZW1wbGF0ZS10eXBlc2NyaXB0" title="https://github.com/sigmayun/react-native-template-typescript">https://github.com/sigmayun/react-native-template-typescript<i class="fa fa-external-link"></i></span> 查看。</p>
+</blockquote>
+<h2 id="编码规范"><a href="#编码规范" class="headerlink" title="编码规范"></a>编码规范</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Npc2h1Z3Vvaml4dWVmdS9lc2xpbnQtY29uZmln" title="https://github.com/sishuguojixuefu/eslint-config">@sishuguojixuefu/eslint-config<i class="fa fa-external-link"></i></span>：大而全的 ESlint 配置，支持 vue、jsx、js、ts、tsx、html 的 ESLint 配置插件，基于 airbnb，支持Prettier</li>
+<li>husky + lint-staged: 禁止 <code>commit</code> 不符合规范的代码</li>
+</ul>
+<blockquote>
+<p>该部分示例代码：<span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvM0dEN2NIS24=" title="https://bre.is/3GD7cHKn">https://bre.is/3GD7cHKn<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<h2 id="Npm-Scripts"><a href="#Npm-Scripts" class="headerlink" title="Npm Scripts"></a>Npm Scripts</h2><p>善用 NPM Scripts 能帮助改善工作流程！！！</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;postinstall&quot;</span>: <span class="string">&quot;npx jetifier&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;android&quot;</span>: <span class="string">&quot;react-native run-android&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ios&quot;</span>: <span class="string">&quot;react-native run-ios&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;react-native start&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;jest&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;lint&quot;</span>: <span class="string">&quot;eslint . --ext .js,.jsx,.ts,.tsx&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;pod&quot;</span>: <span class="string">&quot;cd ios &amp;&amp; pod install&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;gradle:clean&quot;</span>: <span class="string">&quot;cd android &amp;&amp; ./gradlew clean&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;an:release&quot;</span>: <span class="string">&quot;yarn gradle:clean &amp;&amp; cd android &amp;&amp; ./gradlew app:assembleRelease&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;an:installRelease&quot;</span>: <span class="string">&quot;yarn gradle:clean &amp;&amp; cd android &amp;&amp; ./gradlew app:installRelease&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;an:releaseStaging&quot;</span>: <span class="string">&quot;yarn gradle:clean &amp;&amp; cd android &amp;&amp; ./gradlew app:assembleReleaseStaging&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;an:installReleaseStaging&quot;</span>: <span class="string">&quot;yarn gradle:clean &amp;&amp; cd android &amp;&amp; ./gradlew app:installReleaseStaging&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;an:genkeypair&quot;</span>: <span class="string">&quot;keytool -genkeypair -v -keystore release.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;an:key-debug&quot;</span>: <span class="string">&quot;keytool -list -v -keystore ./android/app/debug.keystore&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;an:key-release&quot;</span>: <span class="string">&quot;keytool -v -list -keystore ./android/app/release.keystore&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;icon&quot;</span>: <span class="string">&quot;npx iconfont-rn&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该部分示例代码：<span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvTEM2dXU4a2M=" title="https://bre.is/LC6uu8kc">https://bre.is/LC6uu8kc<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cua2FuY2xvdWQuY24veXVueWUvYXhpb3MvMjM0ODQ1" title="https://www.kancloud.cn/yunye/axios/234845">axios<i class="fa fa-external-link"></i></span>: Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcXM=" title="https://www.npmjs.com/package/qs">qs<i class="fa fa-external-link"></i></span>: A querystring parsing and stringifying library with some added security.</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvY2xlYW4tZGVlcA==" title="https://www.npmjs.com/package/clean-deep">clean-deep<i class="fa fa-external-link"></i></span>: 从对象中递归删除空对象、空数组、空字符串、<code>null</code>和 <code>value</code>值。不改变原始数据。</li>
+</ul>
+<blockquote>
+<p>该部分示例代码：<span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvMzlraGhKdG4=" title="https://bre.is/39khhJtn">https://bre.is/39khhJtn<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<h2 id="路由管理"><a href="#路由管理" class="headerlink" title="路由管理"></a>路由管理</h2><ul>
+<li>React Navigation: 这个模块是官方推荐的导航组件，升级到5之后不仅支持了 <code>hooks</code>，更是支持了动态路由。</li>
+</ul>
+<blockquote>
+<p>该部分示例代码：<span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvcHpBN0pBclk=" title="https://bre.is/pzA7JArY">https://bre.is/pzA7JArY<i class="fa fa-external-link"></i></span></p>
+<p>相关博客：<span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvcHpBN0pBclk=" title="https://bre.is/pzA7JArY">https://bre.is/pzA7JArY<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<h2 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h2><ul>
+<li><code>mobx</code> + <code>mobx-react</code>: 相对于 redux 来说更简单易用，还在犹豫的同学，可以读一下有赞的一篇文章 <span class="exturl" data-url="aHR0cHM6Ly90ZWNoLnlvdXphbi5jb20vbW9ieF92c19yZWR1eC8=" title="https://tech.youzan.com/mobx_vs_redux/">我为什么从Redux迁移到了Mobx<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h2 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcmVhY3QtbmF0aXZlLXNpbXBsZS1zdG9yZQ==" title="https://www.npmjs.com/package/react-native-simple-store">react-native-simple-storage<i class="fa fa-external-link"></i></span>:  AsyncStorage 的一个简单包装器</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3B1YmtleS9yeGRi" title="https://github.com/pubkey/rxdb">rxdb<i class="fa fa-external-link"></i></span>:  JavaScript 即时数据库，如果有复杂的缓存业务可以考虑使用</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL05vemJlL1dhdGVybWVsb25EQg==" title="https://github.com/Nozbe/WatermelonDB">watermelonDB<i class="fa fa-external-link"></i></span>: 一个专为 React、React Native 服务的响应式数据库框架</li>
+</ul>
+<h2 id="启动屏"><a href="#启动屏" class="headerlink" title="启动屏"></a>启动屏</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NyYXp5Y29kZWJveS9yZWFjdC1uYXRpdmUtc3BsYXNoLXNjcmVlbg==" title="https://github.com/crazycodeboy/react-native-splash-screen">react-native-splash-screen<i class="fa fa-external-link"></i></span></li>
+</ul>
+<blockquote>
+<p>启动屏的配置涉及到不少原生知识，请阅读 <span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvQ1JDMlNrcVA=" title="https://bre.is/CRC2SkqP">https://bre.is/CRC2SkqP<i class="fa fa-external-link"></i></span> 进行配置。</p>
+</blockquote>
+<h2 id="热更新"><a href="#热更新" class="headerlink" title="热更新"></a>热更新</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly91cGRhdGUucmVhY3RuYXRpdmUuY24vaG9tZQ==" title="https://update.reactnative.cn/home">react-native-pushy<i class="fa fa-external-link"></i></span>: ReactNative中文网推出的代码热更新服务，免费，但是限制多，不推荐使用</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21pY3Jvc29mdC9yZWFjdC1uYXRpdmUtY29kZS1wdXNo" title="https://github.com/microsoft/react-native-code-push">react-native-code-push<i class="fa fa-external-link"></i></span> + <span class="exturl" data-url="aHR0cHM6Ly9hcHBjZW50ZXIubXMv" title="https://appcenter.ms/">AppCenter<i class="fa fa-external-link"></i></span>：完全免费，国内速度可能慢，适合个人开发者【推荐】</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21pY3Jvc29mdC9yZWFjdC1uYXRpdmUtY29kZS1wdXNo" title="https://github.com/microsoft/react-native-code-push">react-native-code-push<i class="fa fa-external-link"></i></span> + <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xpc29uZy9jb2RlLXB1c2gtc2VydmVy" title="https://github.com/lisong/code-push-server">code-push-server<i class="fa fa-external-link"></i></span>：适合公司自建热更新服务器</li>
+</ul>
+<blockquote>
+<p>新版热更新部分我还没写好博客，可以先参考我之前写的： <span class="exturl" data-url="aHR0cDovL3RlY2hibG9nLnNpc2h1eHVlZnUuY29tL2F0cmljbGUuaHRtbD81YmVhYTdlNTlmNTQ1NDAwNzAzOWUwMWPvvIzmiJHkvJrlnKjnnIvlrozmlrDmlofmoaPkuYvlkI7miorov5npg6jliIbphY3nva7kuZ/lhoXnva7liLDohJrmiYvmnrbkuK3vvIzmr5Xnq5/ov5nkuKrmnI3liqHkuZ/mmK8=" title="http://techblog.sishuxuefu.com/atricle.html?5beaa7e59f5454007039e01c，我会在看完新文档之后把这部分配置也内置到脚手架中，毕竟这个服务也是">http://techblog.sishuxuefu.com/atricle.html?5beaa7e59f5454007039e01c，我会在看完新文档之后把这部分配置也内置到脚手架中，毕竟这个服务也是<i class="fa fa-external-link"></i></span> React Native 的标配。</p>
+</blockquote>
+<h2 id="UI框架"><a href="#UI框架" class="headerlink" title="UI框架"></a>UI框架</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ybi5tb2JpbGUuYW50LmRlc2lnbi9pbmRleC1jbg==" title="https://rn.mobile.ant.design/index-cn">@ant-design/react-native<i class="fa fa-external-link"></i></span>:  Ant Design 出品的一个基于 React Native 的 UI 组件库</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01laXR1YW4tRGlhbnBpbmcvYmVlc2hlbGw=" title="https://github.com/Meituan-Dianping/beeshell">beeshell<i class="fa fa-external-link"></i></span>: 美团 React Native 组件库</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9yZWFjdC1uYXRpdmUtZWxlbWVudHMuZ2l0aHViLmlvL3JlYWN0LW5hdGl2ZS1lbGVtZW50cy8=" title="https://react-native-elements.github.io/react-native-elements/">react-native-elements<i class="fa fa-external-link"></i></span>: HybridReact Native UI工具包</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3dpeC9yZWFjdC1uYXRpdmUtdWktbGli" title="https://github.com/wix/react-native-ui-lib">react-native-ui-lib<i class="fa fa-external-link"></i></span>: 没有体验过，看起来很强大</li>
+</ul>
+<blockquote>
+<p>其他组件收藏请查看：<span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvaldVR3ZQcks=" title="https://bre.is/jWUGvPrK">https://bre.is/jWUGvPrK<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMveXFKMkVFZEw=" title="https://bre.is/yqJ2EEdL">mobx+react-native-largelist 实现分页功能<i class="fa fa-external-link"></i></span>: 推荐使用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2JvbGFuOTk5OS9yZWFjdC1uYXRpdmUtbGFyZ2VsaXN0" title="https://github.com/bolan9999/react-native-largelist">react-native-largelist-v3<i class="fa fa-external-link"></i></span>，支持下拉刷新、上拉加载更多、分组列表、表格和瀑布流</li>
+<li>自行封装 <code>FlatList</code>、<code>SectionList</code>: 并不复杂，建议还是要回手写的，react-native-largelist-v3 不一定能满足所有场景</li>
+</ul>
+<h2 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcmVhY3QtbmF0aXZlLWljb25mb250LWNsaQ==" title="https://www.npmjs.com/package/react-native-iconfont-cli">react-native-iconfont-cli<i class="fa fa-external-link"></i></span>: 【推荐】用纯JS把图标转换成RN组件，不依赖字体，支持多色彩，支持热更新</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvZGZDRE0yS3c=" title="https://bre.is/dfCDM2Kw">@ant-design/icons-react-native<i class="fa fa-external-link"></i></span>: Ant Design Icons for React Native</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ibGFkb3IvcmVhY3QtbmF0aXZlLXZlY3Rvci1pY29ucw==" title="https://github.com/oblador/react-native-vector-icons">react-native-vector-icons<i class="fa fa-external-link"></i></span>: Perfect for buttons, logos and nav/tab bars. Easy to extend, style and integrate into your project.</li>
+</ul>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS10cmFpbmluZy9yZWFjdC1uYXRpdmUtZm9udHM=" title="https://github.com/react-native-training/react-native-fonts">react-native-fonts<i class="fa fa-external-link"></i></span>: 在React Native项目中开箱即用的可用字体，这个库只是统计了一下 React Native 中可用的字体而已</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vZW50cnkvNTljNzRjOTFmMjY1ZGEwNjVjNWU5Mjgy" title="https://juejin.im/entry/59c74c91f265da065c5e9282">React Native 配置自定义字体<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvTjJOcWtYNE4=" title="https://bre.is/N2NqkX4N">React Native Custom Fonts<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleW1hbjMzMy9yZWFjdC1uYXRpdmUtcmVzcG9uc2l2ZS1mb250U2l6ZQ==" title="https://github.com/heyman333/react-native-responsive-fontSize">react-native-responsive-fontSize<i class="fa fa-external-link"></i></span>: 响应式fontSize基于React Native中设备的屏幕尺寸</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvV1R4bnJmUFY=" title="https://bre.is/WTxnrfPV">React Native 配置字体大小不随字体设置变化<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81Y2U2NmMyNmU1MWQ0NTU1ZmQyMGEyYTA=" title="https://juejin.im/post/5ce66c26e51d4555fd20a2a0">React Native字体问题解决方案指北<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcmVhY3QtbmF0aXZlLXJlc3BvbnNpdmUtZm9udHNpemU=" title="https://www.npmjs.com/package/react-native-responsive-fontsize">react-native-responsive-fontsize<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ldGhlcmNyZWF0aXZlLmdpdGh1Yi5pby9yZWFjdC1uYXRpdmUtc2hhZG93LWdlbmVyYXRvci8=" title="https://ethercreative.github.io/react-native-shadow-generator/">react-native-shadow-generator<i class="fa fa-external-link"></i></span>: 在线生成 React Native 阴影代码</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0pvbm55QnVyZ2VyL25weC12aXN1YWxpemUtYnVuZGxl" title="https://github.com/JonnyBurger/npx-visualize-bundle">visualize-bundle<i class="fa fa-external-link"></i></span>: <code>npx visualize-bundle</code> 允许你一键检查你的 React Native bundle 包 并且找到大的依赖</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9pY29uLnd1cnVpaG9uZy5jb20v" title="https://icon.wuruihong.com/">图标工厂<i class="fa fa-external-link"></i></span>: 一键生成所有尺寸的应用图标/启动图</li>
+</ul>
+<h2 id="React-Hooks"><a href="#React-Hooks" class="headerlink" title="React Hooks"></a>React Hooks</h2><p>这个新语法是2019年的明星，React Navigation、Mobx这些常用库都内置支持了，还没有学习的同学快去补课吧！！！</p>
+<h3 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h3><blockquote>
+<p>建议先读官方文档！！！</p>
+</blockquote>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aC1oYW5zLnJlYWN0anMub3JnL2RvY3MvaG9va3MtaW50cm8uaHRtbA==" title="https://zh-hans.reactjs.org/docs/hooks-intro.html">官方文档<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81YmUzZWExMzZmYjlhMDQ5ZjkxMjEwMTQ=" title="https://juejin.im/post/5be3ea136fb9a049f9121014">30分钟精通React Hooks<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81ZGJiZGJkNWYyNjVkYTRkNGI1ZmU1N2Q=" title="https://juejin.im/post/5dbbdbd5f265da4d4b5fe57d">React Hooks 详解 【近 1W 字】+ 项目实战<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81ZDk4NWRlYWU1MWQ0NTc3ZjkyODVjMmY=" title="https://juejin.im/post/5d985deae51d4577f9285c2f">呕心沥血，一文看懂 react hooks<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC84NjIxMTY3NQ==" title="https://zhuanlan.zhihu.com/p/86211675">React Hooks 带来的困扰与思考<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h3 id="如何兼容类组件"><a href="#如何兼容类组件" class="headerlink" title="如何兼容类组件"></a>如何兼容类组件</h3><p>考虑到对于不适应 Hooks 的但是业务又很紧急的场景，我们可以在类组件之上封装一层来支持 React Navigation 的 Hooks 组件，之所以这么做，起因是因为 React Navigation 5 中我们只能通过 <code>useHeaderHeight()</code> 方法获取标题栏高度。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Albums</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">ScrollView</span> <span class="attr">ref</span>=<span class="string">&#123;this.props.scrollRef&#125;</span>&gt;</span><span class="tag">&lt;<span class="name">Text</span>&gt;</span>&#123;this.props.headerHeight&#125;<span class="tag">&lt;/<span class="name">Text</span>&gt;</span><span class="tag">&lt;/<span class="name">ScrollView</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 封装并导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> ref = React.useRef(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">const</span> headerHeight = useHeaderHeight();</span><br><span class="line">  useScrollToTop(ref);</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Albums</span> &#123;<span class="attr">...props</span>&#125; <span class="attr">scrollRef</span>=<span class="string">&#123;ref&#125;</span> <span class="attr">headerHeight</span>=<span class="string">&#123;headerHeight&#125;/</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Metro"><a href="#Metro" class="headerlink" title="Metro"></a>Metro</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81ZTU0ZDkxMGYyNjVkYTU3MTY3MTA5MGQ=" title="https://juejin.im/post/5e54d910f265da571671090d">利用Metro配置React Native端口<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h2 id="第三放服务"><a href="#第三放服务" class="headerlink" title="第三放服务"></a>第三放服务</h2><blockquote>
+<p>这里尽量为大家推荐了免费的服务，当然选择自行搭建服务也是一个很棒的选择！！</p>
+</blockquote>
+<h3 id="Sentry"><a href="#Sentry" class="headerlink" title="Sentry"></a><span class="exturl" data-url="aHR0cHM6Ly9zZW50cnkuaW8vd2VsY29tZS8=" title="https://sentry.io/welcome/">Sentry<i class="fa fa-external-link"></i></span></h3><blockquote>
+<p>Sentry 胜在可以把服务搭建到自己的服务器上，并且官方提供了<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dldHNlbnRyeS9zZW50cnktcmVhY3QtbmF0aXZl" title="https://github.com/getsentry/sentry-react-native">sentry-react-native<i class="fa fa-external-link"></i></span>插件来帮助 React Native 工程师快速集成。如果有条件，选择 Sentry 恐怕是目前行业的最佳选择。</p>
+</blockquote>
+<p>Sentry提供自托管和基于云的错误监控，可帮助所有软件团队实时发现分类和确定错误的优先级。已经有超过五万家公司的100万名开发人员使用，Sentry可以更快地提供更好的软件。你不加入他们吗？</p>
+<h3 id="腾讯-Bugly"><a href="#腾讯-Bugly" class="headerlink" title="腾讯 Bugly"></a><span class="exturl" data-url="aHR0cHM6Ly9idWdseS5xcS5jb20vdjIv" title="https://bugly.qq.com/v2/">腾讯 Bugly<i class="fa fa-external-link"></i></span></h3><p>腾讯Bugly，为移动开发者提供专业的异常上报和运营统计，帮助开发者快速发现并解决异常，同时掌握产品运营动态，及时跟进用户反馈。免费提供异常上报、运营统计、应用升级</p>
+<h3 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h3><h4 id="信鸽-腾讯移动推送"><a href="#信鸽-腾讯移动推送" class="headerlink" title="信鸽 | 腾讯移动推送"></a><span class="exturl" data-url="aHR0cHM6Ly94Zy5xcS5jb20v" title="https://xg.qq.com/">信鸽 | 腾讯移动推送<i class="fa fa-external-link"></i></span></h4><p>为开发者提供免费、快速、简单的推送服务。QQ登录即可快速注册，为APP接入SDK后马上获得无限量应用推送能力，<br>有效提升用户留存率、活跃度，开发者的不二选择！</p>
+<h4 id="小米消息推送服务"><a href="#小米消息推送服务" class="headerlink" title="小米消息推送服务"></a><span class="exturl" data-url="aHR0cHM6Ly9kZXYubWkuY29tL2NvbnNvbGUvYXBwc2VydmljZS9wdXNoLmh0bWw=" title="https://dev.mi.com/console/appservice/push.html">小米消息推送服务<i class="fa fa-external-link"></i></span></h4><ul>
+<li>MIUI上系统级通道</li>
+<li>iOS/Android全平台支持</li>
+<li>免费 稳定 安全 高效</li>
+</ul>
+<h4 id="极光推送"><a href="#极光推送" class="headerlink" title="极光推送"></a><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlndWFuZy5jbi9wdXNo" title="https://www.jiguang.cn/push">极光推送<i class="fa fa-external-link"></i></span></h4><p>极光推送服务，可以免费使用，但限制较多。官方SDK, React Native 集成容易</p>
+<h4 id="U-Push"><a href="#U-Push" class="headerlink" title="U-Push"></a><span class="exturl" data-url="aHR0cHM6Ly93d3cudW1lbmcuY29tL3B1c2g=" title="https://www.umeng.com/push">U-Push<i class="fa fa-external-link"></i></span></h4><p>和极光属于一类，限制级免费，友盟的产品胜在生态，公司产品考虑，后期用户上来之后方便扩展。</p>
+<h3 id="社会化分享"><a href="#社会化分享" class="headerlink" title="社会化分享"></a>社会化分享</h3><h4 id="ShareSDK"><a href="#ShareSDK" class="headerlink" title="ShareSDK"></a><span class="exturl" data-url="aHR0cDovL3d3dy5tb2IuY29tL21vYlNlcnZpY2Uvc2hhcmVzZGs=" title="http://www.mob.com/mobService/sharesdk">ShareSDK<i class="fa fa-external-link"></i></span></h4><p>为开发者提供40+主流平台的分享与授权等社会化功能，效果稳定，完整清晰统计分享数据</p>
+<ul>
+<li>一键分享</li>
+<li>第三方登录</li>
+<li>闭环分享</li>
+<li>短链转换</li>
+<li>数据统计</li>
+<li>新浪微博独家LinkCard</li>
+</ul>
+<h4 id="jshare"><a href="#jshare" class="headerlink" title="jshare"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2pwdXNoL2pzaGFyZS1yZWFjdC1uYXRpdmU=" title="https://github.com/jpush/jshare-react-native">jshare<i class="fa fa-external-link"></i></span></h4><ul>
+<li>一键分享</li>
+<li>第三放登录</li>
+<li>社会化统计</li>
+<li>官方 React Native SDK 集成方便</li>
+</ul>
+<h3 id="U-Share"><a href="#U-Share" class="headerlink" title="U-Share"></a><span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvTE0zZWFDc0w=" title="https://bre.is/LM3eaCsL">U-Share<i class="fa fa-external-link"></i></span></h3><ul>
+<li>全面覆盖国内外社交平台</li>
+<li>集成成本低、速度快</li>
+<li>自由定制分享界面</li>
+<li>权威、实时的大数据分析</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvcmtpZS9yZWFjdC1uYXRpdmUtd2VjaGF0" title="https://github.com/yorkie/react-native-wechat">react-native-wechat<i class="fa fa-external-link"></i></span>: 🚀 <strong>WeChat login</strong>, <strong>share</strong>, <strong>favorite</strong> and <strong>payment</strong> for React-Native on iOS and Android platforms</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLzB4NWUvcmVhY3QtbmF0aXZlLWFsaXBheQ==" title="https://github.com/0x5e/react-native-alipay">@0x5e/react-native-alipay<i class="fa fa-external-link"></i></span>: Alipay SDK for React Native. Support mobile webpage url payment. Support RN &gt;= 0.47.</li>
+</ul>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><blockquote>
+<p>这部分作者的理解仅限于 Jest，有大佬可以联系我补充！！！</p>
+</blockquote>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qZXN0anMuaW8vemgtSGFucy8=" title="https://jestjs.io/zh-Hans/">Jest<i class="fa fa-external-link"></i></span>: Jest是一个令人愉快的 JavaScript 测试框架，专注于简洁明快。React Native 已经集成好了，直接使用即可。</li>
+</ul>
+<h2 id="自动化运维"><a href="#自动化运维" class="headerlink" title="自动化运维"></a>自动化运维</h2><blockquote>
+<p>这部分作者接触不深，只知道 Jekens + GitLab 的方案</p>
+</blockquote>
+<h3 id="shell-文件的坑"><a href="#shell-文件的坑" class="headerlink" title="shell 文件的坑"></a>shell 文件的坑</h3><p>为了安全性 shell 文件默认都是不可执行的，当然也包括 <code>android/gradlew</code> 这个用来打包的脚本文件，这会给持续集成带来麻烦：运维同学默认是执行不了我们的打包命令的。解决办法很简单：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git update-index --add --chmod=+x android/gradlew</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="动态设置-package-json-的版本"><a href="#动态设置-package-json-的版本" class="headerlink" title="动态设置 package.json 的版本"></a>动态设置 package.json 的版本</h3><p>set-version.sh:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># current_git_branch_latest_id=`git rev-parse HEAD`</span></span><br><span class="line">current_git_branch_latest_short_id=`git rev-parse --short HEAD`</span><br><span class="line">current_os=`uname -s`</span><br><span class="line"></span><br><span class="line"><span class="comment"># echo current git branch latest commit id=$current_git_branch_latest_id</span></span><br><span class="line"><span class="built_in">echo</span> current git branch latest commit short id=<span class="variable">$current_git_branch_latest_short_id</span></span><br><span class="line"><span class="built_in">echo</span> current os=<span class="variable">$current_os</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$current_os</span>&quot;</span> == <span class="string">&quot;Darwin&quot;</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  sed -i <span class="string">&#x27;&#x27;</span> <span class="string">&#x27;s/&quot;version&quot;.*/&quot;version&quot;: &quot;1.0.0-&#x27;</span><span class="variable">$current_git_branch_latest_short_id</span><span class="string">&#x27;&quot;,/g&#x27;</span> package.json</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> windows</span><br><span class="line">  sed -i <span class="string">&#x27;s/&quot;version&quot;.*/&quot;version&quot;: &quot;&#x27;</span><span class="variable">$current_git_branch_latest_short_id</span><span class="string">&#x27;&quot;,/g&#x27;</span> package.json</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p>package.json:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 依赖 husky</span></span><br><span class="line">  <span class="attr">&quot;husky&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;hooks&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;pre-commit&quot;</span>: <span class="string">&quot;lint-staged&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;post-commit&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;./scripts/set-version.sh&quot;</span>,</span><br><span class="line">        <span class="string">&quot;git add .&quot;</span>,</span><br><span class="line">        <span class="string">&quot;git commit -m bump version&quot;</span>,</span><br><span class="line">        <span class="string">&quot;git push&quot;</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="官方组件缺陷处理"><a href="#官方组件缺陷处理" class="headerlink" title="官方组件缺陷处理"></a>官方组件缺陷处理</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL2Jsb2cvaXNzdWVzLzc=" title="https://github.com/youngjuning/blog/issues/7">React Native 解决Image 圆角在安卓上面没效果<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL2Jsb2cvaXNzdWVzLzY=" title="https://github.com/youngjuning/blog/issues/6">React Native 处理Android系统上文字偏下的问题<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL2Jsb2cvaXNzdWVzLzU=" title="https://github.com/youngjuning/blog/issues/5">React Native 自定义 TextInput 高度的问题<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL2Jsb2cvaXNzdWVzLzMy" title="https://github.com/youngjuning/blog/issues/32">[Android] Using TextInput inside ViewPagerAndroid causes context menu (copy/paste) in some cases to not display<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h2 id="VsCode-插件推荐"><a href="#VsCode-插件推荐" class="headerlink" title="VsCode 插件推荐"></a>VsCode 插件推荐</h2><ul>
+<li>React Native TypeScript Snippets: 本人开发，主要服务于本文的架构，帮助开发者快速搭建页面和组件，凡是重复的工作都可以靠工具来解决，一个不够，就来俩！！！</li>
+<li>ES7 React/Redux/GraphQL/React-Native Snippets</li>
+</ul>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><h3 id="自动-remove-console-语句"><a href="#自动-remove-console-语句" class="headerlink" title="自动 remove console 语句"></a>自动 remove console 语句</h3><p>准确地说，是在正式环境下删除 <code>console</code> 语句，配置方式请参考 <span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvMkNUVVp5VWo=" title="https://bre.is/2CTUZyUj">自动 remove console 语句<i class="fa fa-external-link"></i></span></p>
+<h3 id="推荐阅读-1"><a href="#推荐阅读-1" class="headerlink" title="推荐阅读"></a>推荐阅读</h3><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81ZTE2NzZlMTZmYjlhMDQ4NDcwOTViMTI=" title="https://juejin.im/post/5e1676e16fb9a04847095b12">React Native 性能优化指南【全网最全，值得收藏】<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h2 id="应用内测"><a href="#应用内测" class="headerlink" title="应用内测"></a>应用内测</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9maXIuaW0v" title="https://fir.im/">fir<i class="fa fa-external-link"></i></span>: 免费应用内测托管平台</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucGd5ZXIuY29tLw==" title="https://www.pgyer.com/">蒲公英<i class="fa fa-external-link"></i></span>: 免费的苹果ios应用app内测分发托管、android安卓app内测分发托管、ios企业签名、ios专属签名、ios超级签名、ios企业账号</li>
+</ul>
+<h2 id="安卓必知必会"><a href="#安卓必知必会" class="headerlink" title="安卓必知必会"></a>安卓必知必会</h2><h3 id="配置应用名"><a href="#配置应用名" class="headerlink" title="配置应用名"></a>配置应用名</h3><p>很简单,我们直接打开 <code>android/app/src/main/res/values/strings.xml</code>，即可看到配置中的 <code>app_name</code>，修改为你想要的即可。</p>
+<blockquote>
+<p>你可以在初始化项目的时候指定应用的名字，像这样：<code>npx react-native init MyApp --title 掘金</code></p>
+</blockquote>
+<h3 id="配置图标"><a href="#配置图标" class="headerlink" title="配置图标"></a>配置图标</h3><p>1、使用<span class="exturl" data-url="aHR0cHM6Ly9pY29uLnd1cnVpaG9uZy5jb20v" title="https://icon.wuruihong.com/">图标工厂<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcmVhY3QtbmF0aXZlLXN2Zy1hcHAtaWNvbg==" title="https://www.npmjs.com/package/react-native-svg-app-icon">react-native-svg-app-icon<i class="fa fa-external-link"></i></span> 或者让设计师给图片</p>
+<p>2、在 <code>android\app\src\main\res\mipmap-xxxxxx</code> 中直接覆盖图标就可以，注意图标的大小。</p>
+<h3 id="打包-APK"><a href="#打包-APK" class="headerlink" title="打包 APK"></a>打包 APK</h3><p>1、在项目根目录执行 <code>keytool -genkeypair -v -keystore release.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000</code> 生成密钥文件 <code>release.keystore</code></p>
+<p>2、把 <code>release.keystore</code> 文件放到你工程中的 <code>android/app</code> 文件夹下。</p>
+<p>3、配置 <code>android/app/build.gradle</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">    ...</span><br><span class="line">    signingConfigs &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            storeFile file(<span class="string">&quot;release.keystore&quot;</span>)</span><br><span class="line">            storePassword <span class="string">&quot;****&quot;</span></span><br><span class="line">            keyAlias <span class="string">&quot;my-key-alias&quot;</span></span><br><span class="line">            keyPassword <span class="string">&quot;****&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            ...</span><br><span class="line">            signingConfig signingConfigs.release</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="打包优化"><a href="#打包优化" class="headerlink" title="打包优化"></a>打包优化</h3><h4 id="去除无用的语言资源"><a href="#去除无用的语言资源" class="headerlink" title="去除无用的语言资源"></a>去除无用的语言资源</h4><p>通过配置 <code>android/defaultConfig/resConfigs</code> 可以选择只打包哪几种语言，进而去掉各种 <code>aar</code> 包中全世界的语言，尤其是 <code>support</code> 包中的。</p>
+<p>选择保留什么语言要根据产品的用户和市场来定，如果只选择默认英语和中文语言，配置如下：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line">    resConfigs <span class="string">&quot;en&quot;</span>,<span class="string">&quot;zh&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置-PackagingOptions"><a href="#配置-PackagingOptions" class="headerlink" title="配置 PackagingOptions"></a>配置 PackagingOptions</h4><p>打开 <code>android/app/build.gradle</code> 文件，添加如下配置：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">packagingOptions &#123;</span><br><span class="line">    exclude <span class="string">&#x27;META-INF/android_release.kotlin_module&#x27;</span></span><br><span class="line">    exclude <span class="string">&#x27;META-INF/DEPENDENCIES&#x27;</span></span><br><span class="line">    exclude <span class="string">&#x27;META-INF/LICENSE&#x27;</span></span><br><span class="line">    exclude <span class="string">&#x27;META-INF/LICENSE.txt&#x27;</span></span><br><span class="line">    exclude <span class="string">&#x27;META-INF/license.txt&#x27;</span></span><br><span class="line">    exclude <span class="string">&#x27;META-INF/NOTICE&#x27;</span></span><br><span class="line">    exclude <span class="string">&#x27;META-INF/NOTICE.txt&#x27;</span></span><br><span class="line">    exclude <span class="string">&#x27;META-INF/notice.txt&#x27;</span></span><br><span class="line">    exclude <span class="string">&#x27;META-INF/ASL2.0&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>pickFirsts</code>: 当出现重复文件，会使用第一个匹配的文件打包进入 apk</li>
+<li><code>merges</code>: 当出现重复文件，合并重复的文件打入 apk</li>
+<li><code>excludes</code>: 打包的时候排除匹配的文件</li>
+</ul>
+<h4 id="配置-splits"><a href="#配置-splits" class="headerlink" title="配置 splits"></a>配置 splits</h4><blockquote>
+<p>查看手机 CPU 信息：<code>adb shell</code> -&gt; <code>cd /proc</code> -&gt; <code>cat cpuinfo</code></p>
+</blockquote>
+<p>默认情况下，生成的 <code>APK</code> 会同时包含针对于 <code>x86</code> 和 <code>ARMv7a</code> 两种 <code>CPU</code> 架构的原生代码。这样可以让我们更方便的向其他人分享这个 <code>APK</code>，因为它几乎可以运行在所有的 Android 设备上。但是，这会导致所有设备上都有一些根本不会运行的代码，白白占据了空间。目前安卓设备绝大多数是 <code>ARM</code> 架构，因此对于大部分应用来说可以考虑去掉 <code>x86</code> 架构的支持。</p>
+<p>你可以在 <code>android/app/build.gradle</code> 中修改如下代码：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">- include &quot;armeabi-v7a&quot;, &quot;x86&quot;, &quot;arm64-v8a&quot;, &quot;x86_64&quot;</span></span><br><span class="line"><span class="addition">+ include &quot;armeabi-v7a&quot;, &quot;arm64-v8a&quot;</span></span><br><span class="line"><span class="deletion">- def versionCodes = [&quot;armeabi-v7a&quot;:1, &quot;x86&quot;:2, &quot;arm64-v8a&quot;: 3, &quot;x86_64&quot;: 4]</span></span><br><span class="line"><span class="addition">+ def versionCodes = [&quot;armeabi-v7a&quot;:1, &quot;arm64-v8a&quot;: 2]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="gradle-编译速度优化配置"><a href="#gradle-编译速度优化配置" class="headerlink" title="gradle 编译速度优化配置"></a>gradle 编译速度优化配置</h3><p>在 <code>android\gradle.properties</code> 中加入以下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 让gradle使用单独的守护进程</span><br><span class="line">org.gradle.daemon&#x3D;true</span><br><span class="line"># 让gradle并行编译</span><br><span class="line">org.gradle.parallel&#x3D;true</span><br><span class="line"># 让gradle在需要的时候才配置</span><br><span class="line">org.gradle.configureondemand&#x3D;true</span><br><span class="line"># 增加gradle运行的java虚拟机的大小</span><br><span class="line">org.gradle.jvmargs&#x3D;-Xmx4096m -XX:MaxPermSize&#x3D;4096m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding&#x3D;UTF-8</span><br></pre></td></tr></table></figure>
+
+<h3 id="BuildConfig"><a href="#BuildConfig" class="headerlink" title="BuildConfig"></a>BuildConfig</h3><blockquote>
+<p>在 react-native 中，我们可以借助 react-native-config-reader 来方便地读取这些属性</p>
+</blockquote>
+<p><code>BuildConfig</code> 是程序编译后，根据 <code>buildType</code> 生成在 <code>app\build\generated\source\buildConfig\debug(release)\</code> 包名下的一个 java 文件。默认有一下属性：</p>
+<ul>
+<li><code>DEBUG</code>：是否是调试版本</li>
+<li><code>APPLICATION_ID</code>：当前应用的包名</li>
+<li><code>FLAVOR</code>：产品（渠道包的名称）</li>
+<li><code>BUILD_TYPE</code>：当前的编译类型(<code>release</code>/<code>debug</code>)</li>
+<li><code>VERSION_CODE</code>：版本号(数字)</li>
+<li><code>VERSION_NAME</code>：版本号</li>
+</ul>
+<h4 id="自定义-BuildConfig"><a href="#自定义-BuildConfig" class="headerlink" title="自定义 BuildConfig"></a>自定义 BuildConfig</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line">  <span class="comment">// 三个参数: 1.要定义的常量的类型 2.该常量的命名 3.该常量的值</span></span><br><span class="line">  <span class="comment">// APP_NAME，对应 ios 的 CFBundleDisplayName</span></span><br><span class="line">  buildConfigField <span class="string">&quot;String&quot;</span>, <span class="string">&quot;APP_NAME&quot;</span>, <span class="string">&#x27;&quot;我是谁&quot;&#x27;</span></span><br><span class="line">  <span class="comment">// BUILD_TIME</span></span><br><span class="line">  buildConfigField <span class="string">&quot;String&quot;</span>, <span class="string">&quot;BUILD_TIME&quot;</span>, <span class="string">&#x27;&quot;&#x27;</span> + <span class="keyword">new</span> Date().format(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>, TimeZone.getTimeZone(<span class="string">&quot;Asia/Shanghai&quot;</span>)) + <span class="string">&#x27;&quot;&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="在子模块中取主项目的-BuildConfig"><a href="#在子模块中取主项目的-BuildConfig" class="headerlink" title="在子模块中取主项目的 BuildConfig"></a>在子模块中取主项目的 BuildConfig</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getBuildConfigValue</span><span class="params">(Context context, String fieldName)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    Class&lt;?&gt; clazz = Class.forName(context.getPackageName() + <span class="string">&quot;.BuildConfig&quot;</span>);</span><br><span class="line">    Field field = clazz.getField(fieldName);</span><br><span class="line">    <span class="keyword">return</span> field.get(<span class="keyword">null</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">String versionName = (String)getBuildConfigValue(activity, <span class="string">&quot;VERSION_NAME&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决在-Android-P-上的提醒弹窗-（Detected-problems-with-API-compatibility-visit-g-co-dev-appcompat-for-more-info"><a href="#解决在-Android-P-上的提醒弹窗-（Detected-problems-with-API-compatibility-visit-g-co-dev-appcompat-for-more-info" class="headerlink" title="解决在 Android P 上的提醒弹窗 （Detected problems with API compatibility(visit g.co/dev/appcompat for more info)"></a>解决在 Android P 上的提醒弹窗 （Detected problems with API compatibility(visit g.co/dev/appcompat for more info)</h3><p>在 <code>MainActivity.java</code> 中添加 closeAndroidPDialog 方法并在 <code>onCreate</code> 方法中调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line">...</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">  closeAndroidPDialog(); <span class="comment">// here</span></span><br><span class="line">  <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">closeAndroidPDialog</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    Class aClass = Class.forName(<span class="string">&quot;android.content.pm.PackageParser$Package&quot;</span>);</span><br><span class="line">    Constructor declaredConstructor = aClass.getDeclaredConstructor(String.class);</span><br><span class="line">    declaredConstructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    Class cls = Class.forName(<span class="string">&quot;android.app.ActivityThread&quot;</span>);</span><br><span class="line">    Method declaredMethod = cls.getDeclaredMethod(<span class="string">&quot;currentActivityThread&quot;</span>);</span><br><span class="line">    declaredMethod.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">    Object activityThread = declaredMethod.invoke(<span class="keyword">null</span>);</span><br><span class="line">    Field mHiddenApiWarningShown = cls.getDeclaredField(<span class="string">&quot;mHiddenApiWarningShown&quot;</span>);</span><br><span class="line">    mHiddenApiWarningShown.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">    mHiddenApiWarningShown.setBoolean(activityThread, <span class="keyword">true</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义安卓打包的后缀"><a href="#自定义安卓打包的后缀" class="headerlink" title="自定义安卓打包的后缀"></a>自定义安卓打包的后缀</h3><p>配置 <code>android/app/build.gradle</code>:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">def</span> releaseTime() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Date().format(<span class="string">&quot;yyyyMMdd-HHmmss&quot;</span>, TimeZone.getTimeZone(<span class="string">&quot;GMT+08:00&quot;</span>))</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="attr">android:</span> &#123;</span><br><span class="line">    applicationVariants.all &#123; variant -&gt;</span><br><span class="line">        ...</span><br><span class="line">            variant.outputs.all &#123;</span><br><span class="line">            <span class="comment">// the apk name is e.g. galaxy_v1.0.1_2018-11-1_debug.apk</span></span><br><span class="line">           outputFileName = <span class="string">&quot;galaxy_v$&#123;defaultConfig.versionName&#125;_$&#123;releaseTime()&#125;_$&#123;variant.buildType.name&#125;.apk&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常见报错及解决办法"><a href="#常见报错及解决办法" class="headerlink" title="常见报错及解决办法"></a>常见报错及解决办法</h3><h4 id="Failed-to-read-PNG-signature-file-does-not-start-with-PNG-signature"><a href="#Failed-to-read-PNG-signature-file-does-not-start-with-PNG-signature" class="headerlink" title="Failed to read PNG signature: file does not start with PNG signature"></a>Failed to read PNG signature: file does not start with PNG signature</h4><p>有时从网上下载的 Demo 资源文件不规范，会出现直接将 jpg 文件改为 png 后缀名的情况，gradle 打包检查时报错编译通不过的。我们通过 <code>aaptOptions.cruncherEnabled=false</code> 来禁止 Gradle 检查 png 的合法性：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">  aaptOptions &#123;</span><br><span class="line">    cruncherEnabled=<span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="com-android-build-api-transform-TransformException"><a href="#com-android-build-api-transform-TransformException" class="headerlink" title="com.android.build.api.transform.TransformException"></a><span class="exturl" data-url="aHR0cDovL3QuY24vRVpjVER0Vg==" title="http://t.cn/EZcTDtV">com.android.build.api.transform.TransformException<i class="fa fa-external-link"></i></span></h4><p>在 <code>android\gradle.properties</code> 中加入以下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dexOptions.javaMaxHeapSize &#x3D; 2g</span><br></pre></td></tr></table></figure>
+
+<h4 id="The-number-of-method-references-in-a-dex-file-cannot-exceed-64K"><a href="#The-number-of-method-references-in-a-dex-file-cannot-exceed-64K" class="headerlink" title="The number of method references in a .dex file cannot exceed 64K."></a>The number of method references in a .dex file cannot exceed 64K.</h4><p>随着 Android 平台的持续成长，Android 应用的大小也在增加。当您的应用及其引用的库达到特定大小时，您会遇到构建错误，指明您的应用已达到 Android 应用构建架构的极限。</p>
+<p>解决办法是配置您的应用进行 <code>Dalvik</code> 可执行文件分包，在 <code>android/app/build.gradle</code> 中做下面的配置：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line"><span class="addition">+    multiDexEnabled true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ios必知必会"><a href="#ios必知必会" class="headerlink" title="ios必知必会"></a>ios必知必会</h2><blockquote>
+<p>这部分目前作者接触不深，有大佬可以联系我补充！！！</p>
+</blockquote>
+<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><blockquote>
+<p><code>pod install</code> 会从 GitHub 拉代码，所以在国内会很慢。年轻人要爱国，自觉不翻墙！！！</p>
+</blockquote>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL2Jsb2cvaXNzdWVzLzEw" title="https://github.com/youngjuning/blog/issues/10">Homebrew 镜像使用帮助<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3IudHVuYS50c2luZ2h1YS5lZHUuY24vaGVscC9Db2NvYVBvZHMv" title="https://mirror.tuna.tsinghua.edu.cn/help/CocoaPods/">CocoaPods 镜像使用帮助<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h3 id="配置应用名-1"><a href="#配置应用名-1" class="headerlink" title="配置应用名"></a>配置应用名</h3><ol>
+<li>选中工程名称</li>
+<li>找到右侧菜单 <code>Info</code> 选项</li>
+<li>添加 <code>Bundle display name</code> 并把 <code>value</code> 设置成 “应用名称”</li>
+<li>最后重新再 <code>Run</code>一次，即可看到最新的效果</li>
+</ol>
+<blockquote>
+<p>你可以在初始化项目的时候指定应用的名字，像这样：<code>npx react-native init MyApp --title 掘金</code></p>
+</blockquote>
+<h3 id="配置图标-1"><a href="#配置图标-1" class="headerlink" title="配置图标"></a>配置图标</h3><p>1、使用<span class="exturl" data-url="aHR0cHM6Ly9pY29uLnd1cnVpaG9uZy5jb20v" title="https://icon.wuruihong.com/">图标工厂<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcmVhY3QtbmF0aXZlLXN2Zy1hcHAtaWNvbg==" title="https://www.npmjs.com/package/react-native-svg-app-icon">react-native-svg-app-icon<i class="fa fa-external-link"></i></span> 或者让设计师给图片<br>2、把准备好的图标拖到图中箭头指向的位置：</p>
+<img src="https://i.loli.net/2020/02/21/Sy3OjWBKbMdYgoH.png" style="zoom:36%;" />
+
+<h3 id="获取BUILD-TYPE"><a href="#获取BUILD-TYPE" class="headerlink" title="获取BUILD_TYPE"></a>获取BUILD_TYPE</h3><p>在 <code>Info.plist</code> 中添加 <code>BUILD_TYPE</code>，取值为 <code>$(CONFIGURATION)</code></p>
+<h3 id="获取构建时间"><a href="#获取构建时间" class="headerlink" title="获取构建时间"></a>获取构建时间</h3><p>在 <code>Info.plist</code> 中添加 <code>BUILD_TIME</code>,取值为空，并通过脚本在每次编译的时候对其更新，脚本添加步骤 <code>Target</code>-&gt; <code>Build Phases</code> -&gt; <code>+</code> -&gt; <code>New Run Script Phase</code>, Shell 代码如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">infoplist=&quot;$BUILT_PRODUCTS_DIR/$INFOPLIST_PATH&quot;</span><br><span class="line">builddate=`date +%Y-%m-%d_%H:%M`</span><br><span class="line">if [[ -n &quot;$builddate&quot; ]]; then</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set :BUILD_TIME $builddate&quot; $&#123;infoplist&#125;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="权限申请"><a href="#权限申请" class="headerlink" title="权限申请"></a>权限申请</h3><ul>
+<li><code>Privacy - Camera Usage Description</code></li>
+<li><code>Privacy - Photo Library Usage Description</code></li>
+<li><code>Privacy - Microphone Usage Description</code></li>
+</ul>
+<h2 id="Lean-Core"><a href="#Lean-Core" class="headerlink" title="Lean Core"></a>Lean Core</h2><table>
+<thead>
+<tr>
+<th align="left">COMPONENT</th>
+<th align="left">DEPRECATED?</th>
+<th align="left">NEW HOME</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>AsyncStorage</strong></td>
+<td align="left">0.59</td>
+<td align="left"><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLWFzeW5jLXN0b3JhZ2U=" title="https://github.com/react-native-community/react-native-async-storage">@react-native-community/react-native-async-storage<i class="fa fa-external-link"></i></span></td>
+</tr>
+<tr>
+<td align="left"><strong>ImageStore</strong></td>
+<td align="left">0.59</td>
+<td align="left"><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2V4cG8vZXhwby90cmVlL21hc3Rlci9wYWNrYWdlcy9leHBvLWZpbGUtc3lzdGVt" title="https://github.com/expo/expo/tree/master/packages/expo-file-system">expo-file-system<i class="fa fa-external-link"></i></span> or <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2l0aW5hbmNlL3JlYWN0LW5hdGl2ZS1mcw==" title="https://github.com/itinance/react-native-fs">react-native-fs<i class="fa fa-external-link"></i></span></td>
+</tr>
+<tr>
+<td align="left"><strong>MaskedViewIOS</strong></td>
+<td align="left">0.59</td>
+<td align="left"><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLW1hc2tlZC12aWV3" title="https://github.com/react-native-community/react-native-masked-view">@react-native-community/react-native-masked-view<i class="fa fa-external-link"></i></span></td>
+</tr>
+<tr>
+<td align="left"><strong>NetInfo</strong></td>
+<td align="left">0.59</td>
+<td align="left"><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLW5ldGluZm8=" title="https://github.com/react-native-community/react-native-netinfo">@react-native-community/react-native-netinfo<i class="fa fa-external-link"></i></span></td>
+</tr>
+<tr>
+<td align="left"><strong>Slider</strong></td>
+<td align="left">0.59</td>
+<td align="left"><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLXNsaWRlcg==" title="https://github.com/react-native-community/react-native-slider">@react-native-community/react-native-slider<i class="fa fa-external-link"></i></span></td>
+</tr>
+<tr>
+<td align="left"><strong>ViewPagerAndroid</strong></td>
+<td align="left">0.59</td>
+<td align="left"><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLXZpZXdwYWdlcg==" title="https://github.com/react-native-community/react-native-viewpager">@react-native-community/react-native-viewpager<i class="fa fa-external-link"></i></span></td>
+</tr>
+<tr>
+<td align="left"><strong>WebView</strong></td>
+<td align="left">0.60</td>
+<td align="left"><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLXdlYnZpZXc=" title="https://github.com/react-native-community/react-native-webview">react-native-webview<i class="fa fa-external-link"></i></span></td>
+</tr>
+<tr>
+<td align="left"><strong>NetInfo</strong></td>
+<td align="left">0.60</td>
+<td align="left"><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLW5ldGluZm8=" title="https://github.com/react-native-community/react-native-netinfo">@react-native-community/netinfo<i class="fa fa-external-link"></i></span></td>
+</tr>
+<tr>
+<td align="left"><strong>Geolocation</strong></td>
+<td align="left">0.60</td>
+<td align="left"><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLWdlb2xvY2F0aW9u" title="https://github.com/react-native-community/react-native-geolocation">@react-native-community/geolocation<i class="fa fa-external-link"></i></span></td>
+</tr>
+<tr>
+<td align="left"><strong>Apple TV Support</strong></td>
+<td align="left">0.62</td>
+<td align="left"><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLXR2b3M=" title="https://github.com/react-native-community/react-native-tvos">react-native-community/react-native-tvos<i class="fa fa-external-link"></i></span></td>
+</tr>
+</tbody></table>
+<h2 id="联系作者"><a href="#联系作者" class="headerlink" title="联系作者"></a>联系作者</h2><table>
+<thead>
+<tr>
+<th align="center">作者微信</th>
+<th align="center">知识星球</th>
+<th align="center">赞赏作者</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://user-gold-cdn.xitu.io/2020/2/24/17074acbb24c7412?w=200&h=200&f=jpeg&s=17183" style="width:200px"/></td>
+<td align="center"><img src="https://user-gold-cdn.xitu.io/2020/2/24/17074acbb26af8e1?w=200&h=200&f=png&s=39093" style="width:200px"/></td>
+<td align="center"><img src="https://user-gold-cdn.xitu.io/2020/2/24/17074acbb338c643?w=698&h=700&f=png&s=315492" style="width:200px"/></td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/02/React Native 集成 CodePush 指南/" rel="bookmark">React Native 集成 CodePush 指南</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/02/React Navigation 5 最佳实践/" rel="bookmark">React Navigation 5 最佳实践</a></div>
+    </li>
+  </ul>
+
+        <div class="reward-container">
+  <div>赞赏是对我最大的支持！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="杨俊宁 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="杨俊宁 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>杨俊宁
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://youngjuning.js.org/2020/02/React-Native-%E6%9E%B6%E6%9E%84%E9%9D%A2%E9%9D%A2%E8%A7%82/" title="React Native 架构面面观">http://youngjuning.js.org/2020/02/React-Native-架构面面观/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/xingqiu.png">
+                <span class="icon">
+                  <i class="fa fa-circle-o-notch"></i>
+                </span>
+
+                <span class="label">知识星球</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/wechat_channel.jpeg">
+                <span class="icon">
+                  <i class="fa fa-wechat"></i>
+                </span>
+
+                <span class="label">WeChat</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" rel="tag"><i class="fa fa-tag"></i> 最佳实践</a>
+              <a href="/tags/%E6%9E%B6%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> 架构</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/ios%E9%85%8D%E7%BD%AE%E5%BA%94%E7%94%A8%E5%90%8D%E5%92%8C%E5%9B%BE%E6%A0%87/" rel="prev" title="ios配置应用名和图标">
+      <i class="fa fa-chevron-left"></i> ios配置应用名和图标
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/%E5%88%A9%E7%94%A8Metro%E9%85%8D%E7%BD%AEReact-Native%E7%AB%AF%E5%8F%A3/" rel="next" title="利用Metro配置React Native端口">
+      利用Metro配置React Native端口 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sigmayun-react-native-template-typescript"><span class="nav-number">1.</span> <span class="nav-text">@sigmayun&#x2F;react-native-template-typescript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">全局变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83"><span class="nav-number">3.</span> <span class="nav-text">编码规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Npm-Scripts"><span class="nav-number">4.</span> <span class="nav-text">Npm Scripts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">网络编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E7%AE%A1%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">路由管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">状态管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8"><span class="nav-number">8.</span> <span class="nav-text">本地存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E5%B1%8F"><span class="nav-number">9.</span> <span class="nav-text">启动屏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0"><span class="nav-number">10.</span> <span class="nav-text">热更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI%E6%A1%86%E6%9E%B6"><span class="nav-number">11.</span> <span class="nav-text">UI框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E8%A1%A8"><span class="nav-number">12.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E6%A0%87"><span class="nav-number">13.</span> <span class="nav-text">图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E4%BD%93"><span class="nav-number">14.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">15.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Hooks"><span class="nav-number">16.</span> <span class="nav-text">React Hooks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB"><span class="nav-number">16.1.</span> <span class="nav-text">推荐阅读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%85%BC%E5%AE%B9%E7%B1%BB%E7%BB%84%E4%BB%B6"><span class="nav-number">16.2.</span> <span class="nav-text">如何兼容类组件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Metro"><span class="nav-number">17.</span> <span class="nav-text">Metro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%94%BE%E6%9C%8D%E5%8A%A1"><span class="nav-number">18.</span> <span class="nav-text">第三放服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sentry"><span class="nav-number">18.1.</span> <span class="nav-text">Sentry</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%85%BE%E8%AE%AF-Bugly"><span class="nav-number">18.2.</span> <span class="nav-text">腾讯 Bugly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E9%80%81"><span class="nav-number">18.3.</span> <span class="nav-text">推送</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%A1%E9%B8%BD-%E8%85%BE%E8%AE%AF%E7%A7%BB%E5%8A%A8%E6%8E%A8%E9%80%81"><span class="nav-number">18.3.1.</span> <span class="nav-text">信鸽 | 腾讯移动推送</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%B1%B3%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E6%9C%8D%E5%8A%A1"><span class="nav-number">18.3.2.</span> <span class="nav-text">小米消息推送服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%81%E5%85%89%E6%8E%A8%E9%80%81"><span class="nav-number">18.3.3.</span> <span class="nav-text">极光推送</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#U-Push"><span class="nav-number">18.3.4.</span> <span class="nav-text">U-Push</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BE%E4%BC%9A%E5%8C%96%E5%88%86%E4%BA%AB"><span class="nav-number">18.4.</span> <span class="nav-text">社会化分享</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ShareSDK"><span class="nav-number">18.4.1.</span> <span class="nav-text">ShareSDK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jshare"><span class="nav-number">18.4.2.</span> <span class="nav-text">jshare</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#U-Share"><span class="nav-number">18.5.</span> <span class="nav-text">U-Share</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">18.6.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">19.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4"><span class="nav-number">20.</span> <span class="nav-text">自动化运维</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shell-%E6%96%87%E4%BB%B6%E7%9A%84%E5%9D%91"><span class="nav-number">20.1.</span> <span class="nav-text">shell 文件的坑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%AE%BE%E7%BD%AE-package-json-%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-number">20.2.</span> <span class="nav-text">动态设置 package.json 的版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E7%BB%84%E4%BB%B6%E7%BC%BA%E9%99%B7%E5%A4%84%E7%90%86"><span class="nav-number">21.</span> <span class="nav-text">官方组件缺陷处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VsCode-%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90"><span class="nav-number">22.</span> <span class="nav-text">VsCode 插件推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="nav-number">23.</span> <span class="nav-text">性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8-remove-console-%E8%AF%AD%E5%8F%A5"><span class="nav-number">23.1.</span> <span class="nav-text">自动 remove console 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB-1"><span class="nav-number">23.2.</span> <span class="nav-text">推荐阅读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%86%85%E6%B5%8B"><span class="nav-number">24.</span> <span class="nav-text">应用内测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%8D%93%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A"><span class="nav-number">25.</span> <span class="nav-text">安卓必知必会</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%BA%94%E7%94%A8%E5%90%8D"><span class="nav-number">25.1.</span> <span class="nav-text">配置应用名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%9B%BE%E6%A0%87"><span class="nav-number">25.2.</span> <span class="nav-text">配置图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8C%85-APK"><span class="nav-number">25.3.</span> <span class="nav-text">打包 APK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96"><span class="nav-number">25.4.</span> <span class="nav-text">打包优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%BB%E9%99%A4%E6%97%A0%E7%94%A8%E7%9A%84%E8%AF%AD%E8%A8%80%E8%B5%84%E6%BA%90"><span class="nav-number">25.4.1.</span> <span class="nav-text">去除无用的语言资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-PackagingOptions"><span class="nav-number">25.4.2.</span> <span class="nav-text">配置 PackagingOptions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-splits"><span class="nav-number">25.4.3.</span> <span class="nav-text">配置 splits</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gradle-%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-number">25.5.</span> <span class="nav-text">gradle 编译速度优化配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BuildConfig"><span class="nav-number">25.6.</span> <span class="nav-text">BuildConfig</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89-BuildConfig"><span class="nav-number">25.6.1.</span> <span class="nav-text">自定义 BuildConfig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E5%AD%90%E6%A8%A1%E5%9D%97%E4%B8%AD%E5%8F%96%E4%B8%BB%E9%A1%B9%E7%9B%AE%E7%9A%84-BuildConfig"><span class="nav-number">25.6.2.</span> <span class="nav-text">在子模块中取主项目的 BuildConfig</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%9C%A8-Android-P-%E4%B8%8A%E7%9A%84%E6%8F%90%E9%86%92%E5%BC%B9%E7%AA%97-%EF%BC%88Detected-problems-with-API-compatibility-visit-g-co-dev-appcompat-for-more-info"><span class="nav-number">25.7.</span> <span class="nav-text">解决在 Android P 上的提醒弹窗 （Detected problems with API compatibility(visit g.co&#x2F;dev&#x2F;appcompat for more info)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AE%89%E5%8D%93%E6%89%93%E5%8C%85%E7%9A%84%E5%90%8E%E7%BC%80"><span class="nav-number">25.8.</span> <span class="nav-text">自定义安卓打包的后缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">25.9.</span> <span class="nav-text">常见报错及解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Failed-to-read-PNG-signature-file-does-not-start-with-PNG-signature"><span class="nav-number">25.9.1.</span> <span class="nav-text">Failed to read PNG signature: file does not start with PNG signature</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#com-android-build-api-transform-TransformException"><span class="nav-number">25.9.2.</span> <span class="nav-text">com.android.build.api.transform.TransformException</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-number-of-method-references-in-a-dex-file-cannot-exceed-64K"><span class="nav-number">25.9.3.</span> <span class="nav-text">The number of method references in a .dex file cannot exceed 64K.</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ios%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A"><span class="nav-number">26.</span> <span class="nav-text">ios必知必会</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%95%9C%E5%83%8F"><span class="nav-number">26.1.</span> <span class="nav-text">镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%BA%94%E7%94%A8%E5%90%8D-1"><span class="nav-number">26.2.</span> <span class="nav-text">配置应用名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%9B%BE%E6%A0%87-1"><span class="nav-number">26.3.</span> <span class="nav-text">配置图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96BUILD-TYPE"><span class="nav-number">26.4.</span> <span class="nav-text">获取BUILD_TYPE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%9E%84%E5%BB%BA%E6%97%B6%E9%97%B4"><span class="nav-number">26.5.</span> <span class="nav-text">获取构建时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7"><span class="nav-number">26.6.</span> <span class="nav-text">权限申请</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lean-Core"><span class="nav-number">27.</span> <span class="nav-text">Lean Core</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%94%E7%B3%BB%E4%BD%9C%E8%80%85"><span class="nav-number">28.</span> <span class="nav-text">联系作者</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="杨俊宁"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">杨俊宁</p>
+  <div class="site-description" itemprop="description">前端工程师、终身学习践行者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5n" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;youngjuning"><i class="fa fa-fw fa-github"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnlvdW5nanVuaW5nQGFsaXl1bi5jb20=" title="E-Mail → mailto:youngjuning@aliyun.com"><i class="fa fa-fw fa-envelope"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20veWFuZ2p1bm5pbmdtYW8=" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yangjunningmao"><i class="fa fa-fw fa-weibo"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy84NTY0NDAzL3lvdW5nanVuaW5n" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;8564403&#x2F;youngjuning"><i class="fa fa-fw fa-stack-overflow"></i></span>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jaGVueXVodS5qcy5vcmcv" title="https:&#x2F;&#x2F;chenyuhu.js.org&#x2F;">陈锋个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9sbHN0YXIuZ2l0aHViLmlvLw==" title="https:&#x2F;&#x2F;llstar.github.io&#x2F;">LLstar的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vR3Jld2VyLw==" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;Grewer&#x2F;">张煜的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9taXJhcmkuY2Mv" title="https:&#x2F;&#x2F;mirari.cc&#x2F;">Mirari's Blog</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨俊宁的博客</span>
+  <span class="post-meta-divider">|</span>
+  <a target="_blank" href="/sitemap.xml" style="border-bottom: 0px"><span style="color: #999;"><i class="fa fa-sitemap"> 站点地图</i></span></a>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">297k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:30</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v5.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.7.1
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e3a8b23db295557" async="async"></script>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script pjax>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes : 0,
+          toolbar  : 0,
+          statusbar: 0,
+          pagemode : 'thumbs',
+          view     : 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://youngjuning.js.org/2020/02/React-Native-%E6%9E%B6%E6%9E%84%E9%9D%A2%E9%9D%A2%E8%A7%82/";
+    this.page.identifier = "2020/02/React-Native-架构面面观/";
+    this.page.title = "React Native 架构面面观";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://youngjuning.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="ohZ0A8YKJu755suq7WOIJkLGDfj3BGU4isb8RKI5Cj8">
+  <meta name="baidu-site-verification" content="I63O4XWtSs">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"youngjuning.js.org","root":"/","scheme":"Gemini","version":"7.7.1","exturl":true,"sidebar":{"position":"left","width":310,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于 Deno 构建 HTTP Server 实践指南">
+<meta property="og:url" content="http://youngjuning.js.org/2020/07/%E5%9F%BA%E4%BA%8E-Deno-%E6%9E%84%E5%BB%BA-HTTP-Server-%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">
+<meta property="og:site_name" content="杨俊宁的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/07/29/Vn7jhOu3Z2c6pTe.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/30/ibwyIrKvjJld5GQ.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/01/w6FZXsfHQ4gydcK.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/30/8q3AKy4EVLBb6Q1.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/03/4VM2kKtZS1Pazwo.png">
+<meta property="og:image" content="https://i.loli.net/2020/02/22/q2tLiGYvhIxm3Fl.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/02/23/q56X1eYZuITQpsj.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/28/6AyutjZ1XI4aUDV.jpg">
+<meta property="article:published_time" content="2020-07-28T22:55:25.000Z">
+<meta property="article:modified_time" content="2020-07-28T22:55:25.000Z">
+<meta property="article:author" content="杨俊宁">
+<meta property="article:tag" content="掘金专栏">
+<meta property="article:tag" content="Deno">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/29/Vn7jhOu3Z2c6pTe.png">
+
+<link rel="canonical" href="http://youngjuning.js.org/2020/07/%E5%9F%BA%E4%BA%8E-Deno-%E6%9E%84%E5%BB%BA-HTTP-Server-%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>基于 Deno 构建 HTTP Server 实践指南 | 杨俊宁的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158205277-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-158205277-1');
+      }
+    </script>
+
+
+  <script pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a1319c6a7cb0e5cc6572a6181c7e949c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="杨俊宁的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨俊宁的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">怕什么真理无穷，进一寸有一寸的欢喜</h1>
+      
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">64</span></a>
+
+  </li>
+        <li class="menu-item menu-item-书单">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+
+  </li>
+        <li class="menu-item menu-item-歌单">
+
+    <a href="/music/" rel="section"><i class="fa fa-fw fa-music"></i>歌单</a>
+
+  </li>
+        <li class="menu-item menu-item-收藏夹">
+
+    <a href="/collections/" rel="section"><i class="fa fa-fw fa-star"></i>收藏夹</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://youngjuning.js.org/2020/07/%E5%9F%BA%E4%BA%8E-Deno-%E6%9E%84%E5%BB%BA-HTTP-Server-%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="杨俊宁">
+      <meta itemprop="description" content="前端工程师、终身学习践行者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨俊宁的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          基于 Deno 构建 HTTP Server 实践指南<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL3lvdW5nanVuaW5nL3RyZWUvbWFzdGVyL3NvdXJjZS9fcG9zdHMvMjAyMC8wNy/ln7rkuo4tRGVuby3mnoTlu7otSFRUUC1TZXJ2ZXIt5a6e6Le15oyH5Y2XLm1k" title="编辑"><i class="fa fa-pencil"></i></span>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-29 06:55:25" itemprop="dateCreated datePublished" datetime="2020-07-29T06:55:25+08:00">2020-07-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/Deno/" itemprop="url" rel="index">
+                    <span itemprop="name">Deno</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>9 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://i.loli.net/2020/07/29/Vn7jhOu3Z2c6pTe.png" alt=""></p>
+<a id="more"></a>
+
+<p>大家好，我是俊宁，这是一篇介绍如何使用 Deno 构建 HTTP Server 的实践指南，如果你还不了解Deno是什么，可以移步我的另一篇 <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81ZjFkNDA2NWYyNjVkYTIyZDgzNDRkYzY=" title="https://juejin.im/post/5f1d4065f265da22d8344dc6">Deno入门文章<i class="fa fa-external-link"></i></span>。</p>
+<p>本文还使用到了 Docker，如果不熟悉可以看一下 <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC82ODQ0OTA0MTExMjQzMDAxODY5" title="https://juejin.im/post/6844904111243001869">一个前端工程师的Docker学习笔记【持续更新】<i class="fa fa-external-link"></i></span>。</p>
+<p>mongodb 入门可以看一下 <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9tb25nb2RiL21vbmdvZGItdHV0b3JpYWwuaHRtbA==" title="https://www.runoob.com/mongodb/mongodb-tutorial.html">MongoDB 教程<i class="fa fa-external-link"></i></span>。</p>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ul>
+<li>deno: 使用 <code>deno -V</code> 查看是否正确安装了 deno</li>
+<li>VSCode Deno插件: 支持 Deno 开发的 VSCode 插件</li>
+<li>VSCode REST Client插件: 直接在VSCode中进行接口测试的插件</li>
+</ul>
+<h2 id="基础体验"><a href="#基础体验" class="headerlink" title="基础体验"></a>基础体验</h2><h3 id="官方示例解析"><a href="#官方示例解析" class="headerlink" title="官方示例解析"></a>官方示例解析</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; serve &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/std/http/server.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> s = serve(&#123; port: <span class="number">8080</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;http://localhost:8080/&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一个会等待每一个请求的 for 循环</span></span><br><span class="line"><span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> req <span class="keyword">of</span> s) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(req.url);</span><br><span class="line">  req.respond(&#123; body: <span class="string">&quot;Hello World\n&quot;</span> &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>让我们来看看上面这段代码做了什么:</p>
+<ol>
+<li><p>首先我们引入 server 模块: 这里使用了 ES 模块，第三方模块通过 URL 导入。</p>
+<blockquote>
+<p>注意：Deno 不支持 <code>require</code> 语法。模块也不是集中管理的，而是通过 URL 导入。</p>
+</blockquote>
+</li>
+<li><p>使用 <code>serve</code> 函数初始化一个 HTTP 服务</p>
+</li>
+<li><p>使用 <span class="exturl" data-url="aHR0cDovL3MwZGV2ZWxvcGVyMG1vemlsbGEwb3JnLmljb3B5LnNpdGUvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvU3RhdGVtZW50cy9mb3ItYXdhaXQuLi5vZg==" title="http://s0developer0mozilla0org.icopy.site/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of">for-await-of<i class="fa fa-external-link"></i></span> 语法监听请求，<code>for-await-of</code> 语句创建一个循环，循环遍历异步可迭代对象以及同步可迭代对象。</p>
+<blockquote>
+<p>注意：Deno不再捆绑在 async 函数之中，所以可以全局使用</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="解析请求体"><a href="#解析请求体" class="headerlink" title="解析请求体"></a>解析请求体</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> decoder = <span class="keyword">new</span> TextDecoder(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> data: <span class="built_in">Uint8Array</span> = <span class="keyword">await</span> Deno.readAll(req.body);</span><br><span class="line"><span class="keyword">const</span> body = decoder.decode(data) ? <span class="built_in">JSON</span>.parse(decoder.decode(data)) : &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="简易REST-API"><a href="#简易REST-API" class="headerlink" title="简易REST API"></a>简易REST API</h3><p>1、这个Demo提供了两个api，分别是从文件读取数据返回和从网络获取数据并返回。结合数据库的放到后面使用框架的部分讲解：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; serve &#125; <span class="keyword">from</span> <span class="string">&quot;./deps.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> s = serve(&#123; <span class="attr">port</span>: <span class="number">8080</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;http://localhost:8080/&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> juejin = <span class="string">&quot;https://xiaoce-timeline-api-ms.juejin.im/v1/getListByLastTime?pageNum=1&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> req <span class="keyword">of</span> s) &#123;</span><br><span class="line">  <span class="keyword">if</span> (req.url === <span class="string">&quot;/books&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> body = <span class="keyword">await</span> Deno.readFile(<span class="string">&quot;./books.json&quot;</span>);</span><br><span class="line">    req.respond(&#123; <span class="attr">body</span>: body &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(req.url === <span class="string">&quot;/juejin&quot;</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(juejin);</span><br><span class="line">    <span class="keyword">const</span> jsonData = <span class="keyword">await</span> response.json();</span><br><span class="line">    req.respond(&#123;</span><br><span class="line">      body: <span class="built_in">JSON</span>.stringify(jsonData), <span class="comment">// body 不能接受对象</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、执行 <code>deno run --allow-read --allow-net index.ts</code></p>
+<p>3、使用 VSCode  REST Client 访问一下试试：</p>
+<blockquote>
+<p>注意：如果 localhost 请求失败，请使用 ip 的形式。4090ok</p>
+</blockquote>
+<img src="https://i.loli.net/2020/07/30/ibwyIrKvjJld5GQ.png" />
+
+<h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><p>截止2020年7月30日，GitHub比较热门的 HTTP Server 框架有5个，分别是 oak、servest、deno-drash、abc、pogo（排名分先后）。</p>
+<p>起初我也和大家一样面对这么多框架不知如何选，直到使用了<span class="exturl" data-url="aHR0cHM6Ly9zdGFyLWhpc3RvcnkudDl0LmlvLw==" title="https://star-history.t9t.io/">Star History<i class="fa fa-external-link"></i></span> 对比了他们的star趋势后，毫无犹豫的选择了 oak。</p>
+<p>但是本着技术探究的角度，我们还是分别体验一下这5个框架的 Hello World，然后再利用oak进行实战演习。</p>
+<p><a target="_blank" rel="noopener" href="https://star-history.t9t.io/#oakserver/oak&keroxp/servest&drashland/deno-drash&zhmushan/abc&sholladay/pogo"><img src="https://i.loli.net/2020/08/01/w6FZXsfHQ4gydcK.png" style="zoom:45%;" /></a></p>
+<h3 id="Oak"><a href="#Oak" class="headerlink" title="Oak"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ha3NlcnZlci9vYWs=" title="https://github.com/oakserver/oak">Oak<i class="fa fa-external-link"></i></span></h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>Oak 是最有前景的 Deno HTTP server 中间件框架，包含一个 路由中间件，目前能找到的社区资源最多。这款框架的灵感来自 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2tvYWpzL2tvYQ==" title="https://github.com/koajs/koa">Koa<i class="fa fa-external-link"></i></span>，路由中间件的灵感来自 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2tvYWpzL3JvdXRlci8=" title="https://github.com/koajs/router/">@koa/router<i class="fa fa-external-link"></i></span>。</p>
+<h4 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h4><p>创建一个 <code>server.ts</code> 文件并编写一个简单的 server：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Application &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/x/oak/mod.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Application();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">  ctx.response.body = <span class="string">&quot;Hello Oak!&quot;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`🦕 oak server running at http://127.0.0.1:8001/ 🦕`</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">await</span> app.listen(<span class="string">&quot;127.0.0.1:8001&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>deno run --allow-net server.ts</code>开启服务，并使用 VSCode REST Client 测试：</p>
+<p><img src="https://i.loli.net/2020/07/30/8q3AKy4EVLBb6Q1.png" alt=""></p>
+<p>编写一个拥有两个自定义中间件的Demo:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Application &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/x/oak/mod.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Application();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Logger</span></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> next();</span><br><span class="line">  <span class="keyword">const</span> rt = ctx.response.headers.get(<span class="string">&quot;X-Response-Time&quot;</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;ctx.request.method&#125;</span> <span class="subst">$&#123;ctx.request.url&#125;</span> - <span class="subst">$&#123;rt&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Timing</span></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="keyword">await</span> next();</span><br><span class="line">  <span class="keyword">const</span> ms = <span class="built_in">Date</span>.now() - start;</span><br><span class="line">  ctx.response.headers.set(<span class="string">&quot;X-Response-Time&quot;</span>, <span class="string">`<span class="subst">$&#123;ms&#125;</span>ms`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Hello World!</span></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">  ctx.response.body = <span class="string">&quot;Hello World!&quot;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`🦕 oak server running at http://127.0.0.1:8889/ 🦕`</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">await</span> app.listen(&#123; port: <span class="number">8889</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="servest"><a href="#servest" class="headerlink" title="servest"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2tlcm94cC9zZXJ2ZXN0" title="https://github.com/keroxp/servest">servest<i class="fa fa-external-link"></i></span></h3><h4 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h4><blockquote>
+<p>用于Deno的渐进式http服务器</p>
+</blockquote>
+<p><code>Servest</code> 是一个适用于 Deno 的 http 模块，它由三个主要的 HTTP 协议的 API 组成</p>
+<ul>
+<li>App API: 通用HTTP路由服务器</li>
+<li>Server API: 处理的 HTTP/1.1 请求的低级的 HTTP API</li>
+<li>Agent API: 处理 HTTP/1.1 的 Keep-Alive 连接的低级API</li>
+</ul>
+<p>为了实验和进步，<code>Servest</code> 在 <span class="exturl" data-url="aHR0cHM6Ly9kZW5vLmxhbmQvc3RkL2h0dHA=" title="https://deno.land/std/http">std/http<i class="fa fa-external-link"></i></span> 之外实现了自己的 HTTP/1.1 server。</p>
+<h4 id="Demo-1"><a href="#Demo-1" class="headerlink" title="Demo"></a>Demo</h4><p>与 std/http 高度兼容：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&quot;https://servestjs.org/@v1.1.1/mod.ts&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> app = createApp();</span><br><span class="line">app.handle(<span class="string">&quot;/&quot;</span>, <span class="keyword">async</span> (req) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> req.respond(&#123;</span><br><span class="line">    status: <span class="number">200</span>,</span><br><span class="line">    headers: <span class="keyword">new</span> Headers(&#123;</span><br><span class="line">      <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text/plain&quot;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">    body: <span class="string">&quot;Hello, Servest!&quot;</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(&#123; port: <span class="number">8899</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>专为实际业务而设计：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&quot;https://servestjs.org/@v1.1.1/mod.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = createApp();</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&quot;/post&quot;</span>, <span class="keyword">async</span> (req) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> body = <span class="keyword">await</span> req.json();</span><br><span class="line">  <span class="keyword">await</span> req.respond(&#123;</span><br><span class="line">    status: <span class="number">200</span>,</span><br><span class="line">    body: <span class="built_in">JSON</span>.stringify(body),</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(&#123; port: <span class="number">8888</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>支持websoket：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&quot;https://servestjs.org/@v1.1.1/mod.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = createApp();</span><br><span class="line"></span><br><span class="line">app.ws(<span class="string">&quot;/ws&quot;</span>, <span class="keyword">async</span> (sock) =&gt; &#123;</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> msg <span class="keyword">of</span> sock) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> msg === <span class="string">&quot;string&quot;</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;[index]&quot;</span>, msg);</span><br><span class="line">      <span class="comment">// handle messages...</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(&#123; port: <span class="number">8888</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>内置 jsx/tsx 支持，无需任何配置：</p>
+<blockquote>
+<p>默认情况下，JSX文件（<code>.jsx</code>，<code>.tsx</code>）将由 <code>React.createElement()</code>转换。因此，您必须在jsx/tsx文件的头上导入React。</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @deno-types=&quot;https://servestjs.org/@v1.1.1/types/react/index.d.ts&quot;</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;https://dev.jspm.io/react/index.js&quot;</span>;</span><br><span class="line"><span class="comment">// @deno-types=&quot;https://servestjs.org/@v1.1.1/types/react-dom/server/index.d.ts&quot;</span></span><br><span class="line"><span class="keyword">import</span> ReactDOMServer <span class="keyword">from</span> <span class="string">&quot;https://dev.jspm.io/react-dom/server.js&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&quot;https://servestjs.org/@v1.1.1/mod.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = createApp();</span><br><span class="line"></span><br><span class="line">app.handle(<span class="string">&quot;/&quot;</span>, <span class="keyword">async</span> (req) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> req.respond(&#123;</span><br><span class="line">    status: <span class="number">200</span>,</span><br><span class="line">    headers: <span class="keyword">new</span> Headers(&#123;</span><br><span class="line">      <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text/html; charset=UTF-8&quot;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="comment">// @ts-ignore</span></span><br><span class="line">    body: ReactDOMServer.renderToString(</span><br><span class="line">      &lt;html&gt;</span><br><span class="line">        &lt;head&gt;</span><br><span class="line">          &lt;meta charSet=<span class="string">&quot;utf-8&quot;</span> /&gt;</span><br><span class="line">          &lt;title&gt;servest&lt;/title&gt;</span><br><span class="line">        &lt;/head&gt;</span><br><span class="line">        &lt;body&gt;</span><br><span class="line">          &lt;h1&gt;Hello Servest!&lt;/h1&gt;</span><br><span class="line">        &lt;/body&gt;</span><br><span class="line">      &lt;/html&gt;,</span><br><span class="line">    ),</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(&#123; port: <span class="number">8899</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="deno-drash"><a href="#deno-drash" class="headerlink" title="deno-drash"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RyYXNobGFuZC9kZW5vLWRyYXNo" title="https://github.com/drashland/deno-drash">deno-drash<i class="fa fa-external-link"></i></span></h3><p>A REST microframework for Deno’s HTTP server with zero dependencies.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Drash &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/x/drash@v1.x/mod.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> HomeResource <span class="keyword">extends</span> Drash.Http.Resource &#123;</span><br><span class="line">  <span class="keyword">static</span> paths = [<span class="string">&quot;/&quot;</span>];</span><br><span class="line">  <span class="keyword">public</span> GET() &#123;</span><br><span class="line">    <span class="built_in">this</span>.response.body = <span class="string">&quot;Hello World!&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.response;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = <span class="keyword">new</span> Drash.Http.Server(&#123;</span><br><span class="line">  response_output: <span class="string">&quot;text/html&quot;</span>,</span><br><span class="line">  resources: [HomeResource],</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.run(&#123;</span><br><span class="line">  hostname: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">  port: <span class="number">8888</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`🦕 drash server running at http://127.0.0.1:8888/ 🦕`</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="abc"><a href="#abc" class="headerlink" title="abc"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3pobXVzaGFuL2FiYw==" title="https://github.com/zhmushan/abc">abc<i class="fa fa-external-link"></i></span></h3><p>A better Deno framework to create web application.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Application &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/x/abc@v1/mod.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Application();</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&quot;/hello&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;Hello, Abc!&quot;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.start(&#123; port: <span class="number">8888</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`🦕 abc server running at http://127.0.0.1:8888/ 🦕`</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pogo"><a href="#Pogo" class="headerlink" title="Pogo"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Nob2xsYWRheS9wb2dv" title="https://github.com/sholladay/pogo">Pogo<i class="fa fa-external-link"></i></span></h3><p>Pogo是用于编写Web服务器和应用程序的易于使用，安全且富有表现力的框架，它的灵感来自 hapi。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;https://dev.jspm.io/react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> pogo <span class="keyword">from</span> <span class="string">&quot;https://deno.land/x/pogo/main.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = pogo.server(&#123; port: <span class="number">8888</span> &#125;);</span><br><span class="line"></span><br><span class="line">server.router.get(<span class="string">&quot;/&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &lt;h1&gt;Hello, world!&lt;/h1&gt;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.start();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`🦕 pogo server running at http://127.0.0.1:8888/ 🦕`</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="oak-实战"><a href="#oak-实战" class="headerlink" title="oak 实战"></a>oak 实战</h2><blockquote>
+<p>项目源码已同步开源: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL2Rlbm8tb2FrLW1vbmdvLWRlbW8=" title="https://github.com/youngjuning/deno-oak-mongo-demo">youngjuning/deno-oak-mongo-demo<i class="fa fa-external-link"></i></span>，下文只对遇到的坑做介绍，具体代码请查看源码。</p>
+</blockquote>
+<h3 id="项目骨架"><a href="#项目骨架" class="headerlink" title="项目骨架"></a>项目骨架</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── .env # 使用 denv 插件来获取</span><br><span class="line">├── Dockerfile</span><br><span class="line">├── config # 配置文件</span><br><span class="line">│   └── db.ts</span><br><span class="line">├── deps.ts # 官方推荐的依赖管理方式</span><br><span class="line">├── controllers # 存放路由处理器</span><br><span class="line">│   ├── createBooks.ts</span><br><span class="line">│   ├── deleteBook.ts</span><br><span class="line">│   ├── getBookDetails.ts</span><br><span class="line">│   ├── getBooks.ts</span><br><span class="line">│   ├── notFound.ts</span><br><span class="line">│   └── updateBook.ts</span><br><span class="line">├── middlewares # 存放中间件，用于处理每个请求</span><br><span class="line">│   └── error.ts</span><br><span class="line">├── models # 存放模型定义</span><br><span class="line">│   └── Book.ts</span><br><span class="line">├── publish.sh # 发布脚本</span><br><span class="line">├── router.ts # 定义路由信息</span><br><span class="line">├── server.ts # 服务入口文件</span><br><span class="line">├── services # 存放模型定义</span><br><span class="line">│   └── books.ts</span><br><span class="line">├── test.http # VSCode REST Client 文件，用来调试接口</span><br><span class="line">└── utils # 工具函数</span><br><span class="line">    └── getParams.ts # 将 ctx.request.url.search 转成对象</span><br></pre></td></tr></table></figure>
+
+<h3 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h3><blockquote>
+<p>作为一个前端工程师，为了写这篇文章，专门学了 mongodb。由于第一次接触，遇到最多的坑也是关于它的。</p>
+</blockquote>
+<h4 id="多容器链接"><a href="#多容器链接" class="headerlink" title="多容器链接"></a>多容器链接</h4><p>1、使用 <code>--link</code> 参数链接 mongo 容器，deno_mongo 是我们指定的映射到 juejin 容器内的数据库别名（这个很重要，连接数据库时要用）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --restart always \</span><br><span class="line">  --name mongo \</span><br><span class="line">  -v mongo_configdb:/data/configdb \</span><br><span class="line">  -v mongo_data:/data/db \</span><br><span class="line">  -p 27017:27017 \</span><br><span class="line">  mongo \</span><br><span class="line">  --auth</span><br><span class="line">docker run -d \</span><br><span class="line">  --restart always \</span><br><span class="line">  --name juejin \</span><br><span class="line">  -p 1998:1998 \</span><br><span class="line">  --link mongo:deno_mongo \</span><br><span class="line">  juejin</span><br></pre></td></tr></table></figure>
+
+<p>2、跨容器连接时不设置身份校验，开启服务端无法连接上mongo数据库，所以必须事先配置好 mongodb 的账号密码，并通过 <code>mongodb://root:123456@deno_mongo:27017/</code> 的形式连接。</p>
+<p>3、虽然不开启 <code>--auth</code> 是可以使用 mongo 的，但是这样不安全，强烈建议启动容器的时候加上 <code>--auth</code> 参数。</p>
+<h4 id="deno-mongo"><a href="#deno-mongo" class="headerlink" title="deno_mongo"></a>deno_mongo</h4><p>这个插件在 run 起来的时候依赖的文件在 github 上，我卡在这里一下午。docker 启动项目后，由于容器内访问不了 github，导致一直失败。</p>
+<p>幸运的是，码云可以同步 github 上的项目，coding 可以上传单文件不超过 20M 的文件，我成功地完成了这篇文章最后的一步：docker 部署项目。</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20veWFuZ2p1bm5pbmcvZGVub19tb25nby9yYXcvbWFzdGVyL21vZC50cw==" title="https://gitee.com/yangjunning/deno_mongo/raw/master/mod.ts">插件地址<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly95b3VuZ3VuaW5nLmNvZGluZy5uZXQvcC9kZW5vX21vbmdvL2QvZGVub19tb25nby9naXQvcmF3L21hc3Rlcg==" title="https://younguning.coding.net/p/deno_mongo/d/deno_mongo/git/raw/master">依赖的文件地址<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>其他部分就没什么好说了，clone 代码后，需要先配置一下 mongodb。然后再改代码，就是直接执行 <code>./publish.sh</code> 就可以应用更改。</p>
+<h4 id="mongodb-初始配置"><a href="#mongodb-初始配置" class="headerlink" title="mongodb 初始配置"></a>mongodb 初始配置</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不带权限校验的模式开启 mongo</span></span><br><span class="line">$ docker run -d \</span><br><span class="line">  --restart always \</span><br><span class="line">  --name mongo \</span><br><span class="line">  -v mongo_data:/data/db \</span><br><span class="line">  -p 27017:27017 \</span><br><span class="line">  mongo \</span><br><span class="line"><span class="comment"># mongodb 默认不开启验证，只要能访问服务器，即可直接登录，所以需要配置一下账号密码进行校验。</span></span><br><span class="line">$ docker <span class="built_in">exec</span> -it mongo mongo admin</span><br><span class="line"><span class="comment"># 创建超级管理员</span></span><br><span class="line">&gt; db.createUser(&#123; user: <span class="string">&quot;root&quot;</span> , <span class="built_in">pwd</span>: <span class="string">&quot;123456&quot;</span>, roles: [<span class="string">&quot;root&quot;</span>]&#125;);</span><br><span class="line">Successfully added user: &#123;</span><br><span class="line">   <span class="string">&quot;user&quot;</span> : <span class="string">&quot;root&quot;</span>,</span><br><span class="line">   <span class="string">&quot;roles&quot;</span> : [<span class="string">&quot;root&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 尝试使用上面创建的用户信息进行连接。</span></span><br><span class="line">&gt; db.auth(<span class="string">&quot;root&quot;</span>,<span class="string">&quot;123456&quot;</span>)</span><br><span class="line">1</span><br><span class="line"><span class="comment"># 创建一个名为 admin，密码为 123456 的用户。</span></span><br><span class="line">&gt; db.createUser(&#123; user: <span class="string">&quot;admin&quot;</span>, <span class="built_in">pwd</span>: <span class="string">&quot;123456&quot;</span>, roles:[<span class="string">&quot;userAdminAnyDatabase&quot;</span>, <span class="string">&quot;dbAdminAnyDatabase&quot;</span>, <span class="string">&quot;readWriteAnyDatabase&quot;</span>]&#125;);</span><br><span class="line">Successfully added user: &#123;</span><br><span class="line">   <span class="string">&quot;user&quot;</span>: <span class="string">&quot;admin&quot;</span>,</span><br><span class="line">   <span class="string">&quot;roles&quot;</span>: [</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="string">&quot;role&quot;</span>: <span class="string">&quot;userAdminAnyDatabase&quot;</span>,</span><br><span class="line">      <span class="string">&quot;db&quot;</span>: <span class="string">&quot;admin&quot;</span></span><br><span class="line">   &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 尝试使用上面创建的用户信息进行连接。</span></span><br><span class="line">&gt; db.auth(<span class="string">&quot;admin&quot;</span>,<span class="string">&quot;123456&quot;</span>)</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4><blockquote>
+<p>完成了 mongodb 的初始化配置，之后就可以使用 <code>./publish.sh</code> 一键发布应用。</p>
+</blockquote>
+<ol>
+<li>给脚本赋予可执行权限：<code>chmod a+x ./publish.sh</code></li>
+<li>构建镜像并发布容器：<code>./publish.sh</code></li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81YzgxYzFlOGU1MWQ0NTUzNWM0ZmU1YzI=" title="https://juejin.im/post/5c81c1e8e51d45535c4fe5c2">我为 VS Code 开发了一个 Deno 插件<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM2Mzg3MS9hcnRpY2xlL2RldGFpbHMvMTA0MDU4ODk4" title="https://blog.csdn.net/weixin_43363871/article/details/104058898">VScode中测试接口代替postman<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC82ODQ0OTAzNzQxNTIzNDkyODc3" title="https://juejin.im/post/6844903741523492877">Docker容器化部署尝试——多容器通信（node + mongoDB + nginx）<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC82ODQ0OTA0MTYyMzIxMjUyMzYwI2hlYWRpbmctMjE=" title="https://juejin.im/post/6844904162321252360#heading-21">了不起的 Deno 实战篇<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMUE1NDExeDdiZw==" title="https://www.bilibili.com/video/BV1A5411x7bg">Deno快速入门指南<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXYudG8va3J5ei93cml0ZS1hLXNtYWxsLWFwaS11c2luZy1kZW5vLTFjbDA=" title="https://dev.to/kryz/write-a-small-api-using-deno-1cl0">Write a small API using Deno<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0B0b21hbmFnbGUvNS13YXlzLXRvLWJ1aWxkLWEtaHR0cC1zZXJ2ZXItd2l0aC1kZW5vLTMxNjkzODkxMThhYQ==" title="https://medium.com/@tomanagle/5-ways-to-build-a-http-server-with-deno-3169389118aa">5 Ways to Build a HTTP Server With Deno<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXYudG8vc2xpbWhtaWRpL2NyZWF0ZS1hLXNlcnZlci13aXRoLWRlbm8tYW5kLW1vbmdvLTIwNmw=" title="https://dev.to/slimhmidi/create-a-server-with-deno-and-mongo-206l">Create a server with deno and mongo.<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tcC53ZWl4aW4ucXEuY29tL3MvOWxnZHJBWEE3Ml9faTJsa3pqMkdOQQ==" title="https://mp.weixin.qq.com/s/9lgdrAXA72__i2lkzj2GNA">【译】Deno + MongoDB 构建 CRUD API<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>后续，我想基于本文所述的架构，开发一个婚礼请柬小程序的后台，之前不会操作数据库，曾想使用 leancloud。奋战两天之后，妈妈再也不担心我不会写接口了。最后来放上一只喝奶茶的吉祥物：</p>
+<p><img src="https://i.loli.net/2020/08/03/4VM2kKtZS1Pazwo.png" alt=""></p>
+<h2 id="Catch-Me"><a href="#Catch-Me" class="headerlink" title="Catch Me"></a>Catch Me</h2><blockquote>
+<p>GitHub: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5n" title="https://github.com/youngjuning">youngjuning<i class="fa fa-external-link"></i></span> | 微信: <code>yang_jun_ning</code> | 公众号: <code>前端早茶馆</code> | 邮箱: <span class="exturl" data-url="bWFpbHRvOnlvdW5nanVuaW5nQGFsaXl1bi5jb20=" title="mailto:youngjuning@aliyun.com">youngjuning@aliyun.com<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">微信</th>
+<th align="center">投食</th>
+<th align="center">公众号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://i.loli.net/2020/02/22/q2tLiGYvhIxm3Fl.jpg" width="200px"/></td>
+<td align="center"><img src="https://i.loli.net/2020/02/23/q56X1eYZuITQpsj.png" width="200px"/></td>
+<td align="center"><img src="https://i.loli.net/2020/07/28/6AyutjZ1XI4aUDV.jpg" width="200px"/></td>
+</tr>
+</tbody></table>
+<p>本文首发于<a href="https://youngjuning.js.org/">杨俊宁的博客</a>，创作不易，您的点赞👍是我坚持的动力！！！</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81ZjFkMWQ5N2YyNjVkYTIyYjY0OTVlZDI=" title="https://juejin.im/post/5f1d1d97f265da22b6495ed2">🏆 技术专题第一期 | 聊聊 Deno的一些事儿……<i class="fa fa-external-link"></i></span></p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/07/Deno从入门到跑路-掘金征文/" rel="bookmark">Deno从入门到跑路 | 掘金征文</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/03/初探-Nest-js/" rel="bookmark">初探 Nest.js</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/03/前端规范化开发实践/" rel="bookmark">前端规范化开发实践</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/07/使用-wml-进行模块调试/" rel="bookmark">使用 wml 进行模块调试</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/07/微精通之Vue移动端开发/" rel="bookmark">微精通之Vue移动端开发【持续更新】</a></div>
+    </li>
+  </ul>
+
+        <div class="reward-container">
+  <div>赞赏是对我最大的支持！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="杨俊宁 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="杨俊宁 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>杨俊宁
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://youngjuning.js.org/2020/07/%E5%9F%BA%E4%BA%8E-Deno-%E6%9E%84%E5%BB%BA-HTTP-Server-%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/" title="基于 Deno 构建 HTTP Server 实践指南">http://youngjuning.js.org/2020/07/基于-Deno-构建-HTTP-Server-实践指南/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/xingqiu.png">
+                <span class="icon">
+                  <i class="fa fa-circle-o-notch"></i>
+                </span>
+
+                <span class="label">知识星球</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/wechat_channel.jpeg">
+                <span class="icon">
+                  <i class="fa fa-wechat"></i>
+                </span>
+
+                <span class="label">WeChat</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%8E%98%E9%87%91%E4%B8%93%E6%A0%8F/" rel="tag"><i class="fa fa-tag"></i> 掘金专栏</a>
+              <a href="/tags/Deno/" rel="tag"><i class="fa fa-tag"></i> Deno</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/Deno%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E8%B7%91%E8%B7%AF-%E6%8E%98%E9%87%91%E5%BE%81%E6%96%87/" rel="prev" title="Deno从入门到跑路 | 掘金征文">
+      <i class="fa fa-chevron-left"></i> Deno从入门到跑路 | 掘金征文
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/%E5%9F%BA%E4%BA%8EDocker%E5%92%8CJenkins%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAAndroid%E9%A1%B9%E7%9B%AE/" rel="next" title="基于Docker和Jenkins自动构建Android项目">
+      基于Docker和Jenkins自动构建Android项目 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E4%BD%93%E9%AA%8C"><span class="nav-number">2.</span> <span class="nav-text">基础体验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E7%A4%BA%E4%BE%8B%E8%A7%A3%E6%9E%90"><span class="nav-number">2.1.</span> <span class="nav-text">官方示例解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E8%AF%B7%E6%B1%82%E4%BD%93"><span class="nav-number">2.2.</span> <span class="nav-text">解析请求体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E6%98%93REST-API"><span class="nav-number">2.3.</span> <span class="nav-text">简易REST API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">技术选型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Oak"><span class="nav-number">3.1.</span> <span class="nav-text">Oak</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Demo"><span class="nav-number">3.1.2.</span> <span class="nav-text">Demo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#servest"><span class="nav-number">3.2.</span> <span class="nav-text">servest</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Demo-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">Demo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deno-drash"><span class="nav-number">3.3.</span> <span class="nav-text">deno-drash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#abc"><span class="nav-number">3.4.</span> <span class="nav-text">abc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pogo"><span class="nav-number">3.5.</span> <span class="nav-text">Pogo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oak-%E5%AE%9E%E6%88%98"><span class="nav-number">4.</span> <span class="nav-text">oak 实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%AA%A8%E6%9E%B6"><span class="nav-number">4.1.</span> <span class="nav-text">项目骨架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91"><span class="nav-number">4.2.</span> <span class="nav-text">遇到的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%AE%B9%E5%99%A8%E9%93%BE%E6%8E%A5"><span class="nav-number">4.2.1.</span> <span class="nav-text">多容器链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deno-mongo"><span class="nav-number">4.2.2.</span> <span class="nav-text">deno_mongo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">4.3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mongodb-%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE"><span class="nav-number">4.3.1.</span> <span class="nav-text">mongodb 初始配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-number">4.3.2.</span> <span class="nav-text">脚本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-number">6.</span> <span class="nav-text">后续</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Catch-Me"><span class="nav-number">7.</span> <span class="nav-text">Catch Me</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="杨俊宁"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">杨俊宁</p>
+  <div class="site-description" itemprop="description">前端工程师、终身学习践行者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5n" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;youngjuning"><i class="fa fa-fw fa-github"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnlvdW5nanVuaW5nQGFsaXl1bi5jb20=" title="E-Mail → mailto:youngjuning@aliyun.com"><i class="fa fa-fw fa-envelope"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20veWFuZ2p1bm5pbmdtYW8=" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yangjunningmao"><i class="fa fa-fw fa-weibo"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy84NTY0NDAzL3lvdW5nanVuaW5n" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;8564403&#x2F;youngjuning"><i class="fa fa-fw fa-stack-overflow"></i></span>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jaGVueXVodS5qcy5vcmcv" title="https:&#x2F;&#x2F;chenyuhu.js.org&#x2F;">陈锋个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9sbHN0YXIuZ2l0aHViLmlvLw==" title="https:&#x2F;&#x2F;llstar.github.io&#x2F;">LLstar的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vR3Jld2VyLw==" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;Grewer&#x2F;">张煜的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9taXJhcmkuY2Mv" title="https:&#x2F;&#x2F;mirari.cc&#x2F;">Mirari's Blog</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨俊宁的博客</span>
+  <span class="post-meta-divider">|</span>
+  <a target="_blank" href="/sitemap.xml" style="border-bottom: 0px"><span style="color: #999;"><i class="fa fa-sitemap"> 站点地图</i></span></a>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">297k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:30</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v5.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.7.1
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e3a8b23db295557" async="async"></script>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script pjax>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes : 0,
+          toolbar  : 0,
+          statusbar: 0,
+          pagemode : 'thumbs',
+          view     : 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://youngjuning.js.org/2020/07/%E5%9F%BA%E4%BA%8E-Deno-%E6%9E%84%E5%BB%BA-HTTP-Server-%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/";
+    this.page.identifier = "2020/07/基于-Deno-构建-HTTP-Server-实践指南/";
+    this.page.title = "基于 Deno 构建 HTTP Server 实践指南";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://youngjuning.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

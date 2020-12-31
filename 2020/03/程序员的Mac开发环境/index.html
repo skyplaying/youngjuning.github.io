@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="ohZ0A8YKJu755suq7WOIJkLGDfj3BGU4isb8RKI5Cj8">
+  <meta name="baidu-site-verification" content="I63O4XWtSs">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"youngjuning.js.org","root":"/","scheme":"Gemini","version":"7.7.1","exturl":true,"sidebar":{"position":"left","width":310,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="程序员的Mac开发环境">
+<meta property="og:url" content="http://youngjuning.js.org/2020/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84Mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
+<meta property="og:site_name" content="杨俊宁的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/03/07/dPCm6qwpsZn8k1o.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/25/wHBrfAs2kScPjYR.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/13204332/80474227-ce18c780-8979-11ea-8024-31bc0503f964.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/03/09/m2GRbrPeHDkC7pQ.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/26/vGRUVX5ACxfasTi.png">
+<meta property="og:image" content="https://i.loli.net/2020/02/22/q2tLiGYvhIxm3Fl.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/02/23/q56X1eYZuITQpsj.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/28/6AyutjZ1XI4aUDV.jpg">
+<meta property="article:published_time" content="2020-03-04T17:06:42.000Z">
+<meta property="article:modified_time" content="2020-03-04T17:06:42.000Z">
+<meta property="article:author" content="杨俊宁">
+<meta property="article:tag" content="掘金专栏">
+<meta property="article:tag" content="Mac">
+<meta property="article:tag" content="开发环境">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/03/07/dPCm6qwpsZn8k1o.png">
+
+<link rel="canonical" href="http://youngjuning.js.org/2020/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84Mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>程序员的Mac开发环境 | 杨俊宁的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158205277-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-158205277-1');
+      }
+    </script>
+
+
+  <script pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a1319c6a7cb0e5cc6572a6181c7e949c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="杨俊宁的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨俊宁的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">怕什么真理无穷，进一寸有一寸的欢喜</h1>
+      
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">64</span></a>
+
+  </li>
+        <li class="menu-item menu-item-书单">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+
+  </li>
+        <li class="menu-item menu-item-歌单">
+
+    <a href="/music/" rel="section"><i class="fa fa-fw fa-music"></i>歌单</a>
+
+  </li>
+        <li class="menu-item menu-item-收藏夹">
+
+    <a href="/collections/" rel="section"><i class="fa fa-fw fa-star"></i>收藏夹</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://youngjuning.js.org/2020/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84Mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="杨俊宁">
+      <meta itemprop="description" content="前端工程师、终身学习践行者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨俊宁的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          程序员的Mac开发环境<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL3lvdW5nanVuaW5nL3RyZWUvbWFzdGVyL3NvdXJjZS9fcG9zdHMvMjAyMC8wMy/nqIvluo/lkZjnmoRNYWPlvIDlj5Hnjq/looMubWQ=" title="编辑"><i class="fa fa-pencil"></i></span>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-05 01:06:42" itemprop="dateCreated datePublished" datetime="2020-03-05T01:06:42+08:00">2020-03-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://i.loli.net/2020/03/07/dPCm6qwpsZn8k1o.png" alt=""></p>
+<a id="more"></a>
+
+<h2 id="ohmyzsh"><a href="#ohmyzsh" class="headerlink" title="ohmyzsh"></a>ohmyzsh</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换 shell 为 zsh</span></span><br><span class="line">$ chsh -s /bin/zsh</span><br><span class="line"><span class="comment"># 通过 curl 安装 ohmyzsh</span></span><br><span class="line">$ sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><blockquote>
+<p>建议使用：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtaXgvdmltcmM=" title="https://github.com/amix/vimrc">https://github.com/amix/vimrc<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sh ~/.vim_runtime/install_awesome_vimrc.sh</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="string">&quot;set number&quot;</span> &gt;&gt; ~/.vimrc</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="string">&quot;set showcmd&quot;</span> &gt;&gt; ~/.vimrc</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/.vimrc</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Agnoster-主题配置"><a href="#Agnoster-主题配置" class="headerlink" title="Agnoster 主题配置"></a>Agnoster 主题配置</h3><ul>
+<li>终端执行 <code>open ~/.zshrc</code></li>
+<li>找到 ZSH_THEME 修改为: <code>ZSH_THEME=&quot;agnoster&quot;</code></li>
+<li><code>source ~/.zshrc</code></li>
+<li>安装 Powerline 对应的字体库<ul>
+<li><code>git clone https://github.com/powerline/fonts.git</code></li>
+<li><code>cd fonts</code></li>
+<li><code>install.sh</code></li>
+<li><code>cd ..</code></li>
+<li><code>rm -rf fonts</code></li>
+<li>进入：终端 &gt; 偏好设置 &gt; 字体修改为 ：<code>Meslo LG S DZ Regular for Powerline</code>。<br> <img src="https://i.loli.net/2020/03/25/wHBrfAs2kScPjYR.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><h4 id="zsh-syntax-highlighting"><a href="#zsh-syntax-highlighting" class="headerlink" title="zsh-syntax-highlighting"></a>zsh-syntax-highlighting</h4><ul>
+<li>安装: <code>brew install zsh-syntax-highlighting</code></li>
+<li>Oh-my-zsh<ul>
+<li><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</code></li>
+<li><code>plugins=( [plugins...] zsh-syntax-highlighting)</code></li>
+<li><code>source ~/.zshrc</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="WakaTime-for-Terminal"><a href="#WakaTime-for-Terminal" class="headerlink" title="WakaTime for Terminal"></a>WakaTime for Terminal</h4><ul>
+<li><code>sudo easy_install pip</code></li>
+<li><code>sudo pip install wakatime</code></li>
+<li><code>cd ~/.oh-my-zsh/custom/plugins</code></li>
+<li><code>git clone https://github.com/sobolevn/wakatime-zsh-plugin.git wakatime</code></li>
+<li>在你的 <code>~/.zshrc</code> 文件的 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JvYmJ5cnVzc2VsbC9vaC1teS16c2gvd2lraS9FeHRlcm5hbC1wbHVnaW5z" title="https://github.com/robbyrussell/oh-my-zsh/wiki/External-plugins">list of plugins<i class="fa fa-external-link"></i></span> 添加 <code>wakatime</code></li>
+<li><code>source ~/.zshrc</code></li>
+<li>确保你的  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3dha2F0aW1lL3dha2F0aW1lI2NvbmZpZ3VyaW5n" title="https://github.com/wakatime/wakatime#configuring">~/.wakatime.cfg<i class="fa fa-external-link"></i></span> 文件中配置了 <span class="exturl" data-url="aHR0cHM6Ly93YWthdGltZS5jb20vc2V0dGluZ3MvYXBpLWtleQ==" title="https://wakatime.com/settings/api-key">API key<i class="fa fa-external-link"></i></span> 。</li>
+</ul>
+<h2 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h2><p>访问 <span class="exturl" data-url="aHR0cHM6Ly9icmV3LnNoL2luZGV4X3poLWNu" title="https://brew.sh/index_zh-cn">brew.sh<i class="fa fa-external-link"></i></span> 安装。使用 Homebrew 安装 Apple（或您的 Linux 系统）没有预装但 <span class="exturl" data-url="aHR0cHM6Ly9mb3JtdWxhZS5icmV3LnNoL2Zvcm11bGEv" title="https://formulae.brew.sh/formula/">你需要的东西<i class="fa fa-external-link"></i></span>。Homebrew</p>
+<p>将大大降低维护环境的时间。本文后面将尽可能使用HomeBrew。</p>
+<ul>
+<li><code>brew install</code> : 安装</li>
+<li><code>brew uninstall</code>:  卸载</li>
+<li><code>brew update</code>: 更新 homebrew</li>
+<li><code>brew upgrade</code> : 更新已安装软件</li>
+<li><code>brew cleanup</code>: 清理</li>
+<li>一键清理: <code>brew update &amp;&amp; brew upgrade &amp;&amp; brew cleanup</code></li>
+</ul>
+<h2 id="d8"><a href="#d8" class="headerlink" title="d8"></a>d8</h2><blockquote>
+<p>不要使用 <code>brew install v8</code>，可用命令是不完整的</p>
+</blockquote>
+<h3 id="预备条件"><a href="#预备条件" class="headerlink" title="预备条件"></a>预备条件</h3><ul>
+<li>Install Xcode (Avaliable on the Mac App Store)</li>
+<li>Install Xcode Command Line Tools (Preferences &gt; Downloads)</li>
+<li>Install <span class="exturl" data-url="aHR0cHM6Ly93d3cuY2hyb21pdW0ub3JnL2RldmVsb3BlcnMvaG93LXRvcy9pbnN0YWxsLWRlcG90LXRvb2xz" title="https://www.chromium.org/developers/how-tos/install-depot-tools">depot_tools<i class="fa fa-external-link"></i></span><ul>
+<li><code>cd ~ &amp;&amp; git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git</code></li>
+<li><code>sudo nano ~/.zshrc</code>(zsh) or <code>sudo nano ~/.bash_profile</code>(bash)</li>
+<li>Add <code>export PATH=~/depot_tools:&quot;$PATH&quot;</code> (it’s important that depot_tools comes first here)</li>
+<li><code>source ~/.zshrc</code></li>
+<li>From the directory you want to install V8 into, run <code>gclient</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Build-V8"><a href="#Build-V8" class="headerlink" title="Build V8"></a>Build V8</h3><ul>
+<li><p><code>fetch v8</code></p>
+</li>
+<li><p><code>cd ~/v8</code></p>
+</li>
+<li><p><code>gclient sync</code></p>
+</li>
+<li><p><code>tools/dev/v8gen.py x64.optdebug</code></p>
+</li>
+<li><p><code>ninja -C out.gn/x64.optdebug</code> (prepare for lots of fan noise)</p>
+<p>I’d also recommend adding these to your <code>.zshrc</code>:</p>
+</li>
+<li><p><code>sudo nano ~/.zshrc</code></p>
+</li>
+<li><p>Add <code>alias d8=~/v8/out.gn/x64.optdebug/d8</code></p>
+</li>
+<li><p>Add <code>alias tick-processor=~/v8/tools/mac-tick-processor</code></p>
+</li>
+<li><p>Add <code>export D8_PATH=&quot;~/v8/out.gn/x64.optdebug&quot;</code></p>
+</li>
+<li><p><code>source ~/.zshrc</code></p>
+</li>
+</ul>
+<blockquote>
+<p>使用 Demo 请参考 <span class="exturl" data-url="aHR0cHM6Ly9naXN0LmdpdGh1Yi5jb20va2V2aW5jZW5uaXMvMGNkMjEzOGM3OGEwNzQxMmVmMjEjZDgtc2hlbGwtZXhhbXBsZXM=" title="https://gist.github.com/kevincennis/0cd2138c78a07412ef21#d8-shell-examples">d8-shell-examples<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// Re-installing Git on Mac OSX with Brew</span><br><span class="line">$ <span class="built_in">alias</span> git=<span class="string">&#x27;/usr/local/bin/git&#x27;</span></span><br><span class="line">$ brew install git</span><br></pre></td></tr></table></figure>
+
+<h3 id="可视化工具"><a href="#可视化工具" class="headerlink" title="可视化工具"></a>可视化工具</h3><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXNrdG9wLmdpdGh1Yi5jb20v" title="https://desktop.github.com/">GitHub Desktop<i class="fa fa-external-link"></i></span>: GitHub Desktop简化了您的开发工作流程</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuc291cmNldHJlZWFwcC5jb20v" title="https://www.sourcetreeapp.com/">Sourcetree<i class="fa fa-external-link"></i></span>: Simplicity and power in a beautiful Git GUI</li>
+</ul>
+<h3 id="命令行配置"><a href="#命令行配置" class="headerlink" title="命令行配置"></a>命令行配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、初始化设置</span></span><br><span class="line">$ git config --global user.name <span class="string">&#x27;youngjuning&#x27;</span></span><br><span class="line">$ git config --global user.email <span class="string">&#x27;youngjuning@aliyun.com&#x27;</span></span><br><span class="line"><span class="comment"># 2、将 `color.ui` 设置为 `auto` 可以让命令的输出拥有更高的可读性。</span></span><br><span class="line">$ git config --global color.ui auto</span><br><span class="line"><span class="comment"># 3、git 记住用户名和密码</span></span><br><span class="line">$ git config --global credential.helper store</span><br><span class="line"><span class="comment"># 4、core.autocrlf</span></span><br><span class="line">$ git config --global core.autocrlf input</span><br><span class="line"><span class="comment"># 5、输出到terminal而不是vim</span></span><br><span class="line">$ git config --global pager.branch <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Linux或Mac系统使用LF作为行结束符，因此你不想 Git 在签出文件时进行自动的转换；当一个以 <code>CRLF</code> 为行结束符的文件不小心被引入时你肯定想进行修正，把 <code>core.autocrlf</code> 设置成 <code>input</code> 来告诉 Git 在提交时把 <code>CRLF</code> 转换成 <code>LF</code>，签出时不转换：<br>这样会在 Windows 系统上的签出文件中保留 <code>CRLF</code>，会在 Mac 和 Linux 系统上，包括仓库中保留 <code>LF</code>。</p>
+</blockquote>
+<h2 id="GitHub-加速"><a href="#GitHub-加速" class="headerlink" title="GitHub 加速"></a>GitHub 加速</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ALL_PROXY=<span class="string">&quot;socks5://127.0.0.1:7891&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>7981 是你的代理端口，每个人的不一定一样！！！</p>
+<p><img src="https://user-images.githubusercontent.com/13204332/80474227-ce18c780-8979-11ea-8024-31bc0503f964.jpg" alt="12851588067873_ pic_hd"></p>
+<h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS9ib29rL3poL3Yy" title="https://git-scm.com/book/zh/v2">官方Book<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL3JvZ2VyZHVkbGVyLmdpdGh1Yi5pby9naXQtZ3VpZGUvaW5kZXguemguaHRtbA==" title="http://rogerdudler.github.io/git-guide/index.zh.html">git - 简明指南<i class="fa fa-external-link"></i></span>：助你入门 git 的简明指南，木有高深内容</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vUkswdExYQg==" title="http://t.cn/RK0tLXB">廖雪峰的git教程<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9iYWNrbG9nLmNvbS9naXQtdHV0b3JpYWwvY24v" title="https://backlog.com/git-tutorial/cn/">猴子都能懂的GIT入门<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h2 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h2><p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时。我们使用 <code>n</code> 模块来维护 Node 的版本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> brew install n</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装最新版</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo n latest</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 其他命令##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装指定版本</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo n 10.16.0</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装最新的稳定版</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo n lts</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除指定版本</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> n rm 12.10.0</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 除去当前版本以外的所有缓存版本</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> n prune</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="更新npm"><a href="#更新npm" class="headerlink" title="更新npm"></a>更新npm</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo npm install -g npm</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="nrm-管理-registry"><a href="#nrm-管理-registry" class="headerlink" title="nrm 管理 registry"></a>nrm 管理 registry</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo i -g nrm</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 列出可用的代理</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> nrm ls</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加私有代理</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> nrm add sigma http://192.168.2.116:4873 http://192.168.2.116:4873</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 切换代理到 sigma 源</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> nrm use sigma</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="React-Native"><a href="#React-Native" class="headerlink" title="React Native"></a>React Native</h2><p>强烈建议一步一步按照官方的 <span class="exturl" data-url="aHR0cHM6Ly9yZWFjdG5hdGl2ZS5jbi9kb2NzL2dldHRpbmctc3RhcnRlZC5odG1s" title="https://reactnative.cn/docs/getting-started.html">搭建开发环境<i class="fa fa-external-link"></i></span> 进行配置。</p>
+<h2 id="Navicat-Premium"><a href="#Navicat-Premium" class="headerlink" title="Navicat Premium"></a>Navicat Premium</h2><p>Navicat Premium 是一套数据库开发工具，让你从单一应用程序中同时连接 MySQL、MariaDB、MongoDB、SQL Server、Oracle、PostgreSQL 和 SQLite 数据库。它与 Amazon RDS、Amazon Aurora、Amazon Redshift、Microsoft Azure、Oracle Cloud、MongoDB Atlas、腾讯云和华为云等云数据库兼容。你可以快速轻松地创建、管理和维护数据库。</p>
+<blockquote>
+<p>Mac版: 链接:<span class="exturl" data-url="aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMVNsTDFfYmQ0cWlyTW5GMHNMd1JMaEE=" title="https://pan.baidu.com/s/1SlL1_bd4qirMnF0sLwRLhA">https://pan.baidu.com/s/1SlL1_bd4qirMnF0sLwRLhA<i class="fa fa-external-link"></i></span>  密码:4jq6</p>
+</blockquote>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cub3JhY2xlLmNvbS9oay9qYXZhL3RlY2hub2xvZ2llcy9qYXZhc2UvamF2YXNlLWpkazgtZG93bmxvYWRzLmh0bWw=" title="https://www.oracle.com/hk/java/technologies/javase/javase-jdk8-downloads.html">javase-jdk8-downloads<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cub3JhY2xlLmNvbS9jbi9qYXZhL3RlY2hub2xvZ2llcy9vcmFjbGUtamF2YS1hcmNoaXZlLWRvd25sb2Fkcy5odG1s" title="https://www.oracle.com/cn/java/technologies/oracle-java-archive-downloads.html">Oracle Java 存档<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h3 id="实用命令"><a href="#实用命令" class="headerlink" title="实用命令"></a>实用命令</h3><ul>
+<li>Mac下查看已安装的jdk版本及其安装目录: <code>/usr/libexec/java_home -V</code> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Matching Java Virtual Machines (2):</span><br><span class="line"> 1.8.0_221, x86_64:    <span class="string">&quot;Java SE 8&quot;</span>    /Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home</span><br><span class="line"> 1.7.0_80, x86_64:    <span class="string">&quot;Java SE 7&quot;</span>    /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home</span><br><span class="line"></span><br><span class="line">/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home</span><br></pre></td></tr></table></figure></li>
+<li>查看jre版本: <code>java -version</code></li>
+<li>查看jdk版本: <code>javac -version</code></li>
+</ul>
+<h3 id="管理-jdk-版本"><a href="#管理-jdk-版本" class="headerlink" title="管理 jdk 版本"></a>管理 jdk 版本</h3><blockquote>
+<p>参考 <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbWFnZXhpL3AvMTIwNTM0MDEuaHRtbA==" title="https://www.cnblogs.com/magexi/p/12053401.html">Mac 多版本 JDK 管理<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<p>1、下载 jenv:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install jenv</span><br></pre></td></tr></table></figure>
+
+<p>2、安装成功后进行配置</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Shell: bash</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;$HOME/.jenv/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bash_profile</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(jenv init -)&quot;&#x27;</span> &gt;&gt; ~/.bash_profile</span><br><span class="line"><span class="comment"># Shell: zsh</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;$HOME/.jenv/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(jenv init -)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line">$ <span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：一定要使用命令 <code>source ~/.zshrc</code> 来编译 <code>~/.zshrc</code> 文件</p>
+</blockquote>
+<p>3、执行 <code>jenv doctor</code> 验证 jenv 是否安装成功，出现以下信息，说明成功了。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[OK]    No JAVA_HOME <span class="built_in">set</span></span><br><span class="line">[ERROR]    Java binary <span class="keyword">in</span> path is not <span class="keyword">in</span> the jenv shims.</span><br><span class="line">[ERROR]    Please check your path, or try using /path/to/java/home is not a valid path to java installation.</span><br><span class="line">    PATH : /Users/user/.jenv/libexec:/Users/user/.jenv/shims:/Users/user/.jenv/bin:/usr/<span class="built_in">local</span>/bin:/usr/bin:/bin:/usr/sbin:/sbin</span><br><span class="line">[OK]    Jenv is correctly loaded</span><br></pre></td></tr></table></figure>
+
+<p>4、输入以下命令查看找到的java版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ jenv versions</span><br><span class="line">   * system (set by &#x2F;Users&#x2F;yangjunning&#x2F;.jenv&#x2F;version)</span><br></pre></td></tr></table></figure>
+
+<p>只找到了系统默认的 Java，想要切换版本，请先下载安装不同的版本。</p>
+<p>5、使用 <code>jenv add</code> 命令将 JDK 1.7 加入 jenv 中</p>
+<blockquote>
+<p>版本及路径请通过 <code>/usr/libexec/java_home -V</code> 查看。</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ jenv add /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/</span><br><span class="line">oracle64-1.7.0.80 added</span><br><span class="line">1.7.0.80 added</span><br><span class="line">1.7 added</span><br></pre></td></tr></table></figure>
+
+<p>6、添加最新的 JDK</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ jenv add $(/usr/libexec/java_home)</span><br></pre></td></tr></table></figure>
+
+<p>7、使用 <code>jenv add</code> 命令将 JDK 1.8 加入 jenv 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ jenv add &#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;jdk1.8.0_221.jdk&#x2F;Contents&#x2F;Home&#x2F;</span><br><span class="line">oracle64-1.8.0_221 added</span><br><span class="line">1.8.0_221 added</span><br><span class="line">1.8 added</span><br></pre></td></tr></table></figure>
+
+<p>8、选择一个JDK版本，运行 jenv local 命令</p>
+<ul>
+<li><code>jenv global</code>: 用来设置全局 JDK</li>
+<li><code>jenv local</code>: 用来设置当前目录 JDK</li>
+<li><code>jenv shell</code>: 用来设置 <code>shell session</code> 中的 JDK</li>
+</ul>
+<blockquote>
+<p>每次切换 JDK 之后，执行 <code>exec $SHELL -l</code> 或者重启终端</p>
+</blockquote>
+<p>9、Maven 修改</p>
+<p>Maven 仍然会使用 <code>/usr/libexec/java_home -v</code> 输出的 JDK，可能与当前使用的 JDK 版本不同。用 <code>jenv enable-plugin maven</code> s命令启用 Maven 插件即可</p>
+<h2 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install maven</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-Maven-本地仓库"><a href="#配置-Maven-本地仓库" class="headerlink" title="配置 Maven 本地仓库"></a>配置 Maven 本地仓库</h3><p><code>setting.xml</code> 路径为 <code>$&#123;Maven Home&#125;/conf/settings.xml</code> ，Maven Home 可以通过 <code>mvn --version 获取</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>~/maven_repo<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可将 <code>settings.xml</code> 直接拷贝到 <code>.m2</code> 文件夹下，进行配置。</p>
+<p>如果没有 <code>.m2</code> 文件夹时,运行命令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mvn <span class="built_in">help</span>:system</span><br></pre></td></tr></table></figure>
+
+<p>然后打开当前用户的目录，可以在其中找到 <code>.m2</code> 文件夹</p>
+<h3 id="配置阿里镜像"><a href="#配置阿里镜像" class="headerlink" title="配置阿里镜像"></a>配置阿里镜像</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="升级-maven"><a href="#升级-maven" class="headerlink" title="升级 maven"></a>升级 maven</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ brew unlink</span><br><span class="line">$ brew update</span><br><span class="line">$ brew install maven</span><br></pre></td></tr></table></figure>
+
+<h2 id="MySql"><a href="#MySql" class="headerlink" title="MySql"></a>MySql</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> brew install mysql</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nano /usr/<span class="built_in">local</span>/etc/my.cnf</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">brew services start mysql</span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启</span></span><br><span class="line">brew services restart mysql</span><br><span class="line"><span class="meta">#</span><span class="bash"> 停止</span></span><br><span class="line">brew services stop mysql</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Or, if you don’t want/need a background service you can just run: <code>mysql.server start</code></p>
+</blockquote>
+<h3 id="安全设置"><a href="#安全设置" class="headerlink" title="安全设置"></a>安全设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mysql_secure_installation</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>建立密码验证插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Securing the MySQL server deployment.</span><br><span class="line"></span><br><span class="line">Connecting to MySQL using a blank password.</span><br><span class="line"></span><br><span class="line">VALIDATE PASSWORD PLUGIN can be used to test passwords and improve security. It checks the strength of password and allows the users to set only those passwords which are secure enough. Would you like to setup VALIDATE PASSWORD plugin?</span><br><span class="line"></span><br><span class="line">Press y|Y for Yes, any other key for No: y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择密码规则</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">There are three levels of password validation policy:</span><br><span class="line"></span><br><span class="line">LOW    Length &gt;= 8</span><br><span class="line"><span class="meta">#</span><span class="bash">长度大于等于8</span></span><br><span class="line">MEDIUM Length &gt;= 8, numeric, mixed case, and special characters</span><br><span class="line"><span class="meta">#</span><span class="bash">长度大于等于8，数字、大小写字母、特殊符号</span></span><br><span class="line">STRONG Length &gt;= 8, numeric, mixed case, special characters and dictionary                  file</span><br><span class="line"><span class="meta">#</span><span class="bash">长度大于等于8，数字、大小写字母、特殊符号和字典文件（慎选！）</span></span><br><span class="line"></span><br><span class="line">Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 1</span><br><span class="line">Please set the password for root here.</span><br><span class="line"></span><br><span class="line">New password: （输入你的密码）</span><br><span class="line">Re-enter new password: （再次输入你的密码）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建符合规则的新密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Estimated strength of the password: 50         #密码强度</span><br><span class="line">Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除匿名用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">By default, a MySQL installation has an anonymous user, allowing anyone to log into MySQL without having to have a user account created for them. This is intended only for testing, and to make the installation go a bit smoother.</span><br><span class="line">You should remove them before moving into a production environment.</span><br><span class="line"></span><br><span class="line">Remove anonymous users? (Press y|Y for Yes, any other key for No) : y</span><br><span class="line">Success.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>禁止远程登录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Normally, root should only be allowed to connect from &#x27;localhost&#x27;. This ensures that someone cannot guess at the root password from the network.</span><br><span class="line"></span><br><span class="line">Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y</span><br><span class="line">Success.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除测试数据表</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">By default, MySQL comes with a database named &#x27;test&#x27; that anyone can access. This is also intended only for testing, and should be removed before moving into a production environment.</span><br><span class="line"></span><br><span class="line">Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y</span><br><span class="line"> - Dropping test database...</span><br><span class="line">Success.</span><br><span class="line"></span><br><span class="line"> - Removing privileges on test database...</span><br><span class="line">Success.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Done</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Reloading the privilege tables will ensure that all changes made so far will take effect immediately.</span><br><span class="line"></span><br><span class="line">Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y</span><br><span class="line"><span class="meta">#</span><span class="bash">是否重新加载权限表</span></span><br><span class="line">Success.</span><br><span class="line"></span><br><span class="line">All done!</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="Your-password-does-not-satisfy-the-current-policy-requirements"><a href="#Your-password-does-not-satisfy-the-current-policy-requirements" class="headerlink" title="Your password does not satisfy the current policy requirements."></a>Your password does not satisfy the current policy requirements.</h4><p>如果你在选择密码规则的时候不小心选择了2，也就是数字、大小写字母、特殊符号和字典文件的组合。这时你会发现 <code>mysql_secure_installation</code>不会再给你机会重新设置了。手动微笑，mmp。方法还是有的：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE &#x27;validate_password%&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2020/03/09/m2GRbrPeHDkC7pQ.png" alt=""></p>
+<p>使用命令 <code>mysql -u root</code> 登陆，执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set global validate_password.policy=0;</span><br><span class="line">set global validate_password.length=4;</span><br><span class="line"><span class="meta">#</span><span class="bash">将密码规则设置为LOW，就可以使用纯数字纯字母密码</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a>登陆</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mysql -u root -p</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h2><blockquote>
+<p>参考: <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9tb25nb2RiL21vbmdvZGItb3N4LWluc3RhbGwuaHRtbA==" title="https://www.runoob.com/mongodb/mongodb-osx-install.html">Mac OSX 平台安装 MongoDB<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly93d3cuMzJlLnRvcC9zeXN0ZW0vbWFjL2FydGljbGUtODcuaHRtbA==" title="https://www.32e.top/system/mac/article-87.html">Mac下安装MongoDB数据库-启动-停止-开启验证-登陆<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly91aXpwaC5jb20vYXJ0aWNsZS81ZGIxNzdlNGE5ZjEzZDdmNTM1ODEwYzU=" title="https://uizph.com/article/5db177e4a9f13d7f535810c5">【环境搭建：二】Mac安装、配置MongoDB<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC9mNWFmYzY0ODhmOWU=" title="https://www.jianshu.com/p/f5afc6488f9e">MongoDB的用户创建更新及删除<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xNDQ2NTUx" title="https://cloud.tencent.com/developer/article/1446551">MongoDB 用户名密码登录 认证登陆<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<h3 id="下载安装-1"><a href="#下载安装-1" class="headerlink" title="下载安装"></a>下载安装</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew install mongodb/brew/mongodb-community</span><br><span class="line">$ mongod -version</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="启动-mongo"><a href="#启动-mongo" class="headerlink" title="启动 mongo"></a>启动 mongo</h4><p>1、新建 dbpath</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkdir ~/data/db</span><br><span class="line">$ sudo mkdir ~/data/<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<p>2、启动</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mongod --dbpath ~/data/db --fork --logpath ~/data/<span class="built_in">log</span>/mongo.log</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：Mac OS 10.15.1版本之后， <code>/data/db</code> 文件夹消失了，重新创建文件夹提示 <code>mkdir: /data/db: Read-only file system</code>，解决办法也可以是 <code>sudo mkdir ~/data/db &amp;&amp; sudo mongodb --dbpath ~/data/db</code></p>
+</blockquote>
+<h4 id="设置验证和用户名密码"><a href="#设置验证和用户名密码" class="headerlink" title="设置验证和用户名密码"></a>设置验证和用户名密码</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">$ mongo</span><br><span class="line"><span class="comment"># 创建超级管理员</span></span><br><span class="line">&gt; db.createUser(&#123; user: <span class="string">&quot;root&quot;</span> , <span class="built_in">pwd</span>: <span class="string">&quot;123456&quot;</span>, roles: [<span class="string">&quot;root&quot;</span>]&#125;);</span><br><span class="line">Successfully added user: &#123;</span><br><span class="line">   <span class="string">&quot;user&quot;</span> : <span class="string">&quot;root&quot;</span>,</span><br><span class="line">   <span class="string">&quot;roles&quot;</span> : [<span class="string">&quot;root&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 尝试使用上面创建的用户信息进行连接。</span></span><br><span class="line">&gt; db.auth(<span class="string">&quot;root&quot;</span>,<span class="string">&quot;123456&quot;</span>)</span><br><span class="line">1</span><br><span class="line"><span class="comment"># 创建一个名为 admin，密码为 123456 的用户。</span></span><br><span class="line">&gt; db.createUser(&#123; user: <span class="string">&quot;admin&quot;</span>, <span class="built_in">pwd</span>: <span class="string">&quot;123456&quot;</span>, roles:[<span class="string">&quot;userAdminAnyDatabase&quot;</span>, <span class="string">&quot;dbAdminAnyDatabase&quot;</span>, <span class="string">&quot;readWriteAnyDatabase&quot;</span>]&#125;);</span><br><span class="line">Successfully added user: &#123;</span><br><span class="line">   <span class="string">&quot;user&quot;</span>: <span class="string">&quot;admin&quot;</span>,</span><br><span class="line">   <span class="string">&quot;roles&quot;</span>: [</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="string">&quot;role&quot;</span>: <span class="string">&quot;userAdminAnyDatabase&quot;</span>,</span><br><span class="line">      <span class="string">&quot;db&quot;</span>: <span class="string">&quot;admin&quot;</span></span><br><span class="line">   &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 尝试使用上面创建的用户信息进行连接。</span></span><br><span class="line">&gt; db.auth(<span class="string">&quot;admin&quot;</span>,<span class="string">&quot;123456&quot;</span>)</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h3 id="开启验证模式登录"><a href="#开启验证模式登录" class="headerlink" title="开启验证模式登录"></a>开启验证模式登录</h3><p>开启 mongod 时，指定 <code>--auth</code> 参数即可以验证模式打开：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mongod --dbpath ~/data/db --fork --logpath ~/data/<span class="built_in">log</span>/mongo.log --auth</span><br></pre></td></tr></table></figure>
+
+<h4 id="登录时验证"><a href="#登录时验证" class="headerlink" title="登录时验证"></a>登录时验证</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mongo 127.0.0.1:27017/admin -u admin -p 123456</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 等价于</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mongo --port 27017 -u <span class="string">&quot;adminUser&quot;</span> -p <span class="string">&quot;adminPass&quot;</span> --authenticationDatabase <span class="string">&quot;admin&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="登录后验证"><a href="#登录后验证" class="headerlink" title="登录后验证"></a>登录后验证</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mongo</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> use admin</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ab.auth(<span class="string">&quot;admin&quot;</span>,<span class="string">&quot;123456&quot;</span>)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="退出mongo"><a href="#退出mongo" class="headerlink" title="退出mongo"></a>退出mongo</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#先停止mongod服务</span></span><br><span class="line">$ use admin;</span><br><span class="line">$ db.shutdownServer();</span><br><span class="line"></span><br><span class="line">然后退出mongo</span><br><span class="line"><span class="variable">$exit</span>；</span><br></pre></td></tr></table></figure>
+
+<h2 id="natapp"><a href="#natapp" class="headerlink" title="natapp"></a>natapp</h2><p>开启您的内网穿透之旅,调试微信的利器，请至<span class="exturl" data-url="aHR0cHM6Ly9uYXRhcHAuY24v" title="https://natapp.cn/">官网<i class="fa fa-external-link"></i></span>下载</p>
+<h2 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h2><ul>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v" title="https://code.visualstudio.com/">VSCode<i class="fa fa-external-link"></i></span>: Visual Studio Code是一个由微软开发，同时支持Windows 、 Linux和macOS等操作系统且开放源代码的代码编辑器，它支持测试，并内置了Git 版本控制功能，同时也具有开发环境功能，例如代码补全、代码片段和代码重构等。</p>
+<blockquote>
+<p>为了备份和分享IDE的配置，无论是 Atom 还是 VSCode 都有相应的插件，在 VSCode 中这个插件是 <span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvQXI3UVZXRjg=" title="https://bre.is/Ar7QVWF8">Settings Sync<i class="fa fa-external-link"></i></span>。该插件是通过 GitHub Gist 来托管配置文件。我的 Gist Id: <code>248fa0aed5c2c89fc342599a1cceb423</code></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="设置-SSH-Key"><a href="#设置-SSH-Key" class="headerlink" title="设置 SSH Key"></a>设置 SSH Key</h2><p>在用户主目录下，看看有没有 <code>.ssh</code> 目录，如果有，再看看这个目录下有没有 <code>id_rsa</code> 和 <code>id_rsa.pub</code> 这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开 Shell（Windows下打开Git Bash），创建 SSH Key：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;young_email@aliyun.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Pock"><a href="#Pock" class="headerlink" title="Pock"></a>Pock</h2><p>让 Touch Bar 「变废为宝」的免费小工具，点击图片进入官网了解详情：</p>
+<p><a target="_blank" rel="noopener" href="https://pock.dev/"><img src="https://i.loli.net/2020/03/26/vGRUVX5ACxfasTi.png" alt=""></a></p>
+<h2 id="Catch-Me"><a href="#Catch-Me" class="headerlink" title="Catch Me"></a>Catch Me</h2><blockquote>
+<p>GitHub: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5n" title="https://github.com/youngjuning">youngjuning<i class="fa fa-external-link"></i></span> | 微信: <code>yang_jun_ning</code> | 公众号: <code>前端早茶馆</code> | 邮箱: <span class="exturl" data-url="bWFpbHRvOnlvdW5nanVuaW5nQGFsaXl1bi5jb20=" title="mailto:youngjuning@aliyun.com">youngjuning@aliyun.com<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">微信</th>
+<th align="center">投食</th>
+<th align="center">公众号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://i.loli.net/2020/02/22/q2tLiGYvhIxm3Fl.jpg" width="200px"/></td>
+<td align="center"><img src="https://i.loli.net/2020/02/23/q56X1eYZuITQpsj.png" width="200px"/></td>
+<td align="center"><img src="https://i.loli.net/2020/07/28/6AyutjZ1XI4aUDV.jpg" width="200px"/></td>
+</tr>
+</tbody></table>
+<p>本文首发于<a href="https://youngjuning.js.org/">杨俊宁的博客</a>，创作不易，您的点赞👍是我坚持的动力！！！</p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/03/初探-Nest-js/" rel="bookmark">初探 Nest.js</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/03/前端规范化开发实践/" rel="bookmark">前端规范化开发实践</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/07/使用-wml-进行模块调试/" rel="bookmark">使用 wml 进行模块调试</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/07/微精通之Vue移动端开发/" rel="bookmark">微精通之Vue移动端开发【持续更新】</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/07/基于-Deno-构建-HTTP-Server-实践指南/" rel="bookmark">基于 Deno 构建 HTTP Server 实践指南</a></div>
+    </li>
+  </ul>
+
+        <div class="reward-container">
+  <div>赞赏是对我最大的支持！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="杨俊宁 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="杨俊宁 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>杨俊宁
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://youngjuning.js.org/2020/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84Mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="程序员的Mac开发环境">http://youngjuning.js.org/2020/03/程序员的Mac开发环境/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/xingqiu.png">
+                <span class="icon">
+                  <i class="fa fa-circle-o-notch"></i>
+                </span>
+
+                <span class="label">知识星球</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/wechat_channel.jpeg">
+                <span class="icon">
+                  <i class="fa fa-wechat"></i>
+                </span>
+
+                <span class="label">WeChat</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%8E%98%E9%87%91%E4%B8%93%E6%A0%8F/" rel="tag"><i class="fa fa-tag"></i> 掘金专栏</a>
+              <a href="/tags/Mac/" rel="tag"><i class="fa fa-tag"></i> Mac</a>
+              <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag"><i class="fa fa-tag"></i> 开发环境</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/%E5%88%9D%E6%8E%A2-Ant-Design-of-React/" rel="prev" title="初探 Ant Design of React">
+      <i class="fa fa-chevron-left"></i> 初探 Ant Design of React
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/%E4%BD%BF%E7%94%A8%20react-native-amap-geolocation%20%E6%8E%A5%E5%85%A5%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%AE%9A%E4%BD%8D/" rel="next" title="使用 react-native-amap-geolocation 接入高德地图定位">
+      使用 react-native-amap-geolocation 接入高德地图定位 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ohmyzsh"><span class="nav-number">1.</span> <span class="nav-text">ohmyzsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim"><span class="nav-number">2.</span> <span class="nav-text">vim</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Agnoster-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">Agnoster 主题配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#zsh-syntax-highlighting"><span class="nav-number">2.2.1.</span> <span class="nav-text">zsh-syntax-highlighting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WakaTime-for-Terminal"><span class="nav-number">2.2.2.</span> <span class="nav-text">WakaTime for Terminal</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew"><span class="nav-number">3.</span> <span class="nav-text">Homebrew</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d8"><span class="nav-number">4.</span> <span class="nav-text">d8</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E6%9D%A1%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">预备条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Build-V8"><span class="nav-number">4.2.</span> <span class="nav-text">Build V8</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">5.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7"><span class="nav-number">5.1.</span> <span class="nav-text">命令行工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="nav-number">5.2.</span> <span class="nav-text">可视化工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%85%8D%E7%BD%AE"><span class="nav-number">5.3.</span> <span class="nav-text">命令行配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-%E5%8A%A0%E9%80%9F"><span class="nav-number">6.</span> <span class="nav-text">GitHub 加速</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="nav-number">6.1.</span> <span class="nav-text">学习资料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node"><span class="nav-number">7.</span> <span class="nav-text">Node</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0npm"><span class="nav-number">7.1.</span> <span class="nav-text">更新npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nrm-%E7%AE%A1%E7%90%86-registry"><span class="nav-number">7.2.</span> <span class="nav-text">nrm 管理 registry</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Native"><span class="nav-number">8.</span> <span class="nav-text">React Native</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navicat-Premium"><span class="nav-number">9.</span> <span class="nav-text">Navicat Premium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java"><span class="nav-number">10.</span> <span class="nav-text">Java</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="nav-number">10.1.</span> <span class="nav-text">下载安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">10.2.</span> <span class="nav-text">实用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E7%90%86-jdk-%E7%89%88%E6%9C%AC"><span class="nav-number">10.3.</span> <span class="nav-text">管理 jdk 版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven"><span class="nav-number">11.</span> <span class="nav-text">maven</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">11.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-Maven-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="nav-number">11.2.</span> <span class="nav-text">配置 Maven 本地仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E9%95%9C%E5%83%8F"><span class="nav-number">11.3.</span> <span class="nav-text">配置阿里镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%87%E7%BA%A7-maven"><span class="nav-number">11.4.</span> <span class="nav-text">升级 maven</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySql"><span class="nav-number">12.</span> <span class="nav-text">MySql</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">12.1.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="nav-number">12.2.</span> <span class="nav-text">启动服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E8%AE%BE%E7%BD%AE"><span class="nav-number">12.3.</span> <span class="nav-text">安全设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Your-password-does-not-satisfy-the-current-policy-requirements"><span class="nav-number">12.3.1.</span> <span class="nav-text">Your password does not satisfy the current policy requirements.</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E9%99%86"><span class="nav-number">12.4.</span> <span class="nav-text">登陆</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongodb"><span class="nav-number">13.</span> <span class="nav-text">mongodb</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85-1"><span class="nav-number">13.1.</span> <span class="nav-text">下载安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">13.2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8-mongo"><span class="nav-number">13.2.1.</span> <span class="nav-text">启动 mongo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%AA%8C%E8%AF%81%E5%92%8C%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81"><span class="nav-number">13.2.2.</span> <span class="nav-text">设置验证和用户名密码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%BC%8F%E7%99%BB%E5%BD%95"><span class="nav-number">13.3.</span> <span class="nav-text">开启验证模式登录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E6%97%B6%E9%AA%8C%E8%AF%81"><span class="nav-number">13.3.1.</span> <span class="nav-text">登录时验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E5%90%8E%E9%AA%8C%E8%AF%81"><span class="nav-number">13.3.2.</span> <span class="nav-text">登录后验证</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%80%E5%87%BAmongo"><span class="nav-number">13.4.</span> <span class="nav-text">退出mongo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#natapp"><span class="nav-number">14.</span> <span class="nav-text">natapp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDE"><span class="nav-number">15.</span> <span class="nav-text">IDE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE-SSH-Key"><span class="nav-number">16.</span> <span class="nav-text">设置 SSH Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pock"><span class="nav-number">17.</span> <span class="nav-text">Pock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Catch-Me"><span class="nav-number">18.</span> <span class="nav-text">Catch Me</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="杨俊宁"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">杨俊宁</p>
+  <div class="site-description" itemprop="description">前端工程师、终身学习践行者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5n" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;youngjuning"><i class="fa fa-fw fa-github"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnlvdW5nanVuaW5nQGFsaXl1bi5jb20=" title="E-Mail → mailto:youngjuning@aliyun.com"><i class="fa fa-fw fa-envelope"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20veWFuZ2p1bm5pbmdtYW8=" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yangjunningmao"><i class="fa fa-fw fa-weibo"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy84NTY0NDAzL3lvdW5nanVuaW5n" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;8564403&#x2F;youngjuning"><i class="fa fa-fw fa-stack-overflow"></i></span>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jaGVueXVodS5qcy5vcmcv" title="https:&#x2F;&#x2F;chenyuhu.js.org&#x2F;">陈锋个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9sbHN0YXIuZ2l0aHViLmlvLw==" title="https:&#x2F;&#x2F;llstar.github.io&#x2F;">LLstar的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vR3Jld2VyLw==" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;Grewer&#x2F;">张煜的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9taXJhcmkuY2Mv" title="https:&#x2F;&#x2F;mirari.cc&#x2F;">Mirari's Blog</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨俊宁的博客</span>
+  <span class="post-meta-divider">|</span>
+  <a target="_blank" href="/sitemap.xml" style="border-bottom: 0px"><span style="color: #999;"><i class="fa fa-sitemap"> 站点地图</i></span></a>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">297k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:30</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v5.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.7.1
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e3a8b23db295557" async="async"></script>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script pjax>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes : 0,
+          toolbar  : 0,
+          statusbar: 0,
+          pagemode : 'thumbs',
+          view     : 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://youngjuning.js.org/2020/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84Mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/";
+    this.page.identifier = "2020/03/程序员的Mac开发环境/";
+    this.page.title = "程序员的Mac开发环境";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://youngjuning.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

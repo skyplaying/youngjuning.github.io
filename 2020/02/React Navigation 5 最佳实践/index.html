@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="ohZ0A8YKJu755suq7WOIJkLGDfj3BGU4isb8RKI5Cj8">
+  <meta name="baidu-site-verification" content="I63O4XWtSs">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"youngjuning.js.org","root":"/","scheme":"Gemini","version":"7.7.1","exturl":true,"sidebar":{"position":"left","width":310,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="文章示例源码: https:&#x2F;&#x2F;github.com&#x2F;youngjuning&#x2F;react-navigation-best-practice">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Navigation 5 最佳实践">
+<meta property="og:url" content="http://youngjuning.js.org/2020/02/React%20Navigation%205%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">
+<meta property="og:site_name" content="杨俊宁的博客">
+<meta property="og:description" content="文章示例源码: https:&#x2F;&#x2F;github.com&#x2F;youngjuning&#x2F;react-navigation-best-practice">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/02/23/caAngkCQdUxlp8L.png">
+<meta property="article:published_time" content="2020-02-17T02:29:14.000Z">
+<meta property="article:modified_time" content="2020-02-17T02:29:14.000Z">
+<meta property="article:author" content="杨俊宁">
+<meta property="article:tag" content="掘金专栏">
+<meta property="article:tag" content="最佳实践">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/02/23/caAngkCQdUxlp8L.png">
+
+<link rel="canonical" href="http://youngjuning.js.org/2020/02/React%20Navigation%205%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>React Navigation 5 最佳实践 | 杨俊宁的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158205277-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-158205277-1');
+      }
+    </script>
+
+
+  <script pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a1319c6a7cb0e5cc6572a6181c7e949c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="杨俊宁的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨俊宁的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">怕什么真理无穷，进一寸有一寸的欢喜</h1>
+      
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">64</span></a>
+
+  </li>
+        <li class="menu-item menu-item-书单">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+
+  </li>
+        <li class="menu-item menu-item-歌单">
+
+    <a href="/music/" rel="section"><i class="fa fa-fw fa-music"></i>歌单</a>
+
+  </li>
+        <li class="menu-item menu-item-收藏夹">
+
+    <a href="/collections/" rel="section"><i class="fa fa-fw fa-star"></i>收藏夹</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://youngjuning.js.org/2020/02/React%20Navigation%205%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="杨俊宁">
+      <meta itemprop="description" content="前端工程师、终身学习践行者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨俊宁的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          React Navigation 5 最佳实践<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL3lvdW5nanVuaW5nL3RyZWUvbWFzdGVyL3NvdXJjZS9fcG9zdHMvMjAyMC8wMi9SZWFjdCBOYXZpZ2F0aW9uIDUg5pyA5L2z5a6e6Le1Lm1k" title="编辑"><i class="fa fa-pencil"></i></span>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-17 10:29:14" itemprop="dateCreated datePublished" datetime="2020-02-17T10:29:14+08:00">2020-02-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hybrid/" itemprop="url" rel="index">
+                    <span itemprop="name">Hybrid</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hybrid/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>17k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>15 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://i.loli.net/2020/02/23/caAngkCQdUxlp8L.png" alt=""></p>
+<blockquote>
+<p>文章示例源码: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL3JlYWN0LW5hdmlnYXRpb24tYmVzdC1wcmFjdGljZQ==" title="https://github.com/youngjuning/react-navigation-best-practice">https://github.com/youngjuning/react-navigation-best-practice<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add @react-navigation/native @react-navigation/stack @react-navigation/bottom-tabs react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>为了完成  <code>react-native-screens</code> 的安装，添加下面两行代码到 <code>android/app/build.gradle</code> 文件的 <code>dependencies</code> 部分中：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">&#x27;androidx.appcompat:appcompat:1.1.0-rc01&#x27;</span></span><br><span class="line">implementation <span class="string">&#x27;androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>为了完成  <code>react-native-gesture-handler</code> 的安装, 在入口文件的顶部添加下面的代码, 比如 <code>index.js</code> 或 <code>App.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;react-native-gesture-handler&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>现在，我们需要把整个 App用 <code>NavigationContainer</code>包裹：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; NavigationContainer &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;NavigationContainer&gt;</span><br><span class="line">      &#123;<span class="comment">/* Rest of your app code */</span>&#125;</span><br><span class="line">    &lt;/NavigationContainer&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="App-js"><a href="#App-js" class="headerlink" title="App.js"></a>App.js</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  View,</span><br><span class="line">  Text,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  SafeAreaView,</span><br><span class="line">  StatusBar,</span><br><span class="line">  BackHandler,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;NavigationContainer, useFocusEffect&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;createBottomTabNavigator&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/bottom-tabs&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;createStackNavigator, HeaderBackButton&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/stack&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;IconOutline&#125; <span class="keyword">from</span> <span class="string">&#x27;@ant-design/icons-react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Button&#125; <span class="keyword">from</span> <span class="string">&#x27;@ant-design/react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> IconWithBadge <span class="keyword">from</span> <span class="string">&#x27;./IconWithBadge&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> HeaderButtons <span class="keyword">from</span> <span class="string">&#x27;./HeaderButtons&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> getActiveRouteName <span class="keyword">from</span> <span class="string">&#x27;./getActiveRouteName&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> getScreenOptions <span class="keyword">from</span> <span class="string">&#x27;./getScreenOptions&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;navigationRef&#125; <span class="keyword">from</span> <span class="string">&#x27;./NavigationService&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> HomeScreen = <span class="function">(<span class="params">&#123;navigation, route&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  navigation.setOptions(&#123;</span><br><span class="line">    headerLeft: <span class="function"><span class="params">props</span> =&gt;</span> (</span><br><span class="line">      &lt;HeaderBackButton</span><br><span class="line">        &#123;...props&#125;</span><br><span class="line">        onPress=&#123;<span class="function">() =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">&#x27;不能再返回了！&#x27;</span>);</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    ),</span><br><span class="line">    headerRight: <span class="function">() =&gt;</span> (</span><br><span class="line">      &lt;HeaderButtons&gt;</span><br><span class="line">        &#123;<span class="comment">/* title、iconName、onPress、IconComponent、iconSize、color */</span>&#125;</span><br><span class="line">        &lt;HeaderButtons.Item</span><br><span class="line">          title=<span class="string">&quot;添加&quot;</span></span><br><span class="line">          iconName=<span class="string">&quot;plus&quot;</span></span><br><span class="line">          onPress=&#123;<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;点击了添加按钮&#x27;</span>)&#125;</span><br><span class="line">          iconSize=&#123;<span class="number">24</span>&#125;</span><br><span class="line">          color=<span class="string">&quot;#ffffff&quot;</span></span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;/HeaderButtons&gt;</span><br><span class="line">    ),</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  useFocusEffect(</span><br><span class="line">    React.useCallback(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// Do something when the screen is focused</span></span><br><span class="line">      <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Do something when the screen is unfocused</span></span><br><span class="line">        <span class="comment">// Useful for cleanup functions</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;, []),</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">const</span> &#123;author&#125; = route.params || &#123;&#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;StatusBar barStyle=<span class="string">&quot;dark-content&quot;</span> /&gt;</span><br><span class="line">      &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">        &lt;Text&gt;Home Screen&lt;/Text&gt;</span><br><span class="line">        &lt;Text&gt;&#123;author&#125;&lt;/Text&gt;</span><br><span class="line">        &lt;Button</span><br><span class="line">          type=<span class="string">&quot;warning&quot;</span></span><br><span class="line">          <span class="comment">// 使用 setOptions 更新标题</span></span><br><span class="line">          onPress=&#123;<span class="function">() =&gt;</span> navigation.setOptions(&#123;<span class="attr">headerTitle</span>: <span class="string">&#x27;Updated!&#x27;</span>&#125;)&#125;&gt;</span><br><span class="line">          Update the title</span><br><span class="line">        &lt;/Button&gt;</span><br><span class="line">        &lt;Button</span><br><span class="line">          type=<span class="string">&quot;primary&quot;</span></span><br><span class="line">          onPress=&#123;<span class="function">() =&gt;</span></span><br><span class="line">            <span class="comment">// 跳转到指定页面，并传递两个参数</span></span><br><span class="line">            navigation.navigate(<span class="string">&#x27;DetailsScreen&#x27;</span>, &#123;</span><br><span class="line">              otherParam: <span class="string">&#x27;anything you want here&#x27;</span>,</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;&gt;</span><br><span class="line">          Go to DetailsScreen</span><br><span class="line">        &lt;/Button&gt;</span><br><span class="line">        &lt;Button</span><br><span class="line">          type=<span class="string">&quot;warning&quot;</span></span><br><span class="line">          onPress=&#123;<span class="function">() =&gt;</span> navigation.navigate(<span class="string">&#x27;SafeAreaViewScreen&#x27;</span>)&#125;&gt;</span><br><span class="line">          Go SafeAreaViewScreen</span><br><span class="line">        &lt;/Button&gt;</span><br><span class="line">        &lt;Button</span><br><span class="line">          type=<span class="string">&quot;primary&quot;</span></span><br><span class="line">          onPress=&#123;<span class="function">() =&gt;</span></span><br><span class="line">            navigation.navigate(<span class="string">&#x27;CustomAndroidBackButtonBehaviorScreen&#x27;</span>)</span><br><span class="line">          &#125;&gt;</span><br><span class="line">          Go CustomAndroidBackButtonBehavior</span><br><span class="line">        &lt;/Button&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    &lt;/&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> DetailsScreen = <span class="function">(<span class="params">&#123;navigation, route&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 通过 props.route.params 接收参数</span></span><br><span class="line">  <span class="keyword">const</span> &#123;itemId, otherParam&#125; = route.params;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">      &lt;Text&gt;Details Screen&lt;/Text&gt;</span><br><span class="line">      &lt;Text&gt;itemId: &#123;itemId&#125;&lt;/Text&gt;</span><br><span class="line">      &lt;Text&gt;otherParam: &#123;otherParam&#125;&lt;/Text&gt;</span><br><span class="line">      &lt;Button</span><br><span class="line">        type=<span class="string">&quot;primary&quot;</span></span><br><span class="line">        <span class="comment">// 返回上一页</span></span><br><span class="line">        onPress=&#123;<span class="function">() =&gt;</span> navigation.goBack()&#125;&gt;</span><br><span class="line">        Go back</span><br><span class="line">      &lt;/Button&gt;</span><br><span class="line">      &lt;Button</span><br><span class="line">        type=<span class="string">&quot;primary&quot;</span></span><br><span class="line">        <span class="comment">// 如果返回上一个页面需要传递参数，请使用 navigate 方法</span></span><br><span class="line">        onPress=&#123;<span class="function">() =&gt;</span> navigation.navigate(<span class="string">&#x27;HomeScreen&#x27;</span>, &#123;<span class="attr">author</span>: <span class="string">&#x27;杨俊宁&#x27;</span>&#125;)&#125;&gt;</span><br><span class="line">        Go back <span class="keyword">with</span> Params</span><br><span class="line">      &lt;/Button&gt;</span><br><span class="line">    &lt;/View&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> SettingsScreen = <span class="function">(<span class="params">&#123;navigation, route&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;SafeAreaView</span><br><span class="line">      style=&#123;&#123;<span class="attr">flex</span>: <span class="number">1</span>, <span class="attr">justifyContent</span>: <span class="string">&#x27;space-between&#x27;</span>, <span class="attr">alignItems</span>: <span class="string">&#x27;center&#x27;</span>&#125;&#125;&gt;</span><br><span class="line">      &lt;Text&gt;This is top text.&lt;/Text&gt;</span><br><span class="line">      &lt;Text&gt;This is bottom text.&lt;/Text&gt;</span><br><span class="line">    &lt;/SafeAreaView&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> SafeAreaViewScreen = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;SafeAreaView</span><br><span class="line">      style=&#123;&#123;<span class="attr">flex</span>: <span class="number">1</span>, <span class="attr">justifyContent</span>: <span class="string">&#x27;space-between&#x27;</span>, <span class="attr">alignItems</span>: <span class="string">&#x27;center&#x27;</span>&#125;&#125;&gt;</span><br><span class="line">      &lt;Text&gt;This is top text.&lt;/Text&gt;</span><br><span class="line">      &lt;Text&gt;This is bottom text.&lt;/Text&gt;</span><br><span class="line">    &lt;/SafeAreaView&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> CustomAndroidBackButtonBehaviorScreen = <span class="function">(<span class="params">&#123;navigation, route&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  useFocusEffect(</span><br><span class="line">    React.useCallback(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> onBackPress = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        alert(<span class="string">&#x27;物理返回键被拦截了！&#x27;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      BackHandler.addEventListener(<span class="string">&#x27;hardwareBackPress&#x27;</span>, onBackPress);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="function">() =&gt;</span></span><br><span class="line">        BackHandler.removeEventListener(<span class="string">&#x27;hardwareBackPress&#x27;</span>, onBackPress);</span><br><span class="line">    &#125;, []),</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">      &lt;Text&gt;AndroidBackHandlerScreen&lt;/Text&gt;</span><br><span class="line">    &lt;/View&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Stack = createStackNavigator();</span><br><span class="line"><span class="keyword">const</span> BottomTab = createBottomTabNavigator();</span><br><span class="line"><span class="keyword">const</span> BottomTabScreen = <span class="function">() =&gt;</span> (</span><br><span class="line">  &lt;BottomTab.Navigator</span><br><span class="line">    screenOptions=&#123;<span class="function">(<span class="params">&#123;route&#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">      tabBarIcon: <span class="function">(<span class="params">&#123;focused, color, size&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> iconName;</span><br><span class="line">        <span class="keyword">if</span> (route.name === <span class="string">&#x27;HomeScreen&#x27;</span>) &#123;</span><br><span class="line">          iconName = focused ? <span class="string">&#x27;apple&#x27;</span> : <span class="string">&#x27;apple&#x27;</span>;</span><br><span class="line">          <span class="keyword">return</span> (</span><br><span class="line">            &lt;IconWithBadge badgeCount=&#123;<span class="number">90</span>&#125;&gt;</span><br><span class="line">              &lt;IconOutline name=&#123;iconName&#125; size=&#123;size&#125; color=&#123;color&#125; /&gt;</span><br><span class="line">            &lt;/IconWithBadge&gt;</span><br><span class="line">          );</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (route.name === <span class="string">&#x27;SettingsScreen&#x27;</span>) &#123;</span><br><span class="line">          iconName = focused ? <span class="string">&#x27;twitter&#x27;</span> : <span class="string">&#x27;twitter&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">IconOutline</span> <span class="attr">name</span>=<span class="string">&#123;iconName&#125;</span> <span class="attr">size</span>=<span class="string">&#123;size&#125;</span> <span class="attr">color</span>=<span class="string">&#123;color&#125;</span> /&gt;</span></span>;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;)&#125;</span><br><span class="line">    tabBarOptions=&#123;&#123;</span><br><span class="line">      activeTintColor: <span class="string">&#x27;tomato&#x27;</span>,</span><br><span class="line">      inactiveTintColor: <span class="string">&#x27;gray&#x27;</span>,</span><br><span class="line">    &#125;&#125;&gt;</span><br><span class="line">    &lt;Stack.Screen</span><br><span class="line">      name=<span class="string">&quot;HomeScreen&quot;</span></span><br><span class="line">      component=&#123;HomeScreen&#125;</span><br><span class="line">      options=&#123;&#123;<span class="attr">tabBarLabel</span>: <span class="string">&#x27;首页&#x27;</span>&#125;&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">    &lt;Stack.Screen</span><br><span class="line">      name=<span class="string">&quot;SettingsScreen&quot;</span></span><br><span class="line">      component=&#123;SettingsScreen&#125;</span><br><span class="line">      options=&#123;&#123;<span class="attr">tabBarLabel</span>: <span class="string">&#x27;设置&#x27;</span>&#125;&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  &lt;/BottomTab.Navigator&gt;</span><br><span class="line">);</span><br><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> routeNameRef = React.useRef();</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;NavigationContainer</span><br><span class="line">        ref=&#123;navigationRef&#125;</span><br><span class="line">        onStateChange=&#123;<span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">const</span> previousRouteName = routeNameRef.current;</span><br><span class="line">          <span class="keyword">const</span> currentRouteName = getActiveRouteName(state);</span><br><span class="line">          <span class="keyword">if</span> (previousRouteName !== currentRouteName) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;[onStateChange]&#x27;</span>, currentRouteName);</span><br><span class="line">            <span class="keyword">if</span> (currentRouteName === <span class="string">&#x27;HomeScreen&#x27;</span>) &#123;</span><br><span class="line">              StatusBar.setBarStyle(<span class="string">&#x27;dark-content&#x27;</span>); <span class="comment">// 修改 StatusBar</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              StatusBar.setBarStyle(<span class="string">&#x27;dark-content&#x27;</span>); <span class="comment">// 修改 StatusBar</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// Save the current route name for later comparision</span></span><br><span class="line">          routeNameRef.current = currentRouteName;</span><br><span class="line">        &#125;&#125;&gt;</span><br><span class="line">        &lt;Stack.Navigator</span><br><span class="line">          initialRouteName=<span class="string">&quot;HomeScreen&quot;</span></span><br><span class="line">          <span class="comment">// 页面共享的配置</span></span><br><span class="line">          screenOptions=&#123;getScreenOptions()&#125;&gt;</span><br><span class="line">          &lt;Stack.Screen</span><br><span class="line">            name=<span class="string">&quot;BottomTabScreen&quot;</span></span><br><span class="line">            component=&#123;BottomTabScreen&#125;</span><br><span class="line">            options=&#123;&#123;<span class="attr">headerShown</span>: <span class="literal">false</span>&#125;&#125;</span><br><span class="line">          /&gt;</span><br><span class="line">          &lt;Stack.Screen</span><br><span class="line">            name=<span class="string">&quot;DetailsScreen&quot;</span></span><br><span class="line">            component=&#123;DetailsScreen&#125;</span><br><span class="line">            options=&#123;&#123;<span class="attr">headerTitle</span>: <span class="string">&#x27;详情&#x27;</span>&#125;&#125; <span class="comment">// headerTitle 用来设置标题栏</span></span><br><span class="line">            initialParams=&#123;&#123;<span class="attr">itemId</span>: <span class="number">42</span>&#125;&#125; <span class="comment">// 默认参数</span></span><br><span class="line">          /&gt;</span><br><span class="line">          &lt;Stack.Screen</span><br><span class="line">            name=<span class="string">&quot;SafeAreaViewScreen&quot;</span></span><br><span class="line">            component=&#123;SafeAreaViewScreen&#125;</span><br><span class="line">            options=&#123;&#123;<span class="attr">headerTitle</span>: <span class="string">&#x27;SafeAreaView&#x27;</span>&#125;&#125;</span><br><span class="line">          /&gt;</span><br><span class="line">          &lt;Stack.Screen</span><br><span class="line">            name=<span class="string">&quot;CustomAndroidBackButtonBehaviorScreen&quot;</span></span><br><span class="line">            component=&#123;CustomAndroidBackButtonBehaviorScreen&#125;</span><br><span class="line">            options=&#123;&#123;<span class="attr">headerTitle</span>: <span class="string">&#x27;拦截安卓物理返回键&#x27;</span>&#125;&#125;</span><br><span class="line">          /&gt;</span><br><span class="line">        &lt;/Stack.Navigator&gt;</span><br><span class="line">      &lt;/NavigationContainer&gt;</span><br><span class="line">    &lt;/&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  container: &#123;</span><br><span class="line">    flex: <span class="number">1</span>,</span><br><span class="line">    alignItems: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    justifyContent: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>路由名称的大小写无关紧要 – 你可以使用小写字母<code>home</code>或大写字母<code>Home</code>，这取决于你的喜好。 我们更喜欢将路由名称大写。 我们更喜欢利用我们的路由名称。</p>
+</blockquote>
+<blockquote>
+<p>跳转方法有 <code>navigate</code>、 <code>push</code> 、<code>goBack</code>、<code>popToTop</code></p>
+</blockquote>
+<blockquote>
+<p>可以用 <code>navigation.setParams</code> 方法更新页面的参数</p>
+</blockquote>
+<blockquote>
+<p>我们可以通过 <code>options=&#123;(&#123; route, navigation &#125;) =&gt; (&#123; headerTitle: route.params.name &#125;)&#125;</code> 的方式在标题中使用参数</p>
+</blockquote>
+<blockquote>
+<p>我们可以用 <code>navigation.setOptions</code> 更新页面配置</p>
+</blockquote>
+<ul>
+<li><code>Stack.Navigator</code><ul>
+<li><code>initialRouteName</code> : 用来配置 <code>Stack.Navigator</code> 的初始路由</li>
+<li><code>screenOptions</code>: 页面共享配置对象</li>
+</ul>
+</li>
+<li><code>Stack.Screen</code><ul>
+<li><code>name</code>: 页面名</li>
+<li><code>component</code>: 页面对应组件</li>
+<li><code>options</code>: 页面配置对象</li>
+<li><code>initialParams</code>: 默认参数</li>
+</ul>
+</li>
+</ul>
+<h2 id="HeaderButtons-js"><a href="#HeaderButtons-js" class="headerlink" title="HeaderButtons.js"></a>HeaderButtons.js</h2><p>使用 <code>react-navigation-header-buttons</code> 组件搭配任意 Icon 组件可以自定义自己的 Header Button 组件，我这里为了演示方便，使用了 <code>@ant-design/icons-react-native</code>：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  HeaderButtons <span class="keyword">as</span> RNHeaderButtons,</span><br><span class="line">  HeaderButton <span class="keyword">as</span> RNHeaderButton,</span><br><span class="line">  Item,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;react-navigation-header-buttons&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;IconOutline&#125; <span class="keyword">from</span> <span class="string">&#x27;@ant-design/icons-react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> HeaderButton = <span class="function"><span class="params">props</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;RNHeaderButton</span><br><span class="line">      &#123;...props&#125;</span><br><span class="line">      IconComponent=&#123;IconOutline&#125;</span><br><span class="line">      iconSize=&#123;props.iconSize || <span class="number">23</span>&#125;</span><br><span class="line">      color=&#123;props.color || <span class="string">&#x27;#000000&#x27;</span>&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> HeaderButtons = <span class="function"><span class="params">props</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">RNHeaderButtons</span> <span class="attr">HeaderButtonComponent</span>=<span class="string">&#123;HeaderButton&#125;</span> &#123;<span class="attr">...props</span>&#125; /&gt;</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">HeaderButtons.Item = Item;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> HeaderButtons;</span><br></pre></td></tr></table></figure>
+
+<h2 id="IconWithBadge-js"><a href="#IconWithBadge-js" class="headerlink" title="IconWithBadge.js"></a>IconWithBadge.js</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;View&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Badge&#125; <span class="keyword">from</span> <span class="string">&#x27;@ant-design/react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> IconWithBadge = <span class="function">(<span class="params">&#123;children, badgeCount, ...props&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;View style=&#123;&#123;<span class="attr">width</span>: <span class="number">24</span>, <span class="attr">height</span>: <span class="number">24</span>, <span class="attr">margin</span>: <span class="number">5</span>&#125;&#125;&gt;</span><br><span class="line">      &#123;children&#125;</span><br><span class="line">      &lt;Badge</span><br><span class="line">        &#123;...props&#125;</span><br><span class="line">        style=&#123;&#123;<span class="attr">position</span>: <span class="string">&#x27;absolute&#x27;</span>, <span class="attr">right</span>: <span class="number">-6</span>, <span class="attr">top</span>: <span class="number">-3</span>&#125;&#125;</span><br><span class="line">        text=&#123;badgeCount&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    &lt;/View&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> IconWithBadge;</span><br></pre></td></tr></table></figure>
+
+<h2 id="getActiveRouteName-js"><a href="#getActiveRouteName-js" class="headerlink" title="getActiveRouteName.js"></a>getActiveRouteName.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Gets the current screen from navigation state</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">state</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> getActiveRouteName = <span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> route = state.routes[state.index];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (route.state) &#123;</span><br><span class="line">    <span class="comment">// Dive into nested navigators</span></span><br><span class="line">    <span class="keyword">return</span> getActiveRouteName(route.state);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> route.name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> getActiveRouteName;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="getScreenOptions-js"><a href="#getScreenOptions-js" class="headerlink" title="getScreenOptions.js"></a>getScreenOptions.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;TransitionPresets&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/stack&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getScreenOptions = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    headerStyle: &#123;</span><br><span class="line">      backgroundColor: <span class="string">&#x27;#ffffff&#x27;</span>,</span><br><span class="line">    &#125;, <span class="comment">// 一个应用于 header 的最外层 View 的 样式对象</span></span><br><span class="line">    headerTintColor: <span class="string">&#x27;#000000&#x27;</span>, <span class="comment">// 返回按钮和标题都使用这个属性作为它们的颜色</span></span><br><span class="line">    headerTitleStyle: &#123;</span><br><span class="line">      fontWeight: <span class="string">&#x27;bold&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    headerBackTitleVisible: <span class="literal">false</span>,</span><br><span class="line">    headerTitleAlign: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    cardStyle: &#123;</span><br><span class="line">      flex: <span class="number">1</span>,</span><br><span class="line">      backgroundColor: <span class="string">&#x27;#f5f5f9&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    ...TransitionPresets.SlideFromRightIOS,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> getScreenOptions;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="NavigationService-js"><a href="#NavigationService-js" class="headerlink" title="NavigationService.js"></a>NavigationService.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> navigationRef = React.createRef();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> navigate = <span class="function">(<span class="params">name, params</span>) =&gt;</span> &#123;</span><br><span class="line">  navigationRef.current &amp;&amp; navigationRef.current.navigate(name, params);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getNavigation = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> navigationRef.current &amp;&amp; navigationRef.current;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  navigate,</span><br><span class="line">  getNavigation,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="页面生命周期与React-Navigation"><a href="#页面生命周期与React-Navigation" class="headerlink" title="页面生命周期与React Navigation"></a>页面生命周期与React Navigation</h2><p>一个包含 页面 A 和 B 的 StackNavigator ，当跳转到 A 时，<code>componentDidMount</code> 方法会被调用； 当跳转到 B 时，<code>componentDidMount</code> 方法也会被调用，但是 A 依然在堆栈中保持 被加载状态，他的 <code>componentWillUnMount</code> 也不会被调用。</p>
+<p>当从 B 跳转到 A，B的 <code>componentWillUnmount</code> 方法会被调用，但是 A 的 <code>componentDidMount</code>方法不会被调用，应为此时 A 依然是被加载状态。</p>
+<h2 id="React-Navigation-生命周期事件"><a href="#React-Navigation-生命周期事件" class="headerlink" title="React Navigation 生命周期事件"></a>React Navigation 生命周期事件</h2><h3 id="addListener"><a href="#addListener" class="headerlink" title="addListener"></a>addListener</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Profile</span>(<span class="params">&#123; navigation &#125;</span>) </span>&#123;</span><br><span class="line">  React.useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> unsubscribe = navigation.addListener(<span class="string">&#x27;focus&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// Screen was focused</span></span><br><span class="line">      <span class="comment">// Do something</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> unsubscribe;</span><br><span class="line">  &#125;, [navigation]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">ProfileContent</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="useFocusEffect"><a href="#useFocusEffect" class="headerlink" title="useFocusEffect"></a>useFocusEffect</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">useFocusEffect(</span><br><span class="line">    React.useCallback(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// Do something when the screen is focused</span></span><br><span class="line">      <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Do something when the screen is unfocused</span></span><br><span class="line">        <span class="comment">// Useful for cleanup functions</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;, []),</span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
+
+<h2 id="隐藏-Header-TabBar"><a href="#隐藏-Header-TabBar" class="headerlink" title="隐藏 Header/TabBar"></a>隐藏 Header/TabBar</h2><ul>
+<li><code>headerMode:&quot;none&quot;</code>: hide Header for <code>Stack.Navigator</code></li>
+<li><code>headerShown:false</code>: hide Header for <code>Stack.Screen</code></li>
+<li><code>tabBar=&#123;() =&gt; null&#125;</code>: hide TabBar for <code>BottomTab.Navigator</code></li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;NavigationContainer, useFocusEffect&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;createStackNavigator, TransitionPresets, HeaderBackButton&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/stack&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;createBottomTabNavigator&#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/bottom-tabs&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Stack = createStackNavigator();</span><br><span class="line"><span class="keyword">const</span> BottomTab = createBottomTabNavigator();</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  &lt;NavigationContainer&gt;</span><br><span class="line">      &lt;Stack.Navigator headerMode=<span class="string">&quot;none&quot;</span>&gt;</span><br><span class="line">      &lt;Stack.Screen</span><br><span class="line">        ...</span><br><span class="line">        options=&#123;&#123; <span class="attr">headerShown</span>: <span class="literal">false</span> &#125;&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">      &lt;Stack.Screen ...&gt;</span><br><span class="line">        &#123;<span class="function">() =&gt;</span> (</span><br><span class="line">          &lt;BottomTab.Navigator</span><br><span class="line">            ...</span><br><span class="line">               tabBar=&#123;<span class="function">() =&gt;</span> <span class="literal">null</span>&#125;</span><br><span class="line">          &gt;</span><br><span class="line">            ...</span><br><span class="line">          &lt;/BottomTab.Navigator&gt;</span><br><span class="line">        )&#125;</span><br><span class="line">      &lt;/Stack.Screen&gt;</span><br><span class="line">    &lt;/Stack.Navigator&gt;</span><br><span class="line">  &lt;/NavigationContainer&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="TabBar-的-StatusBar-不同"><a href="#TabBar-的-StatusBar-不同" class="headerlink" title="TabBar 的 StatusBar 不同"></a>TabBar 的 StatusBar 不同</h2><p>一般我们会对特殊的那个TabBar进行处理。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getActiveRouteName = <span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> route = state.routes[state.index];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (route.state) &#123;</span><br><span class="line">    <span class="comment">// Dive into nested navigators</span></span><br><span class="line">    <span class="keyword">return</span> getActiveRouteName(route.state);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> route.name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> ref = React.useRef(<span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">        &#123;<span class="comment">/* 访问 ref.current?.navigate */</span>&#125;</span><br><span class="line">      &lt;NavigationContainer</span><br><span class="line">        ref=&#123;ref&#125;</span><br><span class="line">        onStateChange=&#123;<span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">const</span> previousRouteName = ref.current;</span><br><span class="line">          <span class="keyword">const</span> currentRouteName = getActiveRouteName(state);</span><br><span class="line">          <span class="keyword">if</span> (previousRouteName !== currentRouteName) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;[onStateChange]&#x27;</span>, currentRouteName);</span><br><span class="line">            <span class="keyword">if</span> (currentRouteName === <span class="string">&#x27;HomeScreen&#x27;</span>) &#123;</span><br><span class="line">              StatusBar.setBarStyle(<span class="string">&#x27;dark-content&#x27;</span>);  <span class="comment">// 修改 StatusBar</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              StatusBar.setBarStyle(<span class="string">&#x27;dark-content&#x27;</span>);  <span class="comment">// 修改 StatusBar</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      &gt;</span><br><span class="line">      &lt;/NavigationContainer&gt;</span><br><span class="line">    &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="监听安卓物理返回键"><a href="#监听安卓物理返回键" class="headerlink" title="监听安卓物理返回键"></a>监听安卓物理返回键</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;View, Text, BackHandler&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> CustomAndroidBackButtonBehaviorScreen = <span class="function">(<span class="params">&#123;navigation, route&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  useFocusEffect(</span><br><span class="line">    React.useCallback(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> onBackPress = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        alert(<span class="string">&#x27;物理返回键被拦截了！&#x27;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">      &#125;;</span><br><span class="line">      BackHandler.addEventListener(<span class="string">&#x27;hardwareBackPress&#x27;</span>, onBackPress);</span><br><span class="line">      <span class="keyword">return</span> <span class="function">() =&gt;</span></span><br><span class="line">        BackHandler.removeEventListener(<span class="string">&#x27;hardwareBackPress&#x27;</span>, onBackPress);</span><br><span class="line">    &#125;, []),</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">      &lt;Text&gt;AndroidBackHandlerScreen&lt;/Text&gt;</span><br><span class="line">    &lt;/View&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在子组件中访问-navigation"><a href="#在子组件中访问-navigation" class="headerlink" title="在子组件中访问 navigation"></a>在子组件中访问 <code>navigation</code></h2><p>我们可以通过 <code>useNavigation()</code> hook 来访问 navigation，再也不用传递多层 <code>navigation</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Button &#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useNavigation &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">GoToButton</span>(<span class="params">&#123; screenName &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> navigation = useNavigation();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Button</span><br><span class="line">      title=&#123;<span class="string">`Go to <span class="subst">$&#123;screenName&#125;</span>`</span>&#125;</span><br><span class="line">      onPress=&#123;<span class="function">() =&gt;</span> navigation.navigate(screenName)&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="给页面传递额外的属性"><a href="#给页面传递额外的属性" class="headerlink" title="给页面传递额外的属性"></a>给页面传递额外的属性</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Stack.Screen</span><br><span class="line">  name=<span class="string">&quot;HomeScreen&quot;</span></span><br><span class="line">  options=&#123;&#123;<span class="attr">headerTitle</span>: <span class="string">&#x27;首页&#x27;</span>&#125;&#125;&gt;</span><br><span class="line">  &#123;<span class="function"><span class="params">props</span> =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">HomeScreen</span> &#123;<span class="attr">...props</span>&#125; <span class="attr">extraData</span>=<span class="string">&#123;&#123;author:</span> &#x27;杨俊宁&#x27;&#125;&#125; /&gt;</span></span>&#125;</span><br><span class="line">&lt;/Stack.Screen&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取-Header-Height"><a href="#获取-Header-Height" class="headerlink" title="获取 Header Height"></a>获取 Header Height</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useHeaderHeight &#125; <span class="keyword">from</span> <span class="string">&#x27;@react-navigation/stack&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> HeaderHeight = useHeaderHeight() <span class="comment">// 获取Header Height</span></span><br><span class="line">    <span class="keyword">return</span>(...)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App</span><br></pre></td></tr></table></figure>
+
+<h2 id="继续使用类组件"><a href="#继续使用类组件" class="headerlink" title="继续使用类组件"></a>继续使用类组件</h2><p>考虑到对于不适应 Hooks 的但是业务又很紧急的场景，我们可以再类组件之上封装一层来支持 React Navigation 的 Hooks 组件，之所以这么做，起因是因为 React Navigation 5 中我们只能通过 <code>useHeaderHeight()</code> 方法获取标题栏高度。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Albums</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">ScrollView</span> <span class="attr">ref</span>=<span class="string">&#123;this.props.scrollRef&#125;</span>&gt;</span>&#123;/* content */&#125;<span class="tag">&lt;/<span class="name">ScrollView</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 封装并导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> ref = React.useRef(<span class="literal">null</span>);</span><br><span class="line">  useScrollToTop(ref);</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Albums</span> &#123;<span class="attr">...props</span>&#125; <span class="attr">scrollRef</span>=<span class="string">&#123;ref&#125;</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/03/初探-Nest-js/" rel="bookmark">初探 Nest.js</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/03/前端规范化开发实践/" rel="bookmark">前端规范化开发实践</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/07/使用-wml-进行模块调试/" rel="bookmark">使用 wml 进行模块调试</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/07/微精通之Vue移动端开发/" rel="bookmark">微精通之Vue移动端开发【持续更新】</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/07/基于-Deno-构建-HTTP-Server-实践指南/" rel="bookmark">基于 Deno 构建 HTTP Server 实践指南</a></div>
+    </li>
+  </ul>
+
+        <div class="reward-container">
+  <div>赞赏是对我最大的支持！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="杨俊宁 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="杨俊宁 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>杨俊宁
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://youngjuning.js.org/2020/02/React%20Navigation%205%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" title="React Navigation 5 最佳实践">http://youngjuning.js.org/2020/02/React Navigation 5 最佳实践/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/xingqiu.png">
+                <span class="icon">
+                  <i class="fa fa-circle-o-notch"></i>
+                </span>
+
+                <span class="label">知识星球</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/wechat_channel.jpeg">
+                <span class="icon">
+                  <i class="fa fa-wechat"></i>
+                </span>
+
+                <span class="label">WeChat</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%8E%98%E9%87%91%E4%B8%93%E6%A0%8F/" rel="tag"><i class="fa fa-tag"></i> 掘金专栏</a>
+              <a href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" rel="tag"><i class="fa fa-tag"></i> 最佳实践</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/%E5%BE%AA%E7%8E%AF%E5%92%8C%E9%97%AD%E5%8C%85/" rel="prev" title="循环和闭包">
+      <i class="fa fa-chevron-left"></i> 循环和闭包
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AANode%20Cli/" rel="next" title="从零开发一个Node Cli">
+      从零开发一个Node Cli <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">1.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#App-js"><span class="nav-number">3.</span> <span class="nav-text">App.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HeaderButtons-js"><span class="nav-number">4.</span> <span class="nav-text">HeaderButtons.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IconWithBadge-js"><span class="nav-number">5.</span> <span class="nav-text">IconWithBadge.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getActiveRouteName-js"><span class="nav-number">6.</span> <span class="nav-text">getActiveRouteName.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getScreenOptions-js"><span class="nav-number">7.</span> <span class="nav-text">getScreenOptions.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NavigationService-js"><span class="nav-number">8.</span> <span class="nav-text">NavigationService.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8EReact-Navigation"><span class="nav-number">9.</span> <span class="nav-text">页面生命周期与React Navigation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Navigation-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%BA%8B%E4%BB%B6"><span class="nav-number">10.</span> <span class="nav-text">React Navigation 生命周期事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#addListener"><span class="nav-number">10.1.</span> <span class="nav-text">addListener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useFocusEffect"><span class="nav-number">10.2.</span> <span class="nav-text">useFocusEffect</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E8%97%8F-Header-TabBar"><span class="nav-number">11.</span> <span class="nav-text">隐藏 Header&#x2F;TabBar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TabBar-%E7%9A%84-StatusBar-%E4%B8%8D%E5%90%8C"><span class="nav-number">12.</span> <span class="nav-text">TabBar 的 StatusBar 不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%91%E5%90%AC%E5%AE%89%E5%8D%93%E7%89%A9%E7%90%86%E8%BF%94%E5%9B%9E%E9%94%AE"><span class="nav-number">13.</span> <span class="nav-text">监听安卓物理返回键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%AD%E8%AE%BF%E9%97%AE-navigation"><span class="nav-number">14.</span> <span class="nav-text">在子组件中访问 navigation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%99%E9%A1%B5%E9%9D%A2%E4%BC%A0%E9%80%92%E9%A2%9D%E5%A4%96%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">15.</span> <span class="nav-text">给页面传递额外的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96-Header-Height"><span class="nav-number">16.</span> <span class="nav-text">获取 Header Height</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E7%BB%AD%E4%BD%BF%E7%94%A8%E7%B1%BB%E7%BB%84%E4%BB%B6"><span class="nav-number">17.</span> <span class="nav-text">继续使用类组件</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="杨俊宁"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">杨俊宁</p>
+  <div class="site-description" itemprop="description">前端工程师、终身学习践行者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5n" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;youngjuning"><i class="fa fa-fw fa-github"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnlvdW5nanVuaW5nQGFsaXl1bi5jb20=" title="E-Mail → mailto:youngjuning@aliyun.com"><i class="fa fa-fw fa-envelope"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20veWFuZ2p1bm5pbmdtYW8=" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yangjunningmao"><i class="fa fa-fw fa-weibo"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy84NTY0NDAzL3lvdW5nanVuaW5n" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;8564403&#x2F;youngjuning"><i class="fa fa-fw fa-stack-overflow"></i></span>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jaGVueXVodS5qcy5vcmcv" title="https:&#x2F;&#x2F;chenyuhu.js.org&#x2F;">陈锋个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9sbHN0YXIuZ2l0aHViLmlvLw==" title="https:&#x2F;&#x2F;llstar.github.io&#x2F;">LLstar的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vR3Jld2VyLw==" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;Grewer&#x2F;">张煜的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9taXJhcmkuY2Mv" title="https:&#x2F;&#x2F;mirari.cc&#x2F;">Mirari's Blog</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨俊宁的博客</span>
+  <span class="post-meta-divider">|</span>
+  <a target="_blank" href="/sitemap.xml" style="border-bottom: 0px"><span style="color: #999;"><i class="fa fa-sitemap"> 站点地图</i></span></a>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">297k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:30</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v5.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.7.1
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e3a8b23db295557" async="async"></script>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script pjax>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes : 0,
+          toolbar  : 0,
+          statusbar: 0,
+          pagemode : 'thumbs',
+          view     : 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://youngjuning.js.org/2020/02/React%20Navigation%205%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/";
+    this.page.identifier = "2020/02/React Navigation 5 最佳实践/";
+    this.page.title = "React Navigation 5 最佳实践";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://youngjuning.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

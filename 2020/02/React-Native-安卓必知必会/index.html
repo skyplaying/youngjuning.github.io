@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="ohZ0A8YKJu755suq7WOIJkLGDfj3BGU4isb8RKI5Cj8">
+  <meta name="baidu-site-verification" content="I63O4XWtSs">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"youngjuning.js.org","root":"/","scheme":"Gemini","version":"7.7.1","exturl":true,"sidebar":{"position":"left","width":310,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="React Native 安卓必知必会">
+<meta property="og:url" content="http://youngjuning.js.org/2020/02/React-Native-%E5%AE%89%E5%8D%93%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">
+<meta property="og:site_name" content="杨俊宁的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/02/21/xUfw9Ib4TRsQGeM.png">
+<meta property="article:published_time" content="2020-02-20T06:57:55.000Z">
+<meta property="article:modified_time" content="2020-02-20T06:57:55.000Z">
+<meta property="article:author" content="杨俊宁">
+<meta property="article:tag" content="安卓">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/02/21/xUfw9Ib4TRsQGeM.png">
+
+<link rel="canonical" href="http://youngjuning.js.org/2020/02/React-Native-%E5%AE%89%E5%8D%93%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>React Native 安卓必知必会 | 杨俊宁的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158205277-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-158205277-1');
+      }
+    </script>
+
+
+  <script pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a1319c6a7cb0e5cc6572a6181c7e949c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="杨俊宁的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨俊宁的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">怕什么真理无穷，进一寸有一寸的欢喜</h1>
+      
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">64</span></a>
+
+  </li>
+        <li class="menu-item menu-item-书单">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+
+  </li>
+        <li class="menu-item menu-item-歌单">
+
+    <a href="/music/" rel="section"><i class="fa fa-fw fa-music"></i>歌单</a>
+
+  </li>
+        <li class="menu-item menu-item-收藏夹">
+
+    <a href="/collections/" rel="section"><i class="fa fa-fw fa-star"></i>收藏夹</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://youngjuning.js.org/2020/02/React-Native-%E5%AE%89%E5%8D%93%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="杨俊宁">
+      <meta itemprop="description" content="前端工程师、终身学习践行者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨俊宁的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          React Native 安卓必知必会<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL3lvdW5nanVuaW5nL3RyZWUvbWFzdGVyL3NvdXJjZS9fcG9zdHMvMjAyMC8wMi9SZWFjdC1OYXRpdmUt5a6J5Y2T5b+F55+l5b+F5LyaLm1k" title="编辑"><i class="fa fa-pencil"></i></span>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-20 14:57:55" itemprop="dateCreated datePublished" datetime="2020-02-20T14:57:55+08:00">2020-02-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hybrid/" itemprop="url" rel="index">
+                    <span itemprop="name">Hybrid</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hybrid/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="https://i.loli.net/2020/02/21/xUfw9Ib4TRsQGeM.png" style="zoom:70%;" />
+
+<a id="more"></a>
+
+<h2 id="配置应用名"><a href="#配置应用名" class="headerlink" title="配置应用名"></a>配置应用名</h2><p>很简单,我们直接打开 <code>android/app/src/main/res/values/strings.xml</code>，即可看到配置中的 <code>app_name</code>，修改为你想要的即可。</p>
+<h2 id="配置图标"><a href="#配置图标" class="headerlink" title="配置图标"></a>配置图标</h2><p>也很简单，在 <code>android\app\src\main\res\mipmap-xxxxxx</code> 中直接覆盖图标就可以，注意图标的大小。</p>
+<h2 id="打包-APK"><a href="#打包-APK" class="headerlink" title="打包 APK"></a>打包 APK</h2><p>1、在项目根目录执行 <code>keytool -genkeypair -v -keystore release.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000</code> 生成密钥文件 <code>release.keystore</code></p>
+<p>2、把 <code>release.keystore</code> 文件放到你工程中的 <code>android/app</code> 文件夹下。</p>
+<p>3、配置 <code>android/app/build.gradle</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">    ...</span><br><span class="line">    signingConfigs &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            <span class="function">storeFile <span class="title">file</span><span class="params">(<span class="string">&quot;release.keystore&quot;</span>)</span></span></span><br><span class="line"><span class="function">            storePassword &quot;****&quot;</span></span><br><span class="line"><span class="function">            keyAlias &quot;my-key-alias&quot;</span></span><br><span class="line"><span class="function">            keyPassword &quot;****&quot;</span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">    ...</span></span><br><span class="line"><span class="function">    buildTypes </span>&#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            ...</span><br><span class="line">            signingConfig signingConfigs.release</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="去除无用的语言资源"><a href="#去除无用的语言资源" class="headerlink" title="去除无用的语言资源"></a>去除无用的语言资源</h3><p>通过配置 <code>android/defaultConfig/resConfigs</code> 可以选择只打包哪几种语言，进而去掉各种 aar 包中全世界的语言，尤其是 support 包中的。</p>
+<p>选择保留什么语言要根据产品的用户和市场来定，如果只选择默认英语和中文语言，配置如下：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line"><span class="addition">+    resConfigs &quot;en&quot;,&quot;zh&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-PackagingOptions"><a href="#配置-PackagingOptions" class="headerlink" title="配置 PackagingOptions"></a>配置 PackagingOptions</h3><p>打开 <code>android/app/build.gradle</code> 文件，添加如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">packagingOptions &#123;</span><br><span class="line">    exclude &#39;META-INF&#x2F;android_release.kotlin_module&#39;</span><br><span class="line">    exclude &#39;META-INF&#x2F;DEPENDENCIES&#39;</span><br><span class="line">    exclude &#39;META-INF&#x2F;LICENSE&#39;</span><br><span class="line">    exclude &#39;META-INF&#x2F;LICENSE.txt&#39;</span><br><span class="line">    exclude &#39;META-INF&#x2F;license.txt&#39;</span><br><span class="line">    exclude &#39;META-INF&#x2F;NOTICE&#39;</span><br><span class="line">    exclude &#39;META-INF&#x2F;NOTICE.txt&#39;</span><br><span class="line">    exclude &#39;META-INF&#x2F;notice.txt&#39;</span><br><span class="line">    exclude &#39;META-INF&#x2F;ASL2.0&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pickFirsts: 当出现重复文件，会使用第一个匹配的文件打包进入 apk</li>
+<li>merges: 当出现重复文件，合并重复的文件打入 apk</li>
+<li>excludes: 打包的时候排除匹配的文件</li>
+</ul>
+<p><strong>参考链接</strong></p>
+<ul>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vRXd0MXhEMg==" title="http://t.cn/Ewt1xD2">PackagingOptions<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vQWlwdU05TGw=" title="http://t.cn/AipuM9Ll">More than one file was found with OS independent path<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vQWlwdU1mY0g=" title="http://t.cn/AipuMfcH">More than one file was found with OS independent path ‘META-INF/LICENSE’<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h3 id="配置-splits"><a href="#配置-splits" class="headerlink" title="配置 splits"></a>配置 splits</h3><blockquote>
+<p>查看手机 CPU 信息：<code>adb shell</code> -&gt; <code>cd /proc</code> -&gt; <code>cat cpuinfo</code></p>
+</blockquote>
+<p>默认情况下，生成的 <code>APK</code> 会同时包含针对于 <code>x86</code> 和 <code>ARMv7a</code> 两种 <code>CPU</code> 架构的原生代码。这样可以让我们更方便的向其他人分享这个 <code>APK</code>，因为它几乎可以运行在所有的 Android 设备上。但是，这会导致所有设备上都有一些根本不会运行的代码，白白占据了空间。目前安卓设备绝大多数是 <code>ARM</code> 架构，因此对于大部分应用来说可以考虑去掉 <code>x86</code> 架构的支持。</p>
+<p>你可以在 <code>android/app/build.gradle</code> 中修改如下代码：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">- include &quot;armeabi-v7a&quot;, &quot;x86&quot;, &quot;arm64-v8a&quot;, &quot;x86_64&quot;</span></span><br><span class="line"><span class="addition">+ include &quot;armeabi-v7a&quot;, &quot;arm64-v8a&quot;</span></span><br><span class="line"><span class="deletion">- def versionCodes = [&quot;armeabi-v7a&quot;:1, &quot;x86&quot;:2, &quot;arm64-v8a&quot;: 3, &quot;x86_64&quot;: 4]</span></span><br><span class="line"><span class="addition">+ def versionCodes = [&quot;armeabi-v7a&quot;:1, &quot;arm64-v8a&quot;: 2]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>abi: Application Binary Interface，针对不同的 <code>CPU</code> 架构生成 <code>APK</code> 以减小 <code>APK</code> 文件的大小</p>
+<ul>
+<li><code>mips/mips64</code>：极少用于手机，出发点是高性能,主要用于路由器、猫。</li>
+<li><code>armeabi</code>：老版本 <code>ARMv5</code>，不支持硬件辅助浮点运算，支持所有的 <code>ARM</code> 设备。</li>
+<li><code>x86</code>/<code>x86_64</code>：<code>x86</code> 架构的手机的市场占有率很低，约为 1%左右。而且 <code>x86</code> 架构都包含 <code>ARM</code> 模拟层，兼容 <code>ARM</code> 类型的 <code>ABI</code>。注意，模拟器为 <code>x86</code> 架构。</li>
+<li><code>arm64-v8a</code>：64 位 <code>ARM</code> 架构。可用 32 位模式运行 <code>armeabi-v7a</code> 和 <code>armeabi</code>。（所谓的 <code>ARMv8</code> 架构，就是在 <code>MIPS64</code> 架构上增加了 <code>ARMv7</code> 架构中已经拥有的的 <code>TrustZone</code> 技术、虚拟化技术及 <code>NEON advanced SIMD</code> 技术等特性，研发成的）</li>
+<li><code>armeabi-v7a</code>：主流版本 <code>AMRv7</code>，2011 年 15 月以后的生产的大部分 Android 设备都使用它。</li>
+</ul>
+</li>
+<li><p>density: 针对不同的分辨率生成 <code>APK</code> 以减小 <code>APK</code> 文件的大小</p>
+</li>
+</ul>
+<h3 id="Failed-to-read-PNG-signature-file-does-not-start-with-PNG-signature"><a href="#Failed-to-read-PNG-signature-file-does-not-start-with-PNG-signature" class="headerlink" title="Failed to read PNG signature: file does not start with PNG signature"></a>Failed to read PNG signature: file does not start with PNG signature</h3><p>有时从网上下载的 Demo 资源文件不规范，会出现直接将 jpg 文件改为 png 后缀名的情况，gradle 打包检查时报错编译通不过的。我们通过 <code>aaptOptions.cruncherEnabled=false</code> 来禁止 Gradle 检查 png 的合法性：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">  aaptOptions &#123;</span><br><span class="line">    cruncherEnabled=false</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-dexOptions-javaMaxHeapSize"><a href="#配置-dexOptions-javaMaxHeapSize" class="headerlink" title="配置 dexOptions.javaMaxHeapSize"></a>配置 dexOptions.javaMaxHeapSize</h3><blockquote>
+<p>android studio 需要较大的内存才能正常编译项目，主要解决这个警告：<span class="exturl" data-url="aHR0cDovL3QuY24vRVpjVER0Vg==" title="http://t.cn/EZcTDtV">com.android.build.api.transform.TransformException<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<p>在 <code>android\gradle.properties</code> 中加入以下配置：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+ dexOptions.javaMaxHeapSize = 2g</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="gradle-优化配置"><a href="#gradle-优化配置" class="headerlink" title="gradle 优化配置"></a>gradle 优化配置</h3><p>在 <code>android\gradle.properties</code> 中加入以下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 让gradle使用单独的守护进程</span><br><span class="line">org.gradle.daemon&#x3D;true</span><br><span class="line"># 让gradle并行编译</span><br><span class="line">org.gradle.parallel&#x3D;true</span><br><span class="line"># 让gradle在需要的时候才配置</span><br><span class="line">org.gradle.configureondemand&#x3D;true</span><br><span class="line"># 增加gradle运行的java虚拟机的大小</span><br><span class="line">org.gradle.jvmargs&#x3D;-Xmx3072m -XX:MaxPermSize&#x3D;1024m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding&#x3D;UTF-8</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置方法数超过-64K-的应用"><a href="#配置方法数超过-64K-的应用" class="headerlink" title="配置方法数超过 64K 的应用"></a>配置方法数超过 64K 的应用</h3><p>随着 Android 平台的持续成长，Android 应用的大小也在增加。当您的应用及其引用的库达到特定大小时，您会遇到构建错误，指明您的应用已达到 Android 应用构建架构的极限。会报告这一错误：</p>
+<blockquote>
+<p>The number of method references in a .dex file cannot exceed 64K.</p>
+</blockquote>
+<p>解决办法是配置您的应用进行 Dalvik 可执行文件分包，在 <code>android/app/build.gradle</code> 中做下面的配置：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line"><span class="addition">+    multiDexEnabled true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="BuildConfig"><a href="#BuildConfig" class="headerlink" title="BuildConfig"></a>BuildConfig</h2><blockquote>
+<p>在 react-native 中，我们可以借助 react-native-config-reader 来方便地读取这些属性</p>
+</blockquote>
+<p>BuildConfig 是程序编译后，根据 buildType 生成在 <code>app\build\generated\source\buildConfig\debug(release)\</code> 包名下的一个 java 文件。默认有一下属性：</p>
+<ul>
+<li>DEBUG：是否是调试版本</li>
+<li>APPLICATION_ID：当前应用的包名</li>
+<li>FLAVOR：产品（渠道包的名称）</li>
+<li>BUILD_TYPE：当前的编译类型(release/debug)</li>
+<li>VERSION_CODE：版本号(数字)</li>
+<li>VERSION_NAME：版本号</li>
+</ul>
+<h3 id="自定义-BuildConfig"><a href="#自定义-BuildConfig" class="headerlink" title="自定义 BuildConfig"></a>自定义 BuildConfig</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line">  <span class="comment">// 三个参数: 1.要定义的常量的类型 2.该常量的命名 3.该常量的值</span></span><br><span class="line">  <span class="comment">// APP_NAME，对应 ios 的 CFBundleDisplayName</span></span><br><span class="line">  buildConfigField <span class="string">&quot;String&quot;</span>, <span class="string">&quot;APP_NAME&quot;</span>, <span class="string">&#x27;&quot;我是谁&quot;&#x27;</span></span><br><span class="line">  <span class="comment">// BUILD_TIME</span></span><br><span class="line">  buildConfigField <span class="string">&quot;String&quot;</span>, <span class="string">&quot;BUILD_TIME&quot;</span>, <span class="string">&#x27;&quot;&#x27;</span> + <span class="keyword">new</span> Date().format(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>, TimeZone.getTimeZone(<span class="string">&quot;Asia/Shanghai&quot;</span>)) + <span class="string">&#x27;&quot;&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在子模块中取主项目的-BuildConfig"><a href="#在子模块中取主项目的-BuildConfig" class="headerlink" title="在子模块中取主项目的 BuildConfig"></a>在子模块中取主项目的 BuildConfig</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getBuildConfigValue</span><span class="params">(Context context, String fieldName)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    Class&lt;?&gt; clazz = Class.forName(context.getPackageName() + <span class="string">&quot;.BuildConfig&quot;</span>);</span><br><span class="line">    Field field = clazz.getField(fieldName);</span><br><span class="line">    <span class="keyword">return</span> field.get(<span class="keyword">null</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">String versionName = (String)getBuildConfigValue(activity, <span class="string">&quot;VERSION_NAME&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC8zZDliMjNhZmU1MTQ=" title="https://www.jianshu.com/p/3d9b23afe514">BuildConfig 与 build.gradle 的关系<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC8yNzRjOWQ5NWNmNzY=" title="https://www.jianshu.com/p/274c9d95cf76">Gradle 之 BuildConfig 自定义常量<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h2 id="解决在-Android-P-上的提醒弹窗-（Detected-problems-with-API-compatibility-visit-g-co-dev-appcompat-for-more-info"><a href="#解决在-Android-P-上的提醒弹窗-（Detected-problems-with-API-compatibility-visit-g-co-dev-appcompat-for-more-info" class="headerlink" title="解决在 Android P 上的提醒弹窗 （Detected problems with API compatibility(visit g.co/dev/appcompat for more info)"></a>解决在 Android P 上的提醒弹窗 （Detected problems with API compatibility(visit g.co/dev/appcompat for more info)</h2><p>在 <code>MainActivity.java</code> 中添加 closeAndroidPDialog 方法并在 <code>onCreate</code> 方法中调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line">...</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">  closeAndroidPDialog(); <span class="comment">// here</span></span><br><span class="line">  <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">closeAndroidPDialog</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    Class aClass = Class.forName(<span class="string">&quot;android.content.pm.PackageParser$Package&quot;</span>);</span><br><span class="line">    Constructor declaredConstructor = aClass.getDeclaredConstructor(String.class);</span><br><span class="line">    declaredConstructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    Class cls = Class.forName(<span class="string">&quot;android.app.ActivityThread&quot;</span>);</span><br><span class="line">    Method declaredMethod = cls.getDeclaredMethod(<span class="string">&quot;currentActivityThread&quot;</span>);</span><br><span class="line">    declaredMethod.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">    Object activityThread = declaredMethod.invoke(<span class="keyword">null</span>);</span><br><span class="line">    Field mHiddenApiWarningShown = cls.getDeclaredField(<span class="string">&quot;mHiddenApiWarningShown&quot;</span>);</span><br><span class="line">    mHiddenApiWarningShown.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">    mHiddenApiWarningShown.setBoolean(activityThread, <span class="keyword">true</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="闪屏图尺寸"><a href="#闪屏图尺寸" class="headerlink" title="闪屏图尺寸"></a>闪屏图尺寸</h2><ul>
+<li>mdpi：320x480</li>
+<li>hdpi：480x800</li>
+<li>xhdpi：720x1280</li>
+<li>xxhdpi：1080x1920</li>
+<li>xxxhdpi：2160x3840</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+      
+
+        <div class="reward-container">
+  <div>赞赏是对我最大的支持！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="杨俊宁 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="杨俊宁 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>杨俊宁
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://youngjuning.js.org/2020/02/React-Native-%E5%AE%89%E5%8D%93%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" title="React Native 安卓必知必会">http://youngjuning.js.org/2020/02/React-Native-安卓必知必会/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/xingqiu.png">
+                <span class="icon">
+                  <i class="fa fa-circle-o-notch"></i>
+                </span>
+
+                <span class="label">知识星球</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/wechat_channel.jpeg">
+                <span class="icon">
+                  <i class="fa fa-wechat"></i>
+                </span>
+
+                <span class="label">WeChat</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%AE%89%E5%8D%93/" rel="tag"><i class="fa fa-tag"></i> 安卓</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81%E4%B9%8B%E6%89%8B%E5%86%99bind/" rel="prev" title="手写代码之手写bind">
+      <i class="fa fa-chevron-left"></i> 手写代码之手写bind
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/React-Native-%E9%85%8D%E7%BD%AE%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F%E4%B8%8D%E9%9A%8F%E5%AD%97%E4%BD%93%E8%AE%BE%E7%BD%AE%E5%8F%98%E5%8C%96/" rel="next" title="React Native 配置字体大小不随字体设置变化">
+      React Native 配置字体大小不随字体设置变化 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%BA%94%E7%94%A8%E5%90%8D"><span class="nav-number">1.</span> <span class="nav-text">配置应用名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%9B%BE%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">配置图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%8C%85-APK"><span class="nav-number">3.</span> <span class="nav-text">打包 APK</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E9%99%A4%E6%97%A0%E7%94%A8%E7%9A%84%E8%AF%AD%E8%A8%80%E8%B5%84%E6%BA%90"><span class="nav-number">3.1.</span> <span class="nav-text">去除无用的语言资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-PackagingOptions"><span class="nav-number">3.2.</span> <span class="nav-text">配置 PackagingOptions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-splits"><span class="nav-number">3.3.</span> <span class="nav-text">配置 splits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Failed-to-read-PNG-signature-file-does-not-start-with-PNG-signature"><span class="nav-number">3.4.</span> <span class="nav-text">Failed to read PNG signature: file does not start with PNG signature</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-dexOptions-javaMaxHeapSize"><span class="nav-number">3.5.</span> <span class="nav-text">配置 dexOptions.javaMaxHeapSize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gradle-%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-number">3.6.</span> <span class="nav-text">gradle 优化配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95%E6%95%B0%E8%B6%85%E8%BF%87-64K-%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">3.7.</span> <span class="nav-text">配置方法数超过 64K 的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BuildConfig"><span class="nav-number">4.</span> <span class="nav-text">BuildConfig</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89-BuildConfig"><span class="nav-number">4.1.</span> <span class="nav-text">自定义 BuildConfig</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%AD%90%E6%A8%A1%E5%9D%97%E4%B8%AD%E5%8F%96%E4%B8%BB%E9%A1%B9%E7%9B%AE%E7%9A%84-BuildConfig"><span class="nav-number">4.2.</span> <span class="nav-text">在子模块中取主项目的 BuildConfig</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%9C%A8-Android-P-%E4%B8%8A%E7%9A%84%E6%8F%90%E9%86%92%E5%BC%B9%E7%AA%97-%EF%BC%88Detected-problems-with-API-compatibility-visit-g-co-dev-appcompat-for-more-info"><span class="nav-number">5.</span> <span class="nav-text">解决在 Android P 上的提醒弹窗 （Detected problems with API compatibility(visit g.co&#x2F;dev&#x2F;appcompat for more info)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AA%E5%B1%8F%E5%9B%BE%E5%B0%BA%E5%AF%B8"><span class="nav-number">6.</span> <span class="nav-text">闪屏图尺寸</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="杨俊宁"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">杨俊宁</p>
+  <div class="site-description" itemprop="description">前端工程师、终身学习践行者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5n" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;youngjuning"><i class="fa fa-fw fa-github"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnlvdW5nanVuaW5nQGFsaXl1bi5jb20=" title="E-Mail → mailto:youngjuning@aliyun.com"><i class="fa fa-fw fa-envelope"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20veWFuZ2p1bm5pbmdtYW8=" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yangjunningmao"><i class="fa fa-fw fa-weibo"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy84NTY0NDAzL3lvdW5nanVuaW5n" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;8564403&#x2F;youngjuning"><i class="fa fa-fw fa-stack-overflow"></i></span>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jaGVueXVodS5qcy5vcmcv" title="https:&#x2F;&#x2F;chenyuhu.js.org&#x2F;">陈锋个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9sbHN0YXIuZ2l0aHViLmlvLw==" title="https:&#x2F;&#x2F;llstar.github.io&#x2F;">LLstar的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vR3Jld2VyLw==" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;Grewer&#x2F;">张煜的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9taXJhcmkuY2Mv" title="https:&#x2F;&#x2F;mirari.cc&#x2F;">Mirari's Blog</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨俊宁的博客</span>
+  <span class="post-meta-divider">|</span>
+  <a target="_blank" href="/sitemap.xml" style="border-bottom: 0px"><span style="color: #999;"><i class="fa fa-sitemap"> 站点地图</i></span></a>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">297k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:30</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v5.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.7.1
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e3a8b23db295557" async="async"></script>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script pjax>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes : 0,
+          toolbar  : 0,
+          statusbar: 0,
+          pagemode : 'thumbs',
+          view     : 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://youngjuning.js.org/2020/02/React-Native-%E5%AE%89%E5%8D%93%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/";
+    this.page.identifier = "2020/02/React-Native-安卓必知必会/";
+    this.page.title = "React Native 安卓必知必会";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://youngjuning.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

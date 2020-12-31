@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="ohZ0A8YKJu755suq7WOIJkLGDfj3BGU4isb8RKI5Cj8">
+  <meta name="baidu-site-verification" content="I63O4XWtSs">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"youngjuning.js.org","root":"/","scheme":"Gemini","version":"7.7.1","exturl":true,"sidebar":{"position":"left","width":310,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="React Native 收藏夹">
+<meta property="og:url" content="http://youngjuning.js.org/2020/02/React%20Native%20%E6%94%B6%E8%97%8F%E5%A4%B9/">
+<meta property="og:site_name" content="杨俊宁的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/02/19/6Vnx84tSCOP2XcE.jpg">
+<meta property="article:published_time" content="2020-02-14T07:36:00.000Z">
+<meta property="article:modified_time" content="2020-02-14T07:36:00.000Z">
+<meta property="article:author" content="杨俊宁">
+<meta property="article:tag" content="收藏夹">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/02/19/6Vnx84tSCOP2XcE.jpg">
+
+<link rel="canonical" href="http://youngjuning.js.org/2020/02/React%20Native%20%E6%94%B6%E8%97%8F%E5%A4%B9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>React Native 收藏夹 | 杨俊宁的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158205277-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-158205277-1');
+      }
+    </script>
+
+
+  <script pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a1319c6a7cb0e5cc6572a6181c7e949c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="杨俊宁的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨俊宁的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">怕什么真理无穷，进一寸有一寸的欢喜</h1>
+      
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">64</span></a>
+
+  </li>
+        <li class="menu-item menu-item-书单">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+
+  </li>
+        <li class="menu-item menu-item-歌单">
+
+    <a href="/music/" rel="section"><i class="fa fa-fw fa-music"></i>歌单</a>
+
+  </li>
+        <li class="menu-item menu-item-收藏夹">
+
+    <a href="/collections/" rel="section"><i class="fa fa-fw fa-star"></i>收藏夹</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://youngjuning.js.org/2020/02/React%20Native%20%E6%94%B6%E8%97%8F%E5%A4%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="杨俊宁">
+      <meta itemprop="description" content="前端工程师、终身学习践行者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨俊宁的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          React Native 收藏夹<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL3lvdW5nanVuaW5nL3RyZWUvbWFzdGVyL3NvdXJjZS9fcG9zdHMvMjAyMC8wMi9SZWFjdCBOYXRpdmUg5pS26JeP5aS5Lm1k" title="编辑"><i class="fa fa-pencil"></i></span>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-14 15:36:00" itemprop="dateCreated datePublished" datetime="2020-02-14T15:36:00+08:00">2020-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hybrid/" itemprop="url" rel="index">
+                    <span itemprop="name">Hybrid</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hybrid/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="https://i.loli.net/2020/02/19/6Vnx84tSCOP2XcE.jpg" style="zoom:50%;" />
+
+<a id="more"></a>
+
+<h2 id="官方"><a href="#官方" class="headerlink" title="官方"></a>官方</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvY2xpLw==" title="https://github.com/react-native-community/cli/">@react-native-community/cli<i class="fa fa-external-link"></i></span>: Command line tools that ship with react-native</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9yZWFjdC1uYXRpdmUtY29tbXVuaXR5LmdpdGh1Yi5pby91cGdyYWRlLWhlbHBlci8=" title="https://react-native-community.github.io/upgrade-helper/">React Native upgrade helper<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9yZWFjdC1uYXZpZ2F0aW9uLmNhbm55Lmlv" title="https://react-navigation.canny.io">React Navigation FeedBack<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZhY2Vib29rL21ldHJv" title="https://github.com/facebook/metro">metro<i class="fa fa-external-link"></i></span>:  🚇 The JavaScript bundler for React Native</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9mYmZsaXBwZXIuY29tLw==" title="https://fbflipper.com/">Flipper<i class="fa fa-external-link"></i></span>: Extensible mobile app debugger</li>
+</ul>
+<h2 id="必备"><a href="#必备" class="headerlink" title="必备"></a>必备</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FudC1kZXNpZ24vYW50LWRlc2lnbi1tb2JpbGUtcm4=" title="https://github.com/ant-design/ant-design-mobile-rn">ant-design/ant-design-mobile-rn<i class="fa fa-external-link"></i></span>: Ant Design for React Native</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9yZWFjdG5hdmlnYXRpb24ub3JnL3poLUhhbnMv" title="https://reactnavigation.org/zh-Hans/">react-navigation<i class="fa fa-external-link"></i></span>: React Native 应用程序的路由和导航</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01pY3Jvc29mdC9yZWFjdC1uYXRpdmUtY29kZS1wdXNo" title="https://github.com/Microsoft/react-native-code-push">react-native-code-push<i class="fa fa-external-link"></i></span> React Native module for CodePush<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3N0cmF3ZmVycnkvQ29kZVB1c2hEaWFsb2c=" title="https://github.com/strawferry/CodePushDialog">react-native-code-push-dialog<i class="fa fa-external-link"></i></span></li>
+</ul>
+</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vUk04R2c3cQ==" title="http://t.cn/RM8Gg7q">react-native-splash-screen<i class="fa fa-external-link"></i></span>): React Native 启动屏，解决 iOS，Android 启动白屏问题，支持 Android 和 iOS</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2phc29ubWVyaW5vL3JlYWN0LW5hdGl2ZS1zaW1wbGUtc3RvcmU=" title="https://github.com/jasonmerino/react-native-simple-store">react-native-simple-store<i class="fa fa-external-link"></i></span>: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2phc29ubWVyaW5vL3JlYWN0LW5hdGl2ZS1zaW1wbGUtc3RvcmU=" title="https://github.com/jasonmerino/react-native-simple-store">https://github.com/jasonmerino/react-native-simple-store<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLWRldmljZS1pbmZv" title="https://github.com/react-native-community/react-native-device-info">react-native-device-info<i class="fa fa-external-link"></i></span>: Device Information for React Native iOS and Android</li>
+</ul>
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcmMtZm9ybQ==" title="https://www.npmjs.com/package/rc-form">rc-form<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcmVhY3QtbmF0aXZlLXZhbGlkYXRvcg==" title="https://www.npmjs.com/package/react-native-validator">react-native-validator<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcmVhY3QtbmF0aXZlLWNvbmZpcm1hdGlvbi1jb2RlLWZpZWxk" title="https://www.npmjs.com/package/react-native-confirmation-code-field">react-native-confirmation-code-field<i class="fa fa-external-link"></i></span>: A react-native confirmation code field compatible with iOS, Android</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hhbGlsYi9yZWFjdC1uYXRpdmUtdGV4dGlucHV0LWVmZmVjdHM=" title="https://github.com/halilb/react-native-textinput-effects">react-native-textinput-effects<i class="fa fa-external-link"></i></span>: Text inputs with custom label and icon animations for iOS and android. Built with react native and inspired by Codrops.</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcmVhY3QtbmF0aXZlLWhpZGUtc2hvdy1wYXNzd29yZC1pbnB1dA==" title="https://www.npmjs.com/package/react-native-hide-show-password-input">react-native-hide-show-password-input<i class="fa fa-external-link"></i></span>: React Native Hide Show Password InputText Component</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLWRhdGV0aW1lcGlja2Vy" title="https://github.com/react-native-community/react-native-datetimepicker">react-native-community/react-native-datetimepicker<i class="fa fa-external-link"></i></span>: React Native date &amp; time picker component for iOS and Android</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3VtaGFuMzUvcmVhY3QtbmF0aXZlLXNlYXJjaC1iYXI=" title="https://github.com/umhan35/react-native-search-bar">react-native-search-bar<i class="fa fa-external-link"></i></span>: The high-quality iOS native search bar for react native.</li>
+</ul>
+<h2 id="动画-手势-进度"><a href="#动画-手势-进度" class="headerlink" title="动画/手势/进度"></a>动画/手势/进度</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ibGFkb3IvcmVhY3QtbmF0aXZlLWFuaW1hdGFibGU=" title="https://github.com/oblador/react-native-animatable">react-native-animatable<i class="fa fa-external-link"></i></span>: React Native 标准易用的动画集和声明性过渡</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvbG90dGllLXJlYWN0LW5hdGl2ZQ==" title="https://github.com/react-native-community/lottie-react-native">lottie-react-native<i class="fa fa-external-link"></i></span>: Lottie wrapper for React Native</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vUnNZQU05Ng==" title="http://t.cn/RsYAM96">react-native-linear-gradient<i class="fa fa-external-link"></i></span>: A <code>&lt;LinearGradient&gt;</code> component for react-native</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vQWlLTUxXTnk=" title="http://t.cn/AiKMLWNy">react-native-gesture-handler<i class="fa fa-external-link"></i></span>: 声明性 API 将平台原生触摸和手势系统暴露给 React Native</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vQWlDNEg1bDM=" title="http://t.cn/AiC4H5l3">react-native-spinkit<i class="fa fa-external-link"></i></span>: React Native 的动画加载指示符集合</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ibGFkb3IvcmVhY3QtbmF0aXZlLXByb2dyZXNz" title="https://github.com/oblador/react-native-progress">react-native-progress<i class="fa fa-external-link"></i></span>: Progress indicators and spinners for React Native using ReactART</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ibGFkb3IvcmVhY3QtbmF0aXZlLWltYWdlLXByb2dyZXNz" title="https://github.com/oblador/react-native-image-progress">react-native-image-progress<i class="fa fa-external-link"></i></span>:     Progress indicator for networked images in React Native</li>
+</ul>
+<h2 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RvbUxhZGRlci9yZWFjdC1uYXRpdmUtZWNoYXJ0cy13cmFwcGVy" title="https://github.com/tomLadder/react-native-echarts-wrapper">react-native-echarts-wrapper<i class="fa fa-external-link"></i></span>: ECharts Wrapper for React Native</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2F2aXNoYXlpbC9yZWFjdC1uYXRpdmUtdXNlci1hdmF0YXI=" title="https://github.com/avishayil/react-native-user-avatar">react-native-user-avatar<i class="fa fa-external-link"></i></span>: React Native 的头像组件</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcmVhY3QtbmF0aXZlLWljb24tYmFkZ2U=" title="https://www.npmjs.com/package/react-native-icon-badge">react-native-icon-badge<i class="fa fa-external-link"></i></span>: Icon badge is used to create icon badge on some element, such as avatar, icon, image…</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcmVhY3QtbmF0aXZlLXNpZ25hdHVyZS1jYXB0dXJl" title="https://www.npmjs.com/package/react-native-signature-capture">react-native-signature-capture<i class="fa fa-external-link"></i></span>: React Native library for capturing signature</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vQWlDNFRnY3c=" title="http://t.cn/AiC4Tgcw">@react-native-community/blur<i class="fa fa-external-link"></i></span>: React Native Blur component</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLXZpZXdwYWdlcg==" title="https://github.com/react-native-community/react-native-viewpager">react-native-viewpager<i class="fa fa-external-link"></i></span>: This component allows the user to swipe left and right through pages of data</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vQWk5WVU1UU0=" title="http://t.cn/Ai9YU5QM">react-native-looped-carousel<i class="fa fa-external-link"></i></span>: 🎠ReactNative 的循环旋转木马</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vQWk5WXliWjY=" title="http://t.cn/Ai9YybZ6">react-native-snap-carousel<i class="fa fa-external-link"></i></span>: deck、layout、parallax images</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vQWk5WTRxWjA=" title="http://t.cn/Ai9Y4qZ0">react-native-app-intro-slider<i class="fa fa-external-link"></i></span>: Easy-to-use yet very configurable app introduction slider/swiper based on FlatList</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2JvbGFuOTk5OS9yZWFjdC1uYXRpdmUtbGFyZ2VsaXN0" title="https://github.com/bolan9999/react-native-largelist">react-native-largelist <i class="fa fa-external-link"></i></span>: The best large list component for React Native.</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1NwaWtlZi9yZWFjdC1uYXRpdmUtZ2VzdHVyZS1wYXNzd29yZA==" title="https://github.com/Spikef/react-native-gesture-password">react-native-gesture-password<i class="fa fa-external-link"></i></span>: 一个React Native的手势密码组件，纯JavaScript实现，因此同时支持iOS、安卓和Web平台。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2k2bWk2L3JlYWN0LW5hdGl2ZS1wYXJhbGxheC1zY3JvbGwtdmlldw==" title="https://github.com/i6mi6/react-native-parallax-scroll-view">react-native-parallax-scroll-view<i class="fa fa-external-link"></i></span>: A ScrollView-like component with parallax and sticky header support.</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vRUlKUU5CUw==" title="http://t.cn/EIJQNBS">react-native-loading-spinner-overlay<i class="fa fa-external-link"></i></span>: React Native Loading Spinner Overlay</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NyYXp5Y29kZWJveS9yZWFjdC1uYXRpdmUtZWFzeS10b2FzdA==" title="https://github.com/crazycodeboy/react-native-easy-toast">react-native-easy-toast<i class="fa fa-external-link"></i></span>: A react native module to show toast like android, it works on iOS and Android.</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2plYW5yZWdpc3Nlci9yZWFjdC1uYXRpdmUtcG9wb3Zlcg==" title="https://github.com/jeanregisser/react-native-popover">react-native-popover<i class="fa fa-external-link"></i></span>: A <code>&lt;Popover /&gt;</code> component for react-native</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vcmVub2gxNDkvcmVhY3QtbmF0aXZlLWNvbnRhY3Rz" title="https://github.com/morenoh149/react-native-contacts">react-native-contacts<i class="fa fa-external-link"></i></span>: 通讯录</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2plYW5yZWdpc3Nlci9yZWFjdC1uYXRpdmUtc2xpZGVy" title="https://github.com/jeanregisser/react-native-slider">react-native-slider<i class="fa fa-external-link"></i></span>: React Native 的纯 JavaScript Slider 组件</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RlYW5tY3BoZXJzb24vcmVhY3QtbmF0aXZlLXNvcnRhYmxlLWxpc3R2aWV3" title="https://github.com/deanmcpherson/react-native-sortable-listview">react-native-sortable-listview<i class="fa fa-external-link"></i></span>: Drag drop capable wrapper of ListView for React Native</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FsZXhicmlsbGFudC9yZWFjdC1uYXRpdmUtZGVjay1zd2lwZXI=" title="https://github.com/alexbrillant/react-native-deck-swiper">react-native-deck-swiper<i class="fa fa-external-link"></i></span>: react-native deck swiper</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1doZWVsZXJMZWUvcmVhY3QtbmF0aXZlLWRyb3Bkb3duLW1lbnU=" title="https://github.com/WheelerLee/react-native-dropdown-menu">react-native-dropdown-menu<i class="fa fa-external-link"></i></span>: 易于使用的 React Native 下拉菜单组件</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dpdGltL3JlYWN0LW5hdGl2ZS1zb3J0YWJsZS1saXN0" title="https://github.com/gitim/react-native-sortable-list">react-native-sortable-list<i class="fa fa-external-link"></i></span>: React Native Sortable List component</li>
+</ul>
+<h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><ul>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vQWlDbDVIVHc=" title="http://t.cn/AiCl5HTw">react-native-app-shortcuts<i class="fa fa-external-link"></i></span>: 用于在 React Native 中创建 Android App 快捷方式的库</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vQWlDNXVUaVA=" title="http://t.cn/AiC5uTiP">react-native-push-notification<i class="fa fa-external-link"></i></span>: React Native Local and Remote Notifications</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2pvcmRhbmJ5cm9uL3JlYWN0LW5hdGl2ZS1xdWljay1hY3Rpb25z" title="https://github.com/jordanbyron/react-native-quick-actions">react-native-quick-actions<i class="fa fa-external-link"></i></span>: A react-native interface for Touch 3D home screen quick actions</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vUnNZQXVNQQ==" title="http://t.cn/RsYAuMA">react-native-orientation<i class="fa fa-external-link"></i></span>: 在 react-native 中监听设备方向更改</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLXBlcm1pc3Npb25z" title="https://github.com/react-native-community/react-native-permissions">react-native-permissions<i class="fa fa-external-link"></i></span>:    An unified permissions API for React Native on iOS and Android</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RvdWdsYXNqdW5pb3IvcmVhY3QtbmF0aXZlLWtleWJvYXJkLW1hbmFnZXI=" title="https://github.com/douglasjunior/react-native-keyboard-manager">react-native-keyboard-manager<i class="fa fa-external-link"></i></span>: ⚛ Library to prevent issues of keyboard sliding up and cover inputs on React-Native iOS projects.</li>
+</ul>
+<h2 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h2><ul>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vUmNxdk45eg==" title="http://t.cn/RcqvN9z">react-native-image-crop-picker<i class="fa fa-external-link"></i></span>: iOS/Android image picker with support for camera, video, configurable compression, multiple images and cropping</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2h1YW5nenVpenVpL3JlYWN0LW5hdGl2ZS1maWxlLW9wZW5lcg==" title="https://github.com/huangzuizui/react-native-file-opener">react-native-file-opener<i class="fa fa-external-link"></i></span>: A React Native module that allows you to open a file (mp3, mp4, pdf, word, excel, dwg etc.) on your device with its default application</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLWF1ZGlvLXRvb2xraXQ=" title="https://github.com/react-native-community/react-native-audio-toolkit">react-native-audio-toolkit<i class="fa fa-external-link"></i></span>: Cross-platform audio library for React Native</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLXZpZGVv" title="https://github.com/react-native-community/react-native-video">react-native-video<i class="fa fa-external-link"></i></span>: A Video component for react-native</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0LW5hdGl2ZS1jb21tdW5pdHkvcmVhY3QtbmF0aXZlLWNhbWVyYQ==" title="https://github.com/react-native-community/react-native-camera">react-native-camera<i class="fa fa-external-link"></i></span>: A Camera component for React Native. Also supports barcode scanning!</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0R5bGFuVmFubi9yZWFjdC1uYXRpdmUtZmFzdC1pbWFnZQ==" title="https://github.com/DylanVann/react-native-fast-image">react-native-fast-image<i class="fa fa-external-link"></i></span>:     🚩 FastImage, performant React Native image component.</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoYWhlbjk0L3JlYWN0LW5hdGl2ZS12aWRlby1wcm9jZXNzaW5n" title="https://github.com/shahen94/react-native-video-processing">react-native-video-processing<i class="fa fa-external-link"></i></span>: React Native 的原生视频编辑/修剪/压缩 🎥 库</li>
+</ul>
+<h2 id="Utils"><a href="#Utils" class="headerlink" title="Utils"></a>Utils</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3B0ZWxhZC9yZWFjdC1uYXRpdmUtaXBob25lLXgtaGVscGVy" title="https://github.com/ptelad/react-native-iphone-x-helper">react-native-iphone-x-helper<i class="fa fa-external-link"></i></span>: A library to help you design your react-native app for the iPhone X, XS, XS Max &amp; XR</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ibGFkb3IvcmVhY3QtbmF0aXZlLWtleWNoYWlu" title="https://github.com/oblador/react-native-keychain">react-native-keychain<i class="fa fa-external-link"></i></span>: 🔑 Keychain Access for React Native</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2pvc2hzd2FuL3JlYWN0LW5hdGl2ZS1nbG9iYWxpemU=" title="https://github.com/joshswan/react-native-globalize">react-native-globalize<i class="fa fa-external-link"></i></span>: 国际化</li>
+</ul>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0pvbm55QnVyZ2VyL25weC12aXN1YWxpemUtYnVuZGxl" title="https://github.com/JonnyBurger/npx-visualize-bundle">visualize-bundle<i class="fa fa-external-link"></i></span>: <code>npx visualize-bundle</code> allows you to inspect your React Native bundle in just one command and to diagnose big modules.</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NtYWxsbmV3L3JlYWN0LW5hdGl2ZS1tdWx0aWJ1bmRsZXI=" title="https://github.com/smallnew/react-native-multibundler">react-native-multibundler<i class="fa fa-external-link"></i></span>: react native 可视化 bundle 拆包，支持官方的 0.57~0.59 版本，使用官方的 metro 拆包，适用于 Android、iOS</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Nod2VuemhhbmcvQW5kUmVzR3VhcmQ=" title="https://github.com/shwenzhang/AndResGuard">AndResGuard<i class="fa fa-external-link"></i></span>: Android 资源混淆工具</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NreWxvdC9qYWR4" title="https://github.com/skylot/jadx">jadx<i class="fa fa-external-link"></i></span>: 反编译工具</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zyb3N0bmV5L3JlYWN0LW5hdGl2ZS1jcmVhdGUtbGlicmFyeQ==" title="https://github.com/frostney/react-native-create-library">react-native-create-library<i class="fa fa-external-link"></i></span>: 📓 Command line tool to create a React Native library with a single command</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vUmswbzJlbQ==" title="http://t.cn/Rk0o2em">lisong/code-push-server<i class="fa fa-external-link"></i></span>: 自建 code-push 服务器</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3dpeC93bWw=" title="https://github.com/wix/wml">wml<i class="fa fa-external-link"></i></span>: 符号链接的替代方法，它实际上将已更改的文件从源文件夹复制到目标文件夹</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ldGhlcmNyZWF0aXZlLmdpdGh1Yi5pby9yZWFjdC1uYXRpdmUtc2hhZG93LWdlbmVyYXRvci8=" title="https://ethercreative.github.io/react-native-shadow-generator/">react-native-shadow-generator<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NhbGxzdGFjay9yZWFjdC1uYXRpdmUtYnVpbGRlci1ib2I=" title="https://github.com/callstack/react-native-builder-bob">react-native-builder-bob<i class="fa fa-external-link"></i></span>: 👷‍♂️ Simple CLI to scaffold and build React Native libraries for different targets.</li>
+</ul>
+<h2 id="第三方SDK"><a href="#第三方SDK" class="headerlink" title="第三方SDK"></a>第三方SDK</h2><ul>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vUklQTk9kNQ==" title="http://t.cn/RIPNOd5">jpush-react-native<i class="fa fa-external-link"></i></span>: 极光推送官方支持的 React Native 插件</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Npc2h1Z3Vvaml4dWVmdS9yZWFjdC1uYXRpdmUtcWluaXU=" title="https://github.com/sishuguojixuefu/react-native-qiniu">react-native-qiniu<i class="fa fa-external-link"></i></span>: react-native-qiniu</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vRTlXMVJoTQ==" title="http://t.cn/E9W1RhM">react-native-amap3d<i class="fa fa-external-link"></i></span>: react-native 高德地图组件，使用最新 3D SDK，支持 Android + iOS</li>
+<li><span class="exturl" data-url="aHR0cDovL3QuY24vRTlXMXJ3Yg==" title="http://t.cn/E9W1rwb">react-native-amap-geolocation<i class="fa fa-external-link"></i></span>: React Native geolocation module for Android + iOS</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dldHNlbnRyeS9zZW50cnktcmVhY3QtbmF0aXZl" title="https://github.com/getsentry/sentry-react-native">sentry-react-native<i class="fa fa-external-link"></i></span>: Official Sentry SDK for react-native</li>
+</ul>
+<h2 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3N0b25lV2ViL2VsbS1yZWFjdC1uYXRpdmU=" title="https://github.com/stoneWeb/elm-react-native">elm-react-native<i class="fa fa-external-link"></i></span>: A react native app simulating eleme app，run ios and android.</li>
+</ul>
+<h2 id="优质文章"><a href="#优质文章" class="headerlink" title="优质文章"></a>优质文章</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvSmRXOVlSZEU=" title="https://bre.is/JdW9YRdE">用React-Native+Mobx做一个迷你水果商城APP<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMveE5Rd05aYlo=" title="https://bre.is/xNQwNZbZ">react-native 通讯录字母跳转分组功能<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9icmUuaXMvRHhFWFlCZng=" title="https://bre.is/DxEXYBfx">React Native应用部署/热更新-CodePush最新集成总结(新)<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li>LeancloudPushDemo: React native + leancloud push notification demo</li>
+<li>react-native-code-push-dialog: CodePush Custom Dialog，注意：苹果 App、中国的 android 市场必须采用静默更新</li>
+<li>react-native-dropdown        这是下拉菜单的简单实现</li>
+<li>react-native-baidu-map        百度地图 React Native 模块，支持 react native 0.57+，已更新到最新的百度地图 SDK 版本。</li>
+<li>react-native-search-box        A simple search box with animation, inspired from ios search bar. Lightweight, fast, flexible.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/02/微信小程序收藏夹/" rel="bookmark">微信小程序组件收藏夹</a></div>
+    </li>
+  </ul>
+
+        <div class="reward-container">
+  <div>赞赏是对我最大的支持！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="杨俊宁 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="杨俊宁 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>杨俊宁
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://youngjuning.js.org/2020/02/React%20Native%20%E6%94%B6%E8%97%8F%E5%A4%B9/" title="React Native 收藏夹">http://youngjuning.js.org/2020/02/React Native 收藏夹/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/xingqiu.png">
+                <span class="icon">
+                  <i class="fa fa-circle-o-notch"></i>
+                </span>
+
+                <span class="label">知识星球</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/wechat_channel.jpeg">
+                <span class="icon">
+                  <i class="fa fa-wechat"></i>
+                </span>
+
+                <span class="label">WeChat</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%94%B6%E8%97%8F%E5%A4%B9/" rel="tag"><i class="fa fa-tag"></i> 收藏夹</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%E5%92%8C%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96/" rel="prev" title="函数节流和函数防抖">
+      <i class="fa fa-chevron-left"></i> 函数节流和函数防抖
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/%E5%BE%AA%E7%8E%AF%E5%92%8C%E9%97%AD%E5%8C%85/" rel="next" title="循环和闭包">
+      循环和闭包 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9"><span class="nav-number">1.</span> <span class="nav-text">官方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%85%E5%A4%87"><span class="nav-number">2.</span> <span class="nav-text">必备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E5%8D%95"><span class="nav-number">3.</span> <span class="nav-text">表单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB-%E6%89%8B%E5%8A%BF-%E8%BF%9B%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">动画&#x2F;手势&#x2F;进度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI"><span class="nav-number">5.</span> <span class="nav-text">UI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System"><span class="nav-number">6.</span> <span class="nav-text">System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%AA%92%E4%BD%93"><span class="nav-number">7.</span> <span class="nav-text">多媒体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Utils"><span class="nav-number">8.</span> <span class="nav-text">Utils</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">9.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9SDK"><span class="nav-number">10.</span> <span class="nav-text">第三方SDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE"><span class="nav-number">11.</span> <span class="nav-text">开源项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E8%B4%A8%E6%96%87%E7%AB%A0"><span class="nav-number">12.</span> <span class="nav-text">优质文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">13.</span> <span class="nav-text">其他</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="杨俊宁"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">杨俊宁</p>
+  <div class="site-description" itemprop="description">前端工程师、终身学习践行者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5n" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;youngjuning"><i class="fa fa-fw fa-github"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnlvdW5nanVuaW5nQGFsaXl1bi5jb20=" title="E-Mail → mailto:youngjuning@aliyun.com"><i class="fa fa-fw fa-envelope"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20veWFuZ2p1bm5pbmdtYW8=" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yangjunningmao"><i class="fa fa-fw fa-weibo"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy84NTY0NDAzL3lvdW5nanVuaW5n" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;8564403&#x2F;youngjuning"><i class="fa fa-fw fa-stack-overflow"></i></span>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jaGVueXVodS5qcy5vcmcv" title="https:&#x2F;&#x2F;chenyuhu.js.org&#x2F;">陈锋个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9sbHN0YXIuZ2l0aHViLmlvLw==" title="https:&#x2F;&#x2F;llstar.github.io&#x2F;">LLstar的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vR3Jld2VyLw==" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;Grewer&#x2F;">张煜的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9taXJhcmkuY2Mv" title="https:&#x2F;&#x2F;mirari.cc&#x2F;">Mirari's Blog</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨俊宁的博客</span>
+  <span class="post-meta-divider">|</span>
+  <a target="_blank" href="/sitemap.xml" style="border-bottom: 0px"><span style="color: #999;"><i class="fa fa-sitemap"> 站点地图</i></span></a>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">297k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:30</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v5.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.7.1
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e3a8b23db295557" async="async"></script>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script pjax>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes : 0,
+          toolbar  : 0,
+          statusbar: 0,
+          pagemode : 'thumbs',
+          view     : 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://youngjuning.js.org/2020/02/React%20Native%20%E6%94%B6%E8%97%8F%E5%A4%B9/";
+    this.page.identifier = "2020/02/React Native 收藏夹/";
+    this.page.title = "React Native 收藏夹";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://youngjuning.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

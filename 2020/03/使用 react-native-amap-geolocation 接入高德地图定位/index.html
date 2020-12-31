@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="ohZ0A8YKJu755suq7WOIJkLGDfj3BGU4isb8RKI5Cj8">
+  <meta name="baidu-site-verification" content="I63O4XWtSs">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"youngjuning.js.org","root":"/","scheme":"Gemini","version":"7.7.1","exturl":true,"sidebar":{"position":"left","width":310,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="react-native-amap-geolocation这款插件接入了高德地图定位模块。支持 Android + iOS，提供尽可能完善的原生接口， 同时提供符合 Web 标准的 Geolocation API。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 react-native-amap-geolocation 接入高德地图定位">
+<meta property="og:url" content="http://youngjuning.js.org/2020/03/%E4%BD%BF%E7%94%A8%20react-native-amap-geolocation%20%E6%8E%A5%E5%85%A5%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%AE%9A%E4%BD%8D/">
+<meta property="og:site_name" content="杨俊宁的博客">
+<meta property="og:description" content="react-native-amap-geolocation这款插件接入了高德地图定位模块。支持 Android + iOS，提供尽可能完善的原生接口， 同时提供符合 Web 标准的 Geolocation API。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/03/17/peGk8hUbdQAoY7w.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/18/ljTXqS9AboycPNk.png">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2020/2/24/17074acbb24c7412?w=200&h=200&f=jpeg&s=17183">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2020/2/24/17074acbb26af8e1?w=200&h=200&f=png&s=39093">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2020/2/24/17074acbb338c643?w=698&h=700&f=png&s=315492">
+<meta property="article:published_time" content="2020-03-17T08:05:44.000Z">
+<meta property="article:modified_time" content="2020-03-17T08:05:44.000Z">
+<meta property="article:author" content="杨俊宁">
+<meta property="article:tag" content="amap">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/03/17/peGk8hUbdQAoY7w.png">
+
+<link rel="canonical" href="http://youngjuning.js.org/2020/03/%E4%BD%BF%E7%94%A8%20react-native-amap-geolocation%20%E6%8E%A5%E5%85%A5%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%AE%9A%E4%BD%8D/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>使用 react-native-amap-geolocation 接入高德地图定位 | 杨俊宁的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158205277-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-158205277-1');
+      }
+    </script>
+
+
+  <script pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a1319c6a7cb0e5cc6572a6181c7e949c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="杨俊宁的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨俊宁的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">怕什么真理无穷，进一寸有一寸的欢喜</h1>
+      
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">64</span></a>
+
+  </li>
+        <li class="menu-item menu-item-书单">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+
+  </li>
+        <li class="menu-item menu-item-歌单">
+
+    <a href="/music/" rel="section"><i class="fa fa-fw fa-music"></i>歌单</a>
+
+  </li>
+        <li class="menu-item menu-item-收藏夹">
+
+    <a href="/collections/" rel="section"><i class="fa fa-fw fa-star"></i>收藏夹</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://youngjuning.js.org/2020/03/%E4%BD%BF%E7%94%A8%20react-native-amap-geolocation%20%E6%8E%A5%E5%85%A5%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%AE%9A%E4%BD%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="杨俊宁">
+      <meta itemprop="description" content="前端工程师、终身学习践行者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨俊宁的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          使用 react-native-amap-geolocation 接入高德地图定位<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5nL3lvdW5nanVuaW5nL3RyZWUvbWFzdGVyL3NvdXJjZS9fcG9zdHMvMjAyMC8wMy/kvb/nlKggcmVhY3QtbmF0aXZlLWFtYXAtZ2VvbG9jYXRpb24g5o6l5YWl6auY5b635Zyw5Zu+5a6a5L2NLm1k" title="编辑"><i class="fa fa-pencil"></i></span>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-17 16:05:44" itemprop="dateCreated datePublished" datetime="2020-03-17T16:05:44+08:00">2020-03-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hybrid/" itemprop="url" rel="index">
+                    <span itemprop="name">Hybrid</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hybrid/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://i.loli.net/2020/03/17/peGk8hUbdQAoY7w.png" alt=""></p>
+<p>react-native-amap-geolocation这款插件接入了高德地图定位模块。支持 Android + iOS，提供尽可能完善的原生接口， 同时提供符合 Web 标准的 Geolocation API。</p>
+<a id="more"></a>
+
+<blockquote>
+<p>本文基于 react-native 0.60 以上版本！</p>
+</blockquote>
+<h2 id="获取高德-App-Key"><a href="#获取高德-App-Key" class="headerlink" title="获取高德 App Key"></a>获取高德 App Key</h2><p>为了使用高德 SDK，你需要准备高德 App Key，获取方法参考高德地图 SDK 官方文档：</p>
+<ul>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9sYnMuYW1hcC5jb20vYXBpL2FuZHJvaWQtbG9jYXRpb24tc2RrL2d1aWRlL2NyZWF0ZS1wcm9qZWN0L2dldC1rZXk=" title="https://lbs.amap.com/api/android-location-sdk/guide/create-project/get-key">获取 Android App Key<i class="fa fa-external-link"></i></span></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;an:key-debug&quot;</span>: <span class="string">&quot;keytool -list -v -keystore ./android/app/debug.keystore&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;an:key-release&quot;</span>: <span class="string">&quot;keytool -v -list -keystore ./android/app/release.keystore&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9sYnMuYW1hcC5jb20vYXBpL2lvcy1sb2NhdGlvbi1zZGsvZ3VpZGUvY3JlYXRlLXByb2plY3QvZ2V0LWtleQ==" title="https://lbs.amap.com/api/ios-location-sdk/guide/create-project/get-key">获取 iOS App Key<i class="fa fa-external-link"></i></span></p>
+<blockquote>
+<p>ios 只需要 <code>Bundle Identifier</code> 即可</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add react-native-amap-geolocation</span><br></pre></td></tr></table></figure>
+
+<h2 id="ios-配置"><a href="#ios-配置" class="headerlink" title="ios 配置"></a>ios 配置</h2><h3 id="下载和安装高德IOS-SDK"><a href="#下载和安装高德IOS-SDK" class="headerlink" title="下载和安装高德IOS SDK"></a>下载和安装高德IOS SDK</h3><ol>
+<li>下载<span class="exturl" data-url="aHR0cHM6Ly9saW5rcy5qaWFuc2h1LmNvbS9nbz90bz1odHRwcyUzQSUyRiUyRmEuYW1hcC5jb20lMkZsYnMlMkZzdGF0aWMlMkZ6aXAlMkZBTWFwX2lPU19Gb3VuZGF0aW9uX0xpYl9WMS40LjMuemlw" title="https://links.jianshu.com/go?to=https%3A%2F%2Fa.amap.com%2Flbs%2Fstatic%2Fzip%2FAMap_iOS_Foundation_Lib_V1.4.3.zip">基础SDK(含IDFA)<i class="fa fa-external-link"></i></span></li>
+<li>下载<span class="exturl" data-url="aHR0cHM6Ly9saW5rcy5qaWFuc2h1LmNvbS9nbz90bz1odHRwcyUzQSUyRiUyRmEuYW1hcC5jb20lMkZsYnMlMkZzdGF0aWMlMkZ6aXAlMkZBTWFwX2lPU19Mb2NfTGliX1YyLjYuMi56aXA=" title="https://links.jianshu.com/go?to=https%3A%2F%2Fa.amap.com%2Flbs%2Fstatic%2Fzip%2FAMap_iOS_Loc_Lib_V2.6.2.zip">定位SDK<i class="fa fa-external-link"></i></span></li>
+<li>将下载的 <code>AMapFoundationKit.framework</code> 和 <code>AMapLocationKit.framework</code> 以及 项目自带的<code>ExternalAccessory.framework</code> 添加到 <code>Build Phases</code> ➜ <code>Link Binary With Libraries</code>。</li>
+</ol>
+<h3 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h3><ol>
+<li><p>添加以下权限到 <code>Info.plist</code> 文件中：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>NSLocationWhenInUseUsageDescription<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">string</span>&gt;</span><span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>NSLocationAlwaysUsageDescription<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">string</span>&gt;</span><span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ATS设置:  <code>Target</code>➜ <code>Info</code> ➜ <code>App Transport Security Setting</code> 展开后的 <code>Allow Arbitrary Loads</code> 设置为 <code>YES</code></p>
+</li>
+</ol>
+<p><strong>如果要支持后台持续定位，还需要配置以下：</strong></p>
+<ol>
+<li><p>打开xcode，点击项目</p>
+</li>
+<li><p>选择 <code>Signing&amp;Capabilities</code>,把 <code>Background Modes</code> 打开为 <code>ON</code>，然后打勾 <code>Location updates</code></p>
+<img src="https://i.loli.net/2020/03/18/ljTXqS9AboycPNk.png" style="zoom: 67%;" />
+
+</li>
+</ol>
+<h2 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h2><p>react-native 为 0.6x 的话，<code>yarn add react-native-amap-geolocation</code> 就完事了，一步到位不需要过多配置。</p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; PermissionsAndroid &#125; <span class="keyword">from</span> <span class="string">&quot;react-native&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; init, Geolocation &#125; <span class="keyword">from</span> <span class="string">&quot;react-native-amap-geolocation&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对于 Android 需要自行根据需要申请权限</span></span><br><span class="line"><span class="keyword">await</span> PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用自己申请的高德 App Key 进行初始化</span></span><br><span class="line"><span class="keyword">await</span> init(&#123;</span><br><span class="line">  ios: <span class="string">&quot;9bd6c82e77583020a73ef1af59d0c759&quot;</span>,</span><br><span class="line">  android: <span class="string">&quot;043b24fe18785f33c491705ffe5b6935&quot;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Geolocation.getCurrentPosition(<span class="function">(<span class="params">&#123; coords &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(coords);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="更多用法"><a href="#更多用法" class="headerlink" title="更多用法"></a>更多用法</h2><p>该项目除了提供符合 Web 标准的 Geolocation API，同时为了最大程度的发挥高德定位 SDK 的功能， 会尽可能提供与原生 SDK 一致的接口封装。由于 iOS 和 Android SDK 提供的接口并不一致， 于是最终实现的接口大部分是并不通用的。这在接口文档或文档注释有注明， 比如 <code>@platform android</code> 表示该接口仅用于 Android。</p>
+<p>以下是一些常用接口的用法说明以及示例代码，更多接口的具体用法请参考<span class="exturl" data-url="aHR0cHM6Ly9xaXV4aWFuZy5naXRodWIuaW8vcmVhY3QtbmF0aXZlLWFtYXAtZ2VvbG9jYXRpb24vIy8=" title="https://qiuxiang.github.io/react-native-amap-geolocation/#/">接口文档<i class="fa fa-external-link"></i></span>。</p>
+<h2 id="直接使用原生接口"><a href="#直接使用原生接口" class="headerlink" title="直接使用原生接口"></a>直接使用原生接口</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; init, addLocationListener, start, stop &#125; <span class="keyword">from</span> <span class="string">&quot;react-native-amap-geolocation&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加定位监听函数</span></span><br><span class="line">addLocationListener(<span class="function"><span class="params">location</span> =&gt;</span> <span class="built_in">console</span>.log(location));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开始连续定位</span></span><br><span class="line">start();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在不需要的时候停止定位</span></span><br><span class="line">stop();</span><br></pre></td></tr></table></figure>
+
+<h2 id="逆地理编码"><a href="#逆地理编码" class="headerlink" title="逆地理编码"></a>逆地理编码</h2><p>Android 默认返回逆地理编码，而 iOS 需要手动设置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; setLocatingWithReGeocode, setNeedAddress &#125; <span class="keyword">from</span> <span class="string">&quot;react-native-amap-geolocation&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// android</span></span><br><span class="line">setNeedAddress(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ios</span></span><br><span class="line">setLocatingWithReGeocode(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="定位回调频率限制"><a href="#定位回调频率限制" class="headerlink" title="定位回调频率限制"></a>定位回调频率限制</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="built_in">setInterval</span>, setDistanceFilter &#125; <span class="keyword">from</span> <span class="string">&quot;react-native-amap-geolocation&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// android，5 秒请求一次定位</span></span><br><span class="line"><span class="built_in">setInterval</span>(<span class="number">5000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ios，设备移动超过 10 米才会更新位置信息</span></span><br><span class="line">setDistanceFilter(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9sYnMuYW1hcC5jb20vYXBp" title="https://lbs.amap.com/api">高德地图API<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC9mODczMTY2MzVmZjY=" title="https://www.jianshu.com/p/f87316635ff6">react-native-amap-geolocation安装与使用<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9xaXV4aWFuZy5naXRodWIuaW8vcmVhY3QtbmF0aXZlLWFtYXAtZ2VvbG9jYXRpb24v" title="https://qiuxiang.github.io/react-native-amap-geolocation/">react-native-amap-geolocation 使用指南<i class="fa fa-external-link"></i></span></li>
+<li>[<span class="exturl" data-url="aHR0cHM6Ly9xaXV4aWFuZy5naXRodWIuaW8vcmVhY3QtbmF0aXZlLWFtYXAtZ2VvbG9jYXRpb24vYXBpL2luZGV4Lmh0bWw=" title="https://qiuxiang.github.io/react-native-amap-geolocation/api/index.html">react-native-amap-geolocation 接口文档<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h2 id="联系作者"><a href="#联系作者" class="headerlink" title="联系作者"></a>联系作者</h2><table>
+<thead>
+<tr>
+<th align="center">作者微信</th>
+<th align="center">知识星球</th>
+<th align="center">赞赏作者</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://user-gold-cdn.xitu.io/2020/2/24/17074acbb24c7412?w=200&h=200&f=jpeg&s=17183" style="width:200px"/></td>
+<td align="center"><img src="https://user-gold-cdn.xitu.io/2020/2/24/17074acbb26af8e1?w=200&h=200&f=png&s=39093" style="width:200px"/></td>
+<td align="center"><img src="https://user-gold-cdn.xitu.io/2020/2/24/17074acbb338c643?w=698&h=700&f=png&s=315492" style="width:200px"/></td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+      
+
+        <div class="reward-container">
+  <div>赞赏是对我最大的支持！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="杨俊宁 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="杨俊宁 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>杨俊宁
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://youngjuning.js.org/2020/03/%E4%BD%BF%E7%94%A8%20react-native-amap-geolocation%20%E6%8E%A5%E5%85%A5%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%AE%9A%E4%BD%8D/" title="使用 react-native-amap-geolocation 接入高德地图定位">http://youngjuning.js.org/2020/03/使用 react-native-amap-geolocation 接入高德地图定位/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/xingqiu.png">
+                <span class="icon">
+                  <i class="fa fa-circle-o-notch"></i>
+                </span>
+
+                <span class="label">知识星球</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/wechat_channel.jpeg">
+                <span class="icon">
+                  <i class="fa fa-wechat"></i>
+                </span>
+
+                <span class="label">WeChat</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/amap/" rel="tag"><i class="fa fa-tag"></i> amap</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84Mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="prev" title="程序员的Mac开发环境">
+      <i class="fa fa-chevron-left"></i> 程序员的Mac开发环境
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/%E5%89%8D%E7%AB%AF%E8%A7%84%E8%8C%83%E5%8C%96%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" rel="next" title="前端规范化开发实践">
+      前端规范化开发实践 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E9%AB%98%E5%BE%B7-App-Key"><span class="nav-number">1.</span> <span class="nav-text">获取高德 App Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ios-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">ios 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AE%89%E8%A3%85%E9%AB%98%E5%BE%B7IOS-SDK"><span class="nav-number">3.1.</span> <span class="nav-text">下载和安装高德IOS SDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%9D%83%E9%99%90"><span class="nav-number">3.2.</span> <span class="nav-text">配置权限</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android"><span class="nav-number">4.</span> <span class="nav-text">Android</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E7%94%A8%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">更多用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%94%9F%E6%8E%A5%E5%8F%A3"><span class="nav-number">7.</span> <span class="nav-text">直接使用原生接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%86%E5%9C%B0%E7%90%86%E7%BC%96%E7%A0%81"><span class="nav-number">8.</span> <span class="nav-text">逆地理编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E5%9B%9E%E8%B0%83%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6"><span class="nav-number">9.</span> <span class="nav-text">定位回调频率限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">10.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%94%E7%B3%BB%E4%BD%9C%E8%80%85"><span class="nav-number">11.</span> <span class="nav-text">联系作者</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="杨俊宁"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">杨俊宁</p>
+  <div class="site-description" itemprop="description">前端工程师、终身学习践行者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nanVuaW5n" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;youngjuning"><i class="fa fa-fw fa-github"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnlvdW5nanVuaW5nQGFsaXl1bi5jb20=" title="E-Mail → mailto:youngjuning@aliyun.com"><i class="fa fa-fw fa-envelope"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20veWFuZ2p1bm5pbmdtYW8=" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yangjunningmao"><i class="fa fa-fw fa-weibo"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy84NTY0NDAzL3lvdW5nanVuaW5n" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;8564403&#x2F;youngjuning"><i class="fa fa-fw fa-stack-overflow"></i></span>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jaGVueXVodS5qcy5vcmcv" title="https:&#x2F;&#x2F;chenyuhu.js.org&#x2F;">陈锋个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9sbHN0YXIuZ2l0aHViLmlvLw==" title="https:&#x2F;&#x2F;llstar.github.io&#x2F;">LLstar的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vR3Jld2VyLw==" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;Grewer&#x2F;">张煜的个人博客</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9taXJhcmkuY2Mv" title="https:&#x2F;&#x2F;mirari.cc&#x2F;">Mirari's Blog</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨俊宁的博客</span>
+  <span class="post-meta-divider">|</span>
+  <a target="_blank" href="/sitemap.xml" style="border-bottom: 0px"><span style="color: #999;"><i class="fa fa-sitemap"> 站点地图</i></span></a>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">297k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:30</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v5.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.7.1
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e3a8b23db295557" async="async"></script>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script pjax>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes : 0,
+          toolbar  : 0,
+          statusbar: 0,
+          pagemode : 'thumbs',
+          view     : 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://youngjuning.js.org/2020/03/%E4%BD%BF%E7%94%A8%20react-native-amap-geolocation%20%E6%8E%A5%E5%85%A5%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%AE%9A%E4%BD%8D/";
+    this.page.identifier = "2020/03/使用 react-native-amap-geolocation 接入高德地图定位/";
+    this.page.title = "使用 react-native-amap-geolocation 接入高德地图定位";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://youngjuning.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>
