@@ -6,6 +6,10 @@
     "build": "dumi build",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youngjuning/youngjuning.github.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",

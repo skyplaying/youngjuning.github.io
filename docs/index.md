@@ -7,7 +7,7 @@ hero:
     - text: 博客
       link: /blog
 features:
-  - icon: https://i.loli.net/2021/01/06/lFKG8j9UmPnc4iR.png
+  - icon: https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png
     title: JavaScript
     desc: JavaScript（JS）是一种具有函数优先的轻量级，解释型或即时编译型的编程语言
   - icon: https://i.loli.net/2021/01/06/XVYizbjNaoSpThR.png
@@ -15,7 +15,7 @@ features:
     desc: TypeScript带来了可选的静态类型检查以及最新的ECMAScript特性。
   - icon: https://i.loli.net/2021/01/07/3e2qXd1jYQSr6tD.png
     title: React
-    desc:  用于构建用户界面的 JavaScript 库
+    desc: 用于构建用户界面的 JavaScript 库
   - icon: https://i.loli.net/2021/01/07/LyrYFU7icZbGkQv.png
     title: React Native
     desc: 使用React来编写原生应用的框架
