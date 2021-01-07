@@ -5,6 +5,7 @@ export default defineConfig({
   favicon: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   logo: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   mode: 'site',
+  exportStatic: {},
   locales: [
     ['zh-CN', '中文'],
     ['en-US', 'English'],
