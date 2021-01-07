@@ -6,7 +6,6 @@ export default defineConfig({
   logo: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   mode: 'site',
   exportStatic: {},
-  ssr: {},
   locales: [
     ['zh-CN', '中文'],
     ['en-US', 'English'],
