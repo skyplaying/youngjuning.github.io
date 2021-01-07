@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/youngjuning/youngjuning.github.git"
+    "url": "git+https://github.com/youngjuning/youngjuning.github.io.git"
   },
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
