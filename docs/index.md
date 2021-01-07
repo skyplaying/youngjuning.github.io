@@ -10,9 +10,16 @@ features:
   - icon: https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png
     title: JavaScript
     desc: JavaScript（JS）是一种具有函数优先的轻量级，解释型或即时编译型的编程语言
+    link: /blog/javascript
   - icon: https://i.loli.net/2021/01/06/XVYizbjNaoSpThR.png
     title: TypeScript
     desc: TypeScript带来了可选的静态类型检查以及最新的ECMAScript特性。
+  - icon: https://i.loli.net/2021/01/07/UB3wWQdMIPcmpVy.png
+    title: Node.js
+    desc: Node.js® 是一个基于 Chrome V8 引擎 的 JavaScript 运行时
+  - icon: https://i.loli.net/2021/01/07/lPsf4oykqMjZT3e.png
+    title: Deno
+    desc: Deno是基于V8引擎和Rust语言所创建的JavaScript、TypeScript运行环境
   - icon: https://i.loli.net/2021/01/07/3e2qXd1jYQSr6tD.png
     title: React
     desc: 用于构建用户界面的 JavaScript 库
