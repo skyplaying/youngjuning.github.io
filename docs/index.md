@@ -1,7 +1,7 @@
 ---
-title: 杨俊宁的官方网站
+title: 俊宁的官方网站
 hero:
-  title: 杨俊宁的官方网站
+  title: 俊宁的官方网站
   desc: 怕什么真理无穷，进一寸有一寸的欢喜
   image: https://i.loli.net/2021/01/07/gYLjBSW4lbT8yzs.png
   actions:

@@ -13,7 +13,7 @@ export default defineConfig({
   metas: [
     {
       name: 'title',
-      content: '杨俊宁的官方网站',
+      content: '俊宁的官方网站',
     },
     {
       name: 'keywords',
@@ -42,5 +42,6 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://youngjuning.js.org',
   },
+  plugins: ['./.dumi/plugins/react-native.ts'],
   // more config: https://d.umijs.org/config
 });
