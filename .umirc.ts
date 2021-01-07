@@ -6,6 +6,7 @@ export default defineConfig({
   logo: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   mode: 'site',
   exportStatic: {},
+  ssr: {},
   locales: [
     ['zh-CN', '中文'],
     ['en-US', 'English'],
@@ -22,16 +23,6 @@ export default defineConfig({
     {
       name: 'description',
       content: '怕什么真理无穷，进一寸有一寸的欢喜',
-    },
-  ],
-  scripts: [
-    {
-      src: 'https://utteranc.es/client.js',
-      repo: 'youngjuning/youngjuning.github.io',
-      'issue-number': '9',
-      theme: 'github-light',
-      crossorigin: 'anonymous',
-      async: true,
     },
   ],
   navs: [
