@@ -27,12 +27,12 @@ export default defineConfig({
   navs: [
     null,
     {
-      title: 'GitHub',
-      path: 'https://github.com/youngjuning/youngjuning.github.io',
-    },
-    {
       title: '掘金',
       path: 'https://juejin.cn/user/325111174662855/posts',
+    },
+    {
+      title: 'GitHub',
+      path: 'https://github.com/youngjuning/youngjuning.github.io',
     },
   ],
   // algolia: {
