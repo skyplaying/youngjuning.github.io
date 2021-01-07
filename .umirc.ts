@@ -31,6 +31,10 @@ export default defineConfig({
       title: 'GitHub',
       path: 'https://github.com/youngjuning/youngjuning.github.io',
     },
+    {
+      title: 'juejin',
+      path: 'https://juejin.cn/user/325111174662855/posts',
+    },
   ],
   // algolia: {
   //   apiKey: 'yourapikey',
