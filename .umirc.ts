@@ -32,7 +32,7 @@ export default defineConfig({
       path: 'https://github.com/youngjuning/youngjuning.github.io',
     },
     {
-      title: 'juejin',
+      title: '掘金',
       path: 'https://juejin.cn/user/325111174662855/posts',
     },
   ],
