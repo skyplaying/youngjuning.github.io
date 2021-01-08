@@ -1,10 +1,20 @@
-import { IApi } from 'dumi';
-// inspired by https://github.com/doczjs/docz/pull/271/files
+import { IApi } from 'umi';
+
 export default (api: IApi) => {
+  api.describe({
+    key: 'reactNative',
+    config: {
+      schema(joi) {
+        return joi.object();
+      },
+    },
+  });
+
   api.modifyConfig(memo => {
     return {
       ...memo,
       alias: {
+        ...memo.alias,
         'react-native': 'react-native-web',
       },
     };
