@@ -1,20 +1,22 @@
 ---
-hide: true
+title: 'React Native'
+nav:
+  title: '预览'
 ---
 
 ```jsx
 import React, { Component } from 'react';
-import { Alert, Button, View, Platform } from 'react-native';
-
-const alert = Platform.OS === 'web' ? window.alert : Alert.alert;
+import { View, Button } from 'react-native';
 
 export default class Demo extends Component {
   render() {
     return (
       <View>
         <Button
-          title="Press me"
-          onPress={() => alert('Simple Button pressed')}
+          title="点我"
+          onPress={() => {
+            alert('Hello');
+          }}
         />
       </View>
     );

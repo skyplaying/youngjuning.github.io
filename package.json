@@ -25,21 +25,17 @@
     ]
   },
   "devDependencies": {
-    "dumi": "^1.0.9",
+    "dumi": "^1.1.0",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
+    "umi-plugin-react-native": "^0.0.1",
     "yorkie": "^2.0.0"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.12.11",
     "@babel/preset-flow": "^7.12.1",
     "@babel/preset-react": "^7.12.10",
     "dumi-theme-mobile": "^1.0.0",
     "react-native": "^0.63.4",
-    "react-native-gesture-handler": "^1.9.0",
-    "react-native-svg": "^12.1.0",
-    "react-native-web": "^0.14.10",
-    "sitemap": "^6.3.5",
-    "svgs": "^4.1.1"
+    "sitemap": "^6.3.5"
   }
 }

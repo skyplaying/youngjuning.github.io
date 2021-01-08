@@ -42,6 +42,5 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://youngjuning.js.org',
   },
-  plugins: ['./.dumi/plugins/react-native.ts'],
   // more config: https://d.umijs.org/config
 });
