@@ -25,6 +25,7 @@
     ]
   },
   "devDependencies": {
+    "@types/tuya-panel-kit-web": "https://registry.npmjs.org/@types/tuya-panel-kit/-/tuya-panel-kit-4.0.1.tgz",
     "dumi": "^1.1.0",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
@@ -36,6 +37,8 @@
     "@babel/preset-react": "^7.12.10",
     "dumi-theme-mobile": "^1.0.0",
     "react-native": "^0.63.4",
-    "sitemap": "^6.3.5"
+    "rebound": "^0.1.0",
+    "sitemap": "^6.3.5",
+    "tuya-panel-kit-web": "^4.2.14"
   }
 }

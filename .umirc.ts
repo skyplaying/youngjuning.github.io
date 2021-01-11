@@ -35,10 +35,6 @@ export default defineConfig({
       path: 'https://github.com/youngjuning/youngjuning.github.io',
     },
   ],
-  // algolia: {
-  //   apiKey: 'yourapikey',
-  //   indexName: 'dumi',
-  // },
   sitemap: {
     hostname: 'https://youngjuning.js.org',
   },
