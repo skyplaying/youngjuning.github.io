@@ -25,11 +25,11 @@
     ]
   },
   "devDependencies": {
-    "@types/tuya-panel-kit-web": "https://registry.npmjs.org/@types/tuya-panel-kit/-/tuya-panel-kit-4.0.1.tgz",
+    "@types/tuya-panel-kit": "4.0.1",
     "dumi": "^1.1.0",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
-    "umi-plugin-react-native": "^0.0.1",
+    "umi-plugin-react-native": "^0.4.0",
     "yorkie": "^2.0.0"
   },
   "dependencies": {
@@ -37,8 +37,7 @@
     "@babel/preset-react": "^7.12.10",
     "dumi-theme-mobile": "^1.0.0",
     "react-native": "^0.63.4",
-    "rebound": "^0.1.0",
     "sitemap": "^6.3.5",
-    "tuya-panel-kit-web": "^4.2.14"
+    "tuya-panel-kit": "https://github.com/tuya/tuya-panel-kit.git#tuya-panel-kit-v4.2.1-gitpkg"
   }
 }

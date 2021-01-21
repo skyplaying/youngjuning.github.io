@@ -15,9 +15,9 @@ import {
   TYSdk,
   Utils,
   Theme as ThemeProvider,
-} from 'tuya-panel-kit-web';
-import MaskView from 'tuya-panel-kit-web/lib/components/modal/portalOut';
-
+} from 'tuya-panel-kit';
+import MaskView from 'tuya-panel-kit/lib/components/modal/portalOut';
+console.log('[TuyaWrapper]', TYSdk);
 const TYEvent = TYSdk.event;
 
 const { get } = Utils.CoreUtils;

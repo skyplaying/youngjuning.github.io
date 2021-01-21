@@ -5,7 +5,7 @@ title: 'tuya-panel-kit'
 ```tsx
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Dialog, Button } from 'tuya-panel-kit-web';
+import { Dialog, Button } from 'tuya-panel-kit';
 import TuyaWrapper from '../../components/TuyaWrapper';
 
 export default () => {
