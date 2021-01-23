@@ -1,5 +1,6 @@
 ---
 title: 'tuya-panel-kit'
+hide: true
 ---
 
 ```tsx
