@@ -6,6 +6,8 @@ export default defineConfig({
   logo: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   mode: 'site',
   exportStatic: {},
+  ssr: process.env.Node_ENV === 'production' ? {} : false,
+  hash: true,
   locales: [
     ['zh-CN', '中文'],
     ['en-US', 'English'],
@@ -38,5 +40,15 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://youngjuning.js.org',
   },
+  extraBabelPlugins: [
+    [
+      'import',
+      {
+        libraryName: 'antd',
+        libraryDirectory: 'es',
+        style: 'css',
+      },
+    ],
+  ],
   // more config: https://d.umijs.org/config
 });
