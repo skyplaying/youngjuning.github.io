@@ -7,6 +7,9 @@ export default defineConfig({
   mode: 'site',
   exportStatic: {},
   hash: true,
+  history: {
+    type: 'hash',
+  },
   ssr: process.env.Node_ENV === 'production' ? {} : false,
   locales: [
     ['zh-CN', '中文'],
