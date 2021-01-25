@@ -1,17 +1,21 @@
 ---
-title: Node CLI
-group:
-  title: node-cli
+title: 收藏
 nav:
   title: 收藏
+hero:
+  title: 收藏
 ---
+
+#
+
+## Node CLI
 
 ```jsx
 /**
  * inline: true
  */
 import React from 'react';
-import CardList from '../../components/RepoCardList';
+import CardList from '../components/RepoCardList';
 
 const data = [
   {
