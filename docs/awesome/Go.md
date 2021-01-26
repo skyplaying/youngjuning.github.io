@@ -2,6 +2,7 @@
 title: Go
 nav:
   title: 收藏
+  order: 2
 ---
 
 ```jsx

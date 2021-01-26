@@ -7,6 +7,8 @@ hero:
   actions:
     - text: Blog
       link: /blog
+    - text: Awesome
+      link: /awesome
 features:
   - icon: https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png
     title: JavaScript
@@ -27,5 +29,9 @@ features:
   - icon: https://i.loli.net/2021/01/07/LyrYFU7icZbGkQv.png
     title: React Native
     desc: 使用React来编写原生应用的框架
+  - icon: https://i.loli.net/2021/01/26/5KTt2w1deEHvLrj.png
+    title: Go
+    desc: Go is an open source programming language that makes it easy to build simple, reliable, and efficient software
+    link: /blog/go
 footer: Open-source MIT Licensed | Copyright ©俊宁 2020
 ---

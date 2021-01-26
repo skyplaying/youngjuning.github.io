@@ -1,6 +1,7 @@
 ---
 nav:
   title: 留言板
+  order: 4
 hero:
   title: 留言板
   desc: 轻轻地你走了，不带走一篇云彩

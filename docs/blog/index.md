@@ -1,6 +1,7 @@
 ---
 nav:
   title: 博客
+  order: 1
 title: 关于
 ---
 
