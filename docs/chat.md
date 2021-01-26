@@ -1,4 +1,5 @@
 ---
+title: 留言板
 nav:
   title: 留言板
   order: 4
