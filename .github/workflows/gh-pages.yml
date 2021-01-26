@@ -19,5 +19,5 @@ jobs:
         uses: yakumioto/serverchan-action@v1
         with:
           key: ${{ secrets.sckey }}
-          text: 杨俊宁的官网网站
-          desp: 构建成功，请访问[https://youngjuning.js.org](https://youngjuning.js.org)
+          text: 亲爱的主人，博客已为您更新成功
+          desp: 请访问 [https://youngjuning.js.org](https://youngjuning.js.org) 查看效果
