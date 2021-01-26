@@ -10,7 +10,7 @@ nav:
  * inline: true
  */
 import React from 'react';
-import GoRepoCardList from '../../components/List/GoRepoCardList';
+import RepoCardList from '../../components/List/RepoCardList';
 
 const data = [
   {
@@ -33,7 +33,7 @@ const data = [
 ];
 
 export default () => {
-  return <GoRepoCardList data={data} />;
+  return <RepoCardList data={data} />;
 };
 ```
 
@@ -44,7 +44,7 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import GoRepoCardList from '../../components/List/GoRepoCardList';
+import RepoCardList from '../../components/List/RepoCardList';
 
 const data = [
   {
@@ -57,6 +57,6 @@ const data = [
 ];
 
 export default () => {
-  return <GoRepoCardList data={data} />;
+  return <RepoCardList data={data} />;
 };
 ```
