@@ -7,6 +7,8 @@ hero:
   actions:
     - text: 博客
       link: /blog
+    - text: 收藏
+      link: /awesome
 features:
   - icon: https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png
     title: JavaScript
@@ -18,14 +20,18 @@ features:
   - icon: https://i.loli.net/2021/01/07/UB3wWQdMIPcmpVy.png
     title: Node.js
     desc: Node.js® 是一个基于 Chrome V8 引擎 的 JavaScript 运行时
-  - icon: https://i.loli.net/2021/01/07/lPsf4oykqMjZT3e.png
-    title: Deno
-    desc: Deno是基于V8引擎和Rust语言所创建的JavaScript、TypeScript运行环境
   - icon: https://i.loli.net/2021/01/07/3e2qXd1jYQSr6tD.png
     title: React
     desc: 用于构建用户界面的 JavaScript 库
   - icon: https://i.loli.net/2021/01/07/LyrYFU7icZbGkQv.png
     title: React Native
     desc: 使用React来编写原生应用的框架
+  - icon: https://i.loli.net/2021/01/07/lPsf4oykqMjZT3e.png
+    title: Deno
+    desc: Deno是基于V8引擎和Rust语言所创建的JavaScript、TypeScript运行环境
+  - icon: https://i.loli.net/2021/01/26/5KTt2w1deEHvLrj.png
+    title: Go
+    desc: Go（又称 Golang）是 Google 的 Robert Griesemer，Rob Pike 及 Ken Thompson 开发的一种静态强类型、编译型语言
+    link: /blog/go
 footer: Open-source MIT Licensed | Copyright ©俊宁 2020
 ---
