@@ -11,6 +11,7 @@ hero:
  * inline: true
  */
 import React from 'react';
+import 'gitalk/dist/gitalk.css';
 import GitalkComponent from 'gitalk/dist/gitalk-component';
 
 export default () => {
