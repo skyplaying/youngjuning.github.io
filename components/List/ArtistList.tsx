@@ -3,7 +3,8 @@ import { List } from 'antd';
 
 type DataI = Array<{
   title: string;
-  link: string;
+  link?: string;
+  outlink?: string;
 }>;
 
 interface Props {
@@ -17,7 +18,12 @@ export default (props: Props) => {
       renderItem={item => {
         return (
           <List.Item>
-            <a href={`/#/blog/${item.link}`}>{item.title}</a>
+            <a
+              href={item.outlink ? item.outlink : `/#/blog/${item.link}`}
+              target={item.outlink ? '_blank' : '_self'}
+            >
+              {item.title}
+            </a>
           </List.Item>
         );
       }}

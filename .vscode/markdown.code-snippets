@@ -1,0 +1,15 @@
+{
+  // Generate by https://snippet-generator.app/
+  "repo-data": {
+    "scope": "javascript,typescript",
+    "prefix": "repo-data",
+    "body": [
+      "{",
+      "  title: '$1',",
+      "  description: '$2',",
+      "  homepage: '$3',",
+      "  github: '$4'",
+      "}"
+    ]
+  }
+}
