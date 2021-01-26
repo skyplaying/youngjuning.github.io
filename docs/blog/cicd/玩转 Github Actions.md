@@ -1,8 +1,7 @@
 ---
 title: 玩转 GitHub Actions
 group:
-  title: ci-cd
-hide: true
+  title: CI/CD
 ---
 
 ## act: "Think globally, act locally"

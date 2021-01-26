@@ -19,7 +19,7 @@ Dumi 并不是一个很好的博客工具，甚至就不是设计用来写博客
  * inline: true
  */
 import React from 'react';
-import CardList from '../../components/ArtistList';
+import ArtistList from '../../components/List/ArtistList';
 
 const data = [
   {
@@ -29,6 +29,6 @@ const data = [
 ];
 
 export default () => {
-  return <CardList data={data} />;
+  return <ArtistList data={data} />;
 };
 ```
