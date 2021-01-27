@@ -38,11 +38,15 @@ open /usr/local/Homebrew/Library/Taps
 
 ## 创建 Tap
 
-在 GitHub 上创建自己的仓库，创建仓库的命名方式必须是以 `homebrew-<demo>` 的规则命名。我们这里以 [youngjuning/homebrew-tpc](https://github.com/youngjuning/homebrew-tpc) 为例。并把 tap 同步到本地：
+在 GitHub 上创建自己的仓库，创建仓库的命名方式必须是以 `homebrew-<demo>` 的规则命名。我们这里以 [youngjuning/homebrew-tap](https://github.com/youngjuning/homebrew-tap) 为例。并把 tap 同步到本地：
 
 ```shell
-brew tap youngjuning/homebrew-tpc https://github.com/youngjuning/homebrew-tpc.git
+brew tap youngjuning/homebrew-tap https://github.com/youngjuning/homebrew-tap.git
 ```
+
+> 注意：不要命名为 homebrew-core，之后你向 homebrew/homebrew-core 贡献代码会冲突
+
+> 提示：我们可以执行 `cd $(brew --repository youngjuning/tap)` 打开本地 tap
 
 ## 制作 Formula
 
@@ -60,12 +64,12 @@ tar zcvf tpc_0.0.1.tar.gz tpc
 3、生成 Formula
 
 ```shell
-brew create https://github.com/youngjuning/tpc/releases/download/v0.0.1/tpc_0.0.1.tar.gz --tap youngjuning/homebrew-tpc
+brew create https://github.com/youngjuning/tpc/releases/download/v0.0.1/tpc_0.0.1.tar.gz --tap youngjuning/homebrew-tap
 ```
 
-这条命令会在 `/usr/local/Homebrew/Library/Taps/youngjuning/homebrew-tpc/` 下创建一个 `tpc.rb` 文件，文件名是仓库名。
+这条命令会在 `/usr/local/Homebrew/Library/Taps/youngjuning/homebrew-tap/` 下创建一个 `tpc.rb` 文件，文件名是仓库名。
 
-然后我们打开 `/usr/local/Homebrew/Library/Taps/youngjuning/homebrew-tpc/tpc.rb` 对安装方式做一下调整:
+然后我们打开 `/usr/local/Homebrew/Library/Taps/youngjuning/homebrew-tap/tpc.rb` 对安装方式做一下调整:
 
 ```ruby
 def install
@@ -73,10 +77,34 @@ def install
 end
 ```
 
-做完这些操作后，在 `/usr/local/Homebrew/Library/Taps/youngjuning/homebrew-tpc/` 目录下，执行 git 操作提交代码到 github
+做完这些操作后，在 `/usr/local/Homebrew/Library/Taps/youngjuning/homebrew-tap/` 目录下，执行 git 操作提交代码到 github
+
+## 多版本
+
+以上我们完成了一个简单的 Homebrew 包，还有一个要紧的问题是，如何提供历史版本。Homebrew 对此也做了约定。假如我们要提供 0.0.1 版本的 tpc，你将做如下工作：
+
+1、新建 tpc@0.0.1.rb 并将 tpc.rb 中的内容复制进来。
+
+2、将 `tpc@0.0.1.rb` 中的 `class Tpc` 修改为 `class TpcAT001`
+
+3、url 中 的地址修改为指向 0.0.1 版本的压缩包地址
 
 ## 安装
 
+```shell
+# 后续可以使用该命令更新 tap
+$ brew tap youngjuning/tap
+$ brew install tpc
+```
+
+或者
+
 ```sh
-$ brew install youngjuning/tpc/tpc
+$ brew install youngjuning/tap/tpc
+```
+
+## 升级
+
+```sh
+$ brew upgrade youngjuning/tap/tpc
 ```

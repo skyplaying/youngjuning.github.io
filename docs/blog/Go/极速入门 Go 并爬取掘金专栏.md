@@ -529,9 +529,10 @@ $ tar zcvf juejin_0.0.1.tar.gz juejin
 ### 3、使用 `brew create <git-url> --tab user/repo` 创建药方
 
 ```sh
+$ brew tap youngjuning/homebrew-juejin-spider https://github.com/youngjuning/homebrew-juejin-spider.git
 $ brew create \
-    https://github.com/youngjuning/homebrew-juejin-spider/raw/master/juejin_0.0.1.tar.gz \
-    --tap youngjuning/homebrew-juejin-spider
+  https://github.com/youngjuning/homebrew-juejin-spider/raw/master/juejin_0.0.1.tar.gz \
+  --tap youngjuning/homebrew-juejin-spider
 ```
 
 我们需要对安装方式做一下调整:
@@ -564,9 +565,6 @@ Usage of juejin:
 ### 在其他人的设备安装自己的脚本
 
 ```sh
-// 在执行这个命令的时候，brew会自动去更新自己的formula仓库，会耗时几分钟。。。
-$ brew tap youngjuning/juejin-spider https://github.com/youngjuning/homebrew-juejin-spider.git
-// 下载、安装脚本
 $ brew install youngjuning/juejin-spider/juejin
 ```
 
