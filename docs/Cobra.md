@@ -98,3 +98,40 @@ Cobra 命令可以定义一直保留到子命令的标志和仅可用于该命�
 在上面的例子中，`port` 是标志。
 
 标志的功能是 [pflag](https://github.com/spf13/pflag) 库提供的，该库是一个标准库的 fork，在维护相同接口的基础上兼容了 [POSIX（可移植操作系统接口）][posix]。
+
+## 入门
+
+欢迎大家提供自己的项目组织结构，但是通常基于 Cobra 的应用程序将遵循以下组织结构
+
+<Tree title="appName">
+  <ul>
+    <li>
+      cmd
+      <small>放置命令的文件夹</small>
+      <ul>
+        <li>add.go</li>
+        <li>your.go</li>
+        <li>commands.go</li>
+        <li>here.go</li>
+      </ul>
+    </li>
+    <li>
+      main.go
+      <small>应用程序入口</small>
+    </li>
+  </ul>
+</Tree>
+
+在 Cobra 应用程序中，通常 `main.go` 文件非常。它有一个目的：初始化 Cobra。
+
+```go
+package main
+
+import (
+  "{pathToYourApp}/cmd"
+)
+
+func main() {
+  cmd.Execute()
+}
+```
