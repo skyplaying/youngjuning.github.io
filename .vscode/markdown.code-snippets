@@ -11,5 +11,14 @@
       "  github: '$4'",
       "}"
     ]
-  }
+  },
+  "shell code": {
+    "scope": "markdown",
+    "prefix": "code-sh",
+    "body": [
+      "```sh",
+      "$1",
+      "```"
+    ]
+  },
 }
