@@ -73,7 +73,7 @@ brew create https://github.com/youngjuning/tpc/releases/download/v0.0.1/tpc_0.0.
 
 ```ruby
 def install
-    bin.install "juejin"
+    bin.install "tpc"
 end
 ```
 
