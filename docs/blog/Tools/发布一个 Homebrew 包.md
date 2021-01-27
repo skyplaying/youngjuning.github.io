@@ -2,6 +2,8 @@
 title: 发布一个 Homebrew 包
 ---
 
+<a href="https://juejin.cn/post/6922347045692899336" target="_blank"><Badge>掘金专栏</Badge></a>
+
 ## 相关概念
 
 ### Keg（酒桶）

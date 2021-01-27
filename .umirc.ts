@@ -32,6 +32,11 @@ export default defineConfig({
   navs: [
     null,
     {
+      title: '文档翻译',
+      // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
+      children: [{ title: ' Cobra 中文文档', path: '/cobra' }],
+    },
+    {
       title: '掘金',
       path: 'https://juejin.cn/user/325111174662855/posts',
     },
