@@ -5,6 +5,10 @@ nav:
   order: 2
 ---
 
+<Alert type="info">
+  欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs//awesome/Go.js">新增数据</a> 并提交 PR.
+</Alert>
+
 ```jsx
 /**
  * inline: true
@@ -45,5 +49,20 @@ import ArtistList from '../../components/List/ArtistList';
 
 export default () => {
   return <ArtistList data={course} />;
+};
+```
+
+## 文章
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { artist } from './Go';
+import ArtistList from '../../components/List/ArtistList';
+
+export default () => {
+  return <ArtistList data={artist} />;
 };
 ```

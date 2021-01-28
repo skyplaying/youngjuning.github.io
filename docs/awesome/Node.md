@@ -2,6 +2,10 @@
 title: Node
 ---
 
+<Alert type="info">
+  欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs//awesome/Node.js">新增数据</a> 并提交 PR.
+</Alert>
+
 ### CLI
 
 ```jsx
@@ -9,18 +13,10 @@ title: Node
  * inline: true
  */
 import React from 'react';
+import { cli } from './Node.js';
 import CardList from '../../components/List/NodeRepoCardList';
 
-const data = [
-  {
-    title: 'boxen',
-    description: 'Create boxes in the terminal',
-    npm: 'boxen',
-    github: 'sindresorhus/boxen',
-  },
-];
-
 export default () => {
-  return <CardList data={data} />;
+  return <CardList data={cli} />;
 };
 ```
