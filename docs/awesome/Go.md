@@ -32,3 +32,18 @@ export default () => {
   return <RepoCardList data={cli} />;
 };
 ```
+
+## 教程
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { course } from './Go';
+import ArtistList from '../../components/List/ArtistList';
+
+export default () => {
+  return <ArtistList data={course} />;
+};
+```

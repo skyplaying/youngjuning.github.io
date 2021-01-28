@@ -51,3 +51,11 @@ export const cli = [
     github: 'https://github.com/drone/drone-cli',
   },
 ];
+
+export const course = [
+  {
+    title: 'Building An Awesome CLI App In Go – OSCON 2017',
+    outlink:
+      'https://spf13.com/presentation/building-an-awesome-cli-app-in-go-oscon/',
+  },
+];
