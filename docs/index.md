@@ -29,9 +29,14 @@ features:
   - icon: https://i.loli.net/2021/01/07/lPsf4oykqMjZT3e.png
     title: Deno
     desc: Deno是基于V8引擎和Rust语言所创建的JavaScript、TypeScript运行环境
+    link: /blog/deno/
   - icon: https://i.loli.net/2021/01/26/5KTt2w1deEHvLrj.png
     title: Go
     desc: Go（又称 Golang）是 Google 的 Robert Griesemer，Rob Pike 及 Ken Thompson 开发的一种静态强类型、编译型语言
     link: /blog/go
+  - icon: https://i.loli.net/2021/01/28/Dc8yqXp432Ux76O.png
+    title: DevOps
+    desc: DevOps 是一种重视 “软件开发人员” 和 “IT 运维技术人员” 之间沟通合作的文化、运动或惯例
+    link: /blog/devops
 footer: Open-source MIT Licensed | Copyright ©俊宁 2020
 ---
