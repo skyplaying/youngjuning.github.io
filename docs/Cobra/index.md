@@ -16,7 +16,7 @@ hero:
 #
 
 <Alert type="warning">
-  本人非专业翻译，也非专业 Go 开发，文档若有谬误，请勿对线，直接 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/Cobra.md">编辑</a>。
+  本人非专业翻译，也非专业 Go 开发，文档若有谬误，请勿对线，直接 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/Cobra/Cobra.md">编辑</a>。
 </Alert>
 
 [spf13]: https://github.com/spf13
@@ -135,3 +135,9 @@ func main() {
   cmd.Execute()
 }
 ```
+
+## 使用 Cobra 生成器
+
+Cobra 提供了 CLI 来创建您的应用程序和添加任意你想要的命令。这是将 Cobra 集成到您的应用程序中的最简单方法。
+
+[这里](/cobra/generator) 你可以查看更多关于生成器的资料。
