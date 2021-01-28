@@ -34,7 +34,10 @@ export default defineConfig({
     {
       title: '文档翻译⬇️',
       // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
-      children: [{ title: ' Cobra 中文文档', path: '/cobra' }],
+      children: [
+        { title: ' Cobra 中文文档', path: '/cobra' },
+        { title: ' Viper 中文文档', path: '/viper' },
+      ],
     },
     {
       title: '掘金',

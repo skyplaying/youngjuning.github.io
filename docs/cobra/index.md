@@ -91,7 +91,7 @@ git clone URL --bare
 
 ## 标志（Flags）
 
-一个标志是一种修改命令行为的方式。Cobra 支持完全符合 [POSIX（可移植操作系统接口）][posix] 的标志和 Go [flag][go-flag] 包。
+一个标志是一种修饰命令行为的方式。Cobra 支持完全符合 [POSIX（可移植操作系统接口）][posix] 的标志和 Go [flag][go-flag] 包。
 
 Cobra 命令可以定义一直保留到子命令的标志和仅可用于该命令的标志。
 
@@ -146,7 +146,7 @@ Cobra 提供了 CLI 来创建您的应用程序和添加任意你想要的命令
 
 要手动接入 Cobra，您需要创建一个 `main.go` 文件和 `rootCmd` 文件。您可以选择提供合适的其他命令。
 
-### 创建 rootCmd
+## 创建 rootCmd
 
 Cobra 不需要任何特殊的构造函数。只需创建您的命令。
 
@@ -164,8 +164,7 @@ var rootCmd = &cobra.Command{
   // Run: func(cmd *cobra.Command, args []string) { },
 }
 
-// Execute将所有子命令添加到root命令并适当设置标志。
-// 会被 main.main() 调用一次。
+// Execute 将所有子命令添加到root命令并适当设置标志。会被 main.main() 调用一次。
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
@@ -205,8 +204,7 @@ var rootCmd = &cobra.Command{
   // Run: func(cmd *cobra.Command, args []string) { },
 }
 
-// Execute将所有子命令添加到root命令并适当设置标志。
-// 会被 main.main() 调用一次。
+// Execute 将所有子命令添加到root命令并适当设置标志。会被 main.main() 调用一次。
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
@@ -253,7 +251,7 @@ func initConfig() {
 }
 ```
 
-### 创建 main.go
+## 创建 main.go
 
 有了根命令，你需要一个 main 函数去执行它。为了清晰起见，`Execute` 应该在根目录上运行，尽管可以在任何命令上调用它。
 
@@ -272,7 +270,7 @@ func main() {
 }
 ```
 
-### 创建额外的命令
+## 创建额外的命令
 
 可以定义其他命令，并且通常在 `cmd/` 目录中为每个命令提供自己的文件。
 
@@ -301,3 +299,60 @@ var versionCmd = &cobra.Command{
   },
 }
 ```
+
+## 使用标志
+
+标志提供修饰符以控制命令的操作方式。
+
+由于标志是在不同位置定义和使用的，我们需要在外部定义一个具有正确作用域的变量，以分配要使用的标志。
+
+```go
+var verbose bool
+var source string
+```
+
+这里有两种不同分配标志的方法。
+
+#### 持久标志
+
+标志可以是 "persistent" 的，这意味着该标志将可用于分配给它的命令以及该命令下的每个命令。对于全局标志，将标志分配为根上的持久标志。
+
+```go
+rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "verbose output")
+```
+
+#### 本地标志
+
+也可以在本地分配一个标志，该标志仅适用于该特定命令。
+
+```go
+rootCmd.Flags().StringVarP(&source, "source", "s", "", "Source directory to read from")
+```
+
+#### 父命令上的本地标志
+
+默认情况下，Cobra 仅解析目标命令上的本地标志，而忽略父命令上的任何本地标志。通过启用 `Command.TraverseChildren`，Cobra 将在执行目标命令之前解析每个命令上的本地标志
+
+```go
+command := cobra.Command{
+  Use: "print [OPTIONS] [COMMANDS]",
+  TraverseChildren: true,
+}
+```
+
+### 用配置绑定标志
+
+您还可以将标志与 [viper][viper] 绑定：
+
+```go
+var author string
+
+func init() {
+  rootCmd.PersistentFlags().StringVar(&author, "author", "YOUR NAME", "Author name for copyright attribution")
+  viper.BindPFlag("author", rootCmd.PersistentFlags().Lookup("author"))
+}
+```
+
+在此示例中，持久标记 `author` 与 viper 绑定。请注意，当用户未提供 `--author` 标志时，变量 `author` 不会设置为 `config` 中的值。
+
+更多信息请查看 [viper 文档](/viper#与标志一起使用)。
