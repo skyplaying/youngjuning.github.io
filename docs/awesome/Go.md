@@ -15,7 +15,7 @@ nav:
  */
 import React from 'react';
 import RepoCardList from '../../components/List/RepoCardList';
-import { common } from './Go';
+import { common } from './go';
 
 export default () => {
   return <RepoCardList data={common} />;

@@ -13,7 +13,7 @@ title: Node
  * inline: true
  */
 import React from 'react';
-import { cli } from './Node.js';
+import { cli } from './node';
 import CardList from '../../components/List/NodeRepoCardList';
 
 export default () => {

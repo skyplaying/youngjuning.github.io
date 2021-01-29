@@ -13,7 +13,7 @@ title: GitHub
  * inline: true
  */
 import React from 'react';
-import { actions } from './GitHub.js';
+import { actions } from './github';
 import RepoCardList from '../../components/List/RepoCardList';
 
 export default () => {

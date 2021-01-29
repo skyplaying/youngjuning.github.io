@@ -13,7 +13,7 @@ title: React Native
  * inline: true
  */
 import React from 'react';
-import { artist } from './ReactNative';
+import { artist } from './react-native';
 import ArtistList from '../../components/List/ArtistList';
 
 export default () => {
