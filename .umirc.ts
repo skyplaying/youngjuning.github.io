@@ -8,9 +8,8 @@ export default defineConfig({
   exportStatic: {},
   hash: true,
   history: {
-    type: 'browser',
+    type: 'hash',
   },
-  ssr: {},
   locales: [
     ['zh-CN', '中文'],
     ['en-US', 'English'],
