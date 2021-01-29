@@ -8,9 +8,9 @@ export default defineConfig({
   exportStatic: {},
   hash: true,
   history: {
-    type: 'hash',
+    type: 'browser',
   },
-  ssr: process.env.Node_ENV === 'production' ? {} : false,
+  ssr: {},
   locales: [
     ['zh-CN', '中文'],
     ['en-US', 'English'],
