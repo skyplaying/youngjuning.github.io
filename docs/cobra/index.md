@@ -329,7 +329,7 @@ rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "verbose out
 rootCmd.Flags().StringVarP(&source, "source", "s", "", "Source directory to read from")
 ```
 
-#### 父命令上的本地标志
+#### 父命令上的本地标志 <Badge>🧐</Badge>
 
 默认情况下，Cobra 仅解析目标命令上的本地标志，而忽略父命令上的任何本地标志。通过启用 `Command.TraverseChildren`，Cobra 将在执行目标命令之前解析每个命令上的本地标志
 
@@ -356,3 +356,64 @@ func init() {
 在此示例中，持久标记 `author` 与 viper 绑定。请注意，当用户未提供 `--author` 标志时，变量 `author` 不会设置为 `config` 中的值。
 
 更多信息请查看 [viper 文档](/viper#与标志一起使用)。
+
+### 必需标志
+
+标志默认是可选的。如果你想在缺少标志时命令报错，请设置该标志为必需：
+
+```go
+var region string
+
+rootCmd.Flags().StringVarP(&region, "region", "r", "", "AWS region (required)")
+rootCmd.MarkFlagRequired("region")
+```
+
+### 位置和自定义参数
+
+可以使用 Command 的 Args 字段指定位置参数的验证。
+
+下面的验证符是内置的：
+
+- `NoArgs` - 如果有任何位置参数，该命令将报告错误。
+- `ArbitraryArgs` - 命令将接受任意参数
+- `OnlyValidArgs` - 如果 Command 的 `ValidArgs` 字段中不存在该位置参数，则该命令将报告错误。
+- `MinimumNArgs(int)` - 如果不存在至少 N 个位置参数，则该命令将报告错误。
+- `MaximumNArgs(int)` - 如果存在超过 N 个位置参数，则该命令将报告错误。
+- `ExactArgs(int)` - 如果不存在 N 个位置参数，则该命令将报告错误。
+- `ExactValidArgs(int)` - 如果没有确切的 N 个位置参数，或者如果 Command 的 ValidArgs 字段中不存在该位置参数，则该命令将报告并出错。
+- `RangeArgs(min, max)` - 如果 args 的数目不在期望的 args 的最小和最大数目之间，则该命令将报告并出错。
+
+内置验证符使用实例：
+
+```go
+var cmd = &cobra.Command{
+	Use:   "hello",
+	Short: "hello",
+	Args:  cobra.MinimumNArgs(2),
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("Hello, World!")
+	},
+}
+```
+
+<Alert type="error">如果只传递一个位置参数会报 `Error: requires at least 2 arg(s), only received 1` 的警告。</Alert>
+
+设置自定义验证器的示例：
+
+```go
+var cmd = &cobra.Command{
+  Short: "hello",
+  Args: func(cmd *cobra.Command, args []string) error {
+    if len(args) < 1 {
+      return errors.New("requires at least one arg")
+    }
+    if myapp.IsValidColor(args[0]) {
+      return nil
+    }
+    return fmt.Errorf("invalid color specified: %s", args[0])
+  },
+  Run: func(cmd *cobra.Command, args []string) {
+    fmt.Println("Hello, World!")
+  },
+}
+```

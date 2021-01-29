@@ -2,6 +2,7 @@
 title: react-native-svg
 nav:
   title: 预览
+  hide: true
   order: 3
 ---
 
