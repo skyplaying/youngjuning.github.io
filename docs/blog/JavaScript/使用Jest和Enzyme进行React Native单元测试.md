@@ -288,14 +288,18 @@ describe('mounting', () => {
 
 ### 其他 issues
 
-- @enzyme
+- enzyme
   - [Create Adapter for React Native & React 16](https://github.com/enzymejs/enzyme/issues/1436)
   - [Can't simulate press event in react-native](https://github.com/enzymejs/enzyme/issues/991)
   - [Shallow with New React Context API. Consumer not getting context](https://github.com/enzymejs/enzyme/issues/1636)
   - [Enzyme is not finding component by props](https://stackoverflow.com/questions/40776121/enzyme-is-not-finding-component-by-props)
-- @jest
-  - [requiring image in react-native](https://github.com/facebook/jest/issues/919)
+- jest
   - [TypeError: Cannot read property 'Object.<anonymous>' of null](https://github.com/facebook/jest/issues/4710)
   - [Jest - how to test if a component does not exist?](https://stackoverflow.com/questions/46252396/jest-how-to-test-if-a-component-does-not-exist)
   - [Refs not working in component being shallow rendered](https://github.com/enzymejs/enzyme/issues/316)
   - [ReferenceError: You are trying to `import` a file after the Jest environment has been torn down.](https://github.com/facebook/jest/issues/6434)
+  
+- react-native
+  - [requiring image in react-native](https://github.com/facebook/jest/issues/919)
+  - [Cannot find module 'setupDevtools' from 'setup.js'](https://github.com/facebook/jest/issues/3822)
+  - [Unable to resolve module `./views/assets/back-icon.png`](https://github.com/react-navigation/react-navigation/issues/7950#issuecomment-615220412)
