@@ -15,7 +15,7 @@ nav:
  */
 import React from 'react';
 import RepoCardList from '../../components/List/RepoCardList';
-import { common } from './go1';
+import { common } from './go';
 
 export default () => {
   return <RepoCardList data={common} />;
@@ -30,7 +30,7 @@ export default () => {
  */
 import React from 'react';
 import RepoCardList from '../../components/List/RepoCardList';
-import { cli } from './go1';
+import { cli } from './go';
 
 export default () => {
   return <RepoCardList data={cli} />;
@@ -44,7 +44,7 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import { course } from './go1';
+import { course } from './go';
 import ArtistList from '../../components/List/ArtistList';
 
 export default () => {
@@ -59,7 +59,7 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import { artist } from './go1';
+import { artist } from './go';
 import ArtistList from '../../components/List/ArtistList';
 
 export default () => {
