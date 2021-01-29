@@ -103,6 +103,7 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
                 repo: 'youngjuning.github.io',
                 owner: 'youngjuning',
                 admin: ['youngjuning'],
+                title: meta.title
               }}
             />
           </div>
