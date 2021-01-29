@@ -20,7 +20,7 @@ export default () => {
           title: 'Kerwin',
           description: '一切都是有可能的，甚至那些不可能的也是',
           homepage: 'https://www.kkzhilu.cn/',
-          github: 'https://github.com/kkzhilu/kkzhilu',
+          github: 'kkzhilu/kkzhilu',
         },
       ]}
     />
