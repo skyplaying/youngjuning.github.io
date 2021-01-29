@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import type { IRouteComponentProps } from '@umijs/types';
 import { context, Link } from 'dumi/theme';
+import 'gitalk/dist/gitalk.css';
+import GitalkComponent from 'gitalk/dist/gitalk-component';
 import Navbar from './components/Navbar';
 import SideMenu from './components/SideMenu';
 import SlugList from './components/SlugList';
@@ -92,6 +94,19 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
       {showFeatures && Features(meta.features)}
       <div className="__dumi-default-layout-content">
         {children}
+        {!showHero && !showFeatures && meta.filePath && !meta.gapless && (
+          <div className="__dumi-default-layout-comment">
+            <GitalkComponent
+              options={{
+                clientID: 'a6e0d6a84dbf93dd00f3',
+                clientSecret: '0c9c5fff9e132c7e85ccc08633629706acfc33e4',
+                repo: 'youngjuning.github.io',
+                owner: 'youngjuning',
+                admin: ['youngjuning'],
+              }}
+            />
+          </div>
+        )}
         {!showHero && !showFeatures && meta.filePath && !meta.gapless && (
           <div className="__dumi-default-layout-footer-meta">
             {repoPlatform && (
