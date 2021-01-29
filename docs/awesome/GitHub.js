@@ -18,4 +18,10 @@ export const actions = [
     homepage: 'https://github.com/marketplace/actions/serverchan-notify',
     github: 'yakumioto/serverchan-action',
   },
+  {
+    title: 'issues-helper',
+    description: '🤖 一个轻松帮你自动管理 issues 的 GitHub Action',
+    homepage: 'https://actions-cool.github.io/issues-helper/',
+    github: 'https://github.com/actions-cool/issues-helper'
+  }
 ];
