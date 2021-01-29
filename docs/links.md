@@ -17,10 +17,10 @@ export default () => {
     <RepoCardList
       data={[
         {
-          title: 'dumi',
-          description: '📖 为组件开发场景而生的文档工具',
-          homepage: 'https://d.umijs.org/zh-CN',
-          github: 'https://github.com/umijs/dumi',
+          title: 'Kerwin',
+          description: '一切都是有可能的，甚至那些不可能的也是',
+          homepage: 'https://www.kkzhilu.cn/',
+          github: 'https://github.com/kkzhilu/kkzhilu',
         },
       ]}
     />
