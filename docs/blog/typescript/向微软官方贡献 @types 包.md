@@ -1,5 +1,6 @@
 <a href="https://juejin.cn/post/6923379384002805774" target="_blank"><Badge>掘金专栏</Badge></a>
 
+<Alert type="">涂鸦科技大量优质 HC，欢迎大家加入，需要内推加我微信 `yang_jun_ning`</Alert>
 在前端社区中，TypeScript 差不多是老生常谈的主题了。这不仅反映了 TypeScript 的流行度，也反映了它的学习上手成本。今天我们不来探讨 TypeScript 本身。而是记录一下我艰难地发布一个 [@types](https://www.npmjs.com/package/@types/tuya-panel-kit) 包的历程。
 
 ## a year ago
@@ -89,6 +90,6 @@ yarn lint tuya-panel-kit
 
 在参与 DefinitelyTyped 的协作中，我越来越发现规范的重要。如此体量的项目，如果没有严格有效的规范约束，势必会被开发者抛弃。那我们来看看 DefinitelyTyped 中是如何约束的：
 
-1、[dtslint](https://github.com/microsoft/dtslint) ：微软专门写的用来检验类型声明文件的工具。正是因为它，我做了大量优化工作。
-2、机器人 🤖（dt-mergebot、dt-review-bot、typescript-bot-watchdog）：在你的代码通过所有规范之前，都是这些机器人在和你交互。大家感兴趣的话，之后我会单独出一篇解析的文章
-3、尽职尽责的维护：虽然有时 review 速度明显很慢（可能因为国外疫情）。但是这些维护者真的是尽职尽责的 review 你的代码。机器再厉害也只是一个减少工作量的工具。我们应该致敬的还是这些为社区默默奉献的人。
+1. [dtslint](https://github.com/microsoft/dtslint) ：微软专门写的用来检验类型声明文件的工具。正是因为它，我做了大量优化工作。
+2. 机器人 🤖（dt-mergebot、dt-review-bot、typescript-bot-watchdog）：在你的代码通过所有规范之前，都是这些机器人在和你交互。大家感兴趣的话，之后我会单独出一篇解析的文章
+3. 尽职尽责的维护：虽然有时 review 速度明显很慢（可能因为国外疫情）。但是这些维护者真的是尽职尽责的 review 你的代码。机器再厉害也只是一个减少工作量的工具。我们应该致敬的还是这些为社区默默奉献的人。
