@@ -64,6 +64,7 @@ const SideMenu: FC<INavbarProps> = ({ mobileMenuCollapsed, location }) => {
           <div className="__dumi-default-menu-mobile-area">
             <ul className="__dumi-default-menu-nav-list">
               {navItems.map(nav => {
+                if (nav.hide) return
                 const child = Boolean(nav.children?.length) && (
                   <ul>
                     {nav.children.map(item => (
