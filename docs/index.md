@@ -17,6 +17,7 @@ features:
   - icon: https://i.loli.net/2021/01/06/XVYizbjNaoSpThR.png
     title: TypeScript
     desc: TypeScript带来了可选的静态类型检查以及最新的ECMAScript特性。
+    link: /blog/typescript/
   - icon: https://i.loli.net/2021/01/07/UB3wWQdMIPcmpVy.png
     title: Node.js
     desc: Node.js® 是一个基于 Chrome V8 引擎 的 JavaScript 运行时
