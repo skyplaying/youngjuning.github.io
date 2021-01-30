@@ -18,7 +18,12 @@ export default (props: Props) => {
     <List
       grid={{
         gutter: 16,
-        column: 3,
+        xs: 1,
+        sm: 1,
+        md: 1,
+        lg: 2,
+        xl: 2,
+        xxl: 3,
       }}
       dataSource={sortBy(props.data, 'title')}
       renderItem={item => {

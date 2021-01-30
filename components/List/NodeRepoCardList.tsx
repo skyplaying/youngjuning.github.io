@@ -19,10 +19,10 @@ export default (props: Props) => {
       grid={{
         gutter: 16,
         xs: 1,
-        sm: 2,
-        md: 4,
-        lg: 4,
-        xl: 3,
+        sm: 1,
+        md: 1,
+        lg: 2,
+        xl: 2,
         xxl: 3,
       }}
       dataSource={sortBy(props.data, 'title')}
