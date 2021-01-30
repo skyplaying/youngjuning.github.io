@@ -7,7 +7,7 @@
 
 <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4aeb4e02f1640069b7e763ea0b5be40~tplv-k3u1fbpfcp-watermark.image" height="400px"/>
 
-上图是我在掘金的第一篇文章 [优雅地使用 TypeScript 开发 React Native 应用](https://juejin.cn/post/6844903843155689486) 中的一条素质问答。问题就是有些库不是 js 写的，也没提供类型声明该怎么办。从图中可见我当时的解决方法都是不可复用且不利他的。但这就是我这一年来处理该问题的常规手段。
+上图是我在掘金的第一篇文章 [优雅地使用 TypeScript 开发 React Native 应用](https://juejin.cn/post/6844903843155689486) 中的一条素质问答。问题就是有些库不是 TS 写的，也没提供类型声明该怎么办。从图中可见我当时的解决方法都是不可复用且不利他的。但这就是我这一年来处理该问题的常规手段。
 
 ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/04f411da146740aab8f620337a592850~tplv-k3u1fbpfcp-watermark.image)
 
