@@ -3,6 +3,8 @@ import type { IRouteComponentProps } from '@umijs/types';
 import { context, Link } from 'dumi/theme';
 import 'gitalk/dist/gitalk.css';
 import GitalkComponent from 'gitalk/dist/gitalk-component';
+import Badge from './builtins/Badge'
+import Alert from './builtins/Alert'
 import Navbar from './components/Navbar';
 import SideMenu from './components/SideMenu';
 import SlugList from './components/SlugList';
@@ -93,7 +95,13 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
       {showHero && Hero(meta.hero)}
       {showFeatures && Features(meta.features)}
       <div className="__dumi-default-layout-content">
+        {
+          meta.tags?.map(item => <Badge key={item}>{item}</Badge>)
+        }
         {children}
+        {
+          !showHero && !showFeatures && meta.filePath &&(<Alert type="success">涂鸦智能大量优质 HC，欢迎大家加入，需要内推加我微信 `yang_jun_ning`</Alert>)
+        }
         {!showHero && !showFeatures && meta.filePath && !meta.gapless && (
           <div className="__dumi-default-layout-comment">
             <GitalkComponent

@@ -1,6 +1,8 @@
-<a href="https://juejin.cn/post/6923379384002805774" target="_blank"><Badge>掘金专栏</Badge></a>
+---
+title: 向微软官方贡献 @types 包
+tags: ['掘金专栏']
+---
 
-<Alert type="">涂鸦科技大量优质 HC，欢迎大家加入，需要内推加我微信 `yang_jun_ning`</Alert>
 在前端社区中，TypeScript 差不多是老生常谈的主题了。这不仅反映了 TypeScript 的流行度，也反映了它的学习上手成本。今天我们不来探讨 TypeScript 本身。而是记录一下我艰难地发布一个 [@types](https://www.npmjs.com/package/@types/tuya-panel-kit) 包的历程。
 
 ## a year ago
