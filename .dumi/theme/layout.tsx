@@ -100,7 +100,7 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
         }
         {children}
         {
-          !showHero && !showFeatures && meta.filePath &&(<Alert type="success">涂鸦智能大量优质 HC，欢迎大家加入，需要内推加我微信     yang_jun_ning</Alert>)
+          !showHero && !showFeatures && meta.filePath &&(<Alert type="success">涂鸦智能大量优质 HC，欢迎大家加入，需要内推加我微信     yang_jun_ning，或直接发简历到邮箱 youngjuning@aliyun.com</Alert>)
         }
         {!showHero && !showFeatures && meta.filePath && !meta.gapless && (
           <div className="__dumi-default-layout-comment">
