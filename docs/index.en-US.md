@@ -35,7 +35,7 @@ features:
     title: Go
     desc: Go is an open source programming language that makes it easy to build simple, reliable, and efficient software
     link: /blog/go
-  - icon: https://i.loli.net/2021/01/31/javDoqEItfePhGC.png
+  - icon: https://i.loli.net/2021/01/31/hjIm2AXDY3Obdw7.png
     title: DevOps
     desc: DevOps 是一种重视 “软件开发人员” 和 “IT 运维技术人员” 之间沟通合作的文化、运动或惯例
     link: /blog/devops
