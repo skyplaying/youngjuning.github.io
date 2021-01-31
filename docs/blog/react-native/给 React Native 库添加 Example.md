@@ -1,9 +1,10 @@
 ---
 title: 给 React Native 库添加 Example
+tags: ['掘金专栏', '翻译']
 cover: https://i.loli.net/2021/01/31/7hqcYgxfzEVNJoU.png
 ---
 
-> 本文翻译自 [Adding an example app to your React Native library](https://callstack.com/blog/adding-an-example-app-to-your-react-native-library/),也夹杂了一些私，如有帮助，请不吝点赞。
+> 本文翻译自 [Adding an example app to your React Native library](https://callstack.com/blog/adding-an-example-app-to-your-react-native-library/),也夹杂了一些私货，如有帮助，请不吝点赞。
 
 你为 React Native 制作了一个闪亮的新库，现在该向全世界展示它。但是您需要添加一个示例应用程序，以便人们可以在安装之前进行尝试。有一个示例程序也能让你在开发时测试。这看起来很简单，真的是吗？
 
