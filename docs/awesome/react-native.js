@@ -1,3 +1,18 @@
+export const tools = [
+  {
+    title: 'react-native-builder-bob',
+    description: '👷‍♂️ A simple CLI to scaffold and build React Native libraries',
+    npm: 'react-native-builder-bob',
+    github: 'callstack/react-native-builder-bob',
+  },
+  {
+    title: 'create-react-native-module',
+    description:
+      'Tool to create a React Native library module or native view component, with a single command.',
+    npm: 'create-react-native-module',
+    github: 'brodybits/create-react-native-module',
+  },
+];
 export const artist = [
   {
     title:
