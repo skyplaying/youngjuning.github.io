@@ -23,12 +23,14 @@ features:
   - icon: https://i.loli.net/2021/01/07/lPsf4oykqMjZT3e.png
     title: Deno
     desc: Deno是基于V8引擎和Rust语言所创建的JavaScript、TypeScript运行环境
+    link: /blog/deno/
   - icon: https://i.loli.net/2021/01/07/3e2qXd1jYQSr6tD.png
     title: React
     desc: 用于构建用户界面的 JavaScript 库
   - icon: https://i.loli.net/2021/01/07/LyrYFU7icZbGkQv.png
     title: React Native
     desc: 使用React来编写原生应用的框架
+    link: /blog/react-native/
   - icon: https://i.loli.net/2021/01/26/5KTt2w1deEHvLrj.png
     title: Go
     desc: Go is an open source programming language that makes it easy to build simple, reliable, and efficient software
