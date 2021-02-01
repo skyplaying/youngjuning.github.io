@@ -20,7 +20,7 @@ export const common = [
     title: 'mitchellh/gox',
     description: 'A dead simple, no frills Go cross compile tool',
     homepage: 'https://github.com/mitchellh/gox/blob/master/README.md',
-    github: 'https://github.com/mitchellh/gox',
+    github: 'mitchellh/gox',
   },
 ];
 
@@ -48,7 +48,7 @@ export const cli = [
     title: 'drone/drone-cli',
     description: 'Command Line Tools for Drone CI powered by urfave/cli',
     homepage: 'https://docs.drone.io/cli',
-    github: 'https://github.com/drone/drone-cli',
+    github: 'drone/drone-cli',
   },
 ];
 
