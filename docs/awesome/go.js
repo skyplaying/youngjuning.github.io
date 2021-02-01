@@ -26,6 +26,12 @@ export const common = [
 
 export const cli = [
   {
+    title: 'mh-cbon/go-msi',
+    description: 'Easy way to generate msi package for a Go project',
+    homepage: 'https://mh-cbon.github.io/go-msi/',
+    github: 'mh-cbon/go-msi',
+  },
+  {
     title: 'urfave/cli',
     description:
       'cli is a simple, fast, and fun package for building command line apps in Go',
