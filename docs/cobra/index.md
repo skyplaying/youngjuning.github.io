@@ -14,7 +14,7 @@ nav:
 ---
 
 <Alert type="warning">
-  本人非专业翻译，也非专业 Go 开发，文档若有谬误，请勿对线，直接 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/cobra/index.md">编辑</a>。
+  本人非专业翻译，也非专业 Go 开发，文档若有谬误，请勿对线，直接 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/cobra/index.md">编辑</a>。原文档请 <a href="https://cobra.dev/">点击</a> 查看。
 </Alert>
 
 [spf13]: https://github.com/spf13
@@ -79,7 +79,7 @@ hugo server --port=1313
 git clone URL --bare
 ```
 
-## 命令（Command）
+### 命令（Command）
 
 命令是应用程序的核心。应用程序提供的每一个交互都包含在 Command 中。一个命令可以有子命令和可选的运行一个动作。
 
@@ -87,7 +87,7 @@ git clone URL --bare
 
 [cobra.Command API](https://godoc.org/github.com/spf13/cobra#Command)
 
-## 标志（Flags）
+### 标志（Flags）
 
 一个标志是一种修饰命令行为的方式。Cobra 支持完全符合 [POSIX（可移植操作系统接口）][posix] 的标志和 Go [flag][go-flag] 包。
 
@@ -134,17 +134,17 @@ func main() {
 }
 ```
 
-## 使用 Cobra 生成器
+### 使用 Cobra 生成器
 
 Cobra 提供了 CLI 来创建您的应用程序和添加任意你想要的命令。这是将 Cobra 集成到您的应用程序中的最简单方法。
 
 [这里](/cobra/generator) 你可以查看更多关于生成器的资料。
 
-## 使用 Cobra 库
+### 使用 Cobra 库
 
 要手动接入 Cobra，您需要创建一个 `main.go` 文件和 `rootCmd` 文件。您可以选择提供合适的其他命令。
 
-## 创建 rootCmd
+#### 创建 rootCmd
 
 Cobra 不需要任何特殊的构造函数。只需创建您的命令。
 
@@ -249,7 +249,7 @@ func initConfig() {
 }
 ```
 
-## 创建 main.go
+### 创建 main.go
 
 有了根命令，你需要一个 main 函数去执行它。为了清晰起见，`Execute` 应该在根目录上运行，尽管可以在任何命令上调用它。
 
@@ -268,7 +268,7 @@ func main() {
 }
 ```
 
-## 创建额外的命令
+### 创建额外的命令
 
 可以定义其他命令，并且通常在 `cmd/` 目录中为每个命令提供自己的文件。
 
@@ -298,7 +298,7 @@ var versionCmd = &cobra.Command{
 }
 ```
 
-## 使用标志
+### 使用标志
 
 标志提供修饰符以控制命令的操作方式。
 
@@ -338,7 +338,7 @@ command := cobra.Command{
 }
 ```
 
-### 用配置绑定标志
+#### 用配置绑定标志
 
 您还可以将标志与 [viper][viper] 绑定：
 
@@ -355,7 +355,7 @@ func init() {
 
 更多信息请查看 [viper 文档](/viper#与标志一起使用)。
 
-### 必需标志
+#### 必需标志
 
 标志默认是可选的。如果你想在缺少标志时命令报错，请设置该标志为必需：
 
@@ -486,11 +486,11 @@ Echo works a lot like print, except it has a child command.`,
 
 更复杂的应用，请参考 [Hugo](https://github.com/gohugoio/hugo) 或者 [GitHub CLI](https://github.com/cli/cli)。
 
-## 帮助命令
+### 帮助命令
 
 当你添加了子命令，Cobra 会自动添加一些帮助命令。当你执行 `app help` 命令时会显示帮助信息。另外，`help` 还支持其他命令作为输入参数。举例来说，你有一个没有额外配置的 `create` 命令，`app help create` 是有效的。每一个命令还会自动获取一个 `--help` 标志。
 
-### 示例
+#### 示例
 
 以下输出由 Cobra 自动生成。 除了命令和标志定义外，什么都不需要。
 
@@ -498,7 +498,7 @@ Echo works a lot like print, except it has a child command.`,
 
 `help` 就像其他命令一样。并没有特殊的逻辑或行为。实际上，你可以根据需要提供自己的服务。
 
-### 定义你自己的 help
+#### 定义你自己的 help
 
 你可以使用下面的方法提供你自己的 Help 命令或模板。
 
@@ -510,13 +510,13 @@ cmd.setHelpTemplate(s string)
 
 后两者也适用于所有子命令。
 
-## 使用信息
+### 使用信息
 
 当用户提供无效的标志或无效的命令时，Cobra 会通过向用户显示 `usage` 进行响应。
 
 ![](https://i.loli.net/2021/02/01/vtlzqAo7eDJwhM1.png)
 
-### 定义你自己的使用信息
+#### 定义你自己的使用信息
 
 你可以提供你自己的 usage 函数或模板。像 `help` 一样，函数和模板可通过公共方法重写：
 
@@ -527,13 +527,13 @@ cmd.SetUsageTemplate(s string)
 
 可以参考 [GitHub CLI](https://github.com/cli/cli/blob/dcf5a27f5343ea0e9b3ef71ca37a4c3948102667/pkg/cmd/root/root.go#L63) 的写法。
 
-## 版本标志
+### 版本标志
 
 如果给根命令设置了 `Version` 字段，Cobra 会添加一个顶级的 `--version` 标志。运行带有 `–version` 标志的应用程序，将使用版本模板将版本打印到 stdout。模板可以使用 `cmd.SetVersionTemplate(s string)` 函数自定义。
 
 > `SetVersionTemplate` 的使用可以参考 [GitHub CLI](https://github.com/cli/cli/blob/dcf5a27f5343ea0e9b3ef71ca37a4c3948102667/pkg/cmd/root/root.go#L67)
 
-## PreRun 和 PostRun Hooks
+### PreRun 和 PostRun Hooks
 
 可以在执行命令之前和之后运行一个函数。`PersistentPreRun` 和 `PreRun` 函数将在 `Run` 之前执行。`PersistentPostRun` 和 `PostRun` 会在 `Run` 之后运行。如果子级未声明自己的 `Persistent * Run` 函数，则子级将继承父级的。这些函数的执行顺续如下：
 
@@ -601,3 +601,9 @@ func main() {
 	rootCmd.Execute()
 }
 ```
+
+### Suggestions when "unknown command" happens
+
+### Generating documentation for your command
+
+### Generating bash completions
