@@ -56,7 +56,7 @@ dts-gen --dt --name tuya-panel-kit --template module
 npm run prettier -- --write types/tuya-panel-kit/**/*.ts
 ```
 
-这一步务必要执行，因为 DefinitelyTyped 十分严格，格式不对过不了 CI。过不了 CI，就只配合机器人对话：
+这一步务必要执行，因为 DefinitelyTyped 十分严格，格式不对过不了 CI。过不了 CI，就只配和机器人对话：
 
 ![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/140adf442a17460aa845aef8e4b8ac18~tplv-k3u1fbpfcp-watermark.image)
 
