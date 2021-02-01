@@ -1,5 +1,5 @@
 ---
-sidemenu: false
+title: generator
 ---
 
 <Alert type="warning">

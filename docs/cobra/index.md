@@ -2,18 +2,16 @@
 title: Cobra 中文文档
 nav:
   hide: true
-hero:
-  title: Cobra
-  desc: 一个基于 Go 的现代 CLI 框架
-  image: https://cobra.dev/home/logo.png
-  actions:
-    - text: 英文文档
-      link: https://cobra.dev/
-    - text: GitHub
-      link: https://github.com/spf13/cobra
+# hero:
+#   title: Cobra
+#   desc: 一个基于 Go 的现代 CLI 框架
+#   image: https://cobra.dev/home/logo.png
+#   actions:
+#     - text: 英文文档
+#       link: https://cobra.dev/
+#     - text: GitHub
+#       link: https://github.com/spf13/cobra
 ---
-
-#
 
 <Alert type="warning">
   本人非专业翻译，也非专业 Go 开发，文档若有谬误，请勿对线，直接 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/cobra/index.md">编辑</a>。
@@ -418,10 +416,188 @@ var cmd = &cobra.Command{
 }
 ```
 
-## 示例
+### 示例
 
 在下面的例子中，我们定义了三个命令。两个在顶层，一个（`cmdTimes`）是子命令。在这种情况下，根目录不可执行，这意味着需要一个子命令。通过不为 `rootCmd` 提供 `Run` 来实现。
 
 我们只为一个命令定义了一个标志。
 
 关于标志的文档在 [pflag](/cobra/pflag)。
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+
+	"github.com/spf13/cobra"
+)
+
+func main() {
+	var echoTimes int
+
+	var cmdPrint = &cobra.Command{
+		Use:   "Print [string to print]",
+		Short: "Print anything to the screen",
+		Long: `print is for printing anything back to the screen.
+For many years people have printed back to the screen.`,
+		Args: cobra.MinimumNArgs(1),
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Println("Print: " + strings.Join(args, " "))
+		},
+	}
+
+	var cmdEcho = &cobra.Command{
+		Use:   "echo [string to echo]",
+		Short: "Echo anything to the screen",
+		Long: `echo is for echoing anything back.
+Echo works a lot like print, except it has a child command.`,
+		Args: cobra.MinimumNArgs(1),
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Println("Print: " + strings.Join(args, " "))
+		},
+	}
+
+	var cmdTimes = &cobra.Command{
+		Use:   "times [# times] [string to echo]",
+		Short: "Echo anyting to the screen more times",
+		Long: `echo things multiple times back to the user y providing
+		a count and a string.`,
+		Args: cobra.MinimumNArgs(1),
+		Run: func(cmd *cobra.Command, args []string) {
+			for i := 0; i < echoTimes; i++ {
+				fmt.Println("Echo: " + strings.Join(args, " "))
+			}
+		},
+	}
+
+	cmdTimes.Flags().IntVarP(&echoTimes, "times", "t", 1, "times to echo the input")
+
+	// 设置根命令
+	var rootCmd = &cobra.Command{Use: "app"}
+	rootCmd.AddCommand(cmdPrint, cmdEcho)
+	cmdEcho.AddCommand(cmdTimes)
+
+	// 初始化应用
+	rootCmd.Execute()
+}
+```
+
+更复杂的应用，请参考 [Hugo](https://github.com/gohugoio/hugo) 或者 [GitHub CLI](https://github.com/cli/cli)。
+
+## 帮助命令
+
+当你添加了子命令，Cobra 会自动添加一些帮助命令。当你执行 `app help` 命令时会显示帮助信息。另外，`help` 还支持其他命令作为输入参数。举例来说，你有一个没有额外配置的 `create` 命令，`app help create` 是有效的。每一个命令还会自动获取一个 `--help` 标志。
+
+### 示例
+
+以下输出由 Cobra 自动生成。 除了命令和标志定义外，什么都不需要。
+
+![](https://i.loli.net/2021/02/01/Mi51jfXQE39ZFcT.png)
+
+`help` 就像其他命令一样。并没有特殊的逻辑或行为。实际上，你可以根据需要提供自己的服务。
+
+### 定义你自己的 help
+
+你可以使用下面的方法提供你自己的 Help 命令或模板。
+
+```go
+cmd.SetHelpCommand(cmd *Command)
+cmd.setHelpCommand(f func(*Command, []string))
+cmd.setHelpTemplate(s string)
+```
+
+后两者也适用于所有子命令。
+
+## 使用信息
+
+当用户提供无效的标志或无效的命令时，Cobra 会通过向用户显示 `usage` 进行响应。
+
+![](https://i.loli.net/2021/02/01/vtlzqAo7eDJwhM1.png)
+
+### 定义你自己的使用信息
+
+你可以提供你自己的 usage 函数或模板。像 `help` 一样，函数和模板可通过公共方法重写：
+
+```go
+cmd.SetUsageFunc(f func(*Command) error)
+cmd.SetUsageTemplate(s string)
+```
+
+可以参考 [GitHub CLI](https://github.com/cli/cli/blob/dcf5a27f5343ea0e9b3ef71ca37a4c3948102667/pkg/cmd/root/root.go#L63) 的写法。
+
+## 版本标志
+
+如果给根命令设置了 `Version` 字段，Cobra 会添加一个顶级的 `--version` 标志。运行带有 `–version` 标志的应用程序，将使用版本模板将版本打印到 stdout。模板可以使用 `cmd.SetVersionTemplate(s string)` 函数自定义。
+
+> `SetVersionTemplate` 的使用可以参考 [GitHub CLI](https://github.com/cli/cli/blob/dcf5a27f5343ea0e9b3ef71ca37a4c3948102667/pkg/cmd/root/root.go#L67)
+
+## PreRun 和 PostRun Hooks
+
+可以在执行命令之前和之后运行一个函数。`PersistentPreRun` 和 `PreRun` 函数将在 `Run` 之前执行。`PersistentPostRun` 和 `PostRun` 会在 `Run` 之后运行。如果子级未声明自己的 `Persistent * Run` 函数，则子级将继承父级的。这些函数的执行顺续如下：
+
+- PersistentPreRun
+- PreRun
+- Run
+- PostRun
+- PersistentPostRun
+
+下面这个包含了两个命令的例子使用了这些特性。当子命令执行时，它会运行根命令的 `PersistentPreRun`，但是不会运行根命令的 `PersistentPostRun`：
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/spf13/cobra"
+)
+
+func main() {
+	var rootCmd = &cobra.Command{
+		Use:   "root [sub]",
+		Short: "My root command",
+		PersistentPreRun: func(cmd *cobra.Command, args []string) {
+			fmt.Printf("Inside rootCmd PersistentPreRun with args: %v\n", args)
+		},
+		PreRun: func(cmd *cobra.Command, args []string) {
+			fmt.Printf("Inside rootCmd PreRun with args: %v\n", args)
+		},
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Printf("Inside rootCmd Run with args: %v\n", args)
+		},
+		PostRun: func(cmd *cobra.Command, args []string) {
+			fmt.Printf("Inside rootCmd PostRun with args: %v\n", args)
+		},
+		PersistentPostRun: func(cmd *cobra.Command, args []string) {
+			fmt.Printf("Inside rootCmd PersistentPostRun with args: %v\n", args)
+		},
+	}
+
+	subCmd := &cobra.Command{
+		Use:   "sub [no options!]",
+		Short: "My subcommand",
+		PreRun: func(cmd *cobra.Command, args []string) {
+			fmt.Printf("Inside subCmd PreRun with args: %v\n", args)
+		},
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Printf("Inside subCmd Run with args: %v\n", args)
+		},
+		PostRun: func(cmd *cobra.Command, args []string) {
+			fmt.Printf("Inside subCmd PostRun with args: %v\n", args)
+		},
+		PersistentPostRun: func(cmd *cobra.Command, args []string) {
+			fmt.Printf("Inside subCmd PersistentPostRun with args: %v\n", args)
+		},
+	}
+
+	rootCmd.AddCommand(subCmd)
+
+	rootCmd.SetArgs([]string{""})
+	rootCmd.Execute()
+	fmt.Println()
+	rootCmd.SetArgs([]string{"sub", "arg1", "arg2"})
+	rootCmd.Execute()
+}
+```
