@@ -22,6 +22,11 @@ export const common = [
     homepage: 'https://github.com/mitchellh/gox/blob/master/README.md',
     github: 'mitchellh/gox',
   },
+  {
+    title: 'moovweb/gvm',
+    description: 'Go Version Manager',
+    github: 'moovweb/gvm',
+  },
 ];
 
 export const cli = [
