@@ -2,15 +2,7 @@
 title: Cobra 中文文档
 nav:
   hide: true
-# hero:
-#   title: Cobra
-#   desc: 一个基于 Go 的现代 CLI 框架
-#   image: https://cobra.dev/home/logo.png
-#   actions:
-#     - text: 英文文档
-#       link: https://cobra.dev/
-#     - text: GitHub
-#       link: https://github.com/spf13/cobra
+cover: https://i.loli.net/2021/02/02/skn4I8acrQuMOqK.png
 ---
 
 <Alert type="warning">
@@ -664,8 +656,8 @@ Cobra 可以基于子命令、标志等生成文档。可用格式如下：
 
 - [Markdown](https://youngjuning.js.org/#/cobra/md_docs)
 - [ReStructured Text](https://youngjuning.js.org/#/cobra/rest_docs)
-- [Man Page](https://github.com/spf13/cobra/blob/master/doc/man_docs.md)
+- [Man Page](https://youngjuning.js.org/#/cobra/man_docs)
 
 ### Generating bash completions
 
-Cobra 可以生成 bash-completion 文件。如果你给你的命令添加了更多的信息，这些自动提示的分析会非常强大和灵活。更是信息请阅读[]()
+Cobra 可以生成 bash-completion 文件。如果你给你的命令添加了更多的信息，这些自动提示的分析会非常强大和灵活。更是信息请阅读[Bash Completions](https://youngjuning.js.org/#/cobra/bash_completions)
