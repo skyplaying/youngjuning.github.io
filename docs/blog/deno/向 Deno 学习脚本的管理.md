@@ -379,8 +379,16 @@ curl -fsSL https://youngjuning.js.org/seve/install.sh | sh
 curl -fsSL https://youngjuning.js.org/seve/install.sh | sh -s v0.0.1
 ```
 
+> 至此我们就实现了我们自己的脚本管理，示例代码在 [youngjuning/seve](https://github.com/youngjuning/seve)，如有帮助，欢迎 Star。
+
+## 国内加速
+
+这又是另一段故事了，我们可以仿照 justjavac 大佬在 [justjavac/deno_releases](https://github.com/justjavac/deno_releases) 中做的那样仿照一份。和原脚本不一样的地方在于是基于 [jsdelivr](https://www.jsdelivr.com/) 做了 CDN 加速。
+
 ## 预告
 
 - Powershell 编程基础
 - Deno GitHub Action 自动化流程解析
 - Deno CLI 开发入门
+
+> 涂鸦智能大量优质 HC，欢迎大家加入，需要内推加我微信 yang_jun_ning，或直接发简历到邮箱 youngjuning@aliyun.com
