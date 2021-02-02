@@ -14,9 +14,9 @@ title: Tools
  */
 import React from 'react';
 import { windows } from './tools';
-import RepoCardList from '../../components/List/RepoCardList';
+import CardList from '../../components/List/CardList';
 
 export default () => {
-  return <RepoCardList data={windows} />;
+  return <CardList data={windows} />;
 };
 ```

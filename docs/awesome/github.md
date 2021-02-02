@@ -14,9 +14,9 @@ title: GitHub
  */
 import React from 'react';
 import { actions } from './github';
-import RepoCardList from '../../components/List/RepoCardList';
+import CardList from '../../components/List/CardList';
 
 export default () => {
-  return <RepoCardList data={actions} />;
+  return <CardList data={actions} />;
 };
 ```

@@ -14,11 +14,11 @@ nav:
  * inline: true
  */
 import React from 'react';
-import RepoCardList from '../../components/List/RepoCardList';
+import CardList from '../../components/List/CardList';
 import { common } from './go';
 
 export default () => {
-  return <RepoCardList data={common} />;
+  return <CardList data={common} />;
 };
 ```
 
@@ -29,11 +29,11 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import RepoCardList from '../../components/List/RepoCardList';
+import CardList from '../../components/List/CardList';
 import { cli } from './go';
 
 export default () => {
-  return <RepoCardList data={cli} />;
+  return <CardList data={cli} />;
 };
 ```
 

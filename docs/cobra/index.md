@@ -602,8 +602,70 @@ func main() {
 }
 ```
 
-### Suggestions when "unknown command" happens
+输出：
 
-### Generating documentation for your command
+```sh
+Inside rootCmd PersistentPreRun with args: []
+Inside rootCmd PreRun with args: []
+Inside rootCmd Run with args: []
+Inside rootCmd PostRun with args: []
+Inside rootCmd PersistentPostRun with args: []
+
+Inside rootCmd PersistentPreRun with args: [arg1 arg2]
+Inside subCmd PreRun with args: [arg1 arg2]
+Inside subCmd Run with args: [arg1 arg2]
+Inside subCmd PostRun with args: [arg1 arg2]
+Inside subCmd PersistentPostRun with args: [arg1 arg2]
+```
+
+### "unknown command" 时的提示
+
+当 `"unknown command"` 错误发生时，Cobra 会自动打印提示。这和 git 命令的行为一致。比如
+
+```sh
+$ hugo srever
+Error: unknown command "srever" for "hugo"
+
+Did you mean this?
+        server
+
+Run 'hugo --help' for usage.
+```
+
+系统会根据注册的每个子命令自动生成建议，并使用[萊文斯坦距離](https://zh.wikipedia.org/wiki/%E8%90%8A%E6%96%87%E6%96%AF%E5%9D%A6%E8%B7%9D%E9%9B%A2)的实现。每个匹配最小距离 2（忽略大小写）的注册命令都将显示为建议。
+
+如果需要禁用建议或在命令中调整字符串距离，请使用：
+
+```go
+cmd.DisableSuggestions = true
+```
+
+或
+
+```go
+cmd.SuggestionsMinimumDistance = 1
+```
+
+您还可以使用 `SuggestFor` 属性显式为给定命令设置建议的名称。这样就可以针对不是距离很近的字符串提出建议，但是对于您的命令集和不希望使用别名的命令来说，它们都是有意义的。比如：
+
+```sh
+$ kubectl remove
+Error: unknown command "remove" for "kubectl"
+
+Did you mean this?
+        delete
+
+Run 'kubectl help' for usage.
+```
+
+### 为你的命令生成文档
+
+Cobra 可以基于子命令、标志等生成文档。可用格式如下：
+
+- [Markdown](https://youngjuning.js.org/#/cobra/md_docs)
+- [ReStructured Text](https://youngjuning.js.org/#/cobra/rest_docs)
+- [Man Page](https://github.com/spf13/cobra/blob/master/doc/man_docs.md)
 
 ### Generating bash completions
+
+Cobra 可以生成 bash-completion 文件。如果你给你的命令添加了更多的信息，这些自动提示的分析会非常强大和灵活。更是信息请阅读[]()

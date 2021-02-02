@@ -11,11 +11,11 @@ sidemenu: false
  * inline: true
  */
 import React from 'react';
-import RepoCardList from '../components/List/RepoCardList';
+import CardList from '../components/List/CardList';
 
 export default () => {
   return (
-    <RepoCardList
+    <CardList
       data={[
         {
           title: 'Kerwin',
