@@ -1,5 +1,5 @@
 #!/usr/bin/env pwsh
-# Copyright 2018 the Seve authors. All rights reserved. MIT license.
+# Copyright 2021 the Seve authors. All rights reserved. MIT license.
 # TODO(everyone): Keep this script simple and easily auditable.
 
 $ErrorActionPreference = 'Stop'
