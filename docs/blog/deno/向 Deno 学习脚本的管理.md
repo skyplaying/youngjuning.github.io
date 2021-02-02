@@ -390,5 +390,3 @@ curl -fsSL https://youngjuning.js.org/seve/install.sh | sh -s v0.0.1
 - Powershell 编程基础
 - Deno GitHub Action 自动化流程解析
 - Deno CLI 开发入门
-
-> 涂鸦智能大量优质 HC，欢迎大家加入，需要内推加我微信 yang_jun_ning，或直接发简历到邮箱 youngjuning@aliyun.com
