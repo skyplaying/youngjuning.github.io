@@ -6,3 +6,11 @@ export const cli = [
     github: 'sindresorhus/boxen',
   },
 ];
+
+export const tools = [
+  {
+     title: 'fnm',
+     description: '🚀 Fast and simple Node.js version manager, built in Rust',
+     github: 'Schniz/fnm',
+  }
+]
