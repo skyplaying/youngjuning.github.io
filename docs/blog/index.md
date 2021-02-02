@@ -11,9 +11,9 @@ title: 关于
 
 Dumi 并不是一个很好的博客工具，甚至就不是设计用来写博客的。之所以选择它。是因为我可以很方便的写 React、React Native Demo。我既可以用它写博客，还可以写组件文档，练习 React 技能。
 
-"Less is More"，创造内容就简简单单地用 Dumi 写，分享推广就放掘金。
+> "Less is More"——创造内容就简简单单地用 Dumi 写，分享推广就放掘金。
 
-> The truth is endless, write it
+> The truth is endless, write it.
 
 ## 博文优选
 
