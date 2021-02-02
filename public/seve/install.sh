@@ -40,7 +40,7 @@ rm "$exe.zip"
 
 echo "Seve was installed successfully to $exe"
 if command -v seve >/dev/null; then
-	echo "Run 'seve --help' to get started"
+	echo "Run 'seve' to get started"
 else
 	case $SHELL in
 	/bin/zsh) shell_profile=".zshrc" ;;
