@@ -20,3 +20,16 @@ export default () => {
   return <CardList data={cli} />;
 };
 ```
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { tools } from './node';
+import CardList from '../../components/List/NodeRepoCardList';
+
+export default () => {
+  return <CardList data={tools} />;
+};
+```
