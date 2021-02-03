@@ -194,7 +194,8 @@ var rootCmd = &cobra.Command{
   // Run: func(cmd *cobra.Command, args []string) { },
 }
 
-// Execute 将所有子命令添加到root命令并适当设置标志。会被 main.main() 调用一次。
+// Execute 添加所有的子命令到根命令并适当地设置标志
+// 这由 main.main() 调用。它只需要对 rootCmd 调用一次。
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
