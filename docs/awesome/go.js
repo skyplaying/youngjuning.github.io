@@ -29,6 +29,21 @@ export const common = [
   },
 ];
 
+export const api = [
+  {
+    title: 'google/go-github',
+    description: 'Go library for accessing the GitHub API',
+    homepage: 'https://pkg.go.dev/github.com/google/go-github/v32/github',
+    github: 'google/go-github',
+  },
+  {
+    title: 'go-oauth2/oauth2',
+    description: 'OAuth 2.0 server library for the Go programming language.',
+    homepage: 'https://pkg.go.dev/github.com/go-oauth2/oauth2/v4',
+    github: 'go-oauth2/oauth2',
+  },
+];
+
 export const cli = [
   {
     title: 'mh-cbon/go-msi',

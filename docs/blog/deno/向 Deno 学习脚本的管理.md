@@ -385,6 +385,8 @@ curl -fsSL https://youngjuning.js.org/seve/install.sh | sh -s v0.0.1
 
 这又是另一段故事了，我们可以仿照 justjavac 大佬在 [justjavac/deno_releases](https://github.com/justjavac/deno_releases) 中做的那样仿照一份。和原脚本不一样的地方在于是基于 [jsdelivr](https://www.jsdelivr.com/) 做了 CDN 加速。
 
+> 由于 jsdeliver 有 20M 的限制，我在 coding 上开了个仓库，可以使用 `https://youngjuning.js.org/deno/install.sh` 和 `https://youngjuning.js.org/deno/install.ps1` 脚本来安装。感谢评论区大佬提醒。使用方式和 deno 一致，替换链接即可。
+
 ## 预告
 
 - Powershell 编程基础
