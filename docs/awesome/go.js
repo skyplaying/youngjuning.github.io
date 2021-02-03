@@ -76,6 +76,17 @@ export const cli = [
     homepage: 'https://docs.drone.io/cli',
     github: 'drone/drone-cli',
   },
+  {
+    title: 'go-cmd/cmd',
+    description:
+      'Non-blocking external commands in Go with and streaming output and concurrent-safe access',
+    github: 'go-cmd/cmd',
+  },
+  {
+    title: 'codeskyblue/go-sh',
+    description: 'like python-sh, for easy call shell with golang.',
+    github: 'codeskyblue/go-sh',
+  },
 ];
 
 export const course = [
