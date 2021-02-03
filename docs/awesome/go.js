@@ -27,6 +27,11 @@ export const common = [
     description: 'Go Version Manager',
     github: 'moovweb/gvm',
   },
+  {
+    title: 'sevlyar/go-daemon',
+    description: 'A library for writing system daemons in golang.',
+    github: 'sevlyar/go-daemon',
+  },
 ];
 
 export const api = [
@@ -86,6 +91,11 @@ export const cli = [
     title: 'codeskyblue/go-sh',
     description: 'like python-sh, for easy call shell with golang.',
     github: 'codeskyblue/go-sh',
+  },
+  {
+    title: 'hashicorp/go-version',
+    description: 'like python-sh, for easy call shell with golang.',
+    github: 'hashicorp/go-version',
   },
 ];
 
