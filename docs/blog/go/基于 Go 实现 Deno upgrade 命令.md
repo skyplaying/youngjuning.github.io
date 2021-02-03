@@ -14,3 +14,5 @@ cover: https://i.loli.net/2021/02/03/h9bMeX3w2ZBYNoQ.png
 ## 强制更新方案
 
 ## go-release 求一个 Star
+
+> go-release 核心代码翻译自 Deno 的 `upgrade`，Deno 源码是 RUST 编写的，我看不大懂，如有谬误，欢迎指正。
