@@ -49,10 +49,7 @@ import (
 
 func getLatestVersion() string{
 	releaseURL := fmt.Sprintf("https://github.com/%s/%s/releases/latest", user, repo)
-	resp, err := http.Get(releaseURL)
-	if err != nil {
-		return nil, err
-	}
+	resp, _ := http.Get(releaseURL)
 	defer resp.Body.Close() // 为了防止内存泄漏
 
 	pathArr := strings.Split(resp.Request.URL.Path, "/")
