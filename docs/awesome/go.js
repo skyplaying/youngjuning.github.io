@@ -57,6 +57,11 @@ export const api = [
 
 export const cli = [
   {
+    title: 'cavaliercoder/grab',
+    description: 'A download manager package for Go',
+    github: 'cavaliercoder/grab',
+  },
+  {
     title: 'mh-cbon/go-msi',
     description: 'Easy way to generate msi package for a Go project',
     homepage: 'https://mh-cbon.github.io/go-msi/',
