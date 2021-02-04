@@ -37,7 +37,7 @@ async fn get_latest_release_version(
 
 让我们用 Go 来实现它：
 
-> 代码看起来差不多，比如模板字符串写法、字符串处理；不太一样的是 Go 特有的异常处理
+> 代码看起来差不多，比如模板字符串写法、字符串处理
 
 ```go
 package release
