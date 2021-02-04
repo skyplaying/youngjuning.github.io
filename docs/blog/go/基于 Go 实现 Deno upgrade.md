@@ -33,7 +33,7 @@ async fn get_latest_release_version(
 1. 由于是异步函数，用 `println` 函数提示正在查找新版本
 2. 使用 `GET` 方式请求 `https://github.com/denoland/deno/releases/latest`
 3. 由于 `https://github.com/denoland/deno/releases/latest` 会重定向到最新的 release `https://github.com/denoland/deno/releases/tag/v1.7.1`，通过一顿字符串操作我们便取出了 `v1.7.1`
-4. 调用字符串的 `replace` 方法删除 `v` 得到 `""`
+4. 调用字符串的 `replace` 方法替换 `v` 为 `""` 得到版本号
 
 让我们用 Go 来实现它：
 
