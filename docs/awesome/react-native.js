@@ -13,6 +13,15 @@ export const tools = [
     github: 'brodybits/create-react-native-module',
   },
 ];
+
+export const device = [
+  {
+    title: 'ovr/react-native-status-bar-height',
+    description:
+      'Small library that helps you to get status bar height, P.S 📱X supported ❤️',
+    github: 'ovr/react-native-status-bar-height',
+  },
+];
 export const artist = [
   {
     title:

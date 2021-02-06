@@ -136,6 +136,11 @@ export const cli = [
     description: 'multi progress bar for Go cli applications',
     github: 'vbauerster/mpb',
   },
+  {
+    title: 'otiai10/copy',
+    description: 'Go copy directory recursively',
+    github: 'otiai10/copy',
+  },
 ];
 
 export const course = [
