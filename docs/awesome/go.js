@@ -108,6 +108,12 @@ export const cli = [
     description: 'like python-sh, for easy call shell with golang.',
     github: 'hashicorp/go-version',
   },
+  {
+    title: 'briandowns/spinner',
+    description:
+      'Go (golang) package with 70+ configurable terminal spinner/progress indicators.',
+    github: 'briandowns/spinner',
+  },
 ];
 
 export const course = [
