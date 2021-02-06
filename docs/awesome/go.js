@@ -38,6 +38,12 @@ export const common = [
     description: 'A library for writing system daemons in golang.',
     github: 'sevlyar/go-daemon',
   },
+  {
+    title: 'jobbole/awesome-go-cn',
+    description:
+      'Go 资源大全中文版， 内容包括：Web 框架、模板引擎、表单、身份认证、数据库、ORM 框架、图片处理、文本处理、自然语言处理、机器学习、日志、代码分析、教程和（电子）书等。',
+    github: 'jobbole/awesome-go-cn',
+  },
 ];
 
 export const api = [
@@ -114,6 +120,22 @@ export const cli = [
       'Go (golang) package with 70+ configurable terminal spinner/progress indicators.',
     github: 'briandowns/spinner',
   },
+  {
+    title: 'cheggaaa/pb',
+    description: 'Console progress bar for Golang',
+    github: 'cheggaaa/pb',
+  },
+  {
+    title: 'mholt/archiver',
+    description:
+      'Easily create & extract archives, and compress & decompress files of various formats',
+    github: 'mholt/archiver',
+  },
+  {
+    title: 'vbauerster/mpb',
+    description: 'multi progress bar for Go cli applications',
+    github: 'vbauerster/mpb',
+  },
 ];
 
 export const course = [
@@ -132,5 +154,17 @@ export const artist = [
   {
     title: 'Golang 第三方命令行工具 - spf13/cobra 和 urfave/cli',
     outlink: 'https://strconv.com/posts/cli/',
+  },
+  {
+    title: 'golang 实现带进度条大文件下载',
+    outlink: 'https://golangtc.com/t/5e229741b17a82532765a0fa',
+  },
+  {
+    title: 'Part 1) Download a File (from a URL)',
+    outlink: 'https://golangcode.com/download-a-file-from-a-url/',
+  },
+  {
+    title: 'Golang 获取系统环境变量',
+    outlink: 'https://studygolang.com/articles/3387',
   },
 ];
