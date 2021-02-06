@@ -149,6 +149,10 @@ export const course = [
     outlink:
       'https://spf13.com/presentation/building-an-awesome-cli-app-in-go-oscon/',
   },
+  {
+    title: 'Go 语言设计与实现',
+    outlink: 'https://draveness.me/golang/',
+  },
 ];
 
 export const artist = [
@@ -171,5 +175,13 @@ export const artist = [
   {
     title: 'Golang 获取系统环境变量',
     outlink: 'https://studygolang.com/articles/3387',
+  },
+  {
+    title: 'go 判断文件夹是否存在，并创建',
+    outlink: 'https://blog.csdn.net/robertkun/article/details/78776585',
+  },
+  {
+    title: 'golang 判断文件或文件夹是否存在',
+    outlink: 'https://blog.csdn.net/skh2015java/article/details/78806486',
   },
 ];
