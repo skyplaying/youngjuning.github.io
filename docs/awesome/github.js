@@ -29,4 +29,20 @@ export const actions = [
     description: '📦 :octocat: GitHub Action for creating GitHub Releases',
     github: 'softprops/action-gh-release',
   },
+  {
+    title: 'ScottBrenner/generate-changelog-action',
+    description:
+      'GitHub Action for lob/generate-changelog. Intended to be used with actions/create-release.',
+    homepage:
+      'https://github.com/marketplace/actions/generate-changelog-action',
+    github: 'ScottBrenner/generate-changelog-action',
+  },
+  {
+    title: 'mikepenz/release-changelog-builder-action',
+    description:
+      'a GitHub action that builds your release notes / changelog fast, easy and exactly the way you want.',
+    homepage:
+      'https://github.com/marketplace/actions/release-changelog-builder',
+    github: 'mikepenz/release-changelog-builder-action',
+  },
 ];
