@@ -31,4 +31,10 @@ export const actions = [
     homepage: 'https://actions-cool.github.io/cool/',
     github: 'actions-cool/cool',
   },
+  {
+    title: 'goreleaser/goreleaser-action',
+    description: ':octocat: GitHub Action for GoReleaser',
+    homepage: 'https://github.com/marketplace/actions/goreleaser-action',
+    github: 'goreleaser/goreleaser-action',
+  },
 ];
