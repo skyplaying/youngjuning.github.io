@@ -20,3 +20,18 @@ export default () => {
   return <CardList data={api} />;
 };
 ```
+
+## 文章
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { artist } from './react';
+import ArtistList from '../../components/List/ArtistList';
+
+export default () => {
+  return <ArtistList data={artist} />;
+};
+```
