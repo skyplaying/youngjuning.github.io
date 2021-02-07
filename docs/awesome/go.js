@@ -1,5 +1,11 @@
 export const common = [
   {
+    title: 'Go',
+    description: 'The Go Programming Language',
+    homepage: 'https://golang.org/',
+    github: 'golang/go',
+  },
+  {
     title: 'Go 语言中文网',
     description: 'Go 语言中文社区',
     homepage: 'https://studygolang.com/',
