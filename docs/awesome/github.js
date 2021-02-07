@@ -22,6 +22,13 @@ export const actions = [
     title: 'issues-helper',
     description: '🤖 一个轻松帮你自动管理 issues 的 GitHub Action',
     homepage: 'https://actions-cool.github.io/issues-helper/',
-    github: 'https://github.com/actions-cool/issues-helper',
+    github: 'actions-cool/issues-helper',
+  },
+  {
+    title: 'actions-cool',
+    description:
+      'Cool is over. 酷就完事了。A cool website showcases actions-cool products.',
+    homepage: 'https://actions-cool.github.io/cool/',
+    github: 'actions-cool/cool',
   },
 ];
