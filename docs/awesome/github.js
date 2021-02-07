@@ -1,25 +1,12 @@
 export const actions = [
   {
-    title: 'create-release',
-    description: 'An Action to create releases via the GitHub Release API',
-    homepage: 'https://github.com/marketplace/actions/create-a-release',
-    github: 'actions/create-release',
-  },
-  {
-    title: 'upload-release-asset',
-    description:
-      'An Action to upload a release asset via the GitHub Release API',
-    homepage: 'https://github.com/marketplace/actions/upload-a-release-asset',
-    github: 'actions/upload-release-asset',
-  },
-  {
-    title: 'serverchan-action',
+    title: 'yakumioto/serverchan-action',
     description: 'Use serverchan in github action.',
     homepage: 'https://github.com/marketplace/actions/serverchan-notify',
     github: 'yakumioto/serverchan-action',
   },
   {
-    title: 'issues-helper',
+    title: 'actions-cool/issues-helper',
     description: '🤖 一个轻松帮你自动管理 issues 的 GitHub Action',
     homepage: 'https://actions-cool.github.io/issues-helper/',
     github: 'actions-cool/issues-helper',
@@ -36,5 +23,10 @@ export const actions = [
     description: ':octocat: GitHub Action for GoReleaser',
     homepage: 'https://github.com/marketplace/actions/goreleaser-action',
     github: 'goreleaser/goreleaser-action',
+  },
+  {
+    title: 'softprops/action-gh-release',
+    description: '📦 :octocat: GitHub Action for creating GitHub Releases',
+    github: 'softprops/action-gh-release',
   },
 ];
