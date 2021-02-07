@@ -9,7 +9,7 @@ title: 文章
  * inline: true
  */
 import React from 'react';
-import { mac } from './go';
+import { mac } from './artist';
 import ArtistList from '../../components/List/ArtistList';
 
 export default () => {
