@@ -1,5 +1,5 @@
 ---
-title: Workflow syntax for GitHub Actions
+title: 工作流语法
 ---
 
 ```jsx
