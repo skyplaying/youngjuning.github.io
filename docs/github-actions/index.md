@@ -1,5 +1,5 @@
 ---
-title: GitHub Actions Reference
+title: GitHub Actions 手册
 nav:
   hide: true
 ---

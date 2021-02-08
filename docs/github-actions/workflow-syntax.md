@@ -2,32 +2,6 @@
 title: 工作流语法
 ---
 
-```jsx
-/**
- * inline: true
- */
-import React from 'react';
-import { Helmet } from 'react-helmet';
-
-export default () => {
-  return (
-    <Helmet>
-      <style type="text/css">{`
-        .__dumi-default-layout-toc {
-          width: 276px;
-        }
-        .__dumi-default-layout {
-          padding-right: 334px
-        }
-        .__dumi-default-layout[data-site-mode='true'][data-show-slugs='true'] {
-          padding-right: 334px;
-        }
-      `}</style>
-    </Helmet>
-  );
-};
-```
-
 ### About YAML syntax for workflows
 
 Workflow files use YAML syntax, and must have either a `.yml` or `.yaml` file extension. If you're new to YAML and want to learn more, see "[Learn YAML in five minutes](https://www.codeproject.com/Articles/1214409/Learn-YAML-in-five-minutes)."
@@ -862,21 +836,19 @@ A strategy creates a build matrix for your jobs. You can define different variat
 
 ### `jobs.<job_id>.strategy.matrix`
 
-You can define a matrix of different job configurations. A matrix allows you to create multiple jobs by performing variable substitution in a single job definition. For example, you can use a matrix to create jobs for more than one supported version of a programming language, operating system, or tool. A matrix reuses the job's configuration and creates a job for each matrix you configure.
+您可以定义不同作业配置的矩阵。 矩阵允许您通过在单个作业定义中执行变量替换来创建多个作业。 例如，可以使用矩阵为多个受支持的编程语言、操作系统或工具版本创建作业。 矩阵重新使用作业的配置，并为您配置的每个矩阵创建作业。
 
-{% data reusables.github-actions.usage-matrix-limits %}
+作业矩阵在每次工作流程运行时最多可生成 256 个作业。 此限制也适用于自托管运行器。
 
-Each option you define in the `matrix` has a key and value. The keys you define become properties in the `matrix` context and you can reference the property in other areas of your workflow file. For example, if you define the key `os` that contains an array of operating systems, you can use the `matrix.os` property as the value of the `runs-on` keyword to create a job for each operating system. For more information, see "[Context and expression syntax for {% data variables.product.prodname_actions %}](/actions/reference/context-and-expression-syntax-for-github-actions)."
+您在 matrix 中定义的每个选项都有键和值。 定义的键将成为 matrix 上下文中的属性，您可以在工作流程文件的其他区域中引用该属性。 例如，如果定义包含操作系统数组的键 os，您可以使用 matrix.os 属性作为 runs-on 关键字的值，为每个操作系统创建一个作业。 更多信息请参阅“[GitHub Actions 的上下文和表达式语法](https://docs.github.com/cn/actions/reference/context-and-expression-syntax-for-github-actions)”。
 
-The order that you define a `matrix` matters. The first option you define will be the first job that runs in your workflow.
+定义 matrix 事项的顺序。 定义的第一个选项将是工作流程中运行的第一个作业。
 
-#### Example running with more than one version of Node.js
+#### 使用 Node.js 多个版本运行的示例
 
-You can specify a matrix by supplying an array for the configuration options. For example, if the runner supports Node.js versions 6, 8, and 10, you could specify an array of those versions in the `matrix`.
+您可以提供配置选项阵列来指定矩阵。 例如，如果运行器支持 Node.js 版本 6、8 和 10，则您可以在 matrix 中指定这些版本的阵列。
 
-This example creates a matrix of three jobs by setting the `node` key to an array of three Node.js versions. To use the matrix, the example sets the `matrix.node` context property as the value of the `setup-node` action's input parameter `node-version`. As a result, three jobs will run, each using a different Node.js version.
-
-{% raw %}
+此示例通过设置三个 Node.js 版本阵列的 `node` 键创建三个作业的矩阵。 为使用矩阵，示例将 `matrix.node` 上下文属性设置为 `setup-node` 操作的输入参数 `node-version`。 因此，将有三个作业运行，每个使用不同的 Node.js 版本。
 
 ```yaml
 strategy:
@@ -890,20 +862,16 @@ steps:
       node-version: ${{ matrix.node }}
 ```
 
-{% endraw %}
+`setup-node` 操作是在使用 GitHub 托管的运行器时建议用于配置 Node.js 版本的方式。 更多信息请参阅 [setup-node](https://github.com/actions/setup-node) 操作。
 
-The `setup-node` action is the recommended way to configure a Node.js version when using {% data variables.product.prodname_dotcom %}-hosted runners. For more information, see the [`setup-node`](https://github.com/actions/setup-node) action.
+#### 使用多个操作系统的示例
 
-#### Example running with more than one operating system
+您可以创建矩阵以在多个运行器操作系统上运行工作流程。 您也可以指定多个矩阵配置。 此示例创建包含 6 个作业的矩阵：
 
-You can create a matrix to run workflows on more than one runner operating system. You can also specify more than one matrix configuration. This example creates a matrix of 6 jobs:
+- 在 `os` 阵列中指定了 2 个操作系统
+- 在 `node` 阵列中指定了 3 个 Node.js 版本
 
-- 2 operating systems specified in the `os` array
-- 3 Node.js versions specified in the `node` array
-
-{% data reusables.repositories.actions-matrix-builds-os %}
-
-{% raw %}
+定义操作系统矩阵时，必须将 `runs-on` 的值设置为您定义的 `matrix.os` 上下文属性。
 
 ```yaml
 runs-on: ${{ matrix.os }}
@@ -917,15 +885,11 @@ steps:
       node-version: ${{ matrix.node }}
 ```
 
-{% endraw %}
+要查找 GitHub 托管的运行器支持的配置选项，请参阅“[GitHub 托管的运行器的虚拟环境](https://docs.github.com/cn/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners)”。
 
-To find supported configuration options for {% data variables.product.prodname_dotcom %}-hosted runners, see "[Virtual environments for {% data variables.product.prodname_dotcom %}-hosted runners](/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners)."
+#### 在组合中包含附加值的示例
 
-#### Example including additional values into combinations
-
-You can add additional configuration options to a build matrix job that already exists. For example, if you want to use a specific version of `npm` when the job that uses `windows-latest` and version 4 of `node` runs, you can use `include` to specify that additional option.
-
-{% raw %}
+您可以将额外的配置选项添加到已经存在的构建矩阵作业中。 例如，如果要在作业使用 `windows-latest` 和 `node` 的版本 4 运行时使用 `npm` 的特定版本，您可以使用 `include` 指定该附加选项。
 
 ```yaml
 runs-on: ${{ matrix.os }}
@@ -941,13 +905,9 @@ strategy:
         npm: 2
 ```
 
-{% endraw %}
+#### 包括新组合的示例
 
-#### Example including new combinations
-
-You can use `include` to add new jobs to a build matrix. Any unmatched include configurations are added to the matrix. For example, if you want to use `node` version 12 to build on multiple operating systems, but wanted one extra experimental job using node version 13 on Ubuntu, you can use `include` to specify that additional job.
-
-{% raw %}
+您可以使用 `include` 将新作业添加到构建矩阵中。 任何不匹配包含配置都会添加到矩阵中。 例如，如果您想要使用 `node` 版本 12 在多个操作系统上构建，但在 Ubuntu 上需要一个使用节点版本 13 的额外实验性作业，则可使用 `include` 指定该额外作业。
 
 ```yaml
 runs-on: ${{ matrix.os }}
@@ -961,13 +921,9 @@ strategy:
         experimental: true
 ```
 
-{% endraw %}
+#### 从矩阵中排除配置的示例
 
-#### Example excluding configurations from a matrix
-
-You can remove a specific configurations defined in the build matrix using the `exclude` option. Using `exclude` removes a job defined by the build matrix. The number of jobs is the cross product of the number of operating systems (`os`) included in the arrays you provide, minus any subtractions (`exclude`).
-
-{% raw %}
+您可以使用 `exclude` 选项删除构建矩阵中定义的特定配置。 使用 `exclude` 删除由构建矩阵定义的作业。 作业数量是您提供的数组中所包括的操作系统 (`os`) 数量减去所有减项 (`exclude`) 后的叉积。
 
 ```yaml
 runs-on: ${{ matrix.os }}
@@ -981,19 +937,36 @@ strategy:
         node: 4
 ```
 
-{% endraw %}
+> 注意：所有 `include` 组合在 `exclude` 后处理。 这允许您使用 `include` 添加回以前排除的组合。
 
-{% note %}
+##### 在矩阵中使用环境变量
 
-**Note:** All `include` combinations are processed after `exclude`. This allows you to use `include` to add back combinations that were previously excluded.
+您可以使用 `include` 键为每个测试组合添加自定义环境变量。 然后，您可以在后面的步骤中引用自定义环境变量。
 
-{% endnote %}
+在此示例中，`node-version` 的矩阵条目每个都被配置为对 `site` 和 `datacenter` 环境变量使用不同的值。 `Echo site details` 步骤然后使用 `env: ${{ matrix.env }}` 引用自定义变量：
 
-##### Using environment variables in a matrix
-
-You can add custom environment variables for each test combination by using the `include` key. You can then refer to the custom environment variables in a later step.
-
-{% data reusables.github-actions.matrix-variable-example %}
+```yml
+name: Node.js CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - node-version: 10.x
+            site: 'prod'
+            datacenter: 'site-a'
+          - node-version: 12.x
+            site: 'dev'
+            datacenter: 'site-b'
+    steps:
+      - name: Echo site details
+        env:
+          SITE: ${{ matrix.site }}
+          DATACENTER: ${{ matrix.datacenter }}
+        run: echo $SITE $DATACENTER
+```
 
 ### `jobs.<job_id>.strategy.fail-fast`
 
@@ -1271,3 +1244,29 @@ Path patterns must match the whole path, and start from the repository's root.
 | `'**/migrate-*.sql'`                            | A file with the prefix `migrate-` and suffix `.sql` anywhere in the repository.                                                                                                               | `migrate-10909.sql`<br/><br/>`db/migrate-v1.0.sql`<br/><br/>`db/sept/migrate-v1.sql`    |
 | `*.md`<br/><br/>`!README.md`                    | Using an exclamation mark (`!`) in front of a pattern negates it. When a file matches a pattern and also matches a negative pattern defined later in the file, the file will not be included. | `hello.md`<br/><br/>_Does not match_<br/><br/>`README.md`<br/><br/>`docs/hello.md`      |
 | `*.md`<br/><br/>`!README.md`<br/><br/>`README*` | Patterns are checked sequentially. A pattern that negates a previous pattern will re-include file paths.                                                                                      | `hello.md`<br/><br/>`README.md`<br/><br/>`README.doc`                                   |
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { Helmet } from 'react-helmet';
+
+export default () => {
+  return (
+    <Helmet>
+      <style type="text/css">{`
+        .__dumi-default-layout-toc {
+          width: 276px;
+        }
+        .__dumi-default-layout {
+          padding-right: 334px
+        }
+        .__dumi-default-layout[data-site-mode='true'][data-show-slugs='true'] {
+          padding-right: 334px;
+        }
+      `}</style>
+    </Helmet>
+  );
+};
+```
