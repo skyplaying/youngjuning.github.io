@@ -42,6 +42,16 @@ export default defineConfig({
       path: 'https://juejin.cn/user/325111174662855/posts',
     },
     {
+      title: '知乎',
+      path: 'https://www.zhihu.com/people/yangjunning',
+      children: [
+        {
+          title: '前端早茶馆',
+          path: 'https://www.zhihu.com/column/c_1341734653628149760',
+        },
+      ],
+    },
+    {
       title: 'GitHub',
       path: 'https://github.com/youngjuning/youngjuning.github.io',
     },
