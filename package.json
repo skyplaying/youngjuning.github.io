@@ -34,6 +34,7 @@
     "lint-staged": "^10.0.7",
     "lodash.sortby": "^4.7.0",
     "prettier": "^1.19.1",
+    "react-helmet": "^6.1.0",
     "react-native": "^0.63.4",
     "sitemap": "^6.3.5",
     "tuya-panel-kit": "https://github.com/tuya/tuya-panel-kit.git#tuya-panel-kit-v4.2.1-gitpkg",

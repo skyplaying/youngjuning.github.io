@@ -1,5 +1,6 @@
 ---
 title: Deno GitHub Action 源码解析
+cover: https://i.loli.net/2021/02/08/7zuiSw9tadnoQLU.png
 ---
 
 GitHub Action 是 GitHub 官方的 CI/CD 工具，相较于 Travis CI 和 Circle CI，更轻量和易于扩展，[marketplace](https://github.com/marketplace?type=actions) 中有大量社区贡献的插件。各大开源项目都纷纷转向使用 GitHub Action 作为持续集成的工具，比如本文的主角 Deno。
@@ -36,9 +37,7 @@ jobs:
     strategy:
       # ...
     env:
-      CARGO_INCREMENTAL: 0
-      RUST_BACKTRACE: full
-      CARGO_TERM_COLOR: always
+      # ...
     steps:
       # ...
 ```
@@ -53,6 +52,34 @@ jobs:
 - `steps`：作业包含一系列任务，称为 steps。步骤可以运行命令、运行设置任务，或者运行您的仓库、公共仓库中的操作或 Docker 注册表中发布的操作。后面章节我们单独解析 Deno 中具体的应用。
 
 ## strategy 策略
+
+```yml
+strategy:
+  matrix:
+    include:
+      - os: macos-10.15
+        kind: test_release
+      - os: windows-2019
+        kind: test_release
+      - os: ${{ github.repository == 'denoland/deno' && 'ubuntu-latest' || 'ubuntu-18.04' }}
+        kind: test_release
+      - os: ${{ github.repository == 'denoland/deno' && 'ubuntu-latest' || 'ubuntu-18.04' }}
+        kind: test_debug
+      - os: ${{ github.repository == 'denoland/deno' && 'ubuntu-latest' || 'ubuntu-18.04' }}
+        kind: bench
+      - os: ${{ github.repository == 'denoland/deno' && 'ubuntu-latest' || 'ubuntu-18.04' }}
+        kind: lint
+
+  # Always run master branch builds to completion. This allows the cache to
+  # stay mostly up-to-date in situations where a single job fails due to
+  # e.g. a flaky test.
+  # Don't fast-fail on tag build because publishing binaries shouldn't be
+  # prevented if 'cargo publish' fails (which can be a false negative).
+  fail-fast: ${{ github.event_name == 'pull_request' || (github.ref !=
+    'refs/heads/master' && !startsWith(github.ref, 'refs/tags/')) }}
+```
+
+- `matrix`：
 
 ## env 环境变量
 
