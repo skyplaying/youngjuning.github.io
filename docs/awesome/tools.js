@@ -1,4 +1,9 @@
-export const common = [
+export const mac = [
+  {
+    title: 'getkap',
+    description: 'Capture your screen',
+    homepage: 'https://getkap.co/',
+  },
   {
     title: 'LICEcap',
     description: 'LICEcap for Mac',

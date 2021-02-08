@@ -832,7 +832,7 @@ The maximum number of minutes to let a job run before {% data variables.product.
 
 ### `jobs.<job_id>.strategy`
 
-A strategy creates a build matrix for your jobs. You can define different variations to run each job in.
+策略会为您的工作创建构建矩阵。您可以定义不同的变体来运行每个作业。
 
 ### `jobs.<job_id>.strategy.matrix`
 
