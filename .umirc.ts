@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: '俊宁（洛竹）',
+  title: '俊宁也是洛竹',
   favicon: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   logo: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   mode: 'site',
@@ -29,11 +29,12 @@ export default defineConfig({
   navs: [
     null,
     {
-      title: '文档翻译⬇️',
+      title: '洛竹文档⤵️',
       // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
       children: [
-        { title: ' Cobra 中文文档', path: '/cobra' },
-        { title: ' Viper 中文文档', path: '/viper' },
+        { title: ' Cobra', path: '/cobra' },
+        { title: ' Viper', path: '/viper' },
+        { title: ' GitHub Actions', path: '/github-actions' },
       ],
     },
     {
