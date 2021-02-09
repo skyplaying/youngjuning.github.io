@@ -10,7 +10,7 @@ cover: https://i.loli.net/2021/02/01/QAEcOp8L3yiJGHj.png
 
 - 团队：客户端&前端
 - Base：杭州/深圳
-- 微信：`yangjunning`
+- 微信：`yang_jun_ning`
 - 邮箱：`youngjuning@aliyun.com`
 
 > 加微信请备注`内推+Base+岗位`
