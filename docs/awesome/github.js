@@ -46,3 +46,11 @@ export const actions = [
     github: 'mikepenz/release-changelog-builder-action',
   },
 ];
+
+export const repo = [
+  {
+    title: 'justjavac/1s',
+    description: '天若有情天亦老，我为网站加一秒',
+    github: 'justjavac/1s',
+  },
+];
