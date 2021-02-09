@@ -147,6 +147,19 @@ export const cli = [
     description: 'Go copy directory recursively',
     github: 'otiai10/copy',
   },
+  {
+    title: 'c-bata/go-prompt',
+    description:
+      'Building powerful interactive prompts in Go, inspired by python-prompt-toolkit.',
+    homepage: 'https://pkg.go.dev/github.com/c-bata/go-prompt?utm_source=godoc',
+    github: 'c-bata/go-prompt',
+  },
+  {
+    title: 'manifoldco/promptui',
+    description: 'Interactive prompt for command-line applications',
+    homepage: 'https://www.manifold.co/',
+    github: 'manifoldco/promptui',
+  },
 ];
 
 export const course = [
@@ -158,6 +171,15 @@ export const course = [
   {
     title: 'Go 语言设计与实现',
     outlink: 'https://draveness.me/golang/',
+  },
+];
+
+export const spider = [
+  {
+    title: 'gocolly/colly',
+    description: 'Elegant Scraper and Crawler Framework for Golang',
+    homepage: 'http://go-colly.org/',
+    github: 'gocolly/colly',
   },
 ];
 

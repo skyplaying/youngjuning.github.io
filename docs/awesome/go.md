@@ -37,6 +37,21 @@ export default () => {
 };
 ```
 
+## 爬虫
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import CardList from '../../components/List/CardList';
+import { spider } from './go';
+
+export default () => {
+  return <CardList data={spider} />;
+};
+```
+
 ## 教程
 
 ```jsx
