@@ -10,7 +10,7 @@ cover: https://i.loli.net/2021/02/01/QAEcOp8L3yiJGHj.png
 
 - 团队：客户端&前端
 - Base：杭州/深圳
-- 微信：`yangjunning`
+- 微信：`yang_jun_ning`
 - 邮箱：`youngjuning@aliyun.com`
 
 > 加微信请备注`内推+Base+岗位`
@@ -92,7 +92,7 @@ cover: https://i.loli.net/2021/02/01/QAEcOp8L3yiJGHj.png
 
 ### 职位要求
 
-- 熟悉前端相关技术，熟悉 React、React Hook、TS 及其生态圈；=
+- 熟悉前端相关技术，熟悉 React、React Hook、TS 及其生态圈；
 - 热衷技术、追究原理、探究最佳实践，具备良好的沟通能力和优秀的团队协作精神，有一定业务敏感度；
 - 对动画效果有一定钻研，对跨端技术（H5、RN、Futter）感兴趣并且有一定了解；
 - 有一定的源码阅读和分析能力 (不限语言 / 库 / 框架 / 包)。
