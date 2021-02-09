@@ -17,3 +17,10 @@ export const windows = [
     homepage: 'https://nsis.sourceforge.io/',
   },
 ];
+export const android = [
+  {
+    title: '2dust/v2rayNG',
+    description: 'A V2Ray client for Android, support Xray core and v2fly core',
+    homepage: '2dust/v2rayNG',
+  },
+];

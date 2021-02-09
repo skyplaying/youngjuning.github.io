@@ -1,5 +1,5 @@
 ---
-title: Tools
+title: 工具
 ---
 
 <Alert type="info">
@@ -33,5 +33,20 @@ import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={windows} />;
+};
+```
+
+## Android
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { android } from './tools';
+import CardList from '../../components/List/CardList';
+
+export default () => {
+  return <CardList data={android} />;
 };
 ```
