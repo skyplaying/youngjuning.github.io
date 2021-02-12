@@ -1,4 +1,8 @@
-# 极速入门 Go 并爬取掘金专栏
+---
+title: 极速入门 Go 并爬取掘金专栏
+cover: https://i.loli.net/2021/02/03/h9bMeX3w2ZBYNoQ.png
+tags: [掘金专栏]
+---
 
 ## Go 印象
 

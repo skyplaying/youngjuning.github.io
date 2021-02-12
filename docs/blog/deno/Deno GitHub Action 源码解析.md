@@ -1,6 +1,7 @@
 ---
 title: Deno GitHub Action 源码解析
 cover: https://i.loli.net/2021/02/08/7zuiSw9tadnoQLU.png
+tags: [掘金专栏]
 ---
 
 GitHub Action 是 GitHub 官方的 CI/CD 工具，相较于 Travis CI 和 Circle CI，更轻量和易于扩展，[marketplace](https://github.com/marketplace?type=actions) 中有大量社区贡献的插件。各大开源项目都纷纷转向使用 GitHub Action 作为持续集成的工具，比如本文的主角 Deno。

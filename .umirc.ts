@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: '俊宁也是洛竹',
+  title: '洛竹的官方网站',
   favicon: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   logo: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   mode: 'site',
@@ -15,7 +15,7 @@ export default defineConfig({
   metas: [
     {
       name: 'title',
-      content: '俊宁的官方网站',
+      content: '洛竹的官方网站',
     },
     {
       name: 'keywords',

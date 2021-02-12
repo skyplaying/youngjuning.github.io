@@ -3,11 +3,12 @@ title: React Native 调试最佳实践
 tags: ['翻译', '掘金专栏']
 group:
   title: react-native
+cover: https://i.loli.net/2021/02/12/sIkec9EHdYqjPZT.jpg
 ---
 
-![](https://i.loli.net/2021/01/31/gvqORZ9pSAnCrjt.png)
+> 本文翻译自 [How To Debug React Native Apps Like A Pro? (Tools And Best Practices)](https://www.ideamotive.co/blog/how-to-debug-your-react-native-apps-like-a-pro)
 
-<Alert>本文翻译自 [How To Debug React Native Apps Like A Pro? (Tools And Best Practices)](https://www.ideamotive.co/blog/how-to-debug-your-react-native-apps-like-a-pro)</Alert>
+> 本文首发于 [洛竹的官方网站](https://youngjuning.js.org/)，欢迎光临食堂，如果觉得酒菜还算可口，赏个 Star 对食堂老板来说是莫大的鼓励。
 
 人非圣贤孰能无过。
 
@@ -17,7 +18,7 @@ group:
 
 ![](https://i.loli.net/2021/01/31/WhfaBT2YVbQrNPd.png)
 
-在这篇文章中，我想讨论一些日常用于移动应用程序开发的工具和技术。我希望你可以发现一些对你的项目又帮助的东西。
+在这篇文章中，我想讨论一些日常用于移动应用程序开发的工具和技术。我希望你可以发现一些对你的项目有帮助的东西。
 
 ## 静态检测，类型检查和格式化
 
@@ -44,3 +45,101 @@ Linting 是执行程序的过程，用于分析潜在的语法程序错误。Jav
 为了做到快读理解代码，我们需要最有效的视觉表示。这就是为什么我们需要很好地格式化代码。
 
 比较一下下面的代码片段：
+
+![](https://i.loli.net/2021/02/12/UN2fZnkoXqlxsh1.png)
+
+![](https://i.loli.net/2021/02/12/jL5YxKTXdaHUfJG.png)
+
+我建议大家使用 Prettier 格式化代码 - 它很容易集成和配置。你也可以通过 `eslint-config-prettier` 和 `eslint-plugin-prettier` 这两个插件和 ESLint 配合使用。
+
+## 如何调试 React Native 应用
+
+React Native 具有开发人员友好的环境，会告诉我们我们在警告或错误方面做错了什么：
+
+![](https://i.loli.net/2021/02/12/7mGI3e4zR2Fkgcs.png)
+
+## 内置调试模式
+
+首先，您可以使用浏览器的内置调试模式（例如 Chrome 或 Safari）调试应用程序。
+
+在 Chrome 中使用，你需要安装 `react-devtools`：
+
+```sh
+npm install -g react-devtools
+```
+
+在开发模式下，您可以打开开发人员菜单并从那里开始调试您的应用程序。只需激活 `debug` 选项：
+
+![](https://i.loli.net/2021/02/12/lbnJEwPaM45iAGm.png)
+
+它将打开带有 `http://localhost8081/debugger-ui` 路径的 Chrome 浏览器标签。
+
+在您的 Chrome 浏览器中，您应该看到以下屏幕：
+
+![](https://i.loli.net/2021/02/12/HtWpkfK8MAJca72.png)
+
+您也可以在 Safari 中调试应用的 iOS 版本，而不必启用 `Debug JS Remotely`。
+
+怎么做？在 Safari 浏览器中，只需打开：
+
+**Preferences → Advanced → Select "Show Develop menu in menu bar**
+
+并选择 App 的 JSContext:
+
+**Develop → Simulator → JSContext**
+
+Safari 的 Web 检查器应打开，并应显示一个 `Console` 和一个 `Debugger`。每次重新加载应用程序时（使用实时 `live reload`、`fast refresh` 或通过手动重新加载），一个新的 JSContext 将被创建。只需选择 `Automatically Show Web Inspectors for JSContexts`，就可以避免手动选择最新的 JSContext。
+
+## Reactotron
+
+如果您习惯将 Redux 用于 React Native 或 ReactJS 的状态管理，[Reactotron](https://infinite.red/reactotron) 是调试状态的绝佳工具：
+
+- 查看应用状态
+- 显示 API 请求和响应
+- 执行快速的性能压测
+- 订阅应用的部分状态
+- 显示类似于 `console.log` 的消息
+- 使用 `source-mapped` 堆栈跟踪（包括 saga 堆栈跟踪）跟踪全局错误！
+- dispatch actions like a government-run mind control experiment
+- 使用 Redux 或 mobx-state-tree 热交换您应用的状态
+- 追踪你的 saga
+- 在 React Native 中显示图像浮层
+- 在 React Native 中跟踪您的异步存储
+
+![](https://i.loli.net/2021/02/12/oIC7gP3UslzTarE.png)
+
+## React Native Debugger
+
+[react-native-debugger](https://github.com/jhen0409/react-native-debugger) 这是一个桌面应用程序，具有许多可调试应用程序的功能。至于应该提到的最重要的优点：
+
+- 它基于官方的 Remote Debugger 并提供更多功能。
+- 它包括来自 react-devtools-core 的 React Inspector。
+- 它包括 Redux DevTools，并使用 redux-devtools-extension 制作了相同的 API。
+
+> 注意: 如果你使用了 0.62 版本以上的 React Native，请使用 React Native Debugger v0.11
+
+![](https://i.loli.net/2021/02/13/9AdCnEZkhc6vlpU.png)
+
+## Native Logs
+
+根据[官方](https://reactnative.dev/docs/debugging#accessing-console-logs)的 React Native 文档，您可以轻松记录两种平台的报告：
+
+```sh
+$ npx react-native log-ios
+$ npx react-native log-android
+```
+
+如果您需要进一步研究，可以使用特定于平台的 IDE（例如 [XCode](https://developer.apple.com/xcode/) 或 [Android Studio](https://developer.android.com/studio)）来分析应用程序的本机代码并解决问题。
+
+## Flipper
+
+[Flipper](https://fbflipper.com/) 是用于调试 iOS、Android 和 React Native 应用程序的下一代平台。这是一个桌面应用程序，可让您灵活地检查、可视化和控制应用程序开发调试。这里很酷的功能是您可以通过扩展来更新 Flipper 的功能，例如：
+
+- https://github.com/jk-gan/redux-flipper
+- https://github.com/blankapp/flipper-plugin-reduxinspector
+
+如果您想集成 Redux 日志支持。
+
+Flipper 支持 React Native Debugger 所有的功能，但是它也增加了很多。查看[官方文档](https://www.flippercloud.io/docs)，以确保并可能创建自己的插件并支持社区。
+
+![](https://i.loli.net/2021/02/13/aVd6tLWfNZpuBzw.png)
