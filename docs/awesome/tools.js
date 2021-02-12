@@ -9,6 +9,11 @@ export const mac = [
     description: 'LICEcap for Mac',
     homepage: 'https://download.cnet.com/LICEcap/3000-2094_4-75984664.html',
   },
+  {
+    title: 'yichengchen/clashX',
+    description: 'A rule based proxy For Mac base on Clash.',
+    github: 'yichengchen/clashX'
+  },
 ];
 export const windows = [
   {
