@@ -12,7 +12,12 @@ export const mac = [
   {
     title: 'yichengchen/clashX',
     description: 'A rule based proxy For Mac base on Clash.',
-    github: 'yichengchen/clashX'
+    github: 'yichengchen/clashX',
+  },
+  {
+    title: 'yanue/V2rayU',
+    description: 'V2rayU,基于v2ray核心的mac版客户端',
+    github: 'yanue/V2rayU',
   },
 ];
 export const windows = [

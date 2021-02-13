@@ -282,6 +282,10 @@ cargo build --release
 
 假如你想要对代码的运行效率进行基准测试，请通过 `cargo run --release` 命令进行构建，并使用 `target/release` 目录下的可执行程序完成基准测试。
 
+### crate
+
+在 Rust 中，我们把代码的集合称作包（crate）。crate 是 Rust 中最小的编译单元，package 是单个或多个 crate 的集合，crate 和 package 都可以被叫作包，因为单个 crate 也是一个 package，但 package 通常倾向于多个 crate 的组合。[crates.io](https://crates.io/) 是 Rust 社区的 crate 代理。
+
 > 本文部分内容摘自 《Rust 权威指南》
 
 ![](https://i.loli.net/2021/02/13/WtkycqnHUKdS9NC.png)
