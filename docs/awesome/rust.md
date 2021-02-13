@@ -18,3 +18,18 @@ export default () => {
   return <CardList data={common} />;
 };
 ```
+
+## vscode 插件
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { vscode } from './rust';
+import CardList from '../../components/List/CardList';
+
+export default () => {
+  return <CardList data={vscode} />;
+};
+```
