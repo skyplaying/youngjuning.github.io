@@ -1,6 +1,7 @@
 ---
 title: 一个番茄钟入门 Rust
 tags: [掘金专栏]
+cover: https://i.loli.net/2021/02/13/a72pPcvLXo8IgEj.png
 ---
 
 ## 前言
