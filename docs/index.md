@@ -36,6 +36,10 @@ features:
     title: Go
     desc: Go（又称 Golang）是 Google 的 Robert Griesemer，Rob Pike 及 Ken Thompson 开发的一种静态强类型、编译型语言
     link: /blog/go
+  - icon: https://i.loli.net/2021/02/13/sdCvKRI1TfQcrAy.png
+    title: Rust
+    desc: 一门赋予每个人构建可靠且高效软件能力的语言。
+    link: /blog/rust
   - icon: https://i.loli.net/2021/01/31/hjIm2AXDY3Obdw7.png
     title: DevOps
     desc: DevOps 是一种重视 “软件开发人员” 和 “IT 运维技术人员” 之间沟通合作的文化、运动或惯例
