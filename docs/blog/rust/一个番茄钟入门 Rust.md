@@ -164,11 +164,19 @@ rustup self uninstall
 
 ### vscode
 
-安装 Rust 插件：
+安装 rust-analyzer 插件：
 
-![](https://i.loli.net/2021/02/13/TPJtafGhr3y8pDi.png)
+![](https://i.loli.net/2021/02/13/ZyKctFpLXDzanPq.png)
 
-安装成功后将 `"rust-client.rustupPath": "$HOME/.cargo/bin/rustup"` 添加到 `setting.json` 来修复 [couldn't start client Rust Language Server](https://github.com/rust-lang/vscode-rust/issues/622)
+为了能调试软件，再安装插件 CodeLLDB：
+
+![](https://i.loli.net/2021/02/13/qbVxWUKfSgt6B4k.png)
+
+crates 是辅助开发者在使用 `Cargo.toml`时管理依赖的插件
+
+![](https://i.loli.net/2021/02/13/ArtY1EMVf4bD2sK.png)
+
+> 感谢 [IWANABETHATGUY](https://juejin.cn/user/1820446983988174) 推荐插件。
 
 ### 第一行代码
 
@@ -278,4 +286,6 @@ cargo build --release
 
 ![](https://i.loli.net/2021/02/13/WtkycqnHUKdS9NC.png)
 
-> 2021 目标之一：成为 Deno Member
+寻了一圈，未得一个 Rust 交流群，自己组了一个，欢迎大佬加入：
+
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/02c2c082db1d4cd4b4b3d183be97968b~tplv-k3u1fbpfcp-watermark.image)
