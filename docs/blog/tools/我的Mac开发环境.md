@@ -1,15 +1,18 @@
+---
+title: 我的 Mac 开发环境
+tags: [掘金专栏]
+---
+
 ## Homebrew
 
-访问 [brew.sh](https://brew.sh/index_zh-cn) 安装。使用 Homebrew 安装 Apple（或您的 Linux 系统）没有预装但 [你需要的东西](https://formulae.brew.sh/formula/)。Homebrew
+访问 [brew.sh](https://brew.sh/index_zh-cn) 安装。使用 Homebrew 安装 Apple（或您的 Linux 系统）没有预装但 [你需要的东西](https://formulae.brew.sh/formula/)。Homebrew 将大大降低维护环境的时间。本文后面将尽可能使用 Homebrew。
 
-将大大降低维护环境的时间。本文后面将尽可能使用 HomeBrew。
-
-- `brew install` : 安装
-- `brew uninstall`: 卸载
-- `brew update`: 更新 homebrew
-- `brew upgrade` : 更新已安装软件
-- `brew cleanup`: 清理
-- 一键清理: `brew update && brew upgrade && brew cleanup`
+- `brew install`：安装
+- `brew uninstall`：卸载
+- `brew update`：更新 homebrew
+- `brew upgrade`：更新已安装软件
+- `brew cleanup`：清理
+- `brew update && brew upgrade && brew cleanup`：一键清理
 
 卸载脚本：
 
@@ -26,19 +29,9 @@ $ chsh -s /bin/zsh
 $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-## vim
-
-> 建议使用：https://github.com/amix/vimrc
-
-```shell
-$ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
-$ sh ~/.vim_runtime/install_awesome_vimrc.sh
-$ echo "set number" >> ~/.vimrc
-$ echo "set showcmd" >> ~/.vimrc
-$ source ~/.vimrc
-```
-
 ### Agnoster 主题配置
+
+> 我目前使用的是 ys 主题
 
 - 终端执行 `open ~/.zshrc`
 - 找到 ZSH_THEME 修改为: `ZSH_THEME="agnoster"`
@@ -64,46 +57,27 @@ $ source ~/.vimrc
 
 #### WakaTime for Terminal
 
+- `sudo easy_install pip==20.3.4`
 - `sudo easy_install pip`
 - `sudo pip install wakatime` | 如果失败请使用 `pip install --target=/Library/Python/2.7/site-packages wakatime`
 - `cd ~/.oh-my-zsh/custom/plugins`
 - `git clone https://github.com/sobolevn/wakatime-zsh-plugin.git wakatime`
 - 在你的 `~/.zshrc` 文件的 [list of plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/External-plugins) 添加 `wakatime`
+- 添加 `export PATH="/Users/luozhu/Library/Python/2.7/bin/"` 到 `~/.zshrc`
 - `source ~/.zshrc`
 - 确保你的 [~/.wakatime.cfg](https://github.com/wakatime/wakatime#configuring) 文件中配置了 [API key](https://wakatime.com/settings/api-key) 。
 
-## d8
+## vim
 
-> 不要使用 `brew install v8`，可用命令是不完整的
+> 建议使用：https://github.com/amix/vimrc
 
-### 预备条件
-
-- Install Xcode (Avaliable on the Mac App Store)
-- Install Xcode Command Line Tools (Preferences > Downloads)
-- Install [depot_tools](https://www.chromium.org/developers/how-tos/install-depot-tools)
-  - `cd ~ && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git`
-  - `sudo nano ~/.zshrc`(zsh) or `sudo nano ~/.bash_profile`(bash)
-  - Add `export PATH=~/depot_tools:"$PATH"` (it's important that depot_tools comes first here)
-  - `source ~/.zshrc`
-  - From the directory you want to install V8 into, run `gclient`
-
-### Build V8
-
-- `fetch v8`
-- `cd ~/v8`
-- `gclient sync`
-- `tools/dev/v8gen.py x64.optdebug`
-- `ninja -C out.gn/x64.optdebug` (prepare for lots of fan noise)
-
-I'd also recommend adding these to your `.zshrc`:
-
-- `sudo nano ~/.zshrc`
-- Add `alias d8=~/v8/out.gn/x64.optdebug/d8`
-- Add `alias tick-processor=~/v8/tools/mac-tick-processor`
-- Add `export D8_PATH="~/v8/out.gn/x64.optdebug"`
-- `source ~/.zshrc`
-
-> 使用 Demo 请参考 [d8-shell-examples](https://gist.github.com/kevincennis/0cd2138c78a07412ef21#d8-shell-examples)
+```shell
+$ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+$ sh ~/.vim_runtime/install_awesome_vimrc.sh
+$ echo "set number" >> ~/.vimrc
+$ echo "set showcmd" >> ~/.vimrc
+$ source ~/.vimrc
+```
 
 ## Git
 
@@ -114,11 +88,6 @@ I'd also recommend adding these to your `.zshrc`:
 $ alias git='/usr/local/bin/git'
 $ brew install git
 ```
-
-### 可视化工具
-
-- [GitHub Desktop](https://desktop.github.com/): GitHub Desktop 简化了您的开发工作流程
-- [Sourcetree](https://www.sourcetreeapp.com/): Simplicity and power in a beautiful Git GUI
 
 ### 命令行配置
 
@@ -138,16 +107,6 @@ $ git config --global pager.branch false
 
 > Linux 或 Mac 系统使用 LF 作为行结束符，因此你不想 Git 在签出文件时进行自动的转换；当一个以 `CRLF` 为行结束符的文件不小心被引入时你肯定想进行修正，把 `core.autocrlf` 设置成 `input` 来告诉 Git 在提交时把 `CRLF` 转换成 `LF`，签出时不转换：
 > 这样会在 Windows 系统上的签出文件中保留 `CRLF`，会在 Mac 和 Linux 系统上，包括仓库中保留 `LF`。
-
-## GitHub 加速
-
-```sh
-export ALL_PROXY="socks5://127.0.0.1:7891"
-```
-
-7981 是你的代理端口，每个人的不一定一样！！！
-
-![12851588067873_ pic_hd](https://user-images.githubusercontent.com/13204332/80474227-ce18c780-8979-11ea-8024-31bc0503f964.jpg)
 
 ### 学习资料
 
@@ -188,20 +147,41 @@ $ sudo i -g nrm
 # 列出可用的代理
 $ nrm ls
 # 添加私有代理
-$ nrm add sigma http://192.168.2.116:4873 http://192.168.2.116:4873
-# 切换代理到 sigma 源
-$ nrm use sigma
+$ nrm add local http://127.0.0.0:4873 http://127.0.0.0:4873
 ```
 
-## React Native
+## d8
 
-强烈建议一步一步按照官方的 [搭建开发环境](https://reactnative.cn/docs/getting-started.html) 进行配置。
+> 不要使用 `brew install v8`，可用命令是不完整的
 
-## Navicat Premium
+### 预备条件
 
-Navicat Premium 是一套数据库开发工具，让你从单一应用程序中同时连接 MySQL、MariaDB、MongoDB、SQL Server、Oracle、PostgreSQL 和 SQLite 数据库。它与 Amazon RDS、Amazon Aurora、Amazon Redshift、Microsoft Azure、Oracle Cloud、MongoDB Atlas、腾讯云和华为云等云数据库兼容。你可以快速轻松地创建、管理和维护数据库。
+- Install Xcode (Avaliable on the Mac App Store)
+- Install Xcode Command Line Tools (Preferences > Downloads)
+- Install [depot_tools](https://www.chromium.org/developers/how-tos/install-depot-tools)
+  - `cd ~ && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git`
+  - `sudo nano ~/.zshrc`(zsh) or `sudo nano ~/.bash_profile`(bash)
+  - Add `export PATH=~/depot_tools:"$PATH"` (it's important that depot_tools comes first here)
+  - `source ~/.zshrc`
+  - From the directory you want to install V8 into, run `gclient`
 
-> Mac 版: 链接:https://pan.baidu.com/s/1SlL1_bd4qirMnF0sLwRLhA 密码:4jq6
+### Build V8
+
+- `fetch v8`
+- `cd ~/v8`
+- `gclient sync`
+- `tools/dev/v8gen.py x64.optdebug`
+- `ninja -C out.gn/x64.optdebug` (prepare for lots of fan noise)
+
+I'd also recommend adding these to your `.zshrc`:
+
+- `sudo nano ~/.zshrc`
+- Add `alias d8=~/v8/out.gn/x64.optdebug/d8`
+- Add `alias tick-processor=~/v8/tools/mac-tick-processor`
+- Add `export D8_PATH="~/v8/out.gn/x64.optdebug"`
+- `source ~/.zshrc`
+
+> 使用 Demo 请参考 [d8-shell-examples](https://gist.github.com/kevincennis/0cd2138c78a07412ef21#d8-shell-examples)
 
 ## Java
 
@@ -225,88 +205,7 @@ Navicat Premium 是一套数据库开发工具，让你从单一应用程序中�
 - 查看 jre 版本: `java -version`
 - 查看 jdk 版本: `javac -version`
 
-### 管理 jdk 版本
-
-> 参考 [Mac 多版本 JDK 管理](https://www.cnblogs.com/magexi/p/12053401.html)
-
-1、下载 jenv:
-
-```sh
-$ brew install jenv
-```
-
-2、安装成功后进行配置
-
-```sh
-# Shell: bash
-$ echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.bash_profile
-$ echo 'eval "$(jenv init -)"' >> ~/.bash_profile
-# Shell: zsh
-$ echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.zshrc
-$ echo 'eval "$(jenv init -)"' >> ~/.zshrc
-$ exec $SHELL -l
-```
-
-> 注：一定要使用命令 `source ~/.zshrc` 来编译 `~/.zshrc` 文件
-
-3、执行 `jenv doctor` 验证 jenv 是否安装成功，出现以下信息，说明成功了。
-
-```sh
-[OK]	No JAVA_HOME set
-[ERROR]	Java binary in path is not in the jenv shims.
-[ERROR]	Please check your path, or try using /path/to/java/home is not a valid path to java installation.
-	PATH : /Users/user/.jenv/libexec:/Users/user/.jenv/shims:/Users/user/.jenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-[OK]	Jenv is correctly loaded
-```
-
-4、输入以下命令查看找到的 java 版本
-
-```
-$ jenv versions
-   * system (set by /Users/yangjunning/.jenv/version)
-```
-
-只找到了系统默认的 Java，想要切换版本，请先下载安装不同的版本。
-
-5、使用 `jenv add` 命令将 JDK 1.7 加入 jenv 中
-
-> 版本及路径请通过 `/usr/libexec/java_home -V` 查看。
-
-```sh
-$ jenv add /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/
-oracle64-1.7.0.80 added
-1.7.0.80 added
-1.7 added
-```
-
-6、添加最新的 JDK
-
-```sh
-$ jenv add $(/usr/libexec/java_home)
-```
-
-7、使用 `jenv add` 命令将 JDK 1.8 加入 jenv 中
-
-```
-$ jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/
-oracle64-1.8.0_221 added
-1.8.0_221 added
-1.8 added
-```
-
-8、选择一个 JDK 版本，运行 jenv local 命令
-
-- `jenv global`: 用来设置全局 JDK
-- `jenv local`: 用来设置当前目录 JDK
-- `jenv shell`: 用来设置 `shell session` 中的 JDK
-
-> 每次切换 JDK 之后，执行 `exec $SHELL -l` 或者重启终端
-
-9、Maven 修改
-
-Maven 仍然会使用 `/usr/libexec/java_home -v` 输出的 JDK，可能与当前使用的 JDK 版本不同。用 `jenv enable-plugin maven` s 命令启用 Maven 插件即可
-
-## maven
+## Maven
 
 ### 安装
 
@@ -343,7 +242,7 @@ $ mvn help:system
 </mirror>
 ```
 
-### 升级 maven
+### 升级 Maven
 
 ```sh
 $ brew unlink
@@ -588,8 +487,6 @@ $exit；
 ## IDE
 
 - [VSCode](https://code.visualstudio.com/): Visual Studio Code 是一个由微软开发，同时支持 Windows 、 Linux 和 macOS 等操作系统且开放源代码的代码编辑器，它支持测试，并内置了 Git 版本控制功能，同时也具有开发环境功能，例如代码补全、代码片段和代码重构等。
-
-  > 为了备份和分享 IDE 的配置，无论是 Atom 还是 VSCode 都有相应的插件，在 VSCode 中这个插件是 [Settings Sync](https://bre.is/Ar7QVWF8)。该插件是通过 GitHub Gist 来托管配置文件。我的 Gist Id: `248fa0aed5c2c89fc342599a1cceb423`
 
 ## 设置 SSH Key
 
