@@ -273,3 +273,9 @@ cargo build --release
 生成的可执行文件会被放置在 `target/release` 目录下，而不是之前的 `target/debug` 目录下。
 
 假如你想要对代码的运行效率进行基准测试，请通过 `cargo run --release` 命令进行构建，并使用 `target/release` 目录下的可执行程序完成基准测试。
+
+> 本文部分内容摘自 《Rust 权威指南》
+
+![](https://i.loli.net/2021/02/13/WtkycqnHUKdS9NC.png)
+
+> 2021 目标之一：成为 Deno Member
