@@ -1,5 +1,5 @@
 ---
-title: Rust 初体验
+title: 一个番茄钟入门 Rust
 tags: [掘金专栏]
 ---
 
