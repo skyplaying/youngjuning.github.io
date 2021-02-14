@@ -209,6 +209,17 @@ crates 是辅助开发者在使用 `Cargo.toml`时管理依赖的插件
 
 ![](https://i.loli.net/2021/02/13/ArtY1EMVf4bD2sK.png)
 
+最后设置下保存时自动格式化：
+
+```json
+// settings.json
+{
+  "[rust]": {
+    "editor.formatOnSave": true
+  }
+}
+```
+
 ### 第一行代码
 
 > 注意：Rust 文件总是以 `rs` 结尾。如果在名字中使用了多个单词，那么你可以使用下划线来隔开它们。比如你最好使用 `hello_world.rs` 作为文件名而不是 helloworld.rs
