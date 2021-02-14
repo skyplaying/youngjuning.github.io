@@ -15,6 +15,25 @@ export const common = [
     description: 'RustConf是全球Rust开发人员的年度（有时是虚拟的）聚会。',
     homepage: 'https://rustconf.com/',
   },
+  {
+    title: 'Rust Blog',
+    description:
+      'This is the main Rust blog. The core team uses this blog to announce big developments in the world of Rust.',
+    homepage: 'https://blog.rust-lang.org/',
+  },
+  {
+    title: 'Rust Playground',
+    description: 'Rust Playground',
+    homepage: 'https://play.rust-lang.org/',
+  },
+];
+
+export const embedded = [
+  {
+    title: 'rust-raspberrypi-OS-tutorials',
+    description: '📚 Learn to write an embedded OS in Rust 🦀',
+    github: 'rust-raspberrypi-OS-tutorials',
+  },
 ];
 
 export const vscode = [
@@ -39,5 +58,12 @@ export const vscode = [
     homepage:
       'https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb',
     github: 'vadimcn/vscode-lldb',
+  },
+];
+
+export const article = [
+  {
+    title: '如何在树莓派上开始使用Rust',
+    outlink: 'http://www.elecfans.com/d/1122878.html',
   },
 ];

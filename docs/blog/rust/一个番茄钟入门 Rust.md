@@ -2,6 +2,7 @@
 title: 一个番茄钟入门 Rust
 tags: [掘金专栏]
 cover: https://i.loli.net/2021/02/13/a72pPcvLXo8IgEj.png
+order: 1
 ---
 
 ## 前言
@@ -11,6 +12,34 @@ cover: https://i.loli.net/2021/02/13/a72pPcvLXo8IgEj.png
 如果你问我为什么 Node 都没有精通，就开启了 Deno、Go、Rust 的学习之旅，那我还真的没办法正面回答你，尤其我还是个前端。我能告诉你的是如果不是先前入门了 Deno 和 Go，设计我们团队 CLI [tpc](https://github.com/youngjuning/tpc) 和 [tuya-panel-demo](https://github.com/youngjuning/tuya-panel-demo) 的管理时就拿不出一个好的方案。
 
 另外作为一个计算机专业学生，谁还没学过 C/C++、Java、操作系统、数据结构、计算机原理呢？虽说学的不咋地，也忘得差不多了，但是对于自学任何一门编程语言都是够用的。在[小帅](https://juejin.cn/user/3175045313873943)的建议下，这些基础理论我也会捡起来温习。牛年也希望大家以开放的心态看待程序员职业生涯，不要被人为制造出来的焦虑所困扰。
+
+## 为什么选择 Rust?
+
+Rust 是一门可以帮助你开发出高效率、高可靠性软件的编程语言。相较于 C/C++，Rust 力图同时提供强大的工程能力及良好的开发体验，在给予开发者控制底层能力（比如内存操作）的同时，避免传统语言带来的诸多麻烦。
+
+### 高性能
+
+Rust 速度惊人且内存利用率极高。由于没有运行时和垃圾回收，它能够胜任对性能要求特别高的服务，可以在嵌入式设备上运行，还能轻松和其他语言集成。
+
+### 可靠性
+
+Rust 丰富的类型系统和所有权模型保证了内存安全和线程安全，让您在编译期就能够消除各种各样的错误。
+
+### 生产力
+
+Rust 拥有出色的文档、友好的编译器和清晰的错误提示信息，还集成了一流的工具——包管理器和构建工具， 能地自动补全和类型检验的多编辑器支持，以及自动格式化代码等等。
+
+## Rust 落地情况
+
+全世界已有数百家公司在生产环境中使用 Rust，以达到快速、跨平台、低资源占用的目的。很多著名且受欢迎的软件，例如 Firefox、 Dropbox 和 Cloudflare 都在使用 Rust。从初创公司到大型企业，从嵌入式设备到可扩展的 Web 服务，Rust 都完全合适。
+
+### Dropbox
+
+Dropbox 核心文件存储系统的多个模块是用 Rust 写的，因为它作为大型项目的一部分，需要追求更高的数据中心效率。目前，它应用于所有的 Dropbox 存储系统，为超过 5 亿用户服务。
+
+### Yelp
+
+Yelp 使用 Rust 开发了一个实时 A/B 测试的框架。它广泛应用于所有的 Yelp 网页和应用，选择 Rust 是因为它和 C 语言一样快（运行代价小），同时比 C 语言更安全（易于维护）。
 
 ## Deno 与 Rust
 
@@ -164,9 +193,13 @@ rustup self uninstall
 
 ### vscode
 
-安装 rust-analyzer 插件：
+安装 Rust 插件：
 
-![](https://i.loli.net/2021/02/13/ZyKctFpLXDzanPq.png)
+> rust-analyzer 很好，还不完善，请先禁用使用这个！
+
+![](https://i.loli.net/2021/02/13/TPJtafGhr3y8pDi.png)
+
+安装成功后将 `"rust-client.rustupPath": "$HOME/.cargo/bin/rustup"` 添加到 `setting.json` 来修复 [couldn't start client Rust Language Server](https://github.com/rust-lang/vscode-rust/issues/622)
 
 为了能调试软件，再安装插件 CodeLLDB：
 
@@ -175,8 +208,6 @@ rustup self uninstall
 crates 是辅助开发者在使用 `Cargo.toml`时管理依赖的插件
 
 ![](https://i.loli.net/2021/02/13/ArtY1EMVf4bD2sK.png)
-
-> 感谢 [IWANABETHATGUY](https://juejin.cn/user/1820446983988174) 推荐插件。
 
 ### 第一行代码
 

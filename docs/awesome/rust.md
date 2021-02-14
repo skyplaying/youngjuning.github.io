@@ -19,6 +19,21 @@ export default () => {
 };
 ```
 
+## 嵌入式
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { embedded } from './rust';
+import CardList from '../../components/List/CardList';
+
+export default () => {
+  return <CardList data={embedded} />;
+};
+```
+
 ## vscode 插件
 
 ```jsx
@@ -31,5 +46,20 @@ import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={vscode} />;
+};
+```
+
+## 文章
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { artist } from './rust';
+import ArtistList from '../../components/List/ArtistList';
+
+export default () => {
+  return <ArtistList data={artist} />;
 };
 ```
