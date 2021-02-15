@@ -28,10 +28,10 @@ order: 3
 > - cargo：`1.50.0 (f04e7fab7 2021-02-04)`
 > - `rand` crate：`0.8.3`
 > - vscode plugins
-> - Better TOML
-> - CodeLLDB
-> - crates
-> - rust-analyzer
+>   - Better TOML
+>   - CodeLLDB
+>   - crates
+>   - rust-analyzer
 > - oh-my-zsh theme：ys
 > - 截图软件：[Kap](https://getkap.co/)
 
@@ -395,3 +395,13 @@ fn main() {
 万事具备，让我们运行这个项目试试看：
 
 ![](https://i.loli.net/2021/02/16/ytXGWMKFJD9aZQI.gif)
+
+> 本文部分内容摘自 《Rust 权威指南》
+
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7f43972a616b4a4f853e616cc749f680~tplv-k3u1fbpfcp-zoom-1.image" style="zoom:50%;" />
+
+寻了一圈，未得一个 Rust 交流群，自己组了一个，欢迎大佬加入：
+
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/02c2c082db1d4cd4b4b3d183be97968b~tplv-k3u1fbpfcp-watermark.image" style="zoom:50%;" />
+
+> 涂鸦智能大量优质 HC，欢迎大家加入，需要内推加我微信 yang_jun_ning，或直接发简历到邮箱 youngjuning@aliyun.com
