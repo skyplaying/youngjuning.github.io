@@ -59,6 +59,13 @@ export const vscode = [
       'https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb',
     github: 'vadimcn/vscode-lldb',
   },
+  {
+    title: 'Better TOML',
+    description: 'Better TOML is vs code extension to support TOML file.',
+    homepage:
+      'https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml',
+    github: 'bungcip/better-toml',
+  },
 ];
 
 export const article = [

@@ -195,7 +195,7 @@ rustup self uninstall
 
 安装 Rust 插件：
 
-> rust-analyzer 很好，还不完善，请先禁用使用这个！
+> rust-analyzer 也是一个很好的替代品，不过目前还不完善！
 
 ![](https://i.loli.net/2021/02/13/TPJtafGhr3y8pDi.png)
 
@@ -208,6 +208,10 @@ rustup self uninstall
 crates 是辅助开发者在使用 `Cargo.toml`时管理依赖的插件
 
 ![](https://i.loli.net/2021/02/13/ArtY1EMVf4bD2sK.png)
+
+由于 Rust 的依赖管理工具 Cargo 使用 TOML 作为配置文件，所以需要下载 `Better TOML` 插件支持语法：
+
+![](https://i.loli.net/2021/02/15/mgnJ97FQXIGCw4A.png)
 
 最后设置下保存时自动格式化：
 
