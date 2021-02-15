@@ -4,6 +4,8 @@ cover: https://i.loli.net/2021/02/13/xlQI48CR6LteNJV.png
 order: 2
 ---
 
+> 本文部分示例代码在 [youngjuning/learn-rust](https://github.com/youngjuning/learn-rust)，文章首发于 [洛竹的官方网站](https://youngjuning.js.org/)
+
 语言之间都有着类似的核心特性，比如变量、基本类型、函数、注释和控制流程等概念。但是每个语言有都有自己的独有概念，本文便是记录了我在学习 Rust 语法过程中遇到的 Rust 独有概念。
 
 ## 变量与可变性
@@ -22,13 +24,13 @@ fn main() {
 
 `x = 6` 属于重复赋值，所以执行 `cargo run` 编译是不会通过的：
 
-![](https://i.loli.net/2021/02/14/IkenxsTQMb98Cg5.png)
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7c69b2d8dd78470d917c730a5fe5a0d0~tplv-k3u1fbpfcp-zoom-1.image)
 
-![](https://i.loli.net/2021/02/14/aBWsyYNLqzlKtic.png)
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dcfbdcb5c80944149b31b331b8165aee~tplv-k3u1fbpfcp-zoom-1.image)
 
 我们可以通过在声明的变量名称前添加 `mut` 关键字来使其可变。除了使变量的值可变，`mut` 还会向阅读代码的人暗示其他代码可能会改变这个变量的值。
 
-## 常亮与变量的不同
+## 常量与变量的不同
 
 1. 我们不能使用 `mut` 关键字来修饰一个变量。常量不仅是默认不可变的，它还总是不可变的。
 2. 你需要使用 `const` 关键字而不是一个 `let` 关键字来声明一个常量。
@@ -53,7 +55,7 @@ fn main() {
 
 如下图，我们可以看到 JavaScript 中并没有该特性：
 
-![](https://i.loli.net/2021/02/14/R7YPiIpJBc4qvxU.png)
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/42b566023d5f486996638d08cdbf31b3~tplv-k3u1fbpfcp-zoom-1.image)
 
 隐藏机制和变量声明为 `mut` 的不同：
 
@@ -62,7 +64,7 @@ fn main() {
 
 ## 数据类型
 
-![](https://youngjuning.js.org/xmind/rust/Rust%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png)
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/995313c003464e6b81dadfd543927f26~tplv-k3u1fbpfcp-zoom-1.image)
 
 RUST 的编译器可以根据我们如何绑定、使用变量的值来自动推导出变量的类型。但在无法自动推导的场景，就必须显式地添加一个类型标注。
 
@@ -143,7 +145,7 @@ fn main() {
 
 上面这段带来执行 `cargo run` 会有编译警告：
 
-![](https://i.loli.net/2021/02/14/AsUPGiQLtgT84ZH.png)
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3db475c146fa43aabef6a2be17dbe1b4~tplv-k3u1fbpfcp-zoom-1.image)
 
 意思是，如果你是故意声明一个 `unused variable`，那就给变量名加一个下划线前缀来忽略警告
 
@@ -227,10 +229,232 @@ fn main() {
 
 在 [Rust Playground](https://play.rust-lang.org/) 运行这段代码，编译器提示我们，这个操作将会在运行时崩溃。原因是索引越界（Java 常见错误），数组长度是 5，但是我们给的索引是 10。
 
-![](https://i.loli.net/2021/02/14/lAEYnUZWxpbCrjI.png)
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/af82e05277824ab285e1c35224c07996~tplv-k3u1fbpfcp-zoom-1.image)
 
 > 许多底层语言并没有类似的检查，一旦尝试使用非法索引，你就会访问到某块无效的内存空间（JavaScript 中则返回一个 `undefined`）
 
-**动态数组（vector）**
+##### 动态数组（vector）
 
-动态数组是一个类似于数组的集合结构，但它允许用户自由地调整数组长度。如果你不确定使用数组还是动态数组，那就先使用动态数组吧。
+动态数组是一个类似于数组的集合结构，但它允许用户自由地调整数组长度。如果你不确定使用数组还是动态数组，那就先使用动态数组吧。动态数组属于高级语法，不在本文讨论范围，后期会出一期更深入的解析。
+
+## 函数（function）
+
+- `main` 函数是大部分程序开始的地方。
+- 使用 `fn` 关键字来声明一个新的函数。
+- Rust 代码使用**蛇形命名法（snake case）**来作为规范函数和变量名称的风格。蛇形命名法只使用小写的字母进行命名，并以下划线分隔单词。
+
+```rust
+fn main () {
+    println!("Hello world!");
+
+    another_function();
+}
+
+fn another_function() {
+    println!("Another function");
+}
+```
+
+### 函数参数
+
+函数参数是一种特殊的变量，并被视作函数签名的一部分。当函数存在参数时，你需要在调用函数时为这些变量提供具体的值。
+
+```rust
+fn main() {
+  another_function(5);
+}
+
+fn another_function(x: i32) {
+  println!("The value of x is: {}", x)
+}
+```
+
+> 和 Go 语言一样，在 Rust 函数签名中，你必须显式地声明每个参数的类型。
+
+和其他编程语言一样，Rust 中也是使用 `,` 来分隔多个参数：
+
+```rust
+fn main() {
+  another_function(5, 6);
+}
+
+fn another_function(x: i32, y: i32) {
+  println!("The value of x is: {}", x);
+  println!("The value of y is: {}", y);
+}
+```
+
+### 函数体中的语句和表达式
+
+由于 Rust 是一门基于表达式的语言，所以它将语句（statement）与表达式（expression）区别为两个不同的概念。语句指那些执行操作但不返回值的指令，而表达式则是指会进行计算并产生一个值作为结果的指令。这个其他语言不太一样：
+
+在 C 语言、Ruby、JavaScript 中 `var x = y = 6` 这种赋值语句会返回所赋的值，但是 Rust 中是行不通的。
+
+值得注意的是，下面代码中的 `x+1` 是表达式。
+
+```rust
+fn main() {
+  let x = 5;
+
+  let y = {
+    let x = 3;
+
+    x + 1
+  }
+
+  println!("The value of y is: {}", y);
+}
+```
+
+但是如果我们在表达式末尾加上了分号，这一段代码就变成了语句而不会返回任何值。
+
+### 函数的返回值
+
+- 在 Rust 中，函数的返回值等同于函数体最后一个表达式的值。
+- 和其他编程语言不同的是，Rust 中函数的 `return` 语句不是必需的，只是一个用来提前返回的关键字。而且大多数函数都隐式地返回了最后的表达式。
+- 需要在瘦箭头（`->`）的后面声明它的类型。
+
+函数体最后一行必须是表达式，不要加分号，下面是反例：
+
+```rust
+fn main() {
+  let x = plus_one(5);
+
+  println!("The value of x is: {}", x);
+}
+
+fn plus_one(x: i32) -> i32 {
+  x + 1;
+}
+```
+
+尝试编译这段代码会产生如下错误信息：
+
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/68a309eddc6244e4a5b45bcd39553156~tplv-k3u1fbpfcp-zoom-1.image)
+
+可以看出，由于 `x +1;` 是表达式没有返回值，函数体隐式地返回了空元祖（`()`），进而导致编译时 `mismatched types` 错误。编译器给的建议是删除 `x +1;` 语句的分号。
+
+## 控制流
+
+### if 表达式
+
+```rust
+fn main() {
+    let number = 3;
+
+    if number < 5 {
+        println!("condition was true");
+    } else {
+        println!("condition was false")
+    }
+}
+```
+
+- 和 Go 一样，判断条件不需要圆括号包裹。
+- 代码中的条件表达式必须产生一个 `bool` 类型的值，否则就会触发编译错误。
+- 与 Ruby 或 JavaScript 等语言不同，Rust 没有隐式转换
+
+#### 在 `let` 语句中使用 `if`
+
+由于`if` 是一个表达式，所以我们可以再 `let` 语句的右侧使用它来生成一个值。
+
+```rust
+fn main() {
+  let condition = true;
+  let number = if condition {
+    5
+  } else {
+    6
+  };
+
+  println!("The value of number is: {}", number);
+}
+```
+
+- 代码块输出的值就是其中最后一个表达式的值，另外，数字本身也可以作为一个表达式使用。
+- 整个 `if` 表达式的值取决于究竟是哪一个代码块得到了执行。这意味着，所有 `if` 分支可能返回的值都必须是一种类型的。
+
+## 使用循环重复执行代码
+
+Rust 提供了 3 种循环：`loop`、`while`和`for`
+
+### loop 循环
+
+```rust
+fn main() {
+  loop {
+    println!("again!")
+  }
+}
+```
+
+运行这段程序时，除非我们手动强制退出程序，否则 `again!` 会被反复地输出到屏幕上。
+
+**从 loop 循环中返回值**
+
+```rust
+fn main() {
+  let mut counter = 0;
+
+  let result = loop {
+    counter += 1;
+
+    if counter == 10 {
+      break counter * 2
+    }
+  };
+
+  println!("The result is {}", result);
+}
+```
+
+上面的代码中我们将需要返回的值添加到 break 表达式后面，也就是我们用来终止循环的表达式后面。
+
+### while 条件循环
+
+```rust
+fn main() {
+  let mut number = 3;
+
+  while number !=0 {
+    println!("{}!", number);
+
+    number = number - 1;
+  }
+
+  println!("LOFTOFF!!!")
+}
+```
+
+`while` 循环的模式是会在每次执行循环体之前都判断一次条件，假如条件为真则执行代码片段，加入条件为假或在执行过程中碰到 `break` 就退出当前循环。这种模式可以通过 `loop`、`if`、`else` 及 `break` 关键字的组合使用来实现。
+
+### 使用 for 循环遍历集合
+
+我们可以使用 `for` 循环来遍历集合中的每一个元素。
+
+```rust
+fn main() {
+  let a = [10, 20, 30, 40, 50];
+
+  for element in a.iter() {
+    println!("The value is: {}", element)
+  }
+}
+```
+
+`for` 循环的安全性和简捷性使它成为了 Rust 中最为常用的循环结构。大部分的 Rust 开发者也会选择使用 for 循环。
+
+下面的例子中，我们配合标准库中的 Range 来实现打印 `1` 到`4`:
+
+```rust
+fn main() {
+  for number in (1..4).rev() {
+    println!("{}!", number);
+  }
+  println!("LIFTOFF!!!")
+}
+```
+
+寻了一圈，未得一个 Rust 交流群，自己组了一个，欢迎大佬加入：
+
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/02c2c082db1d4cd4b4b3d183be97968b~tplv-k3u1fbpfcp-watermark.image)
