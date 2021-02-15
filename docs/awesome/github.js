@@ -60,3 +60,21 @@ export const repo = [
     github: 'xitu/gold-miner',
   },
 ];
+
+export const profile = [
+  {
+    title: 'creative-profile-readme',
+    description: 'A Collection of GitHub Profiles with awesome readme',
+    github: 'coderjojo/creative-profile-readme',
+  },
+  {
+    title: 'awesome-github-profile-readme',
+    description: '😎 A curated list of awesome Github Profile READMEs 📝',
+    github: 'abhisheknaiidu/awesome-github-profile-readme',
+  },
+  {
+    title: 'github-profile-readme-generator',
+    description: 'GitHub Profile README Generator',
+    github: 'rahuldkjain/github-profile-readme-generator',
+  },
+];

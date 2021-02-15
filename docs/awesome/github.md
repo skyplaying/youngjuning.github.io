@@ -21,6 +21,21 @@ export default () => {
 };
 ```
 
+## profile-readme
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { profile } from './github';
+import CardList from '../../components/List/CardList';
+
+export default () => {
+  return <CardList data={profile} />;
+};
+```
+
 ## 仓库
 
 ```jsx
