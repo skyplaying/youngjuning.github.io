@@ -26,6 +26,12 @@ export const common = [
     description: 'Rust Playground',
     homepage: 'https://play.rust-lang.org/',
   },
+  {
+    title: 'The Rust Programming Language',
+    description:
+      'by Steve Klabnik and Carol Nichols, with contributions from the Rust Community',
+    homepage: 'https://doc.rust-lang.org/book/',
+  },
 ];
 
 export const embedded = [
