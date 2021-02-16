@@ -57,9 +57,9 @@ let name = name; // "string" again, this definition shadows all the others
 let foo = foo.unwrap();
 ```
 
----
-
 你在其中重新绑定 `foo` 的同时引用 `unwrap()` 的结果，因此旧 `foo` 由于该原因而变得不可访问。——变量指向了新的内存空间。
+
+---
 
 ![](https://i.loli.net/2021/02/16/k4iouCfyZVIP6eD.png)
 
