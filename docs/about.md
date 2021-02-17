@@ -10,7 +10,7 @@ hero:
 
 ## 知识体系
 
-<!-- TODO -->
+<XMind id="7PbHDh"/>
 
 ## 作息
 
