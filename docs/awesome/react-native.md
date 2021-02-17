@@ -14,7 +14,6 @@ title: React Native
  */
 import React from 'react';
 import { tools } from './react-native';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={tools} />;

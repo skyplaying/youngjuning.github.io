@@ -14,7 +14,6 @@ title: GitHub
  */
 import React from 'react';
 import { actions } from './github';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={actions} />;
@@ -29,7 +28,6 @@ export default () => {
  */
 import React from 'react';
 import { profile } from './github';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={profile} />;
@@ -44,7 +42,6 @@ export default () => {
  */
 import React from 'react';
 import { repo } from './github';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={repo} />;

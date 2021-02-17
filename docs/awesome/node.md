@@ -14,7 +14,6 @@ title: Node
  */
 import React from 'react';
 import { cli } from './node';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={cli} />;
@@ -27,7 +26,6 @@ export default () => {
  */
 import React from 'react';
 import { tools } from './node';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={tools} />;

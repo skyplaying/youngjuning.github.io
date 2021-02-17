@@ -14,7 +14,6 @@ title: 工具
  */
 import React from 'react';
 import { mac } from './tools';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={mac} />;
@@ -29,7 +28,6 @@ export default () => {
  */
 import React from 'react';
 import { windows } from './tools';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={windows} />;
@@ -44,7 +42,6 @@ export default () => {
  */
 import React from 'react';
 import { android } from './tools';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={android} />;

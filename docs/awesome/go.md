@@ -14,7 +14,6 @@ nav:
  * inline: true
  */
 import React from 'react';
-import CardList from '../../components/List/CardList';
 import { common } from './go';
 
 export default () => {
@@ -29,7 +28,6 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import CardList from '../../components/List/CardList';
 import { cli } from './go';
 
 export default () => {
@@ -44,7 +42,6 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import CardList from '../../components/List/CardList';
 import { spider } from './go';
 
 export default () => {

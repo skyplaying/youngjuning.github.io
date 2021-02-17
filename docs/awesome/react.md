@@ -14,7 +14,6 @@ title: React
  */
 import React from 'react';
 import { api } from './react';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={api} />;

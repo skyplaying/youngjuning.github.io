@@ -12,7 +12,6 @@ title: Rust
  */
 import React from 'react';
 import { common } from './rust';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={common} />;
@@ -27,7 +26,6 @@ export default () => {
  */
 import React from 'react';
 import { embedded } from './rust';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={embedded} />;
@@ -42,7 +40,6 @@ export default () => {
  */
 import React from 'react';
 import { vscode } from './rust';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={vscode} />;

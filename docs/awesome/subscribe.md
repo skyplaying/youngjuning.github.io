@@ -12,7 +12,6 @@ title: 订阅
  */
 import React from 'react';
 import { common } from './subscribe';
-import CardList from '../../components/List/CardList';
 
 export default () => {
   return <CardList data={common} />;
