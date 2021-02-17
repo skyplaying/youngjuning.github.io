@@ -15,5 +15,3 @@ export default () => {
   return <ArtistList data={mac} />;
 };
 ```
-
-<ArtistList data={mac} />
