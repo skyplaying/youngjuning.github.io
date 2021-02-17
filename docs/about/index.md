@@ -3,6 +3,7 @@ title: 我就是我
 order: 0
 nav:
   title: 关于
+  order: 3
 toc: false
 ---
 

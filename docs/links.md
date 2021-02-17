@@ -1,7 +1,7 @@
 ---
 nav:
   title: 友链
-  order: 3
+  order: 4
 title: 友链
 sidemenu: false
 ---
