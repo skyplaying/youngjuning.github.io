@@ -29,7 +29,6 @@ export default () => {
  */
 import React from 'react';
 import { artist } from './react-native';
-import ArtistList from '../../components/List/ArtistList';
 
 export default () => {
   return <ArtistList data={artist} />;

@@ -60,7 +60,6 @@ export default () => {
  */
 import React from 'react';
 import { course } from './go';
-import ArtistList from '../../components/List/ArtistList';
 
 export default () => {
   return <ArtistList data={course} />;
@@ -69,7 +68,7 @@ export default () => {
 
 ## 文章
 
-```jsx
+<!-- ```jsx
 /**
  * inline: true
  */
@@ -80,4 +79,4 @@ import ArtistList from '../../components/List/ArtistList';
 export default () => {
   return <ArtistList data={artist} />;
 };
-```
+``` -->

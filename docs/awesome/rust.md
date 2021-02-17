@@ -57,7 +57,6 @@ export default () => {
  */
 import React from 'react';
 import { artist } from './rust';
-import ArtistList from '../../components/List/ArtistList';
 
 export default () => {
   return <ArtistList data={artist} />;
