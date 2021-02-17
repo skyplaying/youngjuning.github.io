@@ -59,7 +59,7 @@ fn main() {
 
 ### 声明导入
 
-- `use std::is;` 语句：把标准库（[std](https://github.com/rust-lang/rust/tree/master/library/std/src/io)）中的 `io` 模块引入当前的作用域中。
+- `use std::io;` 语句：把标准库（[std](https://github.com/rust-lang/rust/tree/master/library/std/src/io)）中的 `io` 模块引入当前的作用域中。
 - Rust 默认会将预导入（prelude）模块内的条目自动引入每一段程序的作用域中，它包含了一小部分相当常用的类型。如果你需要的模块不在预导入模块内，那么我们就必须使用 `use` 语句来显式地进行导入声明。
 - `std::id` 库包含了许多有用的功能，我们可以使用它来获得用户的输入数据。
 
