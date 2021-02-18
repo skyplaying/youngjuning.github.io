@@ -21,7 +21,7 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import { wp } from './media';
+import { wechat } from './media';
 
 export default () => {
   return <CardList data={wp} />;
