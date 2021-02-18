@@ -11,11 +11,11 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-  for (let index = 0; index < nums.length; index++) {
-    const element = nums[index];
-    const fIndex = nums.findIndex(i => target - element === i);
-    if (fIndex != -1 && fIndex != index) {
-      return [index, fIndex];
+  for (let i = 0; i < nums.length; i++) {
+    const x = nums[i];
+    const k = nums.findIndex(j => target - x === j);
+    if (k != -1 && k != i) {
+      return [i, k];
     }
   }
 };
