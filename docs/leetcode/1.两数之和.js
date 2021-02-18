@@ -14,13 +14,9 @@ var twoSum = function(nums, target) {
   for (let index = 0; index < nums.length; index++) {
     const element = nums[index];
     const fIndex = nums.findIndex(i => target - element === i);
-    if (index != -1) {
+    if (fIndex != -1 && fIndex != index) {
       return [index, fIndex];
     }
   }
 };
-
-const nums = [2, 3, 4];
-const target = 6;
-twoSum(nums, target);
 // @lc code=end
