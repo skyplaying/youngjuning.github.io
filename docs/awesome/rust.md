@@ -18,6 +18,20 @@ export default () => {
 };
 ```
 
+## 操作系统
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { os } from './rust';
+
+export default () => {
+  return <CardList data={os} />;
+};
+```
+
 ## 嵌入式
 
 ```jsx

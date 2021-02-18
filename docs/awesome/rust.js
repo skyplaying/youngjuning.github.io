@@ -34,11 +34,25 @@ export const common = [
   },
 ];
 
+export const os = [
+  {
+    title: 'writing-an-os-in-rust',
+    description: '使用Rust编写操作系统',
+    github: 'rustcc/writing-an-os-in-rust',
+  },
+  {
+    title: 'rCore-Tutorial-Book-v3',
+    description: 'Documentation of rCore-Tutorial version 3.5 in Chinese.',
+    homepage: 'https://rcore-os.github.io/rCore-Tutorial-Book-v3/',
+    github: 'rcore-os/rCore-Tutorial-Book-v3',
+  },
+];
+
 export const embedded = [
   {
     title: 'rust-raspberrypi-OS-tutorials',
     description: '📚 Learn to write an embedded OS in Rust 🦀',
-    github: 'rust-raspberrypi-OS-tutorials',
+    github: 'rust-embedded/rust-raspberrypi-OS-tutorials',
   },
 ];
 
