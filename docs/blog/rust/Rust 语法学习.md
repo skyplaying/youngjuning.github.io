@@ -1,5 +1,5 @@
 ---
-title: Rust 语法学习笔记
+title: Rust 语法学习
 cover: https://i.loli.net/2021/02/13/xlQI48CR6LteNJV.png
 order: 2
 ---

@@ -24,6 +24,6 @@ import React from 'react';
 import { wechat } from './media';
 
 export default () => {
-  return <CardList data={wp} />;
+  return <CardList data={wechat} />;
 };
 ```
