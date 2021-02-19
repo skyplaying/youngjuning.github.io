@@ -62,6 +62,16 @@ export const embedded = [
   },
 ];
 
+export const web = [
+  {
+    title: 'SergioBenitez/Rocket',
+    description:
+      'Rocket是Rust的Web框架，可以轻松编写快速，安全的Web应用程序，而不会牺牲灵活性，可用性或类型安全性。',
+    homepage: 'https://rocket.rs/',
+    github: 'SergioBenitez/Rocket',
+  },
+];
+
 export const vscode = [
   {
     title: 'crates',

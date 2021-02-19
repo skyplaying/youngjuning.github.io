@@ -46,6 +46,20 @@ export default () => {
 };
 ```
 
+## web
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { web } from './rust';
+
+export default () => {
+  return <CardList data={web} />;
+};
+```
+
 ## vscode 插件
 
 ```jsx
