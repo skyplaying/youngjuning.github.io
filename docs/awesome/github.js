@@ -78,3 +78,12 @@ export const profile = [
     github: 'rahuldkjain/github-profile-readme-generator',
   },
 ];
+
+export const ebook = [
+  {
+    title: 'justjavac/free-programming-books-zh_CN',
+    description: '📚 免费的计算机编程类中文书籍，欢迎投稿',
+    homepage: 'http://weibo.com/justjavac',
+    github: 'justjavac/free-programming-books-zh_CN',
+  },
+];

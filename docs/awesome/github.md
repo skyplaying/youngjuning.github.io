@@ -34,6 +34,20 @@ export default () => {
 };
 ```
 
+## 电子书
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { ebook } from './github';
+
+export default () => {
+  return <CardList data={ebook} />;
+};
+```
+
 ## 仓库
 
 ```jsx
