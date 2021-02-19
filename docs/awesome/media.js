@@ -21,4 +21,9 @@ export const wechat = [
     description: '一个开源的的对话机器人 SDK，支持 个人号 微信',
     homepage: 'https://wechaty.js.org/v/zh/',
   },
+  {
+    title: 'WeChatExtension-ForMac',
+    description: 'Mac微信功能拓展/微信插件/微信小助手(A plugin for Mac WeChat)',
+    github: 'MustangYM/WeChatExtension-ForMac',
+  },
 ];

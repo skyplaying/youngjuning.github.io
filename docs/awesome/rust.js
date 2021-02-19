@@ -32,6 +32,12 @@ export const common = [
       'by Steve Klabnik and Carol Nichols, with contributions from the Rust Community',
     homepage: 'https://doc.rust-lang.org/book/',
   },
+  {
+    title: 'KaiserY/trpl-zh-cn',
+    description: 'About Rust 程序设计语言（第二版 & 2018 edition）',
+    homepage: 'https://kaisery.github.io/trpl-zh-cn/',
+    github: 'KaiserY/trpl-zh-cn',
+  },
 ];
 
 export const os = [
