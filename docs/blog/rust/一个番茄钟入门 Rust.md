@@ -48,7 +48,7 @@ Deno 早期是 Golang + TypeScript 的，后来因为 Golang 和 V8 的 GC 问�
 1. Go 自己有 GC，V8 自己也有 GC，双 GC 和复杂的运行时会造成多少性能损失。
 2. Rust 具有高性能、内存安全等特性，非常适合写这种对性能要求高的程序。
 
-其实 Go 也是很优秀的编译语言，由于是初学，我能理解的就是 Go 不符合 Ryan 设计 Deno 的需求。
+> GC（Garbage Collector，垃圾回收机制），Rust 和其他没有垃圾回收机制，而是使用一种叫做所有权的机制代替。由于是入门篇，此处不展开。
 
 ## 安装 Rust
 
