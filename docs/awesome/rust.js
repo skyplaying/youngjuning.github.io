@@ -38,6 +38,11 @@ export const common = [
     homepage: 'https://kaisery.github.io/trpl-zh-cn/',
     github: 'KaiserY/trpl-zh-cn',
   },
+  {
+    title: 'Rust 高级编程',
+    description: '官方《The Rustonomicon》译本',
+    homepage: 'https://learnku.com/docs/nomicon/2018',
+  },
 ];
 
 export const os = [
