@@ -64,7 +64,7 @@ fn main() {
 
 ## 数据类型
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/995313c003464e6b81dadfd543927f26~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://i.loli.net/2021/02/21/7I2DhsMqAUbxBa8.png)
 
 RUST 的编译器可以根据我们如何绑定、使用变量的值来自动推导出变量的类型。但在无法自动推导的场景，就必须显式地添加一个类型标注。
 
