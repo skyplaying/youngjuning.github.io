@@ -45,6 +45,19 @@ export const common = [
   },
 ];
 
+export const community = [
+  {
+    title: 'Rust语言开源杂志',
+    description: '为了丰富 Rust 社区成员的学习文化生活而特别推出此刊！',
+    homepage: 'https://rustmagazine.github.io/rust_magazine_2021/',
+  },
+  {
+    title: 'Rust 语言中文社区',
+    description: 'Rust 语言中文社区',
+    homepage: 'https://rustcc.cn/',
+  },
+];
+
 export const os = [
   {
     title: 'writing-an-os-in-rust',

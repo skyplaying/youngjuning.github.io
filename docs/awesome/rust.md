@@ -18,6 +18,20 @@ export default () => {
 };
 ```
 
+## 社区
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { community } from './rust';
+
+export default () => {
+  return <CardList data={community} />;
+};
+```
+
 ## 操作系统
 
 ```jsx
