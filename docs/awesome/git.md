@@ -22,6 +22,8 @@ git push origin v0.0.1
 
 ### 合并上游仓库分支
 
+> 可以参考 [Github 进行 fork 后如何与原仓库同步：重新 fork 很省事，但不如反复练习版本合并](https://github.com/selfteaching/the-craft-of-selfteaching/issues/67)
+
 1. 添加上游仓库：`git remote add upstream https://github.com/tuya/tuya-panel-sdk.git`
 2. 检查是否成功：`git remote -v`
 3. 将本地的更改提交了
