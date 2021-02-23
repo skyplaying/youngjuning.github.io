@@ -4,4 +4,4 @@ order: 1
 toc: false
 ---
 
-<XMind id="7PbHDh"/>
+<XMind id="ckdwBg"/>

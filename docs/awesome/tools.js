@@ -19,6 +19,11 @@ export const mac = [
     description: 'V2rayU,基于v2ray核心的mac版客户端',
     github: 'yanue/V2rayU',
   },
+  {
+    title: 'WeChatExtension-ForMac',
+    description: 'Mac微信功能拓展/微信插件/微信小助手(A plugin for Mac WeChat)',
+    github: 'MustangYM/WeChatExtension-ForMac',
+  },
 ];
 export const windows = [
   {
