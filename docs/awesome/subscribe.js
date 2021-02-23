@@ -51,4 +51,9 @@ export const i18n = [
     description: '一个类似社交平台的质量比较高的问答平台',
     homepage: 'https://www.daniweb.com/',
   },
+  {
+    title: 'Quroa',
+    description: 'A place to share knowledge and better understand the world',
+    homepage: 'https://www.quora.com/',
+  },
 ];
