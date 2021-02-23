@@ -12,7 +12,8 @@ title: 计算机英文词汇
 
 ## E
 
-- enumeration：`/ɪˌnuməˈreɪʃən/`： 枚举 - 常缩写为 enum
+- enumeration `/ɪˌnuməˈreɪʃən/`： 枚举 - 常缩写为 enum
+- exhaustive `/ɪgˈzɑstɪv/`：穷尽的
 
 ## L
 
