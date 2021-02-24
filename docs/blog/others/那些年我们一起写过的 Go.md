@@ -1,5 +1,5 @@
 ---
-title: 技术专题第八期|那些年我们一起追过的 Go
+title: 那些年我们一起追过的 Go
 cover: https://i.loli.net/2021/02/06/KeOW8fU5DjaGxhu.png
 hide: true
 ---
