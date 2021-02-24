@@ -45,6 +45,12 @@ export const actions = [
       'https://github.com/marketplace/actions/release-changelog-builder',
     github: 'mikepenz/release-changelog-builder-action',
   },
+  {
+    title: 'actions/fork-sync',
+    description: 'Github action to sync your Forks.',
+    homepage: 'https://github.com/marketplace/actions/fork-sync',
+    github: 'tgymnich/fork-sync',
+  },
 ];
 
 export const repo = [
