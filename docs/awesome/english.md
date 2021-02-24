@@ -19,6 +19,10 @@ title: 计算机英文词汇
 
 - latency spikes `/ˈleɪtənsi 'spaɪks/`：延迟峰值
 
+## P
+
+- palindrome /ˈpalɪndrəʊm/：回文，亦称回环，是正读反读都能读通的句子，亦有将文字排列成圆圈者，是一种修辞方式和文字游戏
+
 ## V
 
 - variant：`ˈvɛriənt/`：成员，变体
