@@ -87,3 +87,12 @@ export const ebook = [
     github: 'justjavac/free-programming-books-zh_CN',
   },
 ];
+
+export const tools = [
+  {
+    title: 'star-history',
+    description: 'The missing star history graph of github repos',
+    homepage: 'https://star-history.t9t.io/',
+    github: 'timqian/star-history',
+  },
+];

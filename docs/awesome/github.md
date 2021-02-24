@@ -48,6 +48,20 @@ export default () => {
 };
 ```
 
+## 工具
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { tools } from './github';
+
+export default () => {
+  return <CardList data={tools} />;
+};
+```
+
 ## 仓库
 
 ```jsx
