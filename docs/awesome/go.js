@@ -160,6 +160,12 @@ export const cli = [
     homepage: 'https://www.manifold.co/',
     github: 'manifoldco/promptui',
   },
+  {
+    title: 'bhendo/go-powershell',
+    description:
+      'This package is inspired by jPowerShell and allows one to run and remote-control a PowerShell session.',
+    github: 'bhendo/go-powershell',
+  },
 ];
 
 export const course = [
