@@ -24,6 +24,11 @@ export const mac = [
     description: 'Mac微信功能拓展/微信插件/微信小助手(A plugin for Mac WeChat)',
     github: 'MustangYM/WeChatExtension-ForMac',
   },
+  {
+    title: 'LottieFiles',
+    description: '在您的网站和应用上显示轻量级，可伸缩且交互式的Lottie动画。',
+    homepage: 'https://lottiefiles.com/',
+  },
 ];
 export const windows = [
   {
