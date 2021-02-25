@@ -17,6 +17,12 @@ export const developer = [
     description: 'Google开发者社区',
     homepage: 'https://developers.google.com/',
   },
+  {
+    title: 'WebAssembly 中文',
+    description:
+      'WebAssembly 或者 wasm 是一个可移植、体积小、加载快并且兼容 Web 的全新格式',
+    homepage: 'http://webassembly.org.cn/',
+  },
 ];
 
 export const i18n = [
