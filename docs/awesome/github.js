@@ -92,6 +92,11 @@ export const ebook = [
     homepage: 'http://weibo.com/justjavac',
     github: 'justjavac/free-programming-books-zh_CN',
   },
+  {
+    title: 'neolee/pilot',
+    description: '进入编程世界的第一课',
+    github: 'neolee/pilot',
+  },
 ];
 
 export const tools = [
