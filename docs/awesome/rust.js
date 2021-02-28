@@ -88,6 +88,12 @@ export const web = [
     homepage: 'https://rocket.rs/',
     github: 'SergioBenitez/Rocket',
   },
+  {
+    title: 'Actix',
+    description: '一个强大，实用，快速的 Rust Web 框架',
+    homepage: 'https://actix.rs/',
+    github: 'actix/actix',
+  },
 ];
 
 export const vscode = [
