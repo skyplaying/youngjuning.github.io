@@ -1,3 +1,12 @@
+export const users = [
+  {
+    title: '小茗同学',
+    description: '技术永无止境~~小小程序猿一枚，曾经的Javaer，现在的Jser。',
+    homepage: 'https://haoji.me/',
+    github: 'sxei',
+  },
+];
+
 export const actions = [
   {
     title: 'yakumioto/serverchan-action',
@@ -64,6 +73,12 @@ export const repo = [
     description:
       '🥇掘金翻译计划，可能是世界最大最好的英译中技术社区，最懂读者和译者的翻译平台',
     github: 'xitu/gold-miner',
+  },
+  {
+    title: 'sxei/chrome-plugin-demo',
+    description: '《Chrome插件开发全攻略》配套完整Demo，欢迎clone体验',
+    homepage: 'http://blog.haoji.me/chrome-plugin-develop.html',
+    github: 'sxei/chrome-plugin-demo',
   },
 ];
 

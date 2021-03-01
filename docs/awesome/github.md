@@ -6,6 +6,20 @@ title: GitHub
   欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs//awesome/github.js">新增数据</a> 并提交 PR.
 </Alert>
 
+## 关注的用户
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { users } from './github';
+
+export default () => {
+  return <CardList data={users} />;
+};
+```
+
 ## Actions
 
 ```jsx
