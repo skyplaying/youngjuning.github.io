@@ -9,6 +9,7 @@ title: 计算机英文词汇
 ## D
 
 - derive `/dɪˈraɪv/`：派生
+- descriptor ：修饰符
 
 ## E
 
