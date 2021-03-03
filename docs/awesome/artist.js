@@ -1,7 +1,10 @@
-export const nodejs = [
+export const mac = [
   {
-    title: 'jimuyouyou/node-interview-questions',
-    description: 'Node.js面试题，侧重后端应用与对Node核心的理解',
-    github: 'jimuyouyou/node-interview-questions',
+    title: 'Mac 使用 tar 压缩生成 "._" 文件的解决办法',
+    outlink: 'https://www.fengzifz.com/2017/03/20/Mac-tar-files/',
+  },
+  {
+    title: 'day01_Vue和React设计思路PK',
+    outlink: 'https://learn.kaikeba.com/video/316979',
   },
 ];
