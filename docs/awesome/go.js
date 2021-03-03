@@ -166,6 +166,12 @@ export const cli = [
       'This package is inspired by jPowerShell and allows one to run and remote-control a PowerShell session.',
     github: 'bhendo/go-powershell',
   },
+  {
+    title: 'schollz/progressbar',
+    description:
+      'A really basic thread-safe progress bar for Golang applications',
+    github: 'schollz/progressbar',
+  },
 ];
 
 export const course = [
