@@ -3,11 +3,11 @@ title: 当我们在聊 RN 时，我们在聊什么|技术点评
 tags: ['掘金专栏']
 ---
 
-> 大家好，这里是 [@大宁的洛竹](https://github.com/youngjuning)
+> 大家好，我是 [@大宁的洛竹](https://github.com/youngjuning)
 >
 > 本文首发于 [洛竹的官方网站](https://youngjuning.js.org/)
 >
-> 授权：已授权掘金开发者社区公众号独家使用，包括但不限于编辑、标注原创等权益。
+> 本文已授权掘金开发者社区公众号独家使用，包括但不限于编辑、标注原创等权益。
 
 ## 缘起
 
@@ -48,8 +48,31 @@ tags: ['掘金专栏']
 
 ## 聊聊我为社区做的一些事
 
-- [umi-plugin-react-native](https://github.com/youngjuning/umi-plugin-react-native):
+> 你可能会在各种 react native 仓库的 issue 中看到我的身影，这里也推荐大家遇到什么问题多去 github 看看 issues，一个成熟的仓库基本都能在 issue 中找到解决办法。
+
+- [umi-plugin-react-native](https://github.com/youngjuning/umi-plugin-react-native)：Show React Native Demo with dumi powered by react-native-web
+- [react-native-quill-editor](https://github.com/youngjuning/react-native-quill-editor)：React Native Quill Rich Text Editor Wrapper
+- [react-native-form](https://github.com/sishuguojixuefu/react-native-form)：私塾 React Native 动态表单项目，这个项目后来只在内部更新了，离职一年多了，大概率被同事重构了已经，我一直说要用 hooks 实现以下，也没得机会。
+- [react-native-screenshot](https://github.com/sishuguojixuefu/react-native-screenshot)：简单易用的 React Native 截屏、监听系统截屏事件组件（ios、android）
+- [react-native-office-viewer](https://github.com/sishuguojixuefu/react-native-office-viewer)：Office Preview Plugin for React Native（support png,pdf,doc,xls,txt...）
+- [react-native-template-sishu](https://github.com/sishuguojixuefu/react-native-template-sishu)：👾 Clean and minimalist React Native template for a quick start with TypeScript.
+- [react-native-qiniu](https://github.com/sishuguojixuefu/react-native-qiniu)：Qiniu React Native SDK ,A pure javascript implementation
+- [react-native-float-ball](https://github.com/sishuguojixuefu/react-native-float-ball)：🏀 floatBall with PanResponder 🏈
+- [优雅地使用 TypeScript 开发 React Native 应用](https://juejin.cn/post/6844903843155689486)
+- [react-navigation 5.x 最佳实践](https://juejin.cn/post/6844904069937496071)
+- [React Native 项目架构面面观](https://juejin.cn/post/6844904071137247240)
+- [React Native 集成 CodePush 指南](https://juejin.cn/post/6844904073309716494)
+- [【译】在 React Native TypeScript 项目中使用 defaultProps](https://juejin.cn/post/6844904083468337160)
+- [【译】在 React Native TypeScript 项目中使用 defaultProps](https://juejin.cn/post/6859039959299391496)
+- [手摸手带你封装 React Native 富文本编辑器](https://juejin.cn/post/6867945949788897288)
+- [React Native 调试最佳实践|牛气冲天新年征文](https://juejin.cn/post/6928412126587387917)
 
 ## 聊聊岗位待遇
 
 有一说一，React Native 包括 Flutter 在内，岗位比 Web 前端开发是要少很多的，但是这并不意味着不值得投资。相较于 Web 开发，跨端开发需要掌握更多的技能，入门更难一些。但是一般掌握了它，对应的薪资待遇也是很诱人的。
+
+## 涂鸦跨端团队大量招人
+
+涂鸦智能是全球领先的 IoT 云平台，连接品牌、OEM 厂商、开发者和连锁零售商的智能化需求，提供一站式人工智能物联网的 PaaS 级解决方案。并且涵盖了硬件开发工具、全球云、智慧商业平台开发三方面，提供从技术到营销渠道的全面生态赋能，打造世界领先的 IoT 云平台。
+
+跨端团队招 RN、Flutter、小程序等开发岗位，有兴趣可加我微信（`yang_jun_ning`），可帮忙提供简历咨询、内推服务。
