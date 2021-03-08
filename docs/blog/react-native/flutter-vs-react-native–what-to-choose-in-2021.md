@@ -85,7 +85,7 @@ Flutter 是一个可移植的 UI 工具包。 换句话说，这是一个全面�
 
 它为开发人员提供了一种简便的方法来为移动应用（iOS、Android）、[web](https://flutter.dev/web) 和桌面端构建和部署具有视觉吸引力的原生编译的应用程序：一套代码运行在多端，即所谓的一次编写处处运行。
 
-**Please note:**
+**请注意:**
 
 - **在使用 Flutter 开发桌面应用程序时，API 仍处于开发阶段**。Google 正在努力扩展 Flutter，以支持桌面端作为目标环境，从而允许开发人员使用该技术创建 macOS，Windows 和 Linux 应用程序。
 
@@ -102,8 +102,6 @@ Flutter 是一个可移植的 UI 工具包。 换句话说，这是一个全面�
 - 多亏了控件的使用经验，Flutter 应用程序的外观和感觉都很棒（尽管你仍然可以创建自己的 [自定义应用程序设计](https://www.thedroidsonroids.com/services/product-design-ux-and-ui-for-mobile-and-web-app)，使用遵循特定平台准则的易于使用的 UI 组件）
 
 ### 谁创建了 Flutter 项目
-
-A team at **Google** built Flutter.
 
 一个来自 **Google** 的团队创建了 Flutter 项目。
 
