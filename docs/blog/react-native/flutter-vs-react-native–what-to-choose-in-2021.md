@@ -10,7 +10,7 @@ cover: https://i.loli.net/2021/03/06/EsNrdaw1ApyePV6.png
 >
 > 原文链接：https://www.thedroidsonroids.com/blog/flutter-vs-react-native-what-to-choose-in-2021
 >
-> 原作者：the droid sonroids
+> 原作者：the droids on roids
 >
 > 本文已授权掘金开发者社区公众号独家使用，包括但不限于编辑、标注原创等权益。
 
@@ -25,8 +25,6 @@ cover: https://i.loli.net/2021/03/06/EsNrdaw1ApyePV6.png
 本文正是解决你的焦虑的，我们比较了跨端方案的佼佼者：Flutter 和 React Native，并从 App 所有者的角度出发帮助你判断哪一款框架更适合你的 App 的需求。
 
 ## 为什么我们写这篇文章
-
-Cross-platform solutions are gaining popularity. Flutter and React Native are the two leading market players, but at [Droids On Roids](https://www.thedroidsonroids.com/about-us), we’ll build commercial apps for partners using the approach that best fits the solution – be it native, Flutter, or React Native.
 
 跨平台解决方案越来越受欢迎。Flutter 和 React Native 是两个行业领先的参与者，但是在 [Droids On Roids](https://www.thedroidsonroids.com/about-us)，在为合作伙伴构建商业应用时，我们会根据具体需求来选择最合适的方案：可能是原生、Flutter 或者 React Native。
 
