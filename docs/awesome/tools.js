@@ -44,3 +44,12 @@ export const android = [
     homepage: '2dust/v2rayNG',
   },
 ];
+export const online = [
+  {
+    title: 'sitdown',
+    description: 'turn html to nice markdown',
+    npm: 'sitedown',
+    homepage: 'https://sitdown.mdnice.com/',
+    github: 'https://github.com/mdnice/sitdown',
+  },
+];
