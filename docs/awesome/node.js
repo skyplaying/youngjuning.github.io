@@ -18,6 +18,15 @@ export const tools = [
 export const monorepo = [
   {
     title: 'lerna',
-    description: '',
+    description:
+      '🐉 A tool for managing JavaScript projects with multiple packages.',
+    homepage: 'https://lerna.js.org/',
+    github: 'lerna/lerna',
+  },
+  {
+    title: 'nx',
+    description: 'Extensible Dev Tools for Monorepos',
+    homepage: 'https://nx.dev/',
+    github: 'nrwl/nx',
   },
 ];
