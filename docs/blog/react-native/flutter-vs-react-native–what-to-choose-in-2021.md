@@ -500,4 +500,4 @@ Android 默认情况下不具有此功能，这意味着应用程序需要包含
 
 尽管如此，Flutter 还是 React Native 的强大竞争对手。
 
-另请阅读：[外包软件开发 - 应用程序所有者的收益和风险](https://www.thedroidsonroids.com/blog/benefits-outsourcing-software-development))
+另请阅读：[外包软件开发 - 应用程序所有者的收益和风险](https://www.thedroidsonroids.com/blog/benefits-outsourcing-software-development)
