@@ -195,7 +195,7 @@ React Native 简明历史:
 
 ### 哪些流行的应用在使用 React Native?
 
-![](https://i.loli.net/2021/03/07/PING8a6Le2AKT54.png)
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fe8a0e49580c488e96dedfa7b6cf484c~tplv-k3u1fbpfcp-zoom-1.image)
 
 如果你想查看其他使用 React Native 制作的应用示例，请查看 [official React Native showcase](https://facebook.github.io/react-native/showcase.html).
 
@@ -257,7 +257,7 @@ Flutter 应用程序具有特别友好的用户界面：Flutter 与 React Native
 
 |                          Android 5.1.1                          |                     Android 8.1.0                      |
 | :-------------------------------------------------------------: | :----------------------------------------------------: |
-| ![](https://media.giphy.com/media/8mdR9KZHBVue6J8ItN/giphy.gif) | ![](https://i.loli.net/2021/03/07/ZLU9hQ62s5Njnpm.gif) |
+| ![](https://media.giphy.com/media/8mdR9KZHBVue6J8ItN/giphy.gif) | ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/53ae3b6533ea4548bd447cbb59feaa72~tplv-k3u1fbpfcp-zoom-1.image) |
 
 #### 7. 完美适用于 MVP
 
@@ -270,7 +270,7 @@ Flutter 应用程序具有特别友好的用户界面：Flutter 与 React Native
 
 |                     Flutter Galary                     |                     Flutter Galary                     |                     Flutter Galary                     |
 | :----------------------------------------------------: | :----------------------------------------------------: | :----------------------------------------------------: |
-| ![](https://i.loli.net/2021/03/07/Jj4qWrwuQPdani1.gif) | ![](https://i.loli.net/2021/03/07/ligZFSt9WwCXJkp.gif) | ![](https://i.loli.net/2021/03/07/UsckihGP7Hfpn56.gif) |
+| ![](https://i.loli.net/2021/03/07/Jj4qWrwuQPdani1.gif) | ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c80f1894916144fdb8a3cdbd15131ed9~tplv-k3u1fbpfcp-zoom-1.image) | ![](https://i.loli.net/2021/03/07/UsckihGP7Hfpn56.gif) |
 
 ### 🔻 Flutter 的劣势
 
@@ -488,15 +488,15 @@ Android 默认情况下不具有此功能，这意味着应用程序需要包含
 团队正在尽最大努力改善对 React Native 用户和更广泛社区的支持。
 有了这个，社区现在可以通过使用 [专用 GitHub 存储库](https://github.com/react-native-community/discussions-and-proposals/issues/) 关注进度。
 
-- 此类体系结构改进的实际结果是：
+此类体系结构改进的实际结果是：
 
-  - [Hermes](https://engineering.fb.com/android/hermes/) ：针对移动应用程序优化的开源 JavaScript 引擎，可缩短交互时间，并降低应用程序大小和内存利用率
+- [Hermes](https://engineering.fb.com/android/hermes/) ：针对移动应用程序优化的开源 JavaScript 引擎，可缩短交互时间，并降低应用程序大小和内存利用率
 
 - 0.60 版本中的重大更改（https://facebook.github.io/react-native/blog/2019/07/03/version-60） - 默认情况下，使用最受欢迎的依赖项管理器 CocoaPods 可以更轻松地管理 iOS 依赖项， - 你可以将 React Native 迁移到 AndroidX， - 你可以在精益核心流程中提取可选功能。
 
 **创建一个开放的环境来讨论 React Native 是重要的一步。** 这既是不断改进的标志，又是该技术光明前景的信号。
 
-由于 React Native 在市场上具有如此稳定的地位并处于持续发展的轨道上，我们不太可能很快看到该工具包被遗弃。 阅读有关 React Native 的 [长期愿景](https://facebook.github.io/react-native/blog/2018/11/01/oss-roadmap)
+由于 React Native 在市场上具有如此稳定的地位并处于持续发展的轨道上，我们不太可能很快看到该工具包被遗弃。 阅读有关 React Native 的 [长期愿景](https://facebook.github.io/react-native/blog/2018/11/01/oss-roadmap)。
 
 尽管如此，Flutter 还是 React Native 的强大竞争对手。
 
