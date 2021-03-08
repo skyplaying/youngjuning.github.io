@@ -381,7 +381,7 @@ Bartosz（我们的 React Native 开发人员）对事物的看法与大多数�
 
 #### 3. 它使用广泛流行的语言 —— JavaScript
 
-React Native 使用 JavaScript：许多开发人员都熟悉的一种编程语言（而 Dart 仍然不那么广为人知或使用）。而且，如果你是喜欢静态类型的编程语言的开发人员，则甚至可以使用 [TypeScript](https://www.typescriptlang.org/) —— 一个 JavaScript 子集。
+React Native 使用 JavaScript：许多开发人员都熟悉的一种编程语言（而 Dart 仍然不那么广为人知或使用）。而且，如果你是喜欢静态类型的编程语言的开发人员，则甚至可以使用 [TypeScript](https://www.typescriptlang.org/) —— 一个 JavaScript 超集。
 
 #### 4. 开发人员的选择自由
 
