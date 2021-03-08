@@ -1,5 +1,5 @@
 ---
-title: 2021 Flutter 完胜 React Native？
+title: 2021 Flutter 完胜 React Native ?
 tags: ['掘金专栏', '翻译']
 cover: https://i.loli.net/2021/03/06/EsNrdaw1ApyePV6.png
 ---
@@ -54,7 +54,7 @@ cover: https://i.loli.net/2021/03/06/EsNrdaw1ApyePV6.png
 
 ## Flutter vs React Native: 概览
 
-| Flutter              | React Native                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|                      | Flutter                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | React Native                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | :------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 简介                 | Flutter 是一个由谷歌开发的开源移动应用软件开发工具包，用于为 Android、iOS、Windows、Mac、Linux、Google Fuchsia 开发应用。                                                                                                                                                                                                                                                                                                                                                                                                                                                        | React Native 基于 React.js，目的是让开发者可以利用 JavaScript 和 React.js 的声明式编程模式开发出在多平台上运作的程式                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | 正式发布             | 2018 年 12 月，Google I/O 大会                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 2015 年 3 月，F8 大会                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -64,8 +64,8 @@ cover: https://i.loli.net/2021/03/06/EsNrdaw1ApyePV6.png
 | 人气                 | [Github](https://github.com/flutter/flutter) 11.5 万 Star (2021 年 3 月)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | [Github](https://github.com/facebook/react-native) 9.3 万 Star (2021 年 3 月)                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | 热加载（Hot Reload） | 是                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | 是                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | 原生性能             | 优秀                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 优秀                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| UI                   | Flutter 应用程序在最新的操作系统上看起来与旧版本一样好。由于它们只有一个代码库，因此这些应用在 [iOS](https://www.thedroidsonroids.com/services/ios-mobile-app-development) 和 [Android](https：//www.thedroidsonroids) 上的外观和行为类似，但是由于 Material Design 和 Cupertino wedagets 的帮助，他们还可以模仿平台本身的设计。这是怎么做到的呢？Flutter 包含两组符合特定设计语言的 Wedaget：Material Design Wedaget 实现了同名 Google 的设计语言；Cupertino widgets 模拟了苹果公司 iOS 的设计。这意味着你的 Flutter 应用在每个平台上的外观和行为都将自然地模仿它们的原生组件。 | 应用组件看起来和原生组件一样（比如，一个 Button 在 iOS 设备上看起来和 iOS 原生 Button 一样，Android 设备上也是如此）。React Native 在后台使用了原生组件这一事实印证了这一点，在任何操作系统 UI 更新之后，你的应用程序组件也将相应地立即升级。也就是说，这可能会破坏应用的用户界面，但这种情况很少发生。如果你希望你的应用在各个平台上看起来几乎相同，在较旧版本的操作系统下也相同（正如 Flutter 实现的那样），你需要使用第三方组件库（比如 [react-native-paper](https://reactnativepaper.com/)）。它们将使你能够使用 Material Design 组件代替原生组件。 |
-| 一码多端             | 最近 Flutter 2 正式版发布了，作为 Flutter 的重大升级，使用 Flutter 2 开发者可以用相同的代码，把使用 Flutter 开发的应用发布到五个操作系统：`iOS`，`Android`，`Windows`，`macOS` 和 `Linux`； 以及运行到 `Chrome` 、 `Firefo`， `Safari` 或 `Edge`等浏览器的 Web 版本上，Flutter 甚至还可以嵌入到 Cars， TVs 和智能家电中。                                                                                                                                                                                                                                                        | iOS、Android — 但是有第三方库可以让你使用一套代码构建 iOS、Android、web 和 Windows10 应用。你还可以在移动端、桌面端和 Web 应用中提取共享代码到单独的存储库； 将其视为一个单独的项目； 然后以与另一个依赖项相同的方式注入它。这使开发人员可以专注于为特定平台编写代码，而不必考虑与另一个依赖项的兼容性。                                                                                                                                                                                                                                                |
+| UI                   | Flutter 应用程序在最新的操作系统上看起来与旧版本一样好。由于它们只有一个代码库，因此这些应用在 [iOS](https://www.thedroidsonroids.com/services/ios-mobile-app-development) 和 [Android](https：//www.thedroidsonroids) 上的外观和行为类似，但是由于 Material Design 和 Cupertino widgets 的帮助，他们还可以模仿平台本身的设计。这是怎么做到的呢？Flutter 包含两组符合特定设计语言的 Wedaget：Material Design Wedaget 实现了同名 Google 的设计语言；Cupertino widgets 模拟了苹果公司 iOS 的设计。这意味着你的 Flutter 应用在每个平台上的外观和行为都将自然地模仿它们的原生组件。 | 应用组件看起来和原生组件一样（比如，一个 Button 在 iOS 设备上看起来和 iOS 原生 Button 一样，Android 设备上也是如此）。React Native 在后台使用了原生组件这一事实印证了这一点，在任何操作系统 UI 更新之后，你的应用程序组件也将相应地立即升级。也就是说，这可能会破坏应用的用户界面，但这种情况很少发生。如果你希望你的应用在各个平台上看起来几乎相同，在较旧版本的操作系统下也相同（正如 Flutter 实现的那样），你需要使用第三方组件库（比如 [react-native-paper](https://reactnativepaper.com/)）。它们将使你能够使用 Material Design 组件代替原生组件。 |
+| 一码多端             | 最近 Flutter 2 正式版发布了，作为 Flutter 的重大升级，使用 Flutter 2 开发者可以用相同的代码，把使用 Flutter 开发的应用发布到五个操作系统：`iOS`，`Android`，`Windows`，`macOS` 和 `Linux`； 以及运行到 `Chrome` 、 `Firefox`， `Safari` 或 `Edge`等浏览器的 Web 版本上，Flutter 甚至还可以嵌入到车机、电视和智能家电中。                                                                                                                                                                                                                                                        | iOS、Android — 但是有第三方库可以让你使用一套代码构建 iOS、Android、web 和 Windows10 应用。你还可以在移动端、桌面端和 Web 应用中提取共享代码到单独的存储库； 将其视为一个单独的项目； 然后以与另一个依赖项相同的方式注入它。这使开发人员可以专注于为特定平台编写代码，而不必考虑与另一个依赖项的兼容性。                                                                                                                                                                                                                                                |
 | 知名案例             | 阿里巴巴的闲鱼、Hamilton Musical 的 Hamilton App、Google Ads App                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Instagram, Facebook, Facebook Ads, Skype, Tesla                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | 开发周期             | 通常比原生开发要快得多。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | 可能与 Flutter 的开发速度一样快。但是 React Native 使用桥接和原生组件，因此可能需要对每个平台进行单独的优化-基于 widget 的 Flutter 则没有这个问题。 它可能会使使用 React Native 进行 App 开发周期更长                                                                                                                                                                                                                                                                                                                                                   |
 | 竞争优势             | 得益于丰富的 widgets 让 Flutter 开发的界面很漂亮；快速增长的社区和知名度；Flutter 团队的精心提供的出色文档（这使得使用 Flutter 进行开发变得容易）;改进 Flutter for Web，为一码多端的跨平台开发提供了潜力；难以缩短开发周期                                                                                                                                                                                                                                                                                                                                                       | 稳定性（已面市 5 年以上）；许多使用 React Native 的成功案例以及著名的市场参与者；成熟、庞大的社区；易于学习的技术；大量的教程和库，使你可以快速轻松地进行开发；可以轻松地在 Web 应用程序和桌面应用程序之间重用代码。                                                                                                                                                                                                                                                                                                                                    |
@@ -83,20 +83,21 @@ Flutter 是一个可移植的 UI 工具包。 换句话说，这是一个全面�
 
 **Flutter 为跨平台开发赋能。**
 
-它为开发人员提供了一种简便的方法来为移动应用（iOS、Android）、[web](https://flutter.dev/web) 和桌面端构建和部署具有视觉吸引力的原生编译的应用程序：一套代码运行在多端，即所谓的一次编写处处运行。
+它为开发人员提供了一种简便的方法来为移动应用（iOS、Android）、[Web](https://flutter.cn/web) 和桌面端构建和部署具有视觉吸引力的原生编译的应用程序：一套代码运行在多端，即所谓的一次编写处处运行。
 
 **请注意:**
 
 - **在使用 Flutter 开发桌面应用程序时，API 仍处于开发阶段**。Google 正在努力扩展 Flutter，以支持桌面端作为目标环境，从而允许开发人员使用该技术创建 macOS，Windows 和 Linux 应用程序。
 
-  > Flutter 2 已经全平台 SDK 稳定，详情查看 [【译】Flutter 2.0 正式版发布，全平台 Stable](https://juejin.cn/post/6935621027116531720)
+  > Flutter 2 已经全平台 SDK 稳定，详情查看 [Flutter 2.0 发布 | 针对 Web，移动端和桌面端构建的下一代 Flutter](https://juejin.cn/post/6935520179262586917)
 
 - Flutter for Web 是 Flutter 的代码兼容实现，允许您将用 Dart 编写的现有 Flutter 代码编译为可嵌入到浏览器中并部署到任何 Web 服务器的客户端。 您可以使用 Flutter 的所有功能，并且不需要浏览器插件
 
 关于 Flutter 的更多信息：
 
 - 免费且开源
-- 它基于[Dart](https://www.dartlang.org/) ——一种快速的，面向对象的编程语言（[Google 发布了 Dart 2.3](https://medium.com/dartlang/announcing-dart-2 -3-optimized-for-building-user-interfaces-e84919ca1dff)，新增了对 UI-as-code 功能的支持——请注意，Dart 现在处于[2.6 版本](https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md)）。 Dart 相对较新，并且易于学习-特别是对于经验丰富的熟悉 Java 和 C# 的开发人员
+- 它基于 [Dart](https://dart.cn/)——一种快速的，面向对象的编程语言。
+  Dart 相对较新，并且易于学习-特别是对于经验丰富的熟悉 Java 和 C# 的开发人员
 - 该架构基于非常流行的反应式编程（它遵循与 React 相同的风格）
 - 它提供了自己的控件，这些控件是从自己的高性能渲染引擎中提取的，这些控件快速，有吸引力且可自定义
 - 多亏了控件的使用经验，Flutter 应用程序的外观和感觉都很棒（尽管你仍然可以创建自己的 [自定义应用程序设计](https://www.thedroidsonroids.com/services/product-design-ux-and-ui-for-mobile-and-web-app)，使用遵循特定平台准则的易于使用的 UI 组件）
@@ -105,13 +106,13 @@ Flutter 是一个可移植的 UI 工具包。 换句话说，这是一个全面�
 
 一个来自 **Google** 的团队创建了 Flutter 项目。
 
-但是作为一个开源项目，Google 和 Flutter 社区都在为 Flutter 的开发贡献力量
+但是作为一个开源项目，Google 和 Flutter 社区都在为 Flutter 的开发贡献力量。
 
 ### Flutter 有多成熟？
 
 Flutter 简明历史：
 
-- **2018 年 2 月，世界移动通信大会– Flutter 发布了第一个 beta 版本**
+- **2018 年 2 月，世界移动通信大会 – Flutter 发布了第一个 beta 版本**
 - 2018 年 4 月，Google I/O 大会 – Flutter beta 2 发布
 - 2018 年 5 月，Google I/O – Flutter beta 3 发布
   - Flutter 进入 **GitHub Top 100**
@@ -204,15 +205,13 @@ React Native 简明历史:
 
 ### ✅ Flutter 的优势
 
-#### 1. Hot Reload = fast coding
+#### 1. 热重载 = 快速开发
 
 从开发人员的角度来看，Flutter 提供了更多动态的，更快的应用程序开发。 这是 Flutter 最为人称道的事情之一，每一家顶级移动应用开发公司都对此表示赞赏
 
-开发人员可以即时更改代码库，并立即将其反映在应用程序中。 这就是所谓的 [Hot reload](https://flutter.io/hot-reload/) 功能，响应更改通常是秒级甚至毫秒级。
+开发人员可以即时更改代码库，并立即将其反映在应用程序中。 这就是所谓的 [热重载](https://flutter.cn/docs/development/tools/hot-reload) 功能，响应更改通常是秒级甚至毫秒级。
 
 该功能可帮助团队立即添加功能，修复错误并尝试新的想法。 另外，在开发人员与设计人员的协作中，**热加载非常方便**。
-
-有关需要完全重新启动的更新列表，请参见 [热重载限制]（https://flutter.io/hot-reload/#limitations）。
 
 #### 2. 一次编写, 多处运行
 
@@ -232,7 +231,7 @@ Google 目前正在开发 Flutter for Web，您可以将其作为预览版进行
 
 #### 4. 更快的应用
 
-**Flutter 应用程序运行流畅，快速滚动时不会卡顿。**为什么？
+**Flutter 应用程序运行流畅，快速滚动时不会卡顿。** 为什么？
 
 Flutter 使用 [Skia 图形库](https://skia.org/)。 因此，每次视图更改时，UI 都会重新绘制。
 
@@ -248,7 +247,7 @@ Flutter 不依赖原生系统组件。 相反，Flutter 拥有自己的一组自
 
 Flutter 应用程序具有特别友好的用户界面：Flutter 与 React Native 相比具有至关重要的优势，源于对视觉细节的超级专注。 Flutter 的创建是为了使你可以轻松创建自己的窗口 widgets，或简单地自定义现有窗口 widgets。
 
-随意浏览 [Flutter 的 widgets 列表](https://flutter.io/widgets/); 或者，单击链接以查看 [Material Design widgets](https://flutter.io/widgets/material/) 和 [Cupertino 小部件](https://flutter.io/widgets/cupertino/) 的示例。
+随意浏览 [核心 Widget 目录](https://flutter.cn/widgets/); 或者，单击链接以查看 [Material Design widgets](https://flutter.cn/docs/development/ui/widgets/material) 和 [Cupertino widgets](https://flutter.cn/docs/development/ui/widgets/cupertino) 的示例。
 
 #### 6. 一样的 UI, 甚至在旧机型上
 
@@ -265,7 +264,7 @@ Flutter 应用程序具有特别友好的用户界面：Flutter 与 React Native
 - [How to Build a Minimum Viable Product – MVP Guide for App Owners](https://www.thedroidsonroids.com/blog/how-to-build-minimum-viable-product-mvp-business-plan)
 - [App development cost in 2021](https://www.thedroidsonroids.com/blog/mobile-app-development-cost-in-2021)
 
-查看[Flutter Gallery 应用程序](https://play.google.com/store/apps/details?id=io.flutter.demo.gallery)，其中包含 Flutter 的核心功能，小部件和小插图的演示。
+查看 [Flutter Gallery 应用程序](https://play.google.com/store/apps/details?id=io.flutter.demo.gallery)，其中包含 Flutter 的核心功能，小部件和小插图的演示。
 
 |                     Flutter Galary                     |                     Flutter Galary                     |                     Flutter Galary                     |
 | :----------------------------------------------------: | :----------------------------------------------------: | :----------------------------------------------------: |
@@ -275,11 +274,16 @@ Flutter 应用程序具有特别友好的用户界面：Flutter 与 React Native
 
 #### 1. 开发者社区的规模
 
-大多数人会告诉你：React Native 相对 Flutter 的一个关键优势是其更加成熟，经验更丰富的开发者社区。 此外，就编程语言而言，至少在目前，Dart 还没有像 JavaScrip t 那样得到广泛使用。
+大多数人会告诉你：React Native 相对 Flutter 的一个关键优势是其更加成熟，经验更丰富的开发者社区。
+此外，就编程语言而言，至少在目前，Dart 还没有像 JavaScript 那样得到广泛使用。
 
-实际上，要想以 “哥哥” 相称，Flutter 有很多工作要做，这是可以理解的。 社区需要时间来教育其受众并获得更多的经验，这对于任何新的年轻的工具都是必经之路。
+实际上，要想以 “哥哥” 相称，Flutter 有很多工作要做，这是可以理解的。
+社区需要时间来教育其受众并获得更多的经验，这对于任何新的年轻的工具都是必经之路。
 
-但是，我们并不认为这是一个明显的劣势。 同样值得注意的是，Flutter 社区正在成倍增长。 另外，开发套件包也是令人兴奋的。
+但是，我们并不认为这是一个明显的劣势。
+同样值得注意的是，Flutter 社区正在成倍增长。
+
+另外，开发套件包也是令人兴奋的。
 
 **请注意：**
 
@@ -299,11 +303,14 @@ Flutter 应用程序具有特别友好的用户界面：Flutter 与 React Native
 
 #### 2. 库和支持 - 令人印象深刻，但仍然没有像原生开发一样丰富
 
-Google 对 Flutter 的支持令人印象深刻，但 Flutter 还 是一个相当新的事物。这意味着你无法始终在现有库中找到所需的功能，因此开发人员可能需要自己构建自定义功能，这需要时间。
+Google 对 Flutter 的支持令人印象深刻，但 Flutter 还是一个相当新的事物。
+这意味着你无法始终在现有库中找到所需的功能，因此开发人员可能需要自己构建自定义功能，这需要时间。
 
 #### 3. 持续集成支持
 
-在撰写本文时，Flutter 缺少对 Travis 或 Jenkins 等 CI 平台的支持。因此，要实现自动构建，测试和部署，你的开发人员需要使用和维护自定义脚本，例如 [这个](https://github.com/yjbanov/flutter_travis_sample/blob/master/.travis.yml)。
+在撰写本文时，Flutter 缺少对 Travis 或 Jenkins 等 CI 平台的支持。
+因此，要实现自动构建，测试和部署，你的开发人员需要使用和维护自定义脚本，
+例如 [这个](https://github.com/yjbanov/flutter_travis_sample/blob/master/.travis.yml)。
 
 值得注意的是：
 
@@ -314,39 +321,47 @@ Google 对 Flutter 的支持令人印象深刻，但 Flutter 还 是一个相当
 
 即使 Flutter 是开源的，但如果 Google 决定取消对该项目的支持，那将是一场灾难。
 
-也就是说，自 Google 团队发布 Flutter 的 Beta 版以来，它一直在加大对 Flutter 的支持，正如 Flutter 在 19 届 Google IO 期间的杰出作用以及最近的 Flutter Live 活动所表明的那样。
+也就是说，自 Google 团队发布 Flutter 的 Beta 版以来，它一直在加大对 Flutter 的支持，
+正如 Flutter 在 19 届 Google IO 期间的杰出作用以及最近的 Flutter Live 活动所表明的那样。
 
 很难想像没有 Google 的 Flutter 会走向何方。
 
 #### 5. 应用大小
 
-用 Flutter 编写的应用程序比原生应用程序大。请查看文章 [比较 APK 大小](https://android.jlelse.eu/comparing-apk-sizes-a0eb37bb36f)。 但是，Flutter 团队正在研究 [减小应用程序的大小](https://github.com/flutter/flutter/issues/16833#issuecomment-410103493)。
+用 Flutter 编写的应用程序比原生应用程序大。
+请查看文章 [比较 APK 大小](https://android.jlelse.eu/comparing-apk-sizes-a0eb37bb36f)。
+但是，Flutter 团队正在研究 [减小应用程序的大小](https://github.com/flutter/flutter/issues/16833#issuecomment-410103493)。
 
 ## React Native – 优势和劣势
 
 ### ✅ React Native 优势
 
-#### 1. Fast refresh = fast coding
+#### 1. 热刷新 = 快速开发
 
 本质上与 Flutter 具有相同的功能。
 
-热重载允许开发人员将新代码直接注入正在运行的应用程序中，从而加快了开发过程。 因此，开发人员可以立即看到更改，而无需重建应用程序。
+热重载允许开发人员将新代码直接注入正在运行的应用程序中，从而加快了开发过程。
+因此，开发人员可以立即看到更改，而无需重建应用程序。
 
 热重装还保留了应用程序的状态，避免了在完全重装期间丢失它的风险（在基于状态的框架中是一项重要优势）—— 加快了移动应用程序的开发过程。
 
-为了改善热重载的开发人员体验，React Native 团队在 0.61 版本中包括一项称为快速刷新的新功能，该功能将实时重载和热重载相结合。 与以前的版本相比，它对错别字和错误更具弹性。 您可以在 [此处](https://facebook.github.io/react-native/blog/2019/09/18/version-0.61#fast-refresh) 阅读更多有关快速刷新的信息。
+为了改善热重载的开发人员体验，React Native 团队在 0.61 版本中包括一项称为快速刷新的新功能，
+该功能将实时重载和热重载相结合。
+与以前的版本相比，它对错别字和错误的处理更具弹性。
+您可以在 [此处](https://facebook.github.io/react-native/blog/2019/09/18/version-0.61#fast-refresh) 阅读更多有关快速刷新的信息。
 
 #### 2. 一处编写, 处处运行
 
 - 与 Flutter 完全相同：编写单个代码库为 2 个应用程序提供动力 —— 涵盖 Android 和 iOS 平台。
 
-  更好的是，JavaScript 通过与[Web 应用程序](https://www.thedroidsonroids.com/services/web-app-development) 共享代码来编写跨平台应用程序时，你也可以一臂之力。这是通过创建可编译为目标平台的抽象组件来完成的。
+  更好的是，JavaScript 通过与 [Web 应用程序](https://www.thedroidsonroids.com/services/web-app-development)
+  共享代码来编写跨平台应用程序时，你也可以一臂之力。这是通过创建可编译为目标平台的抽象组件来完成的。
 
 参见下面的示例库，这些库可让你在 iOS 和 Android 以外的平台（包括 Web 和桌面应用程序）上同时创建代码：
 
 - [React Native for Web](https://github.com/necolas/react-native-web) – 支持 Android，iOS 和 Web（Twitter 使用它来创建 Twitter Lite）
 - [ReactXp](https://github.com/microsoft/reactxp) – 由 Skype 团队开发，以支持 Android，iOS 和 Web；另外，可在 Windows 10（UWP）上使用
-- [react-native-windows](https://github.com/microsoft/react-native-windows) – 由 Microsoft 团队开发，支持 Windows 10 支持的所有设备（PC，平板电脑，2 合 1 电脑） ，Xbox，混合现实设备等）
+- [react-native-windows](https://github.com/microsoft/react-native-windows) – 由 Microsoft 团队开发，支持 Windows 10 支持的所有设备（PC，平板电脑，2 合 1 电脑），Xbox，混合现实设备等）
 
 **顺便一提**
 
@@ -364,7 +379,7 @@ Bartosz（我们的 React Native 开发人员）对事物的看法与大多数�
 
 观看 [Ben Ellerby 的演示文稿](https://www.youtube.com/watch?v=IA_M2ESWoXw) 了解该方法，如果你喜欢在平台上创建抽象的想法，请查看 [Radek Pietruszewski 的演示文稿](https://www.youtube.com/watch?v=ryMvNklnDjU)。
 
-#### 3. 它使用广泛流行的语言——JavaScript
+#### 3. 它使用广泛流行的语言 —— JavaScript
 
 React Native 使用 JavaScript：许多开发人员都熟悉的一种编程语言（而 Dart 仍然不那么广为人知或使用）。而且，如果你是喜欢静态类型的编程语言的开发人员，则甚至可以使用 [TypeScript](https://www.typescriptlang.org/) —— 一个 JavaScript 子集。
 
@@ -386,16 +401,18 @@ React Native 使开发人员可以构建跨平台应用程序。不做更多事�
 
 React Native 有一个庞大的开发者社区。不仅如此，还有 **无数的教程，库和 UI 框架**，它们使学习该技术变得容易，并且可以快速，轻松地进行开发。
 
-而且，如果你比较专注于收集有关特定技术的文章，工具和材料的存储库，则 React Native 的位置要比 Xamarin，Flutter 或 Ionic 更好（来源：[Awesome-Flutter](https://github.com/Solido/awesome -flutter)，[Awesome-ReactNative](https://github.com/jondot/awesome-react-native)，[Awesome-Ionic](https://github.com/Alexintosh/Awesome-Ionic)，[Awesome -Xamarin](https://github.com/XamSome/awesome-xamarin)。
+而且，如果你比较专注于收集有关特定技术的文章，工具和材料的存储库，则 React Native 的位置要比 Xamarin，Flutter 或 Ionic 更好（来源：[Awesome-Flutter](https://github.com/Solido/awesome-flutter)，[Awesome-ReactNative](https://github.com/jondot/awesome-react-native)，[Awesome-Ionic](https://github.com/Alexintosh/Awesome-Ionic)，[Awesome-Xamarin](https://github.com/XamSome/awesome-xamarin)。
 
-而且，React Native 是**“ React 家族” **的一部分。
+而且，React Native 是 **“ React 家族” ** 的一部分。
 
-- 还值得引起你注意还有 [Expo](https://expo.io/)——一种简化了对原生 API 的访问的 React 构造框架，该框架具有针对典型移动功能（例如，推送通知）的现成解决方案。
+- 还值得引起你注意还有 [Expo](https://expo.io/) —— 一种简化了对原生 API 的访问的 React 构造框架，该框架具有针对典型移动功能（例如，推送通知）的现成解决方案。
 - 值得一提的第二个库是 [AWS Amplify](https://aws-amplify.github.io/)：该解决方案通过涵盖身份验证，存储，推送通知和分析来简化与 AWS 功能的集成。
 
 #### 7. 易于学习
 
-我们列表中的这一优势是针对 React 开发人员的。 **如果您具有 Web 开发背景并且已经使用了流行的 React 解决方案，则可以轻松使用 React Native **，而无需学习新的库。 您可以使用相同的库，工具和模式。
+我们列表中的这一优势是针对 React 开发人员的。
+**如果您具有 Web 开发背景并且已经使用了流行的 React 解决方案，则可以轻松使用 React Native** ，
+而无需学习新的库。 您可以使用相同的库，工具和模式。
 
 #### 8. 最多减少 50％ 的测试
 
@@ -415,11 +432,12 @@ React Native 有一个庞大的开发者社区。不仅如此，还有 **无数�
 
 #### 2. 开箱即用的组件少
 
-**React Native 开箱只支持基础组件** (许多都是针对特定平台开箱即用，例如按钮，加载指示器或滑块).
+**React Native 开箱只支持基础组件**  (许多都是针对特定平台开箱即用，例如按钮，加载指示器或滑块).
 
 外部存储库包含许多其他 React Native 组件。 开发人员可以在项目中使用它们，但这需要额外的精力和时间。
 
-另一方面，Flutter 旨在支持开箱即用的 Material Design，因此该框架支持更多的 widget 来节省开发者时间。 使用 Flutter 的开发人员可以使用易于定制且跨平台一致的预制窗口 widget 来创建大多数视图。
+另一方面，Flutter 旨在支持开箱即用的 Material Design，因此该框架支持更多的 widget 来节省开发者时间。
+使用 Flutter 的开发人员可以使用易于定制且跨平台一致的预制窗口 widget 来创建大多数视图。
 
 #### 3. 开发人员的选择自由
 
@@ -431,7 +449,7 @@ React Native 有一个庞大的开发者社区。不仅如此，还有 **无数�
 
 #### 4. 很多被遗弃的包
 
-React Native 拥有大量的库。 不幸的是，它们太多要么质量低下，要么质量低下，要么完全被遗弃。
+React Native 拥有大量的库。不幸的是，它们太多要么质量低下，要么质量低下，要么完全被遗弃。
 
 Dan Abramov 建议检查存储库中的问题数量和提交频率，以防止使用废弃的程序包。
 
@@ -449,7 +467,8 @@ React Native 在后台使用原生组件这一事实应该使你充满信心，*
 
 #### 6. 应用尺寸大于原生
 
-用 React Native 编写的应用程序必须能够运行 Javascript 代码（JavaScript 虚拟机）。 Android 默认情况下不具有此功能，这意味着应用程序需要包含一个支持 JavaScript 代码的库，从而导致应用程序比其原生 Android 同类产品更大。
+用 React Native 编写的应用程序必须能够运行 Javascript 代码（JavaScript 虚拟机）。
+Android 默认情况下不具有此功能，这意味着应用程序需要包含一个支持 JavaScript 代码的库，从而导致应用程序比其原生 Android 同类产品更大。
 
 使用 React Native 制作的 [iOS 应用](https://www.thedroidsonroids.com/services/ios-mobile-app-development) 并没有这个问题，但是它们通常比原生的更大。 好消息是正如我们之前提到的，React Native 团队正在 [减小应用程序的大小](https://github.com/react-native-community/discussions-and-proposals/issues/6)。
 
@@ -458,13 +477,14 @@ React Native 在后台使用原生组件这一事实应该使你充满信心，*
 
 ## 预测未来：Flutter＆React Native
 
-**越来越多的公司被 Flutter 所吸引。**毕竟，随着 Google 不断完善其工具，我们正在见证 Flutter SDK 的每月改进**。 另外，**社区始终是乐于助人和热情的\*\*。 而且，我们可以期待 Flutter 很快将使我们不仅可以创建移动应用程序，还可以创建用于 Web 和桌面的应用程序。
+**越来越多的公司被 Flutter 所吸引。** 毕竟，随着 Google 不断完善其工具，我们正在见证 Flutter SDK 的每月改进。 **另外，社区始终是乐于助人和热情的**。 而且，我们可以期待 Flutter 很快将使我们不仅可以创建移动应用程序，还可以创建用于 Web 和桌面的应用程序。
 
-鉴于像阿里巴巴这样的领先公司已经在使用 Flutter——该工具包的未来看起来很有希望。
+鉴于像阿里巴巴这样的领先公司已经在使用 Flutter，它的未来看起来很有希望。
 
-至于** React Native **，不错，Facebook 当前正在致力于 **该技术的大规模重新架构**。
+至于 **React Native**，不错，Facebook 当前正在致力于 **该技术的大规模重新架构**。
 
-团队正在尽最大努力改善对 React Native 用户和更广泛社区的支持。 有了这个，社区现在可以通过使用 [专用 GitHub 存储库](https://github.com/react-native-community/discussions-and-proposals/issues/) 关注进度。
+团队正在尽最大努力改善对 React Native 用户和更广泛社区的支持。
+有了这个，社区现在可以通过使用 [专用 GitHub 存储库](https://github.com/react-native-community/discussions-and-proposals/issues/) 关注进度。
 
 - 此类体系结构改进的实际结果是：
 
@@ -472,10 +492,10 @@ React Native 在后台使用原生组件这一事实应该使你充满信心，*
 
 - 0.60 版本中的重大更改（https://facebook.github.io/react-native/blog/2019/07/03/version-60） - 默认情况下，使用最受欢迎的依赖项管理器 CocoaPods 可以更轻松地管理 iOS 依赖项， - 你可以将 React Native 迁移到 AndroidX， - 你可以在精益核心流程中提取可选功能。
 
-**创建一个开放的环境来讨论 React Native 是重要的一步。**这既是不断改进的标志，又是该技术光明前景的信号。
+**创建一个开放的环境来讨论 React Native 是重要的一步。** 这既是不断改进的标志，又是该技术光明前景的信号。
 
-由于 React Native 在市场上具有如此稳定的地位并处于持续发展的轨道上，我们不太可能很快看到该工具包被遗弃。 阅读有关 React Native 的[长期愿景](https://facebook.github.io/react-native/blog/2018/11/01/oss-roadmap)
+由于 React Native 在市场上具有如此稳定的地位并处于持续发展的轨道上，我们不太可能很快看到该工具包被遗弃。 阅读有关 React Native 的 [长期愿景](https://facebook.github.io/react-native/blog/2018/11/01/oss-roadmap)
 
 尽管如此，Flutter 还是 React Native 的强大竞争对手。
 
-另请阅读：[外包软件开发-应用程序所有者的收益和风险](https://www.thedroidsonroids.com/blog/benefits-outsourcing-software-development))
+另请阅读：[外包软件开发 - 应用程序所有者的收益和风险](https://www.thedroidsonroids.com/blog/benefits-outsourcing-software-development))
