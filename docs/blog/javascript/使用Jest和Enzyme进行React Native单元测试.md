@@ -1,6 +1,13 @@
 ---
 title: 使用Jest和Enzyme进行React Native单元测试
+cover: https://i.loli.net/2021/03/10/bxoLe7vtgWzkmOJ.png
 ---
+
+> 大家好，我是 [@大宁的洛竹](https://github.com/youngjuning)
+>
+> 本文首发于 [洛竹的官方网站](https://youngjuning.js.org/)
+>
+> 本文已授权掘金开发者社区公众号独家使用，包括但不限于编辑、标注原创等权益。
 
 ## 单元测试是什么 🧐
 
@@ -283,7 +290,7 @@ describe('mounting', () => {
 });
 ```
 
-### 其他 issues
+### 常见 issues
 
 - enzyme
   - [Create Adapter for React Native & React 16](https://github.com/enzymejs/enzyme/issues/1436)
