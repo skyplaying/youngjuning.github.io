@@ -1,5 +1,6 @@
 ---
 title: 使用Jest和Enzyme进行React Native单元测试
+cover: https://i.loli.net/2021/03/10/MqkQ7w8uKFCoEZV.png
 ---
 
 ## 单元测试是什么 🧐
