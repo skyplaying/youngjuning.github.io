@@ -5,6 +5,13 @@ export const cli = [
     npm: 'boxen',
     github: 'sindresorhus/boxen',
   },
+  {
+    title: 'cac',
+    description:
+      'Simple yet powerful framework for building command-line apps.',
+    npm: 'cac',
+    github: 'cacjs/cac',
+  },
 ];
 
 export const tools = [
