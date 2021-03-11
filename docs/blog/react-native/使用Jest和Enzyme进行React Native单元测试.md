@@ -52,7 +52,7 @@ cover: https://i.loli.net/2021/03/10/bxoLe7vtgWzkmOJ.png
 
 ![](https://i.loli.net/2021/01/11/lsvKWHejBy6mGAF.png)
 
-点开每个也没你，你会看到页面是五颜六色的，别担心，这些颜色都是有明确的意义：
+点开每个页面，你会看到页面是五颜六色的，别担心，这些颜色都是有明确的意义：
 
 - 粉紅色的代码: 尚未被执行的 statement 或 function
 - 黄色的代码: 沒被覆盖到的 branch
