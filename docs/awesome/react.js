@@ -14,3 +14,12 @@ export const artist = [
     outlink: 'https://mp.weixin.qq.com/s/7GDmCxbwVPTNBAHom1BgyA',
   },
 ];
+
+export const site_generator = [
+  {
+    title: 'docsify',
+    description: '一个神奇的文档网站生成器。',
+    homepage: 'https://docsify.js.org/#/zh-cn/',
+    github: 'docsifyjs/docsify',
+  },
+];

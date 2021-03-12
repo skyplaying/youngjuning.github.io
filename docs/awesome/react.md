@@ -33,3 +33,17 @@ export default () => {
   return <ArtistList data={artist} />;
 };
 ```
+
+## 静态网站生成
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { site_generator } from './react';
+
+export default () => {
+  return <ArtistList data={site_generator} />;
+};
+```
