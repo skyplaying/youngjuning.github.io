@@ -82,6 +82,11 @@ export const embedded = [
 
 export const web = [
   {
+    title: 'iced',
+    description: 'A cross-platform GUI library for Rust, inspired by Elm',
+    github: 'hecrj/iced',
+  },
+  {
     title: 'SergioBenitez/Rocket',
     description:
       'Rocket是Rust的Web框架，可以轻松编写快速，安全的Web应用程序，而不会牺牲灵活性，可用性或类型安全性。',
