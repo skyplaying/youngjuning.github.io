@@ -231,3 +231,4 @@ order: 3
 
 - [x] 背单词
       <img src="https://i.loli.net/2021/03/16/1YFZPNbwmRQyeSH.png" style="zoom: 33%;" />
+- [x] [从零使用 Go 语言构建 CLI 项目 | 项目复盘](https://juejin.cn/post/6940296964089053221)

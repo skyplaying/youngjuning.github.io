@@ -20,6 +20,8 @@ export default () => {
 };
 ```
 
+### 工具
+
 ```jsx
 /**
  * inline: true

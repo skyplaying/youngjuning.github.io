@@ -12,6 +12,12 @@ export const cli = [
     npm: 'cac',
     github: 'cacjs/cac',
   },
+  {
+    title: 'commander.js',
+    description: 'node.js command-line interfaces made easy',
+    npm: 'commander',
+    github: 'tj/commander.js',
+  },
 ];
 
 export const tools = [
