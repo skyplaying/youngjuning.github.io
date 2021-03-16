@@ -26,7 +26,7 @@ Inline Requires is a Babel transform that takes module imports and converts them
 
 **Before:**
 
-```jsx
+```js
 import { MyFunction } from 'my-module';
 
 const MyComponent = props => {
@@ -38,7 +38,7 @@ const MyComponent = props => {
 
 **After:**
 
-```jsx
+```js
 const MyComponent = props => {
   const result = require('my-module').MyFunction();
 
