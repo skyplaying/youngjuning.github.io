@@ -3,7 +3,7 @@ title: GitHub
 ---
 
 <Alert type="info">
-  欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs//awesome/github.js">新增数据</a> 并提交 PR.
+  欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/awesome/github.js">新增数据</a> 并提交 PR.
 </Alert>
 
 ## 关注的用户
