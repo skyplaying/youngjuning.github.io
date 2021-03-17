@@ -10,6 +10,7 @@ title: 计算机英文词汇
 
 - are gaining popularity `/ˌpɒpjʊˈlærɪti/`：越来越受欢迎
 - business partner `/ˈbɪznɪs ˈpɑːtnə/`：商业合作伙伴
+- privacy boundary `/ˈprɪvəsi ˈbaʊndəri/`：私有性边界
 
 ## C
 

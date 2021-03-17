@@ -230,5 +230,11 @@ order: 3
 #### 2021-03-16
 
 - [x] 背单词
-      <img src="https://i.loli.net/2021/03/16/1YFZPNbwmRQyeSH.png" style="zoom: 33%;" />
+      <img src="https://i.loli.net/2021/03/16/1YFZPNbwmRQyeSH.png" style="zoom: 25%;" />
 - [x] [从零使用 Go 语言构建 CLI 项目 | 项目复盘](https://juejin.cn/post/6940296964089053221)
+
+#### 2021-03-17
+
+- [x] 背单词
+      <img src="https://i.loli.net/2021/03/17/Nm3uThRpyQOoEU8.png" style="zoom:25%;" />
+- [x] 《Rust 权威指南第 7 章》

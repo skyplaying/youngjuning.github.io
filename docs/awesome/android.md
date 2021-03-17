@@ -13,7 +13,7 @@ title: Android
  * inline: true
  */
 import React from 'react';
-import { tools } from './node';
+import { tools } from './android';
 
 export default () => {
   return <CardList data={tools} />;
