@@ -9,6 +9,16 @@ export const common = [
     description: '创建精彩设计',
     homepage: 'https://www.canva.cn/',
   },
+  {
+    title: '新榜',
+    description: '内容产业服务平台',
+    homepage: 'https://www.newrank.cn/',
+  },
+  {
+    title: 'mdnice',
+    description: '让排版变 Nice',
+    homepage: 'https://www.mdnice.com/',
+  },
 ];
 export const wechat = [
   {
@@ -25,10 +35,5 @@ export const wechat = [
     title: 'WeChatExtension-ForMac',
     description: 'Mac微信功能拓展/微信插件/微信小助手(A plugin for Mac WeChat)',
     github: 'MustangYM/WeChatExtension-ForMac',
-  },
-  {
-    title: '新榜',
-    description: '内容产业服务平台',
-    homepage: 'https://www.newrank.cn/',
   },
 ];

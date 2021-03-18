@@ -238,3 +238,9 @@ order: 3
 - [x] 背单词
       <img src="https://i.loli.net/2021/03/17/Nm3uThRpyQOoEU8.png" style="zoom:25%;" />
 - [x] 《Rust 权威指南第 7 章》
+
+#### 2021-03-18
+
+- [x] 背单词
+      <img src="https://i.loli.net/2021/03/18/O9yuTf2sobpSXwJ.jpg" style="zoom:25%;" />
+- [x] [React 面试问答第一天](https://juejin.cn/post/6940873220618731551)
