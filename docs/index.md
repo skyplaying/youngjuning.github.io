@@ -24,6 +24,7 @@ features:
   - icon: https://i.loli.net/2021/01/07/3e2qXd1jYQSr6tD.png
     title: React
     desc: 用于构建用户界面的 JavaScript 库
+    link: /blog/react/
   - icon: https://i.loli.net/2021/01/07/LyrYFU7icZbGkQv.png
     title: React Native
     desc: 使用React来编写原生应用的框架
