@@ -26,4 +26,9 @@ export const wechat = [
     description: 'Mac微信功能拓展/微信插件/微信小助手(A plugin for Mac WeChat)',
     github: 'MustangYM/WeChatExtension-ForMac',
   },
+  {
+    title: '新榜',
+    description: '内容产业服务平台',
+    homepage: 'https://www.newrank.cn/',
+  },
 ];
