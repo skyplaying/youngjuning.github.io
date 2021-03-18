@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: '洛竹的官方网站',
+  title: '洛竹早茶馆',
   favicon: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   logo: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   mode: 'site',
@@ -15,7 +15,7 @@ export default defineConfig({
   metas: [
     {
       name: 'title',
-      content: '洛竹的官方网站',
+      content: '洛竹早茶馆',
     },
     {
       name: 'keywords',
@@ -33,7 +33,7 @@ export default defineConfig({
       // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
       children: [
         { title: ' Cobra', path: '/cobra' },
-        { title: ' Viper', path: '/viper' },
+        // { title: ' Viper', path: '/viper' },
         { title: ' GitHub Actions', path: '/github-actions' },
       ],
     },
@@ -41,16 +41,16 @@ export default defineConfig({
       title: '掘金',
       path: 'https://juejin.cn/user/325111174662855/posts',
     },
-    {
-      title: '知乎',
-      path: 'https://www.zhihu.com/people/yangjunning',
-      children: [
-        {
-          title: '前端早茶馆',
-          path: 'https://www.zhihu.com/column/c_1341734653628149760',
-        },
-      ],
-    },
+    // {
+    //   title: '知乎',
+    //   path: 'https://www.zhihu.com/people/yangjunning',
+    //   children: [
+    //     {
+    //       title: '前端早茶馆',
+    //       path: 'https://www.zhihu.com/column/c_1341734653628149760',
+    //     },
+    //   ],
+    // },
     {
       title: 'GitHub',
       path: 'https://github.com/youngjuning/youngjuning.github.io',

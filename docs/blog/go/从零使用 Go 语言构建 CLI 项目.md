@@ -4,9 +4,9 @@ tags: [掘金专栏]
 cover: https://i.loli.net/2021/03/16/zMqtAgPd43T1f5Y.jpg
 ---
 
-> 大家好，我是 [@大宁的洛竹](https://github.com/youngjuning)
+> 大家好，我是 [@洛竹](https://github.com/youngjuning)
 >
-> 本文首发于 [洛竹的官方网站](https://youngjuning.js.org/)
+> 本文首发于 [洛竹早茶馆](https://youngjuning.js.org/)
 >
 > 本文已授权掘金开发者社区公众号独家使用，包括但不限于编辑、标注原创等权益。
 

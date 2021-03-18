@@ -5,7 +5,7 @@ cover: https://i.loli.net/2021/02/15/TSfMxtmOLvqcn7w.png
 order: 3
 ---
 
-> 本文首发于洛竹的官方网站，欢迎光临小站。
+> 本文首发于洛竹早茶馆，欢迎光临小站。
 
 > 猜数游戏代码在 [guessing_game](https://github.com/youngjuning/learn-rust/tree/master/guessing_game)，欢迎 clone。
 
