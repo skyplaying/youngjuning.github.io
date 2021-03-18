@@ -32,7 +32,7 @@ React 的主要特性是:
 
 JSX 是 ECMAScript 的类似 XML 的语法扩展（缩写是 JavaScript XML）。实际上，它只是为 `React.createElement()` 函数提供语法糖，为我们提供了在 JavaScript 中使用类 HTML 模板语法的能力。
 
-下面的示例中，`<h1>` 标签内的文本会作为 JavaScript 函数（`React.createElement()`）的返回值返回给 render 函数`
+下面的示例中，`<h1>` 标签内的文本会作为 JavaScript 函数（`React.createElement()`）的返回值返回给 render 函数：
 
 ```jsx | pure
 class App extends React.Component {
@@ -92,8 +92,6 @@ const Button = ({ onLogin }) =>
 ```
 
 ### 5. 如何在 React 中创建组件？
-
-There are two possible ways to create a component.
 
 这里有两种可以用方式来创建一个组件：
 
