@@ -177,4 +177,225 @@ props.reactProp;
 
 props 和 state 都是普通的 JavaScript 对象。尽管它们两者都拥有影响渲染输出的信息，但它们在组件层面的功能却有所不同。将 props 传递给组件类似于传递参数给函数，而 state 则类似于函数中声明的变量一样在组件内进行管理。
 
+### 11. Why should we not update the state directly?
+
+If you try to update state directly then it won't re-render the component.
+
+```javascript
+//Wrong
+this.state.message = 'Hello world';
+```
+
+Instead use `setState()` method. It schedules an update to a component's state object. When state changes, the component responds by re-rendering.
+
+```javascript
+//Correct
+this.setState({ message: 'Hello World' });
+```
+
+**Note:** You can directly assign to the state object either in _constructor_ or using latest javascript's class field declaration syntax.
+
+### 12. What is the purpose of callback function as an argument of `setState()`?
+
+The callback function is invoked when setState finished and the component gets rendered. Since `setState()` is **asynchronous** the callback function is used for any post action.
+
+**Note:** It is recommended to use lifecycle method rather than this callback function.
+
+```javascript
+setState({ name: 'John' }, () =>
+  console.log('The name has updated and component re-rendered'),
+);
+```
+
+### 13. What is the difference between HTML and React event handling?
+
+Below are some of the main differences between HTML and React event handling,
+
+1. In HTML, the event name should be in _lowercase_:
+
+```html
+<button onclick="activateLasers()"></button>
+```
+
+Whereas in React it follows _camelCase_ convention:
+
+```jsx | pure
+<button onClick={activateLasers}>
+```
+
+2. In HTML, you can return `false` to prevent default behavior:
+
+```html
+<a href="#" onclick='console.log("The link was clicked."); return false;' />
+```
+
+Whereas in React you must call `preventDefault()` explicitly:
+
+```javascript
+function handleClick(event) {
+  event.preventDefault();
+  console.log('The link was clicked.');
+}
+```
+
+3. In HTML, you need to invoke the function by appending `()`:
+
+Whereas in react you should not append `()` with the function name. (refer "activateLasers" function in the first point for example)
+
+### 14. How to bind methods or event handlers in JSX callbacks?
+
+There are 3 possible ways to achieve this:
+
+1. **Binding in Constructor:** In JavaScript classes, the methods are not bound by default. The same thing applies for React event handlers defined as class methods. Normally we bind them in constructor.
+
+```javascript
+class Component extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    // ...
+  }
+}
+```
+
+2. **Public class fields syntax:** If you don't like to use bind approach then _public class fields syntax_ can be used to correctly bind callbacks.
+
+```jsx | pure
+handleClick = () => {
+  console.log('this is:', this);
+};
+```
+
+```jsx | pure
+<button onClick={this.handleClick}>{'Click me'}</button>
+```
+
+3. **Arrow functions in callbacks:** You can use _arrow functions_ directly in the callbacks.
+
+```jsx | pure
+<button onClick={event => this.handleClick(event)}>{'Click me'}</button>
+```
+
+**Note:** If the callback is passed as prop to child components, those components might do an extra re-rendering. In those cases, it is preferred to go with `.bind()` or _public class fields syntax_ approach considering performance.
+
+### 15. How to pass a parameter to an event handler or callback?
+
+You can use an _arrow function_ to wrap around an _event handler_ and pass parameters:
+
+```jsx | pure
+<button onClick={() => this.handleClick(id)} />
+```
+
+This is an equivalent to calling `.bind`:
+
+```jsx | pure
+<button onClick={this.handleClick.bind(this, id)} />
+```
+
+Apart from these two approaches, you can also pass arguments to a function which is defined as arrow function
+
+```jsx | pure
+<button onClick={this.handleClick(id)} />;
+handleClick = id => () => {
+  console.log('Hello, your ticket number is', id);
+};
+```
+
+### 16. What are synthetic events in React?
+
+`SyntheticEvent` is a cross-browser wrapper around the browser's native event. It's API is same as the browser's native event, including `stopPropagation()` and `preventDefault()`, except the events work identically across all browsers.
+
+### 17. What are inline conditional expressions?
+
+You can use either _if statements_ or _ternary expressions_ which are available from JS to conditionally render expressions. Apart from these approaches, you can also embed any expressions in JSX by wrapping them in curly braces and then followed by JS logical operator `&&`.
+
+```jsx | pure
+<h1>Hello!</h1>;
+{
+  messages.length > 0 && !isLogin ? (
+    <h2>You have {messages.length} unread messages.</h2>
+  ) : (
+    <h2>You don't have unread messages.</h2>
+  );
+}
+```
+
+### 18. What is "key" prop and what is the benefit of using it in arrays of elements?
+
+A `key` is a special string attribute you **should** include when creating arrays of elements. _Key_ prop helps React identify which items have changed, are added, or are removed.
+
+Most often we use ID from our data as _key_:
+
+```jsx | pure
+const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>);
+```
+
+When you don't have stable IDs for rendered items, you may use the item _index_ as a _key_ as a last resort:
+
+```jsx | pure
+const todoItems = todos.map((todo, index) => <li key={index}>{todo.text}</li>);
+```
+
+**Note:**
+
+1. Using _indexes_ for _keys_ is **not recommended** if the order of items may change. This can negatively impact performance and may cause issues with component state.
+2. If you extract list item as separate component then apply _keys_ on list component instead of `li` tag.
+3. There will be a warning message in the console if the `key` prop is not present on list items.
+
+### 19. What is the use of refs?
+
+The _ref_ is used to return a reference to the element. They _should be avoided_ in most cases, however, they can be useful when you need a direct access to the DOM element or an instance of a component.
+
+### 20. How to create refs?
+
+There are two approaches
+
+1. This is a recently added approach. _Refs_ are created using `React.createRef()` method and attached to React elements via the `ref` attribute. In order to use _refs_ throughout the component, just assign the _ref_ to the instance property within constructor.
+
+```jsx | pure
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+  render() {
+    return <div ref={this.myRef} />;
+  }
+}
+```
+
+2. You can also use ref callbacks approach regardless of React version. For example, the search bar component's input element accessed as follows.
+
+```jsx | pure
+class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+    this.txtSearch = null;
+    this.state = { term: '' };
+    this.setInputSearchRef = e => {
+      this.txtSearch = e;
+    };
+  }
+  onInputChange(event) {
+    this.setState({ term: this.txtSearch.value });
+  }
+  render() {
+    return (
+      <input
+        value={this.state.term}
+        onChange={this.onInputChange.bind(this)}
+        ref={this.setInputSearchRef}
+      />
+    );
+  }
+}
+```
+
+You can also use _refs_ in function components using **closures**.
+
+**Note**: You can also use inline ref callbacks even though it is not a recommended approach
+
 ![](https://youngjuning.js.org/img/luozhu.png)
