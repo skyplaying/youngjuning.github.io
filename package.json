@@ -40,5 +40,8 @@
     "tuya-panel-kit": "https://github.com/tuya/tuya-panel-kit.git#tuya-panel-kit-v4.2.1-gitpkg",
     "umi-plugin-react-native": "^0.4.0",
     "yorkie": "^2.0.0"
+  },
+  "dependencies": {
+    "postcss": "^8.2.8"
   }
 }
