@@ -6,7 +6,7 @@ cover: https://i.loli.net/2021/03/06/EsNrdaw1ApyePV6.png
 
 > 大家好，我是 [@洛竹](https://github.com/youngjuning)
 >
-> 本文首发于 [洛竹早茶馆](https://youngjuning.js.org/)
+> 本文首发于 [洛竹的官方网站](https://youngjuning.js.org/)
 >
 > 原文链接：https://www.thedroidsonroids.com/blog/flutter-vs-react-native-what-to-choose-in-2021
 >

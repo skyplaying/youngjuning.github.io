@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: '洛竹早茶馆',
+  title: '洛竹的官方网站',
   favicon: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   logo: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
   mode: 'site',
@@ -13,7 +13,7 @@ export default defineConfig({
   metas: [
     {
       name: 'title',
-      content: '洛竹早茶馆',
+      content: '洛竹的官方网站',
     },
     {
       name: 'keywords',
@@ -26,6 +26,13 @@ export default defineConfig({
   ],
   navs: [
     null,
+    {
+      title: '订阅号',
+      children: [
+        { title: '营养早茶馆', path: '/health' },
+        { title: '洛竹早茶馆', path: '/luozhu' },
+      ],
+    },
     {
       title: '洛竹文档⤵️',
       // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：

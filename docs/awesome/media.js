@@ -9,6 +9,11 @@ export const design = [
     description: '创建精彩设计',
     homepage: 'https://www.canva.cn/',
   },
+  {
+    title: '稿定设计',
+    description: '做图做视频必备_在线设计神器_海量版权素材模板',
+    homepage: 'https://www.gaoding.com/',
+  },
 ];
 export const common = [
   {

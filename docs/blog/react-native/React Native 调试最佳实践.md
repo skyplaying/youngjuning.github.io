@@ -8,7 +8,7 @@ cover: https://i.loli.net/2021/02/12/sIkec9EHdYqjPZT.jpg
 
 > 本文翻译自 [How To Debug React Native Apps Like A Pro? (Tools And Best Practices)](https://www.ideamotive.co/blog/how-to-debug-your-react-native-apps-like-a-pro)
 
-> 本文首发于 [洛竹早茶馆](https://youngjuning.js.org/)，欢迎光临食堂，如果觉得酒菜还算可口，赏个 Star 对食堂老板来说是莫大的鼓励。
+> 本文首发于 [洛竹的官方网站](https://youngjuning.js.org/)，欢迎光临食堂，如果觉得酒菜还算可口，赏个 Star 对食堂老板来说是莫大的鼓励。
 
 人非圣贤孰能无过。
 

@@ -4,7 +4,7 @@ cover: https://i.loli.net/2021/02/13/xlQI48CR6LteNJV.png
 order: 2
 ---
 
-> 本文部分示例代码在 [youngjuning/learn-rust](https://github.com/youngjuning/learn-rust)，文章首发于 [洛竹早茶馆](https://youngjuning.js.org/)
+> 本文部分示例代码在 [youngjuning/learn-rust](https://github.com/youngjuning/learn-rust)，文章首发于 [洛竹的官方网站](https://youngjuning.js.org/)
 
 语言之间都有着类似的核心特性，比如变量、基本类型、函数、注释和控制流程等概念。但是每个语言有都有自己的独有概念，本文便是记录了我在学习 Rust 语法过程中遇到的 Rust 独有概念。
 
