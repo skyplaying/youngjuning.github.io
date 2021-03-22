@@ -3,7 +3,7 @@ title: 洛竹的官方网站
 hero:
   title: 洛竹的官方网站
   desc: 怕什么真理无穷，进一寸有一寸的欢喜
-  image: https://i.loli.net/2021/01/07/gYLjBSW4lbT8yzs.png
+  image: https://i.loli.net/2021/03/22/1qUtbudvPGERJki.jpg
   actions:
     - text: 博客
       link: /blog
