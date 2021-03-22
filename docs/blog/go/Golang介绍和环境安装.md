@@ -1,5 +1,5 @@
 ---
-title: Golang介绍和环境安装 | Golang教程系列｜Go主题月
+title: Golang介绍和环境安装|Golang教程系列|Go主题月
 tags: [掘金专栏, 洛竹早茶馆]
 cover: https://i.loli.net/2021/03/22/YflQPnzUr5NcTtu.png
 ---
@@ -105,3 +105,10 @@ go version go1.16 darwin/amd64
 在编写本教程时，1.16 是 Go 的最新版本。这证明 Go 已成功安装。在下一个教程中，我们将在 Go 中编写第一个 Hello World 程序 :)
 
 请提供你宝贵的反馈和意见。谢谢阅读。
+
+## 结语
+
+关注公众号`洛竹早茶馆`，一个持续分享编程知识的地方。
+
+- `点赞`等于学会，`在看`等于精通
+- 最后祝大家 2021 学习进步，升职加薪
