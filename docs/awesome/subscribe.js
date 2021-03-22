@@ -27,6 +27,12 @@ export const developer = [
 
 export const i18n = [
   {
+    title: 'Dzone',
+    description:
+      'Programming, Web Development, and DevOps news, tutorials and tools for beginners to experts. Hundreds of free publications, over 1M members, totally free.',
+    homepage: 'https://dzone.com/',
+  },
+  {
     title: 'Medium',
     description: 'Where good ideas find you.',
     homepage: 'https://medium.com/',
