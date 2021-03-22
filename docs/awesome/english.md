@@ -15,6 +15,7 @@ title: 计算机英文词汇
 ## C
 
 - constraint `/kənˈstreɪnt/`：约束
+- concurrency `kənˈkərənsē`：并发
 
 ## D
 
@@ -39,6 +40,10 @@ title: 计算机英文词汇
 - palindrome `/ˈpalɪndrəʊm/`：回文，亦称回环，是正读反读都能读通的句子，亦有将文字排列成圆圈者，是一种修辞方式和文字游戏
 - pragmatic `/prægˈmætɪk/`：实用的
 - Performance-wise `/pərˈfɔrməns-waɪz/`：从性能角度来看
+
+## S
+
+- syntax
 
 ## T
 
