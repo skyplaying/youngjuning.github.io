@@ -1,6 +1,6 @@
 ---
 title: React 面试题精选集
-tags: [掘金专栏, 洛竹的官方网站]
+tags: [掘金专栏, 洛竹早茶馆]
 ---
 
 > 大家好，我是 [@洛竹](https://github.com/youngjuning)
@@ -177,29 +177,29 @@ props.reactProp;
 
 props 和 state 都是普通的 JavaScript 对象。尽管它们两者都拥有影响渲染输出的信息，但它们在组件层面的功能却有所不同。将 props 传递给组件类似于传递参数给函数，而 state 则类似于函数中声明的变量一样在组件内进行管理。
 
-### 11. Why should we not update the state directly?
+### 11. 为什么我们不能直接更新状态？
 
-If you try to update state directly then it won't re-render the component.
+如果你尝试直接更新状态，React 组件并不会重新渲染。
 
 ```javascript
-//Wrong
+// 错误❌
 this.state.message = 'Hello world';
 ```
 
-Instead use `setState()` method. It schedules an update to a component's state object. When state changes, the component responds by re-rendering.
+正确的做法是使用 `setState()` 方法。它会计划一个对组件状态对象的更新。当状态更改时，组件通过重新渲染进行响应。
 
 ```javascript
-//Correct
+// 正确✅
 this.setState({ message: 'Hello World' });
 ```
 
-**Note:** You can directly assign to the state object either in _constructor_ or using latest javascript's class field declaration syntax.
+> **注意：**你可以使用构造函数或者最新的 javascript class 字段声明语法直接将其分配给状态对象。
 
-### 12. What is the purpose of callback function as an argument of `setState()`?
+### 12. 回调函数作为 `setState()` 的参数的目的是什么？
 
-The callback function is invoked when setState finished and the component gets rendered. Since `setState()` is **asynchronous** the callback function is used for any post action.
+setState 完成并重新渲染组件后，将调用回调函数。由于 setState() 是异步的，因此回调函数可用于任何后续操作。
 
-**Note:** It is recommended to use lifecycle method rather than this callback function.
+> **注意：**我们建议使用生命周期方法而不是这个回调函数
 
 ```javascript
 setState({ name: 'John' }, () =>
@@ -207,29 +207,29 @@ setState({ name: 'John' }, () =>
 );
 ```
 
-### 13. What is the difference between HTML and React event handling?
+### 13. HTML 和 React 的事件处理有什么不同？
 
-Below are some of the main differences between HTML and React event handling,
+下面是一些 HTML 和 React 的事件处理的主要不同：
 
-1. In HTML, the event name should be in _lowercase_:
+1. 在 HTML 中，事件名应该是全小写的：
 
 ```html
 <button onclick="activateLasers()"></button>
 ```
 
-Whereas in React it follows _camelCase_ convention:
+然而在 React 中事件名遵循小驼峰 格式：
 
 ```jsx | pure
 <button onClick={activateLasers}>
 ```
 
-2. In HTML, you can return `false` to prevent default behavior:
+2. 在 HTML 中，你应该返回 `false` 来阻止默认行为：
 
 ```html
 <a href="#" onclick='console.log("The link was clicked."); return false;' />
 ```
 
-Whereas in React you must call `preventDefault()` explicitly:
+然后在 React 中你必须明确地调用 `preventDefault()`
 
 ```javascript
 function handleClick(event) {
@@ -238,15 +238,15 @@ function handleClick(event) {
 }
 ```
 
-3. In HTML, you need to invoke the function by appending `()`:
+3. 在 HTML 中，你调用函数时需要加上 `()`：
 
-Whereas in react you should not append `()` with the function name. (refer "activateLasers" function in the first point for example)
+然后在 React 中你不应该在函数名后带上 `()`。（比如前面示例中的 `activateLasers` 函数）
 
-### 14. How to bind methods or event handlers in JSX callbacks?
+### 14. 如何在 JSX 回调函数中绑定方法或事件处理器
 
-There are 3 possible ways to achieve this:
+这里有 3 个方法做到这一点：
 
-1. **Binding in Constructor:** In JavaScript classes, the methods are not bound by default. The same thing applies for React event handlers defined as class methods. Normally we bind them in constructor.
+1. **在构造器中绑定：** 在 JavaScript 类中，默认情况下不绑定方法。同样的事情也适用于定义为类方法的 React 事件处理器。通常我们将它们绑定在构造函数中。
 
 ```javascript
 class Component extends React.Component {
@@ -261,7 +261,7 @@ class Component extends React.Component {
 }
 ```
 
-2. **Public class fields syntax:** If you don't like to use bind approach then _public class fields syntax_ can be used to correctly bind callbacks.
+2. **类的公共字段语法：** 如果你不喜欢使用绑定的方式，也可以使用类的公共字段语法来正确绑定回调：
 
 ```jsx | pure
 handleClick = () => {
@@ -273,29 +273,29 @@ handleClick = () => {
 <button onClick={this.handleClick}>{'Click me'}</button>
 ```
 
-3. **Arrow functions in callbacks:** You can use _arrow functions_ directly in the callbacks.
+3. **箭头函数作为回调：** 你可以直接在回调中使用箭头函数
 
 ```jsx | pure
 <button onClick={event => this.handleClick(event)}>{'Click me'}</button>
 ```
 
-**Note:** If the callback is passed as prop to child components, those components might do an extra re-rendering. In those cases, it is preferred to go with `.bind()` or _public class fields syntax_ approach considering performance.
+> **注意：** 如果回调作为 prop 传递给子组件，这些组件可能会触发额外的重渲染。在这些场景中，考虑到性能因素，最佳的选择是使用 `.bind()` 或类的公共字段语法。
 
-### 15. How to pass a parameter to an event handler or callback?
+### 15. 如何传递参数给事件处理器或回调？
 
-You can use an _arrow function_ to wrap around an _event handler_ and pass parameters:
+你可以使用一个箭头函数来包裹一个事件处理器并传递参数：
 
 ```jsx | pure
 <button onClick={() => this.handleClick(id)} />
 ```
 
-This is an equivalent to calling `.bind`:
+这等价于调用 `.bind` 函数：
 
 ```jsx | pure
 <button onClick={this.handleClick.bind(this, id)} />
 ```
 
-Apart from these two approaches, you can also pass arguments to a function which is defined as arrow function
+除了这两种办法，你也可以传递参数给一个箭头函数：
 
 ```jsx | pure
 <button onClick={this.handleClick(id)} />;
@@ -304,13 +304,13 @@ handleClick = id => () => {
 };
 ```
 
-### 16. What are synthetic events in React?
+### 16. React 中的合成事件是什么？
 
-`SyntheticEvent` is a cross-browser wrapper around the browser's native event. It's API is same as the browser's native event, including `stopPropagation()` and `preventDefault()`, except the events work identically across all browsers.
+`SyntheticEvent` 是基于浏览器本地事件的跨浏览器包装。它的 API 与浏览器的本地事件相同，包括 `stopPropagation()` 和 `preventDefault()`，但事件在所有浏览器中的表现均一致。
 
-### 17. What are inline conditional expressions?
+### 17. 什么是内联条件表达式？
 
-You can use either _if statements_ or _ternary expressions_ which are available from JS to conditionally render expressions. Apart from these approaches, you can also embed any expressions in JSX by wrapping them in curly braces and then followed by JS logical operator `&&`.
+你可以使用 JS 可用的 `if` 语句或三元表达式来有条件地渲染表达式。 除了这些方法之外，还可以通过将所有表达式括在花括号中然后在其后跟 JS 逻辑运算符 `&&` 来将任何表达式嵌入 JSX。
 
 ```jsx | pure
 <h1>Hello!</h1>;
@@ -323,37 +323,39 @@ You can use either _if statements_ or _ternary expressions_ which are available 
 }
 ```
 
-### 18. What is "key" prop and what is the benefit of using it in arrays of elements?
+### 18. 什么是 `key` prop？在元素数组中使用它的好处是什么？
 
-A `key` is a special string attribute you **should** include when creating arrays of elements. _Key_ prop helps React identify which items have changed, are added, or are removed.
+`key` 是当你创建一个元素数组时应该包含的一个特殊的字符串属性。`key` prop 会帮助 React 识别具体哪一项被修改、添加或被移除。
 
-Most often we use ID from our data as _key_:
+通常，我们将数据中的 ID 用作 `key`：
 
 ```jsx | pure
 const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>);
 ```
 
-When you don't have stable IDs for rendered items, you may use the item _index_ as a _key_ as a last resort:
+如果呈现的项目没有稳定的 ID，退而求其次，我们可以将 `index` 作为 `key`：
 
 ```jsx | pure
-const todoItems = todos.map((todo, index) => <li key={index}>{todo.text}</li>);
+const todoItems = todos.map((todo, index) => (
+  <li key={index.toString()}>{todo.text}</li>
+));
 ```
 
-**Note:**
+**注意：**
 
-1. Using _indexes_ for _keys_ is **not recommended** if the order of items may change. This can negatively impact performance and may cause issues with component state.
-2. If you extract list item as separate component then apply _keys_ on list component instead of `li` tag.
-3. There will be a warning message in the console if the `key` prop is not present on list items.
+1. 如果列表项可能改变，不建议使用 `indexes` 作为 `keys`。这可能会对性能产生负面影响，并可能导致组件状态出现问题。
+2. 如果你将列表项提取为单独的组件，则在列表组件上应用 `keys` 而不是 `li` 标签。
+3. 如果列表项中不存在 `key` prop，则控制台中将出现警告消息。
 
-### 19. What is the use of refs?
+### 19. refs 有什么用？
 
-The _ref_ is used to return a reference to the element. They _should be avoided_ in most cases, however, they can be useful when you need a direct access to the DOM element or an instance of a component.
+refs 用于返回对该元素的引用。在大多数情况下，应避免使用它们，但是，当你需要直接访问 DOM 元素或组件的实例时，它们会很有用。
 
-### 20. How to create refs?
+### 20. 如何创建 refs？
 
-There are two approaches
+这里有两种方式
 
-1. This is a recently added approach. _Refs_ are created using `React.createRef()` method and attached to React elements via the `ref` attribute. In order to use _refs_ throughout the component, just assign the _ref_ to the instance property within constructor.
+1.这是最近添加的方法。使用 `React.createRef()` 方法创建 refs，并通过 ref 属性附加到 React 元素。为了在整个组件中使用 refs，只需将 ref 分配给构造函数中的 instance 属性。
 
 ```jsx | pure
 class MyComponent extends React.Component {
@@ -367,7 +369,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-2. You can also use ref callbacks approach regardless of React version. For example, the search bar component's input element accessed as follows.
+2. 无论 React 版本如何，你都可以使用 ref 回调方法。例如，搜索栏组件的输入元素的访问方式如下。
 
 ```jsx | pure
 class SearchBar extends Component {
@@ -394,8 +396,15 @@ class SearchBar extends Component {
 }
 ```
 
-You can also use _refs_ in function components using **closures**.
+你也可以使用闭包在函数组件中使用 refs。
 
-**Note**: You can also use inline ref callbacks even though it is not a recommended approach
+> **注意：** 你也可以使用内联 ref 回调，即使这不是推荐的方法
 
 ![](https://youngjuning.js.org/img/luozhu.png)
+
+## 结语
+
+关注公众号`洛竹早茶馆`，一个持续分享编程知识的地方。
+
+- `点赞`等于学会，`在看`等于精通
+- 最后祝大家 2021 学习进步，升职加薪
