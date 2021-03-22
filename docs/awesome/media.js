@@ -14,6 +14,11 @@ export const design = [
     description: '做图做视频必备_在线设计神器_海量版权素材模板',
     homepage: 'https://www.gaoding.com/',
   },
+  {
+    title: '懒设计',
+    description: 'Fotor懒设计_在线设计神器_免费设计素材模板_平面设计作图软件',
+    homepage: 'https://www.fotor.com.cn/',
+  },
 ];
 export const common = [
   {

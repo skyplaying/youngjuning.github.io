@@ -1,7 +1,7 @@
 ---
 title: 动物蛋白vs植物蛋白，到底哪里不一样？
 cover: https://i.loli.net/2021/03/22/scOEW67Tm91k5Zv.png
-tags: [转载]
+tags: [转载, 营养早茶馆]
 order: 3
 ---
 
