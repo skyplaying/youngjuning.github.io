@@ -257,3 +257,12 @@ order: 3
 - [x] 背单词
       <img src="https://i.loli.net/2021/03/18/O9yuTf2sobpSXwJ.jpg" style="zoom:25%;" />
 - [x] [React 面试问答第一天](https://juejin.cn/post/6940873220618731551)
+
+### 第四周 3 月 22 日 — 3 月 29 日
+
+#### 2021-03-22
+
+今天开始参加了掘金沸点活动和掘金 Go 主题月活动。然后在 helloworld.net 发布了 《React 面试题精选》专栏。
+
+- [x] [「译」Golang 介绍和环境安装 | Golang 教程系列｜ Go 主题月](https://juejin.cn/post/6942492190291525662)
+- [x] [React 面试题精选 Day2](https://juejin.cn/post/6942438427291811870)
