@@ -271,5 +271,5 @@ order: 3
 
 <img src="https://i.loli.net/2021/03/23/gPlY9Hd2jWQUeRa.jpg" style="zoom:25%;" />
 
-- [ ] [Hello Golang | Golang 教程系列 | Go 主题月](https://juejin.cn/user/325111174662855/posts)
+- [ ] [「译」Hello Golang | Golang 教程系列 | Go 主题月](https://juejin.cn/user/325111174662855/posts)
 - [x] [React 面试题精选 Day3](https://juejin.cn/user/325111174662855/posts)
