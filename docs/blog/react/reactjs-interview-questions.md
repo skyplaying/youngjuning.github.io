@@ -400,9 +400,9 @@ class SearchBar extends Component {
 
 > **注意：** 你也可以使用内联 ref 回调，即使这不是推荐的方法
 
-### 21. What are forward refs?
+### 21. refs 转发是什么？
 
-_Ref forwarding_ is a feature that lets some components take a `ref` they receive, and pass it further down to a child.
+_Ref 转发_ 是让某些组件可以使用它们接收的 `ref` 的特性，这些组件还可以进一步将其传递给子组件。
 
 ```jsx | pure
 const ButtonElement = React.forwardRef((props, ref) => (
@@ -416,11 +416,11 @@ const ref = React.createRef();
 <ButtonElement ref={ref}>{'Forward Ref'}</ButtonElement>;
 ```
 
-### 22. Which is preferred option with in callback refs and `findDOMNode()`?
+### 22. refs 回调和 `findDOMNode()` 哪个是首选项？
 
-It is preferred to use _callback refs_ over `findDOMNode()` API. Because `findDOMNode()` prevents certain improvements in React in the future.
+最好使用 refs 回调 而不是 `findDOMNode()` API。因为 `findDOMNode()` 将来会阻止对 React 的某些改进。
 
-The **legacy** approach of using `findDOMNode`:
+使用 `findDOMNode` 的“传统”方法：
 
 ```javascript
 class MyComponent extends Component {
@@ -434,7 +434,7 @@ class MyComponent extends Component {
 }
 ```
 
-The recommended approach is:
+推荐的方式是：
 
 ```javascript
 class MyComponent extends Component {
@@ -452,68 +452,68 @@ class MyComponent extends Component {
 }
 ```
 
-### 23. Why are String Refs legacy?
+### 23. 为什么 Strings Refs 被遗弃了？
 
-If you worked with React before, you might be familiar with an older API where the `ref` attribute is a string, like `ref={'textInput'}`, and the DOM node is accessed as `this.refs.textInput`. We advise against it because _string refs have below issues_, and are considered legacy. String refs were **removed in React v16**.
+如果你以前使用过 React，那么你可能会熟悉一个较旧的 API，其中的`ref` 属性是一个字符串，例如 `ref = {textInput'}`，并且 DOM 节点作为`this.refs.textInput` 访问。我们建议你不要这样做，因为 String 引用有以下问题，并且被认为是旧版的。字符串引用已经在 **React v16 中被删除**。
 
-1. They _force React to keep track of currently executing component_. This is problematic because it makes react module stateful, and thus causes weird errors when react module is duplicated in the bundle.
-2. They are _not composable_ — if a library puts a ref on the passed child, the user can't put another ref on it. Callback refs are perfectly composable.
-3. They _don't work with static analysis_ like Flow. Flow can't guess the magic that framework does to make the string ref appear on `this.refs`, as well as its type (which could be different). Callback refs are friendlier to static analysis.
-4. It doesn't work as most people would expect with the "render callback" pattern (e.g. <DataGrid renderRow={this.renderRow} />)
+1. 他们迫使 React 跟踪当前正在执行的组件。这是有问题的，因为它使 React 模块成为有状态的，并因此在打包 React 模块时冲突而引起奇怪的错误。
+2. 它们是“不可组合的” — 如果库在传递的子项上放置了引用，则用户不能在其上放置其他引用。回调引用完全可以组合。
+3. 他们不能和静态分析工具配合（比如 Flow）。Flow 无法猜测出框架 `this.refs` 上出现的字符串引用及其类型（可能不同）。 回调引用对静态分析更友好。
+4. 它无法像大多数人期望的那样使用“渲染回调”模式（例如）
 
-```jsx | pure
-class MyComponent extends Component {
-  renderRow = index => {
-    // This won't work. Ref will get attached to DataTable rather than MyComponent:
-    return <input ref={'input-' + index} />;
+   ```jsx | pure
+   class MyComponent extends Component {
+     renderRow = index => {
+       // This won't work. Ref will get attached to DataTable rather than MyComponent:
+       return <input ref={'input-' + index} />;
 
-    // This would work though! Callback refs are awesome.
-    return <input ref={input => (this['input-' + index] = input)} />;
-  };
+       // This would work though! Callback refs are awesome.
+       return <input ref={input => (this['input-' + index] = input)} />;
+     };
 
-  render() {
-    return <DataTable data={this.props.data} renderRow={this.renderRow} />;
-  }
-}
-```
+     render() {
+       return <DataTable data={this.props.data} renderRow={this.renderRow} />;
+     }
+   }
+   ```
 
-### 24. What is Virtual DOM?
+### 24. 虚拟 DOM 是什么？
 
-The _Virtual DOM_ (VDOM) is an in-memory representation of _Real DOM_. The representation of a UI is kept in memory and synced with the "real" DOM. It's a step that happens between the render function being called and the displaying of elements on the screen. This entire process is called _reconciliation_.
+_Virtual DOM_（VDOM）是*Real DOM*的内存表示形式。 UI 的表示形式保留在内存中，并与“真实” DOM 同步。 这是在调用渲染函数和在屏幕上显示元素之间发生的一步。 这整个过程称为 [协调](https://zh-hans.reactjs.org/docs/reconciliation.html)。
 
-### 25. How Virtual DOM works?
+### 25. 虚拟 DOM 原理
 
-The _Virtual DOM_ works in three simple steps.
+虚拟 DOM 工作原理只有三个简单的步骤。
 
-1. Whenever any underlying data changes, the entire UI is re-rendered in Virtual DOM representation.
+1. 无论何时任何基础数据发生更改，整个 UI 都将以虚拟 DOM 表现形式重新呈现。
 
-![vdom](images/vdom1.png)
+![vdom](https://github.com/sudheerj/reactjs-interview-questions/raw/master/images/vdom1.png)
 
-2. Then the difference between the previous DOM representation and the new one is calculated.
+2. 然后，计算先前的 DOM 表现形式与新的 DOM 表现形式之间的差异。
 
-![vdom2](images/vdom2.png)
+![vdom2](https://github.com/sudheerj/reactjs-interview-questions/raw/master/images/vdom2.png)
 
-3. Once the calculations are done, the real DOM will be updated with only the things that have actually changed.
+3. 一旦完成计算，将只会更新内容真正改变的那部分真是 DOM。
 
-![vdom3](images/vdom3.png)
+![vdom3](https://github.com/sudheerj/reactjs-interview-questions/raw/master/images/vdom3.png)
 
-### 26. What is the difference between Shadow DOM and Virtual DOM?
+### 26. Shadow DOM 和 Virtual DOM 有什么区别？
 
-The _Shadow DOM_ is a browser technology designed primarily for scoping variables and CSS in _web components_. The _Virtual DOM_ is a concept implemented by libraries in JavaScript on top of browser APIs.
+Shadow DOM 是一种浏览器技术，主要用于确定 web components 中的变量和 CSS。Virtual DOM 是由浏览器 API 之上的 JavaScript 库实现的概念。
 
-### 27. What is React Fiber?
+### 27. React Fiber 是什么?
 
-Fiber is the new _reconciliation_ engine or reimplementation of core algorithm in React v16. The goal of React Fiber is to increase its suitability for areas like animation, layout, gestures, ability to pause, abort, or reuse work and assign priority to different types of updates; and new concurrency primitives.
+Fiber 是 React v16 中新的 [协调](https://zh-hans.reactjs.org/docs/reconciliation.html) 引擎或核心算法的重新实现。React Fiber 的目标是提高其在动画、布局、手势、暂停、中止或重用工作的能力，以及为不同类型的更新分配优先级等方面的适用性和新的并发原语。
 
-### 28. What is the main goal of React Fiber?
+### 28. React Fiber 的主要设计目的是什么？
 
-The goal of _React Fiber_ is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is **incremental rendering**: the ability to split rendering work into chunks and spread it out over multiple frames.
+React Fiber 的目标是提高其对动画、布局和手势等领域的适用性。它的 headline 功能是**增量渲染**：能够将渲染工作拆分为多个块并将其分布到多个帧中。
 
-### 29. What are controlled components?
+### 29. 受控组件是什么？
 
-A component that controls the input elements within the forms on subsequent user input is called **Controlled Component**, i.e, every state mutation will have an associated handler function.
+在用户输入后能够控制表单中输入元素的组件被称为“受控组件”，比如每一个状态概念都将有一个相关的处理函数
 
-For example, to write all the names in uppercase letters, we use handleChange as below,
+例如下面的例子中，为了将名字转换为全大写，我们使用 `handleChange`：
 
 ```javascript
 handleChange(event) {
@@ -521,11 +521,11 @@ handleChange(event) {
 }
 ```
 
-### 30. What are uncontrolled components?
+### 30. 非受控组件是什么？
 
-The **Uncontrolled Components** are the ones that store their own state internally, and you query the DOM using a ref to find its current value when you need it. This is a bit more like traditional HTML.
+受控组件是那些把状态维护在其内部的组件，当你想要获得当前值时需要使用 ref 查询 DOM。这有一点像传统的 HTML。
 
-In the below UserProfile component, the `name` input is accessed using ref.
+在下面的 `UserProfile` 组件中，`name` 输入被使用 `ref` 获取：
 
 ```jsx | pure
 class UserProfile extends React.Component {
@@ -554,7 +554,7 @@ class UserProfile extends React.Component {
 }
 ```
 
-In most cases, it's recommend to use controlled components to implement forms.
+大多数场景中，我们建议使用受控组件来代替表单组件。
 
 ![](https://youngjuning.js.org/img/luozhu.png)
 
