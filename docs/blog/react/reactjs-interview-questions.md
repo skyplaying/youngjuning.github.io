@@ -400,6 +400,162 @@ class SearchBar extends Component {
 
 > **注意：** 你也可以使用内联 ref 回调，即使这不是推荐的方法
 
+### 21. What are forward refs?
+
+_Ref forwarding_ is a feature that lets some components take a `ref` they receive, and pass it further down to a child.
+
+```jsx | pure
+const ButtonElement = React.forwardRef((props, ref) => (
+  <button ref={ref} className="CustomButton">
+    {props.children}
+  </button>
+));
+
+// Create ref to the DOM button:
+const ref = React.createRef();
+<ButtonElement ref={ref}>{'Forward Ref'}</ButtonElement>;
+```
+
+### 22. Which is preferred option with in callback refs and `findDOMNode()`?
+
+It is preferred to use _callback refs_ over `findDOMNode()` API. Because `findDOMNode()` prevents certain improvements in React in the future.
+
+The **legacy** approach of using `findDOMNode`:
+
+```javascript
+class MyComponent extends Component {
+  componentDidMount() {
+    findDOMNode(this).scrollIntoView();
+  }
+
+  render() {
+    return <div />;
+  }
+}
+```
+
+The recommended approach is:
+
+```javascript
+class MyComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.node = createRef();
+  }
+  componentDidMount() {
+    this.node.current.scrollIntoView();
+  }
+
+  render() {
+    return <div ref={this.node} />;
+  }
+}
+```
+
+### 23. Why are String Refs legacy?
+
+If you worked with React before, you might be familiar with an older API where the `ref` attribute is a string, like `ref={'textInput'}`, and the DOM node is accessed as `this.refs.textInput`. We advise against it because _string refs have below issues_, and are considered legacy. String refs were **removed in React v16**.
+
+1. They _force React to keep track of currently executing component_. This is problematic because it makes react module stateful, and thus causes weird errors when react module is duplicated in the bundle.
+2. They are _not composable_ — if a library puts a ref on the passed child, the user can't put another ref on it. Callback refs are perfectly composable.
+3. They _don't work with static analysis_ like Flow. Flow can't guess the magic that framework does to make the string ref appear on `this.refs`, as well as its type (which could be different). Callback refs are friendlier to static analysis.
+4. It doesn't work as most people would expect with the "render callback" pattern (e.g. <DataGrid renderRow={this.renderRow} />)
+
+```jsx | pure
+class MyComponent extends Component {
+  renderRow = index => {
+    // This won't work. Ref will get attached to DataTable rather than MyComponent:
+    return <input ref={'input-' + index} />;
+
+    // This would work though! Callback refs are awesome.
+    return <input ref={input => (this['input-' + index] = input)} />;
+  };
+
+  render() {
+    return <DataTable data={this.props.data} renderRow={this.renderRow} />;
+  }
+}
+```
+
+### 24. What is Virtual DOM?
+
+The _Virtual DOM_ (VDOM) is an in-memory representation of _Real DOM_. The representation of a UI is kept in memory and synced with the "real" DOM. It's a step that happens between the render function being called and the displaying of elements on the screen. This entire process is called _reconciliation_.
+
+### 25. How Virtual DOM works?
+
+The _Virtual DOM_ works in three simple steps.
+
+1. Whenever any underlying data changes, the entire UI is re-rendered in Virtual DOM representation.
+
+![vdom](images/vdom1.png)
+
+2. Then the difference between the previous DOM representation and the new one is calculated.
+
+![vdom2](images/vdom2.png)
+
+3. Once the calculations are done, the real DOM will be updated with only the things that have actually changed.
+
+![vdom3](images/vdom3.png)
+
+### 26. What is the difference between Shadow DOM and Virtual DOM?
+
+The _Shadow DOM_ is a browser technology designed primarily for scoping variables and CSS in _web components_. The _Virtual DOM_ is a concept implemented by libraries in JavaScript on top of browser APIs.
+
+### 27. What is React Fiber?
+
+Fiber is the new _reconciliation_ engine or reimplementation of core algorithm in React v16. The goal of React Fiber is to increase its suitability for areas like animation, layout, gestures, ability to pause, abort, or reuse work and assign priority to different types of updates; and new concurrency primitives.
+
+### 28. What is the main goal of React Fiber?
+
+The goal of _React Fiber_ is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is **incremental rendering**: the ability to split rendering work into chunks and spread it out over multiple frames.
+
+### 29. What are controlled components?
+
+A component that controls the input elements within the forms on subsequent user input is called **Controlled Component**, i.e, every state mutation will have an associated handler function.
+
+For example, to write all the names in uppercase letters, we use handleChange as below,
+
+```javascript
+handleChange(event) {
+   this.setState({value: event.target.value.toUpperCase()})
+}
+```
+
+### 30. What are uncontrolled components?
+
+The **Uncontrolled Components** are the ones that store their own state internally, and you query the DOM using a ref to find its current value when you need it. This is a bit more like traditional HTML.
+
+In the below UserProfile component, the `name` input is accessed using ref.
+
+```jsx | pure
+class UserProfile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.input = React.createRef();
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.input.current.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          {'Name:'}
+          <input type="text" ref={this.input} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+```
+
+In most cases, it's recommend to use controlled components to implement forms.
+
 ![](https://youngjuning.js.org/img/luozhu.png)
 
 ## 结语
