@@ -38,7 +38,7 @@ export default defineConfig({
       // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
       children: [
         { title: ' Cobra', path: '/cobra' },
-        // { title: ' Viper', path: '/viper' },
+        { title: ' Viper', path: '/viper' },
         { title: ' GitHub Actions', path: '/github-actions' },
       ],
     },
