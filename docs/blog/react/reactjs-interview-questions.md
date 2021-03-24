@@ -556,6 +556,18 @@ class UserProfile extends React.Component {
 
 大多数场景中，我们建议使用受控组件来代替表单组件。
 
+> 大家好，我是 [@洛竹](https://github.com/youngjuning)
+>
+> 本文首发于 [洛竹的官方网站](https://youngjuning.js.org/)
+>
+> 本文翻译自 [sudheerj/reactjs-interview-questions](https://github.com/sudheerj/reactjs-interview-questions)
+>
+> 本文同步于公众号洛竹早茶馆，转载请联系作者。
+
+- [「涨薪必备」React 面试问答系列 Day1](https://juejin.cn/post/6940873220618731551)
+- [「涨薪必备」React 面试问答系列 Day2](https://juejin.cn/post/6942438427291811870)
+- [「涨薪必备」React 面试问答系列 Day3](https://juejin.cn/post/6942813303664017444)
+
 ### 31. createElement 和 cloneElement 的区别是什么？
 
 JSX 元素将被转换为 `React.createElement()` 函数以创建 React 元素，这些元素将用于 UI 的对象表示。而 `cloneElement` 用于克隆元素并将新的 `props` 传递给它。
@@ -572,39 +584,39 @@ JSX 元素将被转换为 `React.createElement()` 函数以创建 React 元素�
 
 组件生命周期具有三个不同的生命周期阶段。
 
-1. **Mounting：**组件已准备好安装在浏览器 DOM 中。这个阶段涵盖了生命周期方法 `constructor()`、`getDerivedStateFromProps()`、 `render()` 和 `componentDidMount()` 的初始化。
-2. **Updating：**在此阶段，组件以两种方式进行更新，即发送新 `props` 和从 `setState()` 或 `forceUpdate()` 更新状态。此阶段涵盖了`getDerivedStateFromProps()`，`shouldComponentUpdate()`，`render()` 、`getSnapshotBeforeUpdate()` 和 `componentDidUpdate()` 生命周期方法。
-3. **Unmounting：**在最后一个阶段，不再需要该组件并从浏览器 DOM 上卸载该组件。 这个阶段包括 `componentWillUnmount()` 生命周期方法。
+1. **Mounting：** 组件已准备好安装在浏览器 DOM 中。这个阶段涵盖了生命周期方法 `constructor()`、`getDerivedStateFromProps()`、 `render()` 和 `componentDidMount()` 的初始化。
+2. **Updating：** 在此阶段，组件以两种方式进行更新，即发送新 `props` 和从 `setState()` 或 `forceUpdate()` 更新状态。此阶段涵盖了`getDerivedStateFromProps()`，`shouldComponentUpdate()`，`render()` 、`getSnapshotBeforeUpdate()` 和 `componentDidUpdate()` 生命周期方法。
+3. **Unmounting：** 在最后一个阶段，不再需要该组件并从浏览器 DOM 上卸载该组件。 这个阶段包括 `componentWillUnmount()` 生命周期方法。
 
 值得一提的是，在将更改应用于 DOM 时，React 内部具有阶段性概念。 它们分开如下
 
 1. **Render：** 该组件将渲染而没有任何副作用。这适用于 Pure 组件，在此阶段，React 可以暂停、中止或重新启动渲染。
 2. **Pre-commit：** 在组件将更改实际应用于 DOM 之前，有一段时间可以让 React 通过 `getSnapshotBeforeUpdate()` 从 DOM 中读取内容。
-3. **Commit** React 与 DOM 一起工作并分别执行最终的生命周期：`componentDidMount()` 用于安装，`componentDidUpdate()` 用于更新，以及 `componentWillUnmount()` 用于卸载。
+3. **Commit：** React 与 DOM 一起工作并分别执行最终的生命周期：`componentDidMount()` 用于安装，`componentDidUpdate()` 用于更新，以及 `componentWillUnmount()` 用于卸载。
 
 React 16.3+ (或者 [在线交互版本](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/))
 
-![](https://github.com/sudheerj/reactjs-interview-questions/raw/master/images/phases16.3.jpg)
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fac807b8490c4c11a9630a9f29e467d3~tplv-k3u1fbpfcp-zoom-1.image)
 
 React 16.3 之前的版本：
 
-![phases 16.2](https://github.com/sudheerj/reactjs-interview-questions/raw/master/images/phases.png)
+![phases 16.2](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/33a918a89bdd49c08e80732f5f6af367~tplv-k3u1fbpfcp-zoom-1.image)
 
 ### 34. React 生命周期有哪些？
 
 React 16.3 以前的版本：
 
-- ** componentWillMount：**在渲染之前执行，用于根组件中的应用程序级别配置。
-- ** componentDidMount：**在首次渲染之后执行，所有 AJAX 请求，DOM 或状态更新以及设置事件侦听器都应在此执行。
-- ** componentWillReceiveProps：**在特定属性更新以触发状态转换时执行。
-- ** shouldComponentUpdate：**确定是否要更新组件。默认情况下，它返回 `true`。如果你确定在状态或属性更新后不需要渲染组件，则可以返回 `false` 值。这是提高性能的好地方，因为如果组件收到新的 `props`，它可以防止重新渲染。
-- ** componentWillUpdate：**当有属性或状态改变被`shouldComponentUpdate()` 确认并返回 `true` 时，在重新渲染组件之前执行。
-- ** componentDidUpdate：**通常，它用于响应属性或状态更改来更新 DOM。
-- ** componentWillUnmount：**它将用于取消任何传出的网络请求，或删除与该组件关联的所有事件侦听器。
+- **componentWillMount：** 在渲染之前执行，用于根组件中的应用程序级别配置。
+- **componentDidMount：** 在首次渲染之后执行，所有 AJAX 请求，DOM 或状态更新以及设置事件侦听器都应在此执行。
+- **componentWillReceiveProps：** 在特定属性更新以触发状态转换时执行。
+- **shouldComponentUpdate：** 确定是否要更新组件。默认情况下，它返回 `true`。如果你确定在状态或属性更新后不需要渲染组件，则可以返回 `false` 值。这是提高性能的好地方，因为如果组件收到新的 `props`，它可以防止重新渲染。
+- **componentWillUpdate：** 当有属性或状态改变被`shouldComponentUpdate()` 确认并返回 `true` 时，在重新渲染组件之前执行。
+- **componentDidUpdate：** 通常，它用于响应属性或状态更改来更新 DOM。
+- **componentWillUnmount：** 它将用于取消任何传出的网络请求，或删除与该组件关联的所有事件侦听器。
 
 React 16.3+ 版本
 
-- **getDerivedStateFromProps：**在调用 `render()` 之前被调用，并且在每次渲染中都会被调用。对于需要派生状态的罕见用例，这是存在的。[如果您需要派生状态](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html) 值得一读。
+- **getDerivedStateFromProps：** 在调用 `render()` 之前被调用，并且在每次渲染中都会被调用。对于需要派生状态的罕见用例，这是存在的。[如果您需要派生状态](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html) 值得一读。
 - **componentDidMount：** 在首次渲染之后执行，并且所有 AJAX 请求、DOM 或状态更新以及设置事件侦听器都应在此发生。
 - **shouldComponentUpdate：** 确定是否将更新组件。默认情况下，它返回 `true`。如果你确定在状态或属性更新后不需要渲染组件，则可以返回 `false`值。这是提高性能的好地方，因为如果组件接收到新的属性，它可以防止重新渲染。
 - **getSnapshotBeforeUpdate：** 在将呈现的输出提交给 DOM 之前立即执行。此方法返回的任何值都将传递到 `componentDidUpdate()` 中。 这对于从 DOM（即滚动位置）捕获信息很有用。
@@ -613,20 +625,20 @@ React 16.3+ 版本
 
 ### 35. 高阶组件是什么
 
-A _higher-order component_ (_HOC_) is a function that takes a component and returns a new component. Basically, it's a pattern that is derived from React's compositional nature.
+高阶组件（HOC）是接收组件并返回新组件的函数。基本上，这是从 React 的组成性质衍生出来的一种模式。
 
-We call them **pure components** because they can accept any dynamically provided child component but they won't modify or copy any behavior from their input components.
+我们称它们为纯组件，因为它们可以接受任何动态提供的子组件，但是它们不会修改或复制其输入组件中的任何行为。
 
 ```javascript
 const EnhancedComponent = higherOrderComponent(WrappedComponent);
 ```
 
-HOC can be used for many use cases:
+HOC 可以用到很多场景中：
 
-1. Code reuse, logic and bootstrap abstraction.
-2. Render hijacking.
-3. State abstraction and manipulation.
-4. Props manipulation.
+1. 代码重用，逻辑和引导程序抽象。
+2. 渲染劫持。
+3. 状态抽象和操纵。
+4. props 操作。
 
 ### 36. 如何为 HOC 组件 创建 props 代理？
 
@@ -726,7 +738,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-**Not passing props:**
+**不传递 props：**
 
 ```javascript
 class MyComponent extends React.Component {
