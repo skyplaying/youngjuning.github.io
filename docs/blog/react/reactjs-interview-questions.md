@@ -1,5 +1,5 @@
 ---
-title: React 面试题精选集
+title: 「涨薪必备」React 面试问答系列
 tags: [掘金专栏, 洛竹早茶馆, helloworld.net]
 ---
 
@@ -556,7 +556,199 @@ class UserProfile extends React.Component {
 
 大多数场景中，我们建议使用受控组件来代替表单组件。
 
-![](https://youngjuning.js.org/img/luozhu.png)
+### 31. createElement 和 cloneElement 的区别是什么？
+
+JSX 元素将被转换为 `React.createElement()` 函数以创建 React 元素，这些元素将用于 UI 的对象表示。而 `cloneElement` 用于克隆元素并将新的 `props` 传递给它。
+
+**课后扩展：**
+
+- [React 顶层 API](https://zh-hans.reactjs.org/docs/react-api.html)
+
+### 32. React 中的状态提升是什么？
+
+当多个组件需要共享相同的变化数据时，建议将共享状态提升到它们最接近的共同祖先。这意味着，如果两个子组件共享来自其父组件的相同数据，则将状态移到父组件，而不是在两个子组件中都保持内部状态。
+
+### 33. 组件生命周期有哪些不同阶段？
+
+组件生命周期具有三个不同的生命周期阶段。
+
+1. **Mounting：**组件已准备好安装在浏览器 DOM 中。这个阶段涵盖了生命周期方法 `constructor()`、`getDerivedStateFromProps()`、 `render()` 和 `componentDidMount()` 的初始化。
+2. **Updating：**在此阶段，组件以两种方式进行更新，即发送新 `props` 和从 `setState()` 或 `forceUpdate()` 更新状态。此阶段涵盖了`getDerivedStateFromProps()`，`shouldComponentUpdate()`，`render()` 、`getSnapshotBeforeUpdate()` 和 `componentDidUpdate()` 生命周期方法。
+3. **Unmounting：**在最后一个阶段，不再需要该组件并从浏览器 DOM 上卸载该组件。 这个阶段包括 `componentWillUnmount()` 生命周期方法。
+
+值得一提的是，在将更改应用于 DOM 时，React 内部具有阶段性概念。 它们分开如下
+
+1. **Render：** 该组件将渲染而没有任何副作用。这适用于 Pure 组件，在此阶段，React 可以暂停、中止或重新启动渲染。
+2. **Pre-commit：** 在组件将更改实际应用于 DOM 之前，有一段时间可以让 React 通过 `getSnapshotBeforeUpdate()` 从 DOM 中读取内容。
+3. **Commit** React 与 DOM 一起工作并分别执行最终的生命周期：`componentDidMount()` 用于安装，`componentDidUpdate()` 用于更新，以及 `componentWillUnmount()` 用于卸载。
+
+React 16.3+ (或者 [在线交互版本](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/))
+
+![](https://github.com/sudheerj/reactjs-interview-questions/raw/master/images/phases16.3.jpg)
+
+React 16.3 之前的版本：
+
+![phases 16.2](https://github.com/sudheerj/reactjs-interview-questions/raw/master/images/phases.png)
+
+### 34. React 生命周期有哪些？
+
+React 16.3 以前的版本：
+
+- ** componentWillMount：**在渲染之前执行，用于根组件中的应用程序级别配置。
+- ** componentDidMount：**在首次渲染之后执行，所有 AJAX 请求，DOM 或状态更新以及设置事件侦听器都应在此执行。
+- ** componentWillReceiveProps：**在特定属性更新以触发状态转换时执行。
+- ** shouldComponentUpdate：**确定是否要更新组件。默认情况下，它返回 `true`。如果你确定在状态或属性更新后不需要渲染组件，则可以返回 `false` 值。这是提高性能的好地方，因为如果组件收到新的 `props`，它可以防止重新渲染。
+- ** componentWillUpdate：**当有属性或状态改变被`shouldComponentUpdate()` 确认并返回 `true` 时，在重新渲染组件之前执行。
+- ** componentDidUpdate：**通常，它用于响应属性或状态更改来更新 DOM。
+- ** componentWillUnmount：**它将用于取消任何传出的网络请求，或删除与该组件关联的所有事件侦听器。
+
+React 16.3+ 版本
+
+- **getDerivedStateFromProps：**在调用 `render()` 之前被调用，并且在每次渲染中都会被调用。对于需要派生状态的罕见用例，这是存在的。[如果您需要派生状态](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html) 值得一读。
+- **componentDidMount：** 在首次渲染之后执行，并且所有 AJAX 请求、DOM 或状态更新以及设置事件侦听器都应在此发生。
+- **shouldComponentUpdate：** 确定是否将更新组件。默认情况下，它返回 `true`。如果你确定在状态或属性更新后不需要渲染组件，则可以返回 `false`值。这是提高性能的好地方，因为如果组件接收到新的属性，它可以防止重新渲染。
+- **getSnapshotBeforeUpdate：** 在将呈现的输出提交给 DOM 之前立即执行。此方法返回的任何值都将传递到 `componentDidUpdate()` 中。 这对于从 DOM（即滚动位置）捕获信息很有用。
+- **componentDidUpdate：** 通常，它用于响应属性或状态更改来更新 DOM。如果 `shouldComponentUpdate()` 返回 `false`，则不会触发。
+- **componentWillUnmount：** 它将用于取消任何传出的网络请求，或删除与该组件关联的所有事件侦听器。
+
+### 35. 高阶组件是什么
+
+A _higher-order component_ (_HOC_) is a function that takes a component and returns a new component. Basically, it's a pattern that is derived from React's compositional nature.
+
+We call them **pure components** because they can accept any dynamically provided child component but they won't modify or copy any behavior from their input components.
+
+```javascript
+const EnhancedComponent = higherOrderComponent(WrappedComponent);
+```
+
+HOC can be used for many use cases:
+
+1. Code reuse, logic and bootstrap abstraction.
+2. Render hijacking.
+3. State abstraction and manipulation.
+4. Props manipulation.
+
+### 36. 如何为 HOC 组件 创建 props 代理？
+
+您可以使用属性代理模式添加或编辑传递给组件的属性，如下所示：
+
+```jsx | pure
+function HOC(WrappedComponent) {
+  return class Test extends Component {
+    render() {
+      const newProps = {
+        title: 'New Header',
+        footer: false,
+        showFeatureX: false,
+        showFeatureY: true,
+      };
+
+      return <WrappedComponent {...this.props} {...newProps} />;
+    }
+  };
+}
+```
+
+**课后扩展：**
+
+- [react 高阶组件的代理模式](https://juejin.cn/post/6844903641074106381)
+
+### 37. context 是什么？
+
+`Context` 提供了一种通过组件树传递数据的方法，而不需要一层一层手动传递属性。
+
+例如，需要由许多组件在应用程序中访问经过身份验证的用户，本地设置首选项，UI 主题等。
+
+```javascript
+const { Provider, Consumer } = React.createContext(defaultValue);
+```
+
+### 38. 什么是 children 属性？
+
+`Children` 是一个 prop（`this.props.children`），允许你将组件作为数据传递给其他组件，就像你使用的任何其他 prop 一样。放置在组件的开始标记和结束标记之间的组件树将作为 `children` 道具传递给该组件。
+
+React API 中有许多方法可作为该属性。其中包括 `React.Children.map`、`React.Children.forEach`，`React.Children.count`、`React.Children.only` 和 `React.Children.toArray`。
+
+children 的简单用法如下所示：
+
+```jsx | pure
+const MyDiv = React.createClass({
+  render: function() {
+    return <div>{this.props.children}</div>;
+  },
+});
+
+ReactDOM.render(
+  <MyDiv>
+    <span>{'Hello'}</span>
+    <span>{'World'}</span>
+  </MyDiv>,
+  node,
+);
+```
+
+### 39. React 中如何写注释？
+
+React JSX 中的注释和 JavaScript 的多行注释很像，但是用大括号括起来。
+
+**单行注释：**
+
+```jsx | pure
+<div>
+  {/* 这里是单行注释 */}
+  {`Welcome ${user}, let's play React`}
+</div>
+```
+
+**多行注释：**
+
+```jsx | pure
+<div>
+  {/* Multi-line comments for more than
+   one line */}
+  {`Welcome ${user}, let's play React`}
+</div>
+```
+
+### 40. 在 constructor 中给 `super` 函数传递 props 的目的是什么？
+
+一个子类构造器在 `super()` 方法调用之前是无法拿到 `this` 引用的。这同样也适用于 ES6 中的 sub-classes。调用 `super()` 时传递 props 的主要是为了在子类的构造器中访问 `this.props`。
+
+**传递 props：**
+
+```javascript
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    console.log(this.props); // 打印 { name: 'John', age: 42 }
+  }
+}
+```
+
+**Not passing props:**
+
+```javascript
+class MyComponent extends React.Component {
+  constructor(props) {
+    super();
+
+    console.log(this.props); // 打印 undefined
+
+    // 但是 props 参数依然可以访问
+    console.log(props); // 打印 { name: 'John', age: 42 }
+  }
+
+  render() {
+    // 在 constructor 之外没有影响
+    console.log(this.props); // 打印 { name: 'John', age: 42 }
+  }
+}
+```
+
+上面的代码片段揭示了 `this.props` 仅在构造函数中有所不同。在构造函数外部表现将是相同的。
+
+更多信息可以参考 [为什么我们要写 super(props) ？](https://overreacted.io/zh-hans/why-do-we-write-super-props/)
 
 ## 结语
 
@@ -564,3 +756,5 @@ class UserProfile extends React.Component {
 
 - `点赞`等于学会，`在看`等于精通
 - 最后祝大家 2021 学习进步，升职加薪
+
+![](https://youngjuning.js.org/img/luozhu.png)
