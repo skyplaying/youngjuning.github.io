@@ -11,11 +11,14 @@ title: 计算机英文词汇
 - are gaining popularity `/ˌpɒpjʊˈlærɪti/`：越来越受欢迎
 - business partner `/ˈbɪznɪs ˈpɑːtnə/`：商业合作伙伴
 - privacy boundary `/ˈprɪvəsi ˈbaʊndəri/`：私有性边界
+- a couple of：几个
 
 ## C
 
-- constraint `/kənˈstreɪnt/`：约束
 - concurrency `kənˈkərənsē`：并发
+- constraint `/kənˈstreɪnt/`：约束
+- convention
+- compartmentalization
 
 ## D
 
@@ -26,6 +29,7 @@ title: 计算机英文词汇
 
 - enumeration `/ɪˌnuməˈreɪʃən/`： 枚举 - 常缩写为 enum
 - exhaustive `/ɪgˈzɑstɪv/`：穷尽的
+- encounter
 
 ## H
 
@@ -44,6 +48,7 @@ title: 计算机英文词汇
 ## S
 
 - syntax
+- subtle
 
 ## T
 
@@ -52,3 +57,7 @@ title: 计算机英文词汇
 ## V
 
 - variant：`ˈvɛriənt/`：成员，变体
+
+## W
+
+- wondering

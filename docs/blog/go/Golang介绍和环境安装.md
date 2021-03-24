@@ -1,7 +1,8 @@
 ---
-title: Golang介绍和环境安装|Golang教程系列|Go主题月
+title: 《Golang教程系列》介绍和环境安装 | Go主题月
 tags: [掘金专栏, 洛竹早茶馆]
 cover: https://i.loli.net/2021/03/22/YflQPnzUr5NcTtu.png
+order: 1
 ---
 
 > 大家好，我是 [@洛竹](https://github.com/youngjuning)
