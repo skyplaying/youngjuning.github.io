@@ -8,6 +8,8 @@ tags: [掘金专栏, 洛竹早茶馆]
 >
 > 本文首发于 [洛竹的官方网站](https://youngjuning.js.org/)
 >
+> 本文翻译自 [Golang tutorial series](https://golangbot.com/learn-golang-series/)
+>
 > 本文同步于公众号洛竹早茶馆，转载请联系作者。
 
 This is the third tutorial in our Golang tutorial series and it deals with variables in Golang.

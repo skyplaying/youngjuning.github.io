@@ -9,7 +9,7 @@ order: 2
 >
 > 本文首发于 [洛竹的官方网站](https://youngjuning.js.org/)
 >
-> 本文翻译自 [Part 1: Introduction and Installation](https://golangbot.com/golang-tutorial-part-1-introduction-and-installation/)
+> 本文翻译自 [Golang tutorial series](https://golangbot.com/learn-golang-series/)
 >
 > 本文同步于公众号洛竹早茶馆，转载请联系作者。
 
