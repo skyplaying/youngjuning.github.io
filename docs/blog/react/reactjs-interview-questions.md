@@ -556,18 +556,6 @@ class UserProfile extends React.Component {
 
 大多数场景中，我们建议使用受控组件来代替表单组件。
 
-> 大家好，我是 [@洛竹](https://github.com/youngjuning)
->
-> 本文首发于 [洛竹的官方网站](https://youngjuning.js.org/)
->
-> 本文翻译自 [sudheerj/reactjs-interview-questions](https://github.com/sudheerj/reactjs-interview-questions)
->
-> 本文同步于公众号洛竹早茶馆，转载请联系作者。
-
-- [「涨薪必备」React 面试问答系列 Day1](https://juejin.cn/post/6940873220618731551)
-- [「涨薪必备」React 面试问答系列 Day2](https://juejin.cn/post/6942438427291811870)
-- [「涨薪必备」React 面试问答系列 Day3](https://juejin.cn/post/6942813303664017444)
-
 ### 31. createElement 和 cloneElement 的区别是什么？
 
 JSX 元素将被转换为 `React.createElement()` 函数以创建 React 元素，这些元素将用于 UI 的对象表示。而 `cloneElement` 用于克隆元素并将新的 `props` 传递给它。
