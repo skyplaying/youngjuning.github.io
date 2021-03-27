@@ -27,7 +27,7 @@ export default defineConfig({
   navs: [
     null,
     {
-      title: '翻译',
+      title: '翻译系列',
       // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
       children: [
         { title: '《Go 语言教程》', path: '/golang-tutorial' },
