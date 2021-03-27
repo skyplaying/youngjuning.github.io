@@ -777,7 +777,7 @@ render() {
 
 Instead, pass the function itself without parenthesis:
 
-```jsx harmony
+```jsx | pure
 render() {
   // Correct: handleClick is passed as a reference!
   return <button onClick={this.handleClick}>{'Click Me'}</button>
