@@ -1,5 +1,5 @@
 ---
-title: 《Go语言教程系列》Hello World | Go主题月
+title: Hello World
 cover: https://i.loli.net/2021/03/23/U3aK1Tl7QYBewz9.png
 tags: [掘金专栏, 洛竹早茶馆]
 order: 2

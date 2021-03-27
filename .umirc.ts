@@ -27,19 +27,30 @@ export default defineConfig({
   navs: [
     null,
     {
-      title: '订阅号',
+      title: '翻译',
+      // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
       children: [
-        { title: '营养早茶馆', path: '/health' },
-        { title: '洛竹早茶馆', path: '/luozhu' },
+        { title: '《Go 语言教程》', path: '/golang-tutorial' },
+        { title: 'Cobra 中文文档', path: '/cobra' },
+        { title: 'Viper 中文文档', path: '/viper' },
+        { title: 'GitHub Actions', path: '/github-actions' },
       ],
     },
     {
-      title: '洛竹文档⤵️',
-      // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
+      title: '其他',
       children: [
-        { title: ' Cobra', path: '/cobra' },
-        { title: ' Viper', path: '/viper' },
-        { title: ' GitHub Actions', path: '/github-actions' },
+        {
+          title: '关于洛竹',
+          path: '/about',
+        },
+        {
+          title: '营养早茶馆',
+          path: '/health',
+        },
+        {
+          title: '力扣算法题',
+          path: '/leetcode',
+        },
       ],
     },
     {
@@ -51,7 +62,7 @@ export default defineConfig({
     //   path: 'https://www.zhihu.com/people/yangjunning',
     //   children: [
     //     {
-    //       title: '前端早茶馆',
+    //       title: '洛竹早茶馆',
     //       path: 'https://www.zhihu.com/column/c_1341734653628149760',
     //     },
     //   ],
