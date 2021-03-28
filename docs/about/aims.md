@@ -281,7 +281,7 @@ order: 3
 
 **早茶馆氛围组上线**
 
-![](https://i.loli.net/2021/03/28/b31HvNgG8P2hVks.png)
+<img src="https://i.loli.net/2021/03/28/b31HvNgG8P2hVks.png" style="zoom: 25%;" />
 
 ## 四月
 
