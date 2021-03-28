@@ -1,6 +1,6 @@
 ---
 title: 从零使用 Go 语言构建 CLI 项目 | 项目复盘
-tags: [掘金专栏]
+tags: [掘金专栏, 洛竹早茶馆]
 cover: https://i.loli.net/2021/03/16/zMqtAgPd43T1f5Y.jpg
 ---
 
@@ -156,3 +156,12 @@ CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o ${name} main.go
 > 最最重要的一点感悟是，一点要及时记录自己的学习和工作情况，就像记账一样。
 
 本文正在参与「掘金 2021 春招闯关活动」, 点击查看 [活动详情](https://juejin.cn/post/6939329638506168334)
+
+## 结语
+
+关注公众号`洛竹早茶馆`，一个持续分享编程知识的地方。
+
+- `点赞`等于学会，`在看`等于精通
+- 最后祝大家 2021 学习进步，升职加薪
+
+![](https://youngjuning.js.org/img/luozhu.png)
