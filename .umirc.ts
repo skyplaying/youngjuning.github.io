@@ -40,10 +40,6 @@ export default defineConfig({
       title: '其他',
       children: [
         {
-          title: '关于洛竹',
-          path: '/about',
-        },
-        {
           title: '营养早茶馆',
           path: '/health',
         },

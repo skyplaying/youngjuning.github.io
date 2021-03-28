@@ -260,16 +260,9 @@ order: 3
 
 ### 第四周 3 月 22 日 — 3 月 29 日
 
-#### 2021-03-22
-
-今天开始参加了掘金沸点活动和掘金 Go 主题月活动。然后在 helloworld.net 发布了 《React 面试题精选》专栏。
+**创作文章**
 
 - [x] [「译」Golang 介绍和环境安装 | Golang 教程系列｜ Go 主题月](https://juejin.cn/post/6942492190291525662)
 - [x] [React 面试题精选 Day2](https://juejin.cn/post/6942438427291811870)
-
-#### 2021-03-23
-
-<img src="https://i.loli.net/2021/03/23/gPlY9Hd2jWQUeRa.jpg" style="zoom:25%;" />
-
-- [ ] [「译」Hello Golang | Golang 教程系列 | Go 主题月](https://juejin.cn/user/325111174662855/posts)
+- [x] [「译」Hello Golang | Golang 教程系列 | Go 主题月](https://juejin.cn/user/325111174662855/posts)
 - [x] [React 面试题精选 Day3](https://juejin.cn/user/325111174662855/posts)
