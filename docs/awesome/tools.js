@@ -29,6 +29,11 @@ export const mac = [
     description: '在您的网站和应用上显示轻量级，可伸缩且交互式的Lottie动画。',
     homepage: 'https://lottiefiles.com/',
   },
+  {
+    title: 'iTerm2',
+    description: 'macOS Terminal Replacement',
+    homepage: 'https://iterm2.com/',
+  },
 ];
 export const windows = [
   {
