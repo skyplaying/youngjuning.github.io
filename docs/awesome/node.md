@@ -47,3 +47,17 @@ export default () => {
   return <CardList data={monorepo} />;
 };
 ```
+
+### 爬虫
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { crawler } from './node';
+
+export default () => {
+  return <CardList data={crawler} />;
+};
+```

@@ -43,3 +43,12 @@ export const monorepo = [
     github: 'nrwl/nx',
   },
 ];
+
+export const crawler = [
+  {
+    title: 'puppeteer-api-zh_CN',
+    description: 'Puppeteer 中文文档',
+    homepage: 'https://zhaoqize.github.io/puppeteer-api-zh_CN/',
+    github: 'https://github.com/puppeteer/puppeteer',
+  },
+];
