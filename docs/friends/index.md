@@ -50,6 +50,10 @@ features:
     title: 前端娱乐圈
     desc: 『蛙人』专注于分享前端相关技术文章，每天带你学一个新姿势，希望这里能帮助你成长
     link: https://juejin.cn/user/2999123452123181/posts
+  - icon: https://i.loli.net/2021/03/30/inkG4vX2gj8A6f7.png
+    title: 进阶架构师
+    desc: 进阶架构师公众号，架构师分享技术干货，面试资料，学习笔记，最新的IT新闻，让你能够轻松进阶架构师，走入架构圈！
+    link: https://juejin.cn/user/2999123452123181/posts
   - icon: https://i.loli.net/2021/03/30/g4Ql15y6BDUSpTO.png
     title: JAVA架构日记
     desc: 涉及领域主要集中在 Java 微服务和云原生领域，致力于高质量技术文章原创分享，拒绝水文、软文。
