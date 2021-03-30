@@ -5,7 +5,7 @@ nav:
 hero:
   title: 洛竹友人帐
   desc: 最可爱的人是志愿军叔叔，那第二可爱的肯定是洛竹的朋友们了！
-  image: https://i.loli.net/2021/03/30/eSONDCYr1Ehjdlt.jpg
+  image: https://i.loli.net/2021/03/30/fZrFD8OkdHLoJE7.png
   actions:
     - text: 朋友自荐 🤝
       link: https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/friends/index.md
