@@ -33,6 +33,7 @@ title: 计算机英文词汇
 - enumeration `/ɪˌnuməˈreɪʃən/`： 枚举 - 常缩写为 enum
 - exhaustive `/ɪgˈzɑstɪv/`：穷尽的
 - encounter `[ɪnˈkaʊntə(r)]`：v. 遭遇；邂逅；遇到；n. 遭遇；偶然碰见
+- enclosed
 
 ## H
 
@@ -65,6 +66,7 @@ title: 计算机英文词汇
 ## T
 
 - thread `/θrɛd/`：线程
+- term
 
 ## V
 
