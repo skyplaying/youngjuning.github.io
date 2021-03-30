@@ -24,11 +24,20 @@ features:
     link: https://juejin.cn/user/430664257382462/posts
   - icon: https://i.loli.net/2021/03/30/xijIfTqHusPbkm4.png
     title: 代码日记
-    desc: 『xkcoding』
-    link:
+    desc: 『xkcoding』xkcoding 的代码日记，用代码记录生活
+    link: https://xkcoding.com
   - icon: https://i.loli.net/2021/03/30/aWq7iIvNOCu86ze.png
     title: 前端印象
     desc: 『零一』前端从0到1学习一年入职字节跳动，精选原创文章100+
     link: https://github.com/Lpyexplore
+  - icon: https://i.loli.net/2021/03/30/Jt6czda1MlEA3SI.png
+    title: TianTianUp
+    desc: 『天天』目前在腾讯做前端，一个没有天分还在努力的人，欢迎一起聊天，交友。
+    link: https://juejin.cn/user/2348212569517645/posts
+  - icon: https://i.loli.net/2021/03/30/B5wVhWpSH3sQ6Te.png
+    title: 若川视野
+    desc: 『若川』致力于前端开发经验分享。愿景：帮助5年内的前端人开阔视野不断成长，走在前列。
+    link: https://lxchuan12.gitee.io
+
 footer: Open-source MIT Licensed | Copyright ©俊宁 2020
 ---
