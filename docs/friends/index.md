@@ -47,7 +47,7 @@ features:
     desc: 『lencx』{折腾 ⇌ 迷茫 ⇌ 思考]ing，在路上...
     link: https://mtc.nofwl.com/
   - icon: https://i.loli.net/2021/03/30/UKqdRs7TPfYLt5B.png
-    title: 蛙人
+    title: 前端娱乐圈
     desc: 『蛙人』专注于分享前端相关技术文章，每天带你学一个新姿势，希望这里能帮助你成长
     link: https://juejin.cn/user/2999123452123181/posts
   - icon: https://i.loli.net/2021/03/30/g4Ql15y6BDUSpTO.png
