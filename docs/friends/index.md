@@ -20,7 +20,7 @@ features:
     link: https://juejin.cn/user/325111174662855/posts
   - icon: https://i.loli.net/2021/03/30/H14PfZS7rKFOJwn.png
     title: 程序人生
-    desc: 关注程序人生。分享有关程序员的故事。人的优秀品质是永恒的：正直，勇敢，独立，充满爱心。
+    desc: 『优弧』关注程序人生。分享有关程序员的故事。人的优秀品质是永恒的：正直，勇敢，独立，充满爱心。
     link: https://juejin.cn/user/852876722177533
   - icon: https://i.loli.net/2021/03/30/CSNVBX2F9KRqDbA.png
     title: Python猫

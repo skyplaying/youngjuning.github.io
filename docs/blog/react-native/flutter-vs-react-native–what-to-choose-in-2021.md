@@ -13,8 +13,6 @@ cover: https://i.loli.net/2021/03/06/EsNrdaw1ApyePV6.png
 > 原作者：the droids on roids
 >
 > 校对：[Alex](https://juejin.cn/user/606586150596360)
->
-> 本文已授权掘金开发者社区公众号独家使用，包括但不限于编辑、标注原创等权益。
 
 ## 译者序
 
