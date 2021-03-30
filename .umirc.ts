@@ -2,8 +2,8 @@ import { defineConfig } from 'dumi';
 
 export default defineConfig({
   title: '洛竹的官方网站',
-  favicon: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
-  logo: 'https://i.loli.net/2021/01/07/LkH3VM6oBnIuFNi.png',
+  favicon: 'https://i.loli.net/2021/03/30/7jxQfy9EHbapqt3.jpg',
+  logo: 'https://i.loli.net/2021/03/30/7jxQfy9EHbapqt3.jpg',
   mode: 'site',
   exportStatic: {},
   locales: [
