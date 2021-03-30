@@ -38,6 +38,10 @@ features:
     title: 若川视野
     desc: 『若川』致力于前端开发经验分享。愿景：帮助5年内的前端人开阔视野不断成长，走在前列。
     link: https://lxchuan12.gitee.io
+  - icon: https://i.loli.net/2021/03/30/t3bZF4GoCsm6Mxk.png
+    title: 浮之静
+    desc: 『lencx』{折腾 ⇌ 迷茫 ⇌ 思考]ing，在路上...
+    link: https://mtc.nofwl.com/
   - icon: https://i.loli.net/2021/03/30/g4Ql15y6BDUSpTO.png
     title: JAVA架构日记
     desc: 涉及领域主要集中在 Java 微服务和云原生领域，致力于高质量技术文章原创分享，拒绝水文、软文。
