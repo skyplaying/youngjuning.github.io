@@ -10,6 +10,10 @@ hero:
     - text: 朋友自荐 🤝
       link: https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/friends/index.md
 features:
+  - icon: https://i.loli.net/2021/03/30/eSONDCYr1Ehjdlt.jpg
+    title: 洛竹早茶馆
+    desc: 『洛竹』洛竹在早茶馆将与你分享面试、源码分析、Rust 语言和职场生存指南等干货。
+    link: https://juejin.cn/user/325111174662855/posts
   - icon: https://i.loli.net/2021/03/30/CSNVBX2F9KRqDbA.png
     title: Python猫
     desc: 『豌豆花下猫』分享Python进阶、Python哲学、文章翻译、资源工具等内容
