@@ -8,9 +8,7 @@ toc: false
 
 洛竹本名俊宁在涂鸦的花名，含义嘛是罗小黑战记大电影里的动漫人物，是我和对象第一次约会看的电影。
 
-## 微信
-
-![](https://i.loli.net/2021/03/28/KxQNpYaziXHPvjA.jpg)
+![](https://i.loli.net/2021/03/30/eSONDCYr1Ehjdlt.jpg)
 
 ## 洛竹早茶馆
 
