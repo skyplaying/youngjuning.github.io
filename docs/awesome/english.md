@@ -9,9 +9,11 @@ title: 计算机英文词汇
 ## 短语
 
 - are gaining popularity `/ˌpɒpjʊˈlærɪti/`：越来越受欢迎
-- business partner `/ˈbɪznɪs ˈpɑːtnə/`：商业合作伙伴
-- privacy boundary `/ˈprɪvəsi ˈbaʊndəri/`：私有性边界
 - a couple of：几个
+- business partner `/ˈbɪznɪs ˈpɑːtnə/`：商业合作伙伴
+- underlying platform
+- `is inferred from`：从...推断得出
+- privacy boundary `/ˈprɪvəsi ˈbaʊndəri/`：私有性边界
 
 ## C
 
@@ -35,6 +37,10 @@ title: 计算机英文词汇
 ## H
 
 - interaction `/ˌɪntərˈækʃən/`：交互
+
+## I
+
+- illustrate
 
 ## L
 
