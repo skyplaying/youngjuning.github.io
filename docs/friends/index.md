@@ -3,17 +3,25 @@ title: 洛竹友人帐
 nav:
   title: 洛竹友人帐
 hero:
-  title: 洛竹友人帐
-  desc: 最可爱的人是志愿军叔叔，那第二可爱的肯定是洛竹的朋友们了！
+  title: 前端从进阶到入院
+  desc: ssh 在字节跳动做前端，喜欢用最简单的方式把原理讲明白
   image: https://i.loli.net/2021/03/30/fZrFD8OkdHLoJE7.png
   actions:
     - text: 朋友自荐 🤝
       link: https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/friends/index.md
 features:
+  - icon: https://i.loli.net/2021/03/30/3c479HwZlBLGDyj.png
+    title: 掘金开发者社区
+    desc: 掘金，一个帮助开发者成长的技术社区
+    link: https://juejin.cn
   - icon: https://i.loli.net/2021/03/30/eSONDCYr1Ehjdlt.jpg
     title: 洛竹早茶馆
     desc: 『洛竹』洛竹在早茶馆将与你分享面试、源码分析、Rust 语言和职场生存指南等干货。
     link: https://juejin.cn/user/325111174662855/posts
+  - icon: https://i.loli.net/2021/03/30/H14PfZS7rKFOJwn.png
+    title: 程序人生
+    desc: 关注程序人生。分享有关程序员的故事。人的优秀品质是永恒的：正直，勇敢，独立，充满爱心。
+    link: https://juejin.cn/user/852876722177533
   - icon: https://i.loli.net/2021/03/30/CSNVBX2F9KRqDbA.png
     title: Python猫
     desc: 『豌豆花下猫』分享Python进阶、Python哲学、文章翻译、资源工具等内容

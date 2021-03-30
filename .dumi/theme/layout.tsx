@@ -96,9 +96,11 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
       {showHero && Hero(meta.hero)}
       {showFeatures && Features(meta.features)}
       <div className="__dumi-default-layout-content">
+        <div style={{marginBottom: '16px', display: 'flex', justifyContent: 'center'}}>
         {
           meta.tags?.map(item => <Badge key={item}>{item}</Badge>)
         }
+        </div>
         <div style={{display: 'flex',justifyContent: 'center'}}>
           <img src={meta.cover} width="70%"/>
         </div>

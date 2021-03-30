@@ -1,7 +1,7 @@
 ---
 title: Switch 语句
 cover:
-tags: [掘金翻译计划]
+tags: [掘金专栏]
 order: 10
 ---
 
