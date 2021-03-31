@@ -2,6 +2,7 @@
 title: 字符串
 cover:
 tags: [掘金专栏]
+order: 15
 ---
 
 > 大家好，我是 [@洛竹](https://github.com/youngjuning)
