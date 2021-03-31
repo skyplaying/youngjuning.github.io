@@ -97,9 +97,9 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import { artist } from './github';
+import { article } from './github';
 
 export default () => {
-  return <ArtistList data={artist} />;
+  return <ArtistList data={article} />;
 };
 ```
