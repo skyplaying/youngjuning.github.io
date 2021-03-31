@@ -61,3 +61,17 @@ export default () => {
   return <CardList data={online} />;
 };
 ```
+
+## 设计
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { design } from './tools';
+
+export default () => {
+  return <CardList data={design} />;
+};
+```

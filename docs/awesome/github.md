@@ -89,3 +89,17 @@ export default () => {
   return <CardList data={repo} />;
 };
 ```
+
+## 文章
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { artist } from './github';
+
+export default () => {
+  return <ArtistList data={artist} />;
+};
+```

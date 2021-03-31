@@ -62,6 +62,10 @@ features:
     title: 进阶架构师
     desc: 进阶架构师公众号，架构师分享技术干货，面试资料，学习笔记，最新的IT新闻，让你能够轻松进阶架构师，走入架构圈！
     link: https://juejin.cn/user/1301469952744951
+  - icon: https://i.loli.net/2021/03/31/pLvNPrCeqysaV7F.png
+    title: 程序员工具集
+    desc: 『happlyfox』这是一个大家觉得一点都不正经的技术分享平台。内容包括开发、工具、开源项目、管理、面试、行业动态等，我们将定期为您推送有趣的文章。
+    link: https://zhouhuibo.club/
   - icon: https://i.loli.net/2021/03/30/g4Ql15y6BDUSpTO.png
     title: JAVA架构日记
     desc: 涉及领域主要集中在 Java 微服务和云原生领域，致力于高质量技术文章原创分享，拒绝水文、软文。

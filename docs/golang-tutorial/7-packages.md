@@ -12,21 +12,21 @@ order: 7
 >
 > 本文同步于公众号洛竹早茶馆，转载请联系作者。
 
-## What are packages and why are they used?
+## 什么是 packages，为什么使用它们？
 
-So far we have seen Go programs that have only one file with a main [function](https://golangbot.com/functions/) and a couple of other functions. In real-world scenarios, this approach of writing all source code in a single file is not scalable. It becomes impossible to reuse and maintain code written this way. This is where packages are helpful.
+到目前为止，我们已经看到 Go 程序只有一个带有 `main` 函数的文件，以及几个其他函数。在实际情况下，这种将所有源代码写入单个文件的方法是不可扩展的。重用和维护以此方式编写的代码几乎是不可能。这时就需要用到 packages 的概念。
 
-**Packages are used to organize Go source code for better reusability and readability. Packages are a collection of Go sources files that reside in the same directory. Packages provide code compartmentalization and hence it becomes easy to maintain Go projects.**
+**Packages 用于组织 Go 源代码，以提高可重用性和可读性。Packages 是位于同一目录中的 Go 源文件的集合。Packages 提供了代码分隔，因此我们可以轻松维护 Go 项目。**
 
-For example, let's say we are writing a finance application in Go and some of the functionalities are simple interest calculation, compound interest calculation and loan calculation. One simple way to organize this application is by functionality. We can create packages `simpleinterest`, `compoundinterest` and `loan`. If the `loan` package needs to calculate the simple interest, it can simply do so by importing the `simpleinterest` package. This way the code is reused.
+例如，假设我们正在 Go 中编写财务应用程序，其中一些功能是简单利息计算、复利计算和贷款计算。组织此应用程序的一种简单方法是根据功能。我们可以创建包 `simpleinterest`、`compoundinterest` 和 `loan`。如果 `loan` 包需要计算单利，则可以通过导入 `simpleinterest` 包来简单地进行计算。这样，代码就可以重用。
 
-We will learn packages by creating a simple application to determine the simple interest given principal, interest rate and the time duration in years.
+我们将通过创建一个简单的应用程序来学习 Packages，以确定给定的本金、利率和持续时间（以年为单位）的简单利息。
 
-## main function and main package
+## main 函数和 main 包
 
-Every executable Go application must contain the main function. This function is the entry point for execution. The main function should reside in the main package.
+每个可执行的 Go 应用程序都必须包含 `main` 函数。此函数是执行的入口点。`main` 函数应保留在主 package 中。
 
-**`package packagename` specifies that a particular source file belongs to package `packagename`. This should be the first line of every go source file.**
+`package packagename` 指定一个指向 `packagename` package 的特定源文件。这在每一个 go 源文件中都应该放在第一行。
 
 Let's get started by creating the main function and main package for our application.
 

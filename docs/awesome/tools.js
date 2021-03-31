@@ -58,3 +58,11 @@ export const online = [
     github: 'https://github.com/mdnice/sitdown',
   },
 ];
+
+export const design = [
+  {
+    title: 'Wireframes',
+    description: 'Quick and Easy Wireframing Tool',
+    homepage: 'https://balsamiq.com/wireframes/',
+  },
+];

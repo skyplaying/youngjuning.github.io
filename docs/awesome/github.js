@@ -122,3 +122,10 @@ export const tools = [
     github: 'timqian/star-history',
   },
 ];
+
+export const article = [
+  {
+    title: '一篇文章搞定Github API 调用 (v3）',
+    outlink: 'https://segmentfault.com/a/1190000015144126',
+  },
+];
