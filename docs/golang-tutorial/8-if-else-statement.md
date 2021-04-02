@@ -1,6 +1,7 @@
 ---
 title: if else 语句
 tags: [掘金专栏]
+cover: https://i.loli.net/2021/04/02/VnjxJbsNm1LZ3ol.png
 order: 8
 ---
 
@@ -12,24 +13,24 @@ order: 8
 >
 > 本文同步于公众号洛竹早茶馆，转载请联系作者。
 
-`if` is a statement that has a boolean condition and it executes a block of code if that condition evaluates to `true`. It executes an alternate else block if the condition evaluates to `false`. In this tutorial, we will look at the various syntaxes and ways of using if statement.
+`if` 是一个具有布尔条件的语句，如果该条件的值为 `true`，它将执行一个代码块。如果判定条件为 `false`，它将执行 `else` 代码块。在本教程中，我们将研究 `if` 语句的各种语法和使用方法。
 
-## If statement syntax
+## `if` 语句语法
 
-The syntax of the `if` statement is provided below
+下面的代码正是 `if` 语句的语法：
 
 ```go
 if condition {
 }
 ```
 
-If the `condition` is true, the lines of code between the braces `{` and `}` is executed.
+如果 `condition` 被判定为 `true`，大括号 `{` 和 `}` 之间的代码将被执行。
 
-Unlike in other languages like C, the braces `{ }` are mandatory even if there is only one line of code between the brace`s{ }`.
+与其他语言（例如 C、JavaScript）不同，Go 语言中大括号 `{}` 是必需的，即使大括号 `{}` 之间只有一行代码。
 
 ## Example
 
-Let's write a simple program to find out whether a number is even or odd.
+让我们来写一个简单的程序来判断一个数字的奇偶性。
 
 ```go
 package main
@@ -40,7 +41,7 @@ import (
 
 func main() {
     num := 10
-    if num%2 == 0 { //checks if number is even
+    if num%2 == 0 { // 检查数字是否是奇数
         fmt.Println("The number", num, "is even")
         return
     }
@@ -50,11 +51,11 @@ func main() {
 
 [Run in Playground](https://play.golang.org/p/RRxkgK07ul4)
 
-In the above program, the condition `num%2` in line no. 9 finds whether the remainder of dividing `num` by `2` is zero or not. Since it is `0` in this case, the text `The number 10 is even` is printed and the program returns.
+在上面的程序中，第 9 行的条件 `num％2` 确定 `num` 除以 `2` 的余数是否为零。由于在这种情况下为 `0`，所以将打印文本 `The number 10 is even`，然后程序退出。
 
-## If else statement
+## `if...else...` 语句
 
-The `if` statement has an optional `else` construct which will be executed if the condition in the `if` statement evaluates to `false`.
+`if` 语句具有可选的 `else` 结构体，如果 `if` 语句中的条件被判定为 `false`，则将执行该结构体。
 
 ```go
 if condition {
@@ -62,9 +63,9 @@ if condition {
 }
 ```
 
-In the above snippet, if `condition` evaluates to `false`, then the lines of code between `else {` and `}` will be executed.
+在上面的代码片段中，如果条件被判定为 `false`，那么将执行 `else {`和 `}` 之间的代码。
 
-Let's rewrite the program to find whether the number is odd or even using `if else` statement.
+让我们重写程序以使用 `if else` 语句判断数字的奇偶性。
 
 ```go
 package main
@@ -75,7 +76,7 @@ import (
 
 func main() {
     num := 11
-    if num%2 == 0 { //checks if number is even
+    if num%2 == 0 { // 检查数字是否是奇数
         fmt.Println("the number", num, "is even")
     } else {
         fmt.Println("the number", num, "is odd")
@@ -85,15 +86,15 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/bMevwhJhguO)
 
-In the above code, instead of returning if the condition is `true` as we did in the previous section, we create an `else` statement that will be executed if the condition is `false`. In this case, since `11` is odd, the if condition is `false` and the lines of code within the `else` statement is executed. The above program will print.
+在上面的代码中，我们没有像上一节那样返回条件是否为 `true`，而是创建了 `else` 语句，如果条件为 `false` 则执行该语句。在这种情况下，由于 `11` 为奇数，因此 `if` 条件为 `false` 并执行 `else` 语句中的代码。上面的程序将打印。
 
 ```
 the number 11 is odd
 ```
 
-## If ... else if ... else statement
+## `if...else if...else...` 语句
 
-The if statement also has optional `else if` and `else` components. The syntax for the same is provided below
+`if` 语句还具有可选的 `else if` 和 `else` 组件。下面提供了相同的语法
 
 ```go
 if condition1 {
@@ -105,19 +106,19 @@ if condition1 {
 }
 ```
 
-The condition is evaluated for the truth from the top to bottom.
+该语法用来从上到下来查找问题的真相。
 
-In the above statement if `condition1` is true, then the lines of code within `if condition1 {` and the closing brace `}` are executed.
+在上面的语句中，如果 `condition1` 为 `true`，则执行 `if condition1 {` 和右括号 `}` 中的代码。
 
-If `condition1` is `false` and `condition2` is `true`, then the lines of code within `else if condition2 {` and the next closing brace `}` is executed.
+如果 `condition1` 是 `false`，而 `condition2` 是 `true`，则执行 `condition2 {` 和下一个右括号 `}` 的其他代码。
 
-If both `condition1` and `condition2` are false, then the lines of code in the else statement between `else {` and `}` are executed.
+如果 `condition1` 和 `condition2` 均为假，则执行 `else {` 和 `}` 之间 `else` 语句中的代码。
 
-There can be any number of `else if` statements.
+可以有任意数量的 `else if` 语句。
 
-In general, whichever `if` or `else if`'s condition evaluates to `true`, it's corresponding code block is executed. If none of the conditions are true then `else` block is executed.
+通常，无论条件是 `if` 还是 `else if`，都将执行相应的代码块。如果没有一个条件为真，则执行 `else` 块。
 
-Let's write a program that uses `else if`.
+让我们编写一个使用 `else if` 的程序。
 
 ```go
 package main
@@ -140,24 +141,24 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/VNPbCiK9eXT)
 
-In the above program, the condition `else if num >= 51 && num <= 100` in line no. 11 is `true` and hence the program will print
+在上面的程序中，第 11 行的条件 `else if num >= 51 && num <= 100` 为 `true`，因此程序将打印：
 
 ```
 99 is between 51 and 100
 ```
 
-## If with assignment
+## 带有赋值语句的 `if`
 
-There is one more variant of `if` which includes an optional shorthand assignment statement that is executed before the condition is evaluated. Its syntax is
+`if` 的另一种变体，包括可选的短赋值语句，该语句在判定条件之前执行。它的语法是：
 
 ```go
 if assignment-statement; condition {
 }
 ```
 
-In the above snippet, `assignment-statement` is first executed before the condition is evaluated.
+在上面的代码段中，在判定条件之前首先执行 `assignment-statement`。
 
-Let's rewrite the program which finds whether the number is even or odd using the above syntax.
+让我们使用上面的语法重写判断数字奇偶性的程序。
 
 ```go
 package main
@@ -177,13 +178,13 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/_X9q4MWr4s)
 
-In the above program `num` is initialized in the `if` statement in line no. 8. One thing to be noted is that `num` is available only for access from inside the `if` and `else`. i.e. the scope of `num` is limited to the `if else` blocks. If we try to access `num` from outside the `if` or `else`, the compiler will complain. This syntax often comes in handy when we declare a variable just for the purpose of `if else` construct. Using this syntax in such cases ensures that the scope of the variable is only within the `if else` statement.
+在上面的程序中，在第 8 行的 `if` 语句中初始化了 `num`。需要注意的一件事是 `num` 仅可用于 `if` 和 `else` 内部的访问。即 `num` 的有效范围仅限于 `if` 块。 如果我们尝试从 `if` 或 `else` 外部访问 `num`，则编译器会报错。当我们仅出于 `if else` 构造的目的声明变量时，这种语法通常会派上用场。在这种情况下使用此语法可确保变量的范围仅在 `if else` 语句内。
 
-## Gotcha
+## 陷阱
 
-The `else` statement should start in the same line after the closing curly brace `}` of the if statement. If not the compiler will complain.
+`else` 语句应在 `if` 语句的大括号 `}` 之后的同一行开始。如果没有，编译器会抛错。
 
-Let's understand this by means of a program.
+让我们通过一个程序来理解这一点。
 
 ```go
 package main
@@ -205,33 +206,33 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/RYNqZZO2F9)
 
-In the program above, the `else` statement does not start in the same line after the closing `}` of the if statement in line no. 11. Instead, it starts in the next line. This is not allowed in Go. If you run this program, the compiler will output the error,
+在上面的程序中，在第 11 行的 `if` 语句的结束符 `}` 之后，`else` 语句不在同一行开始。而是从下一行开始。 Go 不允许这样做。如果你运行此程序，则编译器将输出错误，
 
-```
+```sh
 ./prog.go:12:5: syntax error: unexpected else, expecting }
 ```
 
-The reason is because of the way Go inserts semicolons automatically. You can read about the semicolon insertion rule here https://golang.org/ref/spec#Semicolons.
+原因是因为 Go 自动插入分号的方式。你可以在 [Semicolons](https://golang.org/ref/spec#Semicolons) 中阅读有关分号插入规则的信息。
 
-In the rules, it's specified that a semicolon will be inserted after closing brace `}`, if that is the final token of the line. So a semicolon is automatically inserted after the if statement's closing braces `}` in line no. 11 by the Go compiler.
+在规则中，指定了在结束括号 `}` 之后插入分号（如果这是该行的最后一个标记）。因此，Go 编译器在第 11 行的 `if` 语句的右括号 `}` 之后自动插入了分号。
 
-So our program actually becomes
+所以我们的程序实际上变成了：
 
 ```go
 ...
 if num%2 == 0 {
       fmt.Println("the number is even")
-};  //semicolon inserted by Go Compiler
+};  // Go 编译器自动插入分号
 else {
       fmt.Println("the number is odd")
 }
 ```
 
-after semicolon insertion. The compiler would have inserted a semicolon in line no. 4 of the above snippet.
+编译器将在以上代码片段的第 4 行中插入分号。
 
-Since `if{...} else {...}` is one single statement, a semicolon should not be present in the middle of it. Hence this program fails to compile. Therefore it is a syntactical requirement to place the `else` in the same line after the if statement's closing brace `}`.
+由于 `if {...} else {...}` 是 一个单独的语句，因此中间不应使用分号。因此，该程序无法编译。 在语法上需要将 `else` 放在 `if` 语句的右括号 `}` 之后的同一行中。
 
-I have rewritten the program by moving the else after the closing `}` of the if statement to prevent the automatic semicolon insertion.
+我已经通过在 `if` 语句的结束符号 `}` 之后移动 `else` 来重写程序，以防止自动分号插入。
 
 ```go
 package main
@@ -242,7 +243,7 @@ import (
 
 func main() {
     num := 10
-    if num%2 == 0 { //checks if number is even
+    if num%2 == 0 { // 检查数字是否是奇数
         fmt.Println("the number is even")
     } else {
         fmt.Println("the number is odd")
@@ -252,11 +253,11 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/hv_27vbIBC)
 
-Now the compiler will be happy and so are we 😃.
+现在编译器会很高兴，我们也很高兴。
 
-## Idiomatic Go
+## Go 惯例
 
-We have seen various if-else constructs and we have in fact seen multiple ways to write the same program. For example, we have seen multiple ways to write a program that checks whether the number is even or odd using different `if else` constructs. Which one is the idiomatic way of coding in Go? In Go's philosophy, it is better to avoid unnecessary branches and indentation of code. It is also considered better to return as early as possible. I have provided the program from the previous section below,
+我们已经看到了各种 `if-else` 构造，并且实际上已经看到了编写同一程序的多种方法。例如，我们已经看到了编写程序的多种方法，该程序使用不同的 `if` 构造检查数字是偶数还是奇数。Go 中的惯用编码方式是哪一种？ 按照 Go 的哲学，最好避免不必要的分支和代码缩进。也可以理解为尽早返回。我已经从下面的上一节中提供了该程序，
 
 ```go
 package main
@@ -266,7 +267,7 @@ import (
 )
 
 func main() {
-    if num := 10; num % 2 == 0 { //checks if number is even
+    if num := 10; num % 2 == 0 { // 检查数字是否是奇数
         fmt.Println(num,"is even")
     }  else {
         fmt.Println(num,"is odd")
@@ -276,7 +277,7 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/_X9q4MWr4s)
 
-The idiomatic way of writing the above program in Go's philosophy is to avoid the else and return from the `if` if the condition is true.
+按照 Go 的哲学，编写上述程序的惯用方式是避免 `else` 并在条件为 `true` 时从 `if` 返回。
 
 ```go
 package main
@@ -287,7 +288,7 @@ import (
 
 func main() {
     num := 10;
-    if num%2 == 0 { //checks if number is even
+    if num%2 == 0 { // 检查数字是否是奇数
         fmt.Println(num, "is even")
         return
     }
@@ -298,11 +299,7 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/N8A5tPLnVYr)
 
-In the above program, as soon as we find out the number is even, we return immediately. This avoids the unnecessary else code branch. This is the way things are done in Go 😃. Please keep this in mind whenever writing Go programs.
-
-This brings us to the end of this tutorial. I hope you enjoyed reading. Please leave your valuable comments and feedback.
-
-If you would like to advertise on this website, hire me, or if you have any other development requirements please email to naveen[at]golangbot[dot]com.
+在上面的程序中，一旦我们发现数字是偶数，我们将立即返回。这样可以避免不必要的 `else` 代码分支。这是 Go 中完成工作的方式。每当编写 Go 程序时，请记住这一点。
 
 ## 结语
 

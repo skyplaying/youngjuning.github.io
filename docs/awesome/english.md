@@ -15,6 +15,14 @@ title: 计算机英文词汇
 - `is inferred from`：从...推断得出
 - privacy boundary `/ˈprɪvəsi ˈbaʊndəri/`：私有性边界
 
+## A
+
+- assignment statement：赋值语句
+
+## B
+
+- braces
+
 ## C
 
 - concurrency `kənˈkərənsē`：并发
@@ -46,6 +54,8 @@ title: 计算机英文词汇
 ## L
 
 - latency spikes `/ˈleɪtənsi 'spaɪks/`：延迟峰值
+
+## M
 
 ## P
 
