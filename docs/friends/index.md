@@ -69,6 +69,14 @@ features:
   - icon: https://i.loli.net/2021/04/01/EFZchmg4JTNRduL.png
     title: 懂点HR
     desc: 『点点』嗨！我是点点，hr女汉子一枚。学习是一种习惯，坚持才会有收获。愿一起每天进步一点点，期接更好的我们。
+  - icon: https://i.loli.net/2021/04/02/puXyeVm7LGFO1Ik.png
+    title: 画漫画的程序员
+    desc: 『苏南』一个用漫画演绎程序员日常轶事、分享前端前沿技术、大厂面经与干货的公众号
+    link: https://github.com/meibin08/comics-program-life
+  - icon: https://zhanhongzhu.top/ewm.jpg
+    title: 叫我詹躲躲
+    desc: 随心远行，宁静致远。
+    link: https://zhanhongzhu.top/
   - icon: https://i.loli.net/2021/03/30/g4Ql15y6BDUSpTO.png
     title: JAVA架构日记
     desc: 涉及领域主要集中在 Java 微服务和云原生领域，致力于高质量技术文章原创分享，拒绝水文、软文。
