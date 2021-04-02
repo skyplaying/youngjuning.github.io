@@ -77,6 +77,10 @@ features:
     title: 叫我詹躲躲
     desc: 随心远行，宁静致远。
     link: https://zhanhongzhu.top/
+  - icon: https://i.loli.net/2021/04/02/nSIFMV26pP8OzNh.png
+    title: 卤蛋实验室
+    desc: 对跨端技术和图形学有些微小的研究
+    link: https://supercodepower.com/
   - icon: https://i.loli.net/2021/03/30/g4Ql15y6BDUSpTO.png
     title: JAVA架构日记
     desc: 涉及领域主要集中在 Java 微服务和云原生领域，致力于高质量技术文章原创分享，拒绝水文、软文。
