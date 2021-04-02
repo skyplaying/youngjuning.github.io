@@ -16,7 +16,7 @@ features:
     link: https://juejin.cn
   - icon: https://i.loli.net/2021/03/30/eSONDCYr1Ehjdlt.jpg
     title: 洛竹早茶馆
-    desc: 『洛竹』洛竹在早茶馆将与你分享面试、源码分析、Rust 语言和职场生存指南等干货。
+    desc: 『洛竹』洛竹在早茶馆将与你分享面试、UX/UI、源码分析、Rust 语言和职场生存指南等干货。
     link: https://juejin.cn/user/325111174662855/posts
   - icon: https://i.loli.net/2021/03/30/H14PfZS7rKFOJwn.png
     title: 程序人生
