@@ -105,7 +105,7 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
           <img src={meta.cover} width="70%"/>
         </div>
         {children}
-        {!showHero && !showFeatures && meta.filePath && !meta.gapless && (
+        {showHero && (
           <div className="__dumi-default-layout-comment">
             <GitalkComponent
               options={{
