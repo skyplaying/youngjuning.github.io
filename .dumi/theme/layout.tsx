@@ -4,6 +4,7 @@ import {BackTop} from 'antd'
 import { context, Link } from 'dumi/theme';
 import 'gitalk/dist/gitalk.css';
 import GitalkComponent from 'gitalk/dist/gitalk-component';
+import shuffle from 'lodash.shuffle';
 import Badge from './builtins/Badge'
 import Alert from './builtins/Alert'
 import Navbar from './components/Navbar';
@@ -30,7 +31,7 @@ const Hero = hero => (
 
 const Features = features => (
   <div className="__dumi-default-layout-features">
-    {features.map(feat => (
+    {shuffle(features).map(feat => (
       <dl key={feat.title} style={{ backgroundImage: feat.icon ? `url(${feat.icon})` : undefined }}>
         {feat.link ? (
           <Link to={feat.link}>
