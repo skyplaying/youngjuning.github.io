@@ -1,6 +1,6 @@
 ---
 title: 字符串
-cover:
+cover: https://i.loli.net/2021/04/03/LcCR12iF5Vy7rwI.png
 tags: [掘金专栏]
 order: 15
 ---

@@ -1,6 +1,6 @@
 ---
 title: Map
-cover:
+cover: https://i.loli.net/2021/04/03/WNyO86TjZ1zxaJH.png
 tags: [掘金专栏]
 order: 14
 ---
@@ -9,7 +9,7 @@ order: 14
 >
 > 本文首发于 [洛竹的官方网站](https://youngjuning.js.org/)
 >
-> 本文同步于公众号洛竹早茶馆，转载请联系作者。
+> 本文同步于公众号『洛竹早茶馆』，转载请联系作者。
 >
 > 创作不易，养成习惯，素质三连！
 
