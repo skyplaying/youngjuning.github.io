@@ -15,7 +15,7 @@ export const common = [
     title: 'Commitsar',
     description: 'Conventional commit compliance made easy',
     homepage: 'https://commitsar.tech/',
-    github: 'facebook/docusaurus',
+    github: 'aevea/commitsar',
   },
   {
     title: 'GoBinaries',
