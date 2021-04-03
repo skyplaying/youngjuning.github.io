@@ -1,6 +1,6 @@
 ---
 title: Switch 语句
-cover:
+cover: https://i.loli.net/2021/04/03/3WiYmlZhXSJr9bD.png
 tags: [掘金专栏]
 order: 10
 ---
@@ -11,17 +11,15 @@ order: 10
 >
 > 本文翻译自 [Golang tutorial series](https://golangbot.com/learn-golang-series/)
 >
-> 本文同步于公众号洛竹早茶馆，转载请联系作者。
+> 本文同步于公众号『洛竹早茶馆』，转载请联系作者。
 
-This is tutorial number 10 in [Golang tutorial series](https://golangbot.com/learn-golang-series/).
+## switch 语句是什么？
 
-## What is a switch statement?
+`switch` 是一个条件语句，它对表达式进行求值并将其与可能的匹配列表进行比较，并执行相应的代码块。可以将其视为替换复杂的 `if` 语句的惯用方式。
 
-A switch is a conditional statement that evaluates an expression and compares it against a list of possible matches and executes the corresponding block of code. It can be considered as an idiomatic way of replacing complex `if else` clauses.
+## 示例
 
-## Example
-
-An example program is worth a hundred words. Let's start with a simple example which will take a finger number as input and outputs the name of that finger :) . For example, 1 is thumb, 2 is index, and so on.
+`Talk is cheap,show you the example`。让我们从一个简单的示例开始，该示例将一个手指编号作为输入并输出该手指的名称。 例如，1 是拇指，2 是食指，依此类推。
 
 ```go
 package main
@@ -51,17 +49,15 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/94ktmJWlUom)
 
-In the above program `switch finger` in line no. 10, compares the value of `finger` with each of the `case` statements. The cases are evaluated from top to bottom and the first case which matches the expression is executed. In this case, `finger` has a value of `4` and hence
+在上面第 10 行的程序 `switch finger` 中，将 `finger` 的值与每个 `case` 语句进行比较。从上到下判断条件，并执行与表达式匹配的第一个分支。 在这种情况下，`finger` 的值为 `4`，因此输出：
 
-```
+```sh
 Finger 4 is Ring
 ```
 
-is printed.
+## 不允许重复的分支
 
-## Duplicate cases are not allowed
-
-Duplicate cases with the same constant value are not allowed. If you try to run the program below, the compiler will complain `./prog.go:19:7: duplicate case 4 in switch previous case at ./prog.go:17:7`
+不允许重复使用具有相同常量值的分支。如果你尝试运行以下程序，则编译器将抛错 `./prog.go:19:7: duplicate case 4 in switch previous case at ./prog.go:17:7`。
 
 ```go
 package main
@@ -82,7 +78,7 @@ func main() {
         fmt.Println("Middle")
     case 4:
         fmt.Println("Ring")
-    case 4: //duplicate case
+    case 4: // 重复的分支
         fmt.Println("Another Ring")
     case 5:
         fmt.Println("Pinky")
@@ -93,9 +89,9 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/7qrmR0hdvHH)
 
-## Default case
+## 默认分支
 
-We have only 5 fingers in our hands. What will happen if we input an incorrect finger number? This is where the default case comes into the picture. The default case will be executed when none of the other cases match.
+我们只有五个手指。如果输入不正确的手指编号会怎样？这时我们需要一个默认分支。当其他情况都不匹配时，将执行默认分支。
 
 ```go
 package main
@@ -116,7 +112,7 @@ func main() {
         fmt.Println("Ring")
     case 5:
         fmt.Println("Pinky")
-    default: //default case
+    default: // 默认分支
         fmt.Println("incorrect finger number")
     }
 }
@@ -124,13 +120,13 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/Fq7U7SkHe1)
 
-In the above program `finger` is `8` and it does not match any of the cases and hence `incorrect finger number` in the default case is printed. It's not necessary that `default` should be the last case in a switch statement. It can be present anywhere in the switch.
+在上面的程序中，`finger` 是 `8`，它与任何情况都不匹配，因此在默认情况下会打印 `incorrect finger number`。把 `default` 作为 `switch` 语句的最后一个分支是没有必要的。它可以存在于 `switch` 中的任何位置。
 
-You might also have noticed a small change in the declaration of `finger`. It is declared in the switch itself. A switch can include an optional statement that is executed before the expression is evaluated. In line no. 8, `finger` is first declared and then used in the expression. The scope of `finger` in this case is limited to the switch block.
+你可能还注意到 `finger` 声明中的微小变化。它在 `switch 语句中声明。`switch`可以包含在计算表达式之前执行的可选语句。在第 8 行中，首先声明`finger`，然后在表达式中使用它。在这种情况下，`finger`的范围仅限于`switch` 模块。
 
-## Multiple expressions in case
+## 多表达式分支
 
-It is possible to include multiple expressions in a case by separating them with comma.
+通过用逗号将多个表达式分隔开，可以包含多个表达式。
 
 ```go
 package main
@@ -143,7 +139,7 @@ func main() {
     letter := "i"
     fmt.Printf("Letter %s is a ", letter)
     switch letter {
-    case "a", "e", "i", "o", "u": //multiple expressions in case
+    case "a", "e", "i", "o", "u": // 分支中的多个表达式
         fmt.Println("vowel")
     default:
         fmt.Println("not a vowel")
@@ -153,15 +149,15 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/AAVSQK76Me7)
 
-The above program finds whether `letter` is a vowel or not. The code `case "a", "e", "i", "o", "u":` in line no. 11 matches any of the vowels. Since `i` is a vowel, this program prints
+上面的程序判断 `letter` 是否是元音。第 11 行中的代码 `case "a", "e", "i", "o", "u":` 与任何元音匹配。由于 `i` 是元音，因此该程序会打印：
 
-```
+```sh
 Letter i is a vowel
 ```
 
-## Expressionless switch
+## 无表达式分支
 
-The expression in a switch is optional and it can be omitted. If the expression is omitted, the switch is considered to be `switch true` and each of the `case` expression is evaluated for truth and the corresponding block of code is executed.
+switch 中的表达式是可选的，可以省略。如果省略该表达式，则认为该 `switch` 为 `switch true`，并且对每个 `case` 表达式进行求值，并执行相应的代码块。
 
 ```go
 package main
@@ -172,7 +168,7 @@ import (
 
 func main() {
     num := 75
-    switch { // expression is omitted
+    switch { // 表达式被省略
     case num >= 0 && num <= 50:
         fmt.Printf("%d is greater than 0 and less than 50", num)
     case num >= 51 && num <= 100:
@@ -186,19 +182,19 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/KPkwK0VdXII)
 
-In the above program, the expression is absent in switch and hence it is considered as true and each of the cases is evaluated. `case num >= 51 && num <= 100:` in line no. 12 is `true` and the program prints
+在上面的程序中，`switch` 中不存在表达式，因此将其视为真，并判断每种情况。 第 12 行的 `case num> = 51 && num <= 100:` 为 `true`，程序将打印：
 
-```
+```sh
 75 is greater than 51 and less than 100
 ```
 
-This type of switch can be considered as an alternative to multiple `if else` clauses.
+这种类型的 `switch` 可以看作是多个 `if else` 语句句的替代方法。
 
 ## Fallthrough
 
-In Go, the control comes out of the switch statement immediately after a case is executed. A `fallthrough` statement is used to transfer control to the first statement of the case that is present immediately after the case which has been executed.
+在 Go 中，在执行分支后，控制权立即从 `switch` 语句中释放出来。`fallthrough` 语句用于将控制权转移到该分支执行后立即出现的分支的第一条语句。
 
-Let's write a program to understand fallthrough. Our program will check whether the input number is less than 50, 100, or 200. For instance, if we input 75, the program will print that 75 is less than both 100 and 200. We will achieve this using `fallthrough`.
+让我们编写一个程序来理解 `fallthrough`。我们的程序将检查输入的数字是否小于 50、100 或 200。例如，如果输入 75，则程序将打印 75 小于 100 和 200。我们将使用 `fallthrough` 来实现。
 
 ```go
 package main
@@ -213,7 +209,7 @@ func number() int {
 }
 
 func main() {
-    switch num := number(); { //num is not a constant
+    switch num := number(); { // num 不是一个常量
     case num < 50:
         fmt.Printf("%d is lesser than 50\n", num)
         fallthrough
@@ -228,20 +224,20 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/svGJAiswQj)
 
-Switch and case expressions need not be only constants. They can be evaluated at runtime too. In the program above `num` is initialized to the return value of the function `number()` in line no. 14. The control comes inside the switch and the cases are evaluated. `case num < 100:` in line no. 18 is true and the program prints `75 is lesser than 100`. The next statement is `fallthrough`. When `fallthrough` is encountered the control moves to the first statement of the next case and also prints `75 is lesser than 200`. The output of the program is
+`switch` 和 `case` 表达式只能是常量。它们也可以在运行时进行计算。 在上面的程序中，第 14 行的 `num` 被初始化为函数 `number()` 的返回值。控制权位于 `switch` 内部，并对分支进行判断。第 18 行中的 `case num <100:` 是正确的，程序将输出 `75 is lesser than 100`。下一条语句是 `fallthrough`。 当遇到 `fallthrough` 时，控制权将移至下一种情况的第一个语句，并打印 `75 is lesser than 200`。该程序的输出是：
 
-```
+```sh
 75 is lesser than 100
 75 is lesser than 200
 ```
 
-`fallthrough` should be the last statement in a `case`. If it is present somewhere in the middle, the compiler will complain that `fallthrough statement out of place`.
+`fallthrough` 应该是 `case` 中的最后一条语句。如果它位于中间的某个位置，则编译器将报错 `fallthrough statement out of place`。
 
-## Fallthrough happens even when the case evaluates to false
+## 即使分支被计算为假，也会发生 Fallthrough
 
-There is a subtlety to be considered when using `fallthrough`. Fallthrough will happen even when the case evaluates to false.
+当使用 `fallthrough` 时要考虑一些细微之处。即使分支被计算为假，也会发生 Fallthrough。
 
-Please consider the following program.
+请考虑以下程序。
 
 ```go
 package main
@@ -263,28 +259,28 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/sjynQMXtnmY)
 
-In the above program, `num` is 25 which is less than 50 and hence the case in line no. 9 evaluates to true. A `fallthrough` is present in line no. 11. The next case `case num > 100:` in line no. 12 is false since num \< 100. But fallthrough doesn't consider this. Fallthrough will happen even though the case evaluates to false.
+在上述程序中，`num` 为 25，小于 50，因此第 9 行的情况为 `true`。第 11 行出现 `fallthrough`。行号中的下一个 case `case num> 100:`。由于 `num < 100`，所以 12 是假的。但是 `fallthrough` 不考虑这一点。即使分支被计算为假，也会发生 Fallthrough。
 
-The program above will print
+上面的程序将打印：
 
-```
+```sh
 25 is lesser than 50
 25 is greater than 100
 ```
 
-So be sure that you understand what you are doing when using fallthrough.
+因此，请确保你了解使用 `fallthrough` 时的操作。
 
-One more thing is `fallthrough` cannot be used in the last case of a switch since there are no more cases to fallthrough. If `fallthrough` is present in the last case, it will result in the following compilation error.
+还有一件事是，不能在 switch 的最后一种分支中下使用 `fallthrough`。 如果在最后一种情况下存在 `fallthrough`，则将导致以下编译错误。
 
-```
+```sh
 cannot fallthrough final case in switch
 ```
 
-## Breaking switch
+## switch 中的 switch
 
-The `break` statement can be used to terminate a switch early before it completes. Let's just modify the above example to a contrived one to understand how break works.
+可以使用 `break` 语句在 `switch` 完成之前提早终止它。 让我们将上面的示例修改为一个人为的示例，以了解 `break` 的工作原理。
 
-Let's add a condition that if `num` is less than 0 then the switch should terminate.
+让我们添加一个条件，如果 `num` 小于 0，则 switch 应终止。
 
 ```go
 package main
@@ -312,15 +308,15 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/UHwBXPYLv1B)
 
-In the above program `num` is `-5`. When the control reaches the [if statement](/if-statement/) in line no. 10, the condition is satisfied since num \< 0. The break statement terminates the switch before it completes and the program doesn't print anything :).
+在上面的程序中，`num` 是 `-5`。当控件权到达第 10 行的 `if` 语句时，由于 `num <0`，因此满足条件。`break` 语句在 `switch` 完成之前终止了，并且程序不输出任何内容。
 
-### Breaking the outer for loop
+### 退出外部的循环
 
-When the switch case is inside a [for loop](https://golangbot.com/loops/), there might be a need to terminate the for loop early. This can be done by labeling the for loop and breaking the for loop using that label inside the switch statement. Let's look at an example.
+当 `switch case` 位于 `for` 循环内时，可能需要尽早终止 `for` 循环。 这可以通过标记 `for` 循环并使用 `switch` 语句内的该标记中断 `for` 循环来完成。让我们来看一个例子。
 
-Let's write a program to generate a random even number.
+让我们编写一个程序来生成一个随机偶数。
 
-We will create an infinite for loop and use a switch case to determine whether the generated random number is even. If it is even, the generated number is printed and the for loop is terminated using its label. The [`Intn`](https://golang.org/pkg/math/rand/#Rand.Intn) function of the `rand` [package](/go-packages/) is used to generate non-negative pseudo-random numbers.
+我们将创建一个无限 `for` 循环，并使用 `switch` 条件来确定所生成的随机数是否为偶数。如果是偶数，将打印生成的数字，并使用其标签终止 `for` 循环。`rand` 包的 [`Intn`](https://golang.org/pkg/math/rand/#Rand.Intn) 函数用于生成非负伪随机数。
 
 ```go
 package main
@@ -345,21 +341,15 @@ randloop:
 
 [Run in playground](https://play.golang.org/p/0bLYOgs2TUk)
 
-In the program above, the for loop is labeled `randloop` in line no. 9. A random number is generated between 0 and 99 \(100 is not included\) using the `Intn` function in line no. 11. If the generated number is even, the loop is broken in line no. 14 using the label.
+在上面的程序中，第 9 行中的 `for` 循环标记为 `randloop`。使用第 `11` 行的 `Intn` 函数在 0 到 99 之间生成一个随机数（不包括 100）。 如果生成的数字为偶数，则使用标签在第 14 行中断循环。
 
-This program prints,
+该程序打印：
 
 ```
 Generated even number 18
 ```
 
-Please note that if the break statement is used without the label, the switch statement will only be broken and the loop will continue running. So labeling the loop and using it in the break statement inside the switch is necessary to break the outer for loop.
-
-This brings us to the end of this tutorial. There is one more type of switch called **type switch**. We will look into this when we learn about [interfaces](/interfaces-part-1/).
-
-Please share your valuable comments and feedback.
-
-Like my tutorials\? Please [support the content](https://golangbot.com/support-the-content/).
+请注意，如果使用不带标签的 `break` 语句，则将仅中断 `switch` 语句，循环将继续运行。因此，标记循环并在 `switch` 内部的 `break` 语句中使用它对于中断外部 for 循环是必要的。
 
 ## 结语
 
