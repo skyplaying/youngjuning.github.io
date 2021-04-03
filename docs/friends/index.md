@@ -7,13 +7,9 @@ hero:
   desc: 掘金，一个帮助开发者成长的技术社区
   image: https://i.loli.net/2021/03/30/3c479HwZlBLGDyj.png
   actions:
-    - text: 朋友自荐 🤝
-      link: https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/friends/index.md
+    - text: 掘金一下
+      link: https://juejin.cn
 features:
-  - icon: https://i.loli.net/2021/03/30/3c479HwZlBLGDyj.png
-    title: 掘金开发者社区
-    desc: 掘金，一个帮助开发者成长的技术社区
-    link: https://juejin.cn
   - icon: https://i.loli.net/2021/03/30/eSONDCYr1Ehjdlt.jpg
     title: 洛竹早茶馆
     desc: 『洛竹』洛竹在早茶馆将与你分享面试、UX/UI、源码分析、Rust 语言和职场生存指南等干货。
