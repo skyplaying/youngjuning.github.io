@@ -3,9 +3,9 @@ title: 洛竹友人帐
 nav:
   title: 洛竹友人帐
 hero:
-  title: 前端从进阶到入院
-  desc: ssh 在字节跳动做前端，喜欢用最简单的方式把原理讲明白
-  image: https://i.loli.net/2021/03/30/fZrFD8OkdHLoJE7.png
+  title: 掘金开发者社区
+  desc: 掘金，一个帮助开发者成长的技术社区
+  image: https://i.loli.net/2021/03/30/3c479HwZlBLGDyj.png
   actions:
     - text: 朋友自荐 🤝
       link: https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/friends/index.md
