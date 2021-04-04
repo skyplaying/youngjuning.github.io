@@ -45,11 +45,12 @@ title: 计算机英文词汇
 
 ## H
 
-- interaction `/ˌɪntərˈækʃən/`：交互
+- Hyphen
 
 ## I
 
 - illustrate
+- interaction `/ˌɪntərˈækʃən/`：交互
 
 ## L
 
@@ -72,6 +73,8 @@ title: 计算机英文词汇
 
 - syntax `[ˈsɪntæks]`：n. 语法；句法；有秩序的排列
 - subtle `subtle`：adj. 微妙的；精细的；敏感的；狡猾的；稀薄的
+- specifically：具体来讲
+- semantic：语义化的
 
 ## T
 
