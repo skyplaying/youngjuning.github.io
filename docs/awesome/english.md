@@ -32,6 +32,7 @@ title: 计算机英文词汇
 
 ## D
 
+- daemons：守护进程
 - derive `/dɪˈraɪv/`：派生
 - descriptor `dəˈskriptər`：修饰符
 - distinct `dɪsˈtɪŋkt`：清楚的
