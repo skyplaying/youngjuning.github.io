@@ -298,7 +298,29 @@ order: 3
 - [《Go 语言教程》之函数](https://juejin.cn/post/6945596703764381733)
 - [《Go 语言系列教程》之包](https://juejin.cn/post/6946209245637378062)
 - [《Go 语言教程系列》之 if else 语句](https://juejin.cn/post/6946477751343775775)
+- [《Go 语言教程系列》之 Switch](https://juejin.cn/post/6946862865445814285)
+- [《Go 语言教程系列》之循环](https://juejin.cn/post/6947185380076552223)
+- [Go 插件每日推荐之 air](https://juejin.cn/post/6947364192554844174)
+- [Go 插件每日推荐之 squirrel](https://juejin.cn/post/6947367309677690888)
+- [Go 插件每日推荐之 sprig](https://juejin.cn/post/6947357859529097230)
+- [Go 插件每日推荐之 verb](https://juejin.cn/post/6947329000326823950)
+- [Go 插件每日推荐之 mbp](https://juejin.cn/post/6947321497962676254)
+- [Go 插件每日推荐之 grab](https://juejin.cn/post/6947290990373765157)
+- [Go 插件每日推荐之 go-daemon](https://juejin.cn/post/6947271530023911461)
+- [Go 插件每日推荐之 go-msi](https://juejin.cn/post/6947258529355202573)
+- [Go 插件每日推荐之 pb](https://juejin.cn/post/6947230860567379981)
+- [Go 插件每日推荐之 go-version](https://juejin.cn/post/6947210113274871845)
+- [Go 插件每日推荐之 gvm](https://juejin.cn/post/6947189794719924254)
+- [Go 插件每日推荐之 gox](https://juejin.cn/post/6947176992689094686)
+- [Go 插件每日推荐之 semver](https://juejin.cn/post/6947139893789196318)
+- [Go 插件每日推荐之 chalk](https://juejin.cn/post/6946975895005429774)
+- [Go 插件每日推荐之 archiver](https://juejin.cn/post/6946973101552828446)
+- [Go 插件每日推荐之 go-promptui](https://juejin.cn/post/6946918810947420167)
+- [Go 插件每日推荐之 go-sh](https://juejin.cn/post/6946914550553935908)
+- [Go 插件每日推荐之 spinner](https://juejin.cn/post/6946907570606964772)
+- [Go 插件每日推荐之 go-powershell](https://juejin.cn/post/6946894497447936008)
+- [Go 插件每日推荐之 go-release](https://juejin.cn/post/6946883619243720735)
 
 **掘力值**
 
-掘力值目前为 `5277`， 增长 183，离 7000 只剩 1733。
+掘力值目前为 `5330`， 增长 243，离 7000 只剩 1670。
