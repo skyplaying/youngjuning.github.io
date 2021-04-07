@@ -14,6 +14,20 @@ export default () => {
 };
 ```
 
+## 设计
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { design } from './media';
+
+export default () => {
+  return <CardList data={design} />;
+};
+```
+
 ## 微信公众号
 
 ```jsx
