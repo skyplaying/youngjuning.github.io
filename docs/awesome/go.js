@@ -172,6 +172,11 @@ export const cli = [
       'A really basic thread-safe progress bar for Golang applications',
     github: 'schollz/progressbar',
   },
+  {
+    title: 'lipgloss',
+    description: 'Style definitions for nice terminal layouts 👄',
+    github: 'charmbracelet/lipgloss',
+  },
 ];
 
 export const course = [

@@ -13,7 +13,7 @@ title: DevOps
  * inline: true
  */
 import React from 'react';
-import { linux } from './android';
+import { linux } from './devops';
 
 export default () => {
   return <CardList data={linux} />;
