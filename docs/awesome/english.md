@@ -18,6 +18,7 @@ title: 计算机英文词汇
 ## A
 
 - assignment statement：赋值语句
+- Australia
 
 ## B
 
@@ -25,10 +26,12 @@ title: 计算机英文词汇
 
 ## C
 
+- caved
 - concurrency `kənˈkərənsē`：并发
 - constraint `/kənˈstreɪnt/`：约束
 - convention `kənˈvɛnʃən`：惯例
 - compartmentalization `kəmˌpärtˌmen(t)ələˈzāSH(ə)n`：分隔
+- coincidence
 
 ## D
 
@@ -53,6 +56,10 @@ title: 计算机英文词汇
 - illustrate
 - interaction `/ˌɪntərˈækʃən/`：交互
 
+## J
+
+- journalism
+
 ## L
 
 - latency spikes `/ˈleɪtənsi 'spaɪks/`：延迟峰值
@@ -65,10 +72,12 @@ title: 计算机英文词汇
 - palindrome `/ˈpalɪndrəʊm/`：回文，亦称回环，是正读反读都能读通的句子，亦有将文字排列成圆圈者，是一种修辞方式和文字游戏
 - pragmatic `/prægˈmætɪk/`：实用的
 - Performance-wise `/pərˈfɔrməns-waɪz/`：从性能角度来看
+- politics
 
 ## R
 
 - represent `[ˌreprɪˈzents]`：v. 代表；表现，表示；描绘
+- rival
 
 ## S
 
@@ -76,11 +85,19 @@ title: 计算机英文词汇
 - subtle `subtle`：adj. 微妙的；精细的；敏感的；狡猾的；稀薄的
 - specifically：具体来讲
 - semantic：语义化的
+- scathing
+- self-serving
 
 ## T
 
 - thread `/θrɛd/`：线程
 - term
+
+## U
+
+- undercut
+- upset
+- undermine
 
 ## V
 
