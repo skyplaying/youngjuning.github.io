@@ -287,9 +287,6 @@ order: 3
 - [《Go 语言教程系列》之 if else 语句](https://juejin.cn/post/6946477751343775775)
 - [《Go 语言教程系列》之 Switch](https://juejin.cn/post/6946862865445814285)
 - [《Go 语言教程系列》之循环](https://juejin.cn/post/6947185380076552223)
-- [Go 插件每日推荐之 air](https://juejin.cn/post/6947364192554844174)
-- [Go 插件每日推荐之 squirrel](https://juejin.cn/post/6947367309677690888)
-- [Go 插件每日推荐之 sprig](https://juejin.cn/post/6947357859529097230)
 - [Go 插件每日推荐之 verb](https://juejin.cn/post/6947329000326823950)
 - [Go 插件每日推荐之 mbp](https://juejin.cn/post/6947321497962676254)
 - [Go 插件每日推荐之 grab](https://juejin.cn/post/6947290990373765157)
@@ -311,3 +308,24 @@ order: 3
 **掘力值**
 
 掘力值目前为 `5330`， 增长 243，离 7000 只剩 1670。
+
+### 第一周 4 月 5 日 — 4 月 11 日
+
+**创作文章**
+
+- [Go 插件每日推荐之 air](https://juejin.cn/post/6947364192554844174)
+- [Go 插件每日推荐之 squirrel](https://juejin.cn/post/6947367309677690888)
+- [Go 插件每日推荐之 sprig](https://juejin.cn/post/6947357859529097230)
+- [ ] [Google slams Microsoft for trying ‘to break the way the open web works’](https://github.com/xitu/gold-miner/issues/8237)
+- [ ] [Top Node.js Frameworks to use in 2021](https://github.com/xitu/gold-miner/issues/8301)
+- [ ] [Solutions Architect Tips — The 5 Types of Architecture Diagrams](https://github.com/xitu/gold-miner/issues/8303)
+- [ ] [These Modern Programming Languages Will Make You Suffer](https://github.com/xitu/gold-miner/issues/8367)
+- [ ] [Go 插件每日推荐之 lipgloss](https://github.com/charmbracelet/lipgloss)
+- [ ] 基于 Dumi 开发 React Native 组件库
+- [ ] https://golangbot.com/arrays-and-slices/ arrays
+- [ ] https://golangbot.com/arrays-and-slices/ slices
+- [ ] https://golangbot.com/variadic-functions/
+
+**掘力值**
+
+掘力值目前为 `5540`， 增长 210，离 7000 只剩 1460。
