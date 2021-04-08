@@ -16,10 +16,26 @@ export const tools = [
 
 export const ui_libs = [
   {
-    title: 'Zarm Design',
-    description: '追求极致的用户体验，做有温度的组件库',
-    homepage: 'https://zarm.gitee.io/',
-    github: 'ZhongAnTech/zarm',
+    title: 'beeshell',
+    description: 'React Native 组件库',
+    npm: 'beeshell',
+    homepage:
+      'https://github.com/Meituan-Dianping/beeshell/blob/master/docs/index.md',
+    github: 'Meituan-Dianping/beeshell',
+  },
+  {
+    title: 'ant-design-mobile-rn',
+    description: 'Ant Design for React Native',
+    homepage: 'https://rn.mobile.ant.design/index-cn',
+    npm: '@ant-design/react-native',
+    github: 'ant-design/ant-design-mobile-rn',
+  },
+  {
+    title: 'React Native Elements',
+    description: 'Cross Platform React Native UI Toolkit',
+    homepage: 'https://reactnativeelements.com/',
+    npm: 'react-native-elements',
+    github: 'react-native-elements/react-native-elements',
   },
 ];
 

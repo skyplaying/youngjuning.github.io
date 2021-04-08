@@ -1,3 +1,12 @@
+export const componentization = [
+  {
+    title: 'theming',
+    description: 'React 的统一 CSSinJS 主题解决方案',
+    npm: 'theming',
+    github: 'cssinjs/theming',
+  },
+];
+
 export const api = [
   {
     title: 'swr',
