@@ -98,6 +98,11 @@ export const profile = [
     description: 'GitHub Profile README Generator',
     github: 'rahuldkjain/github-profile-readme-generator',
   },
+  {
+    title: 'css-in-readme-like-wat',
+    description: 'Style your readme using CSS with this simple trick',
+    github: 'sindresorhus/css-in-readme-like-wat',
+  },
 ];
 
 export const ebook = [

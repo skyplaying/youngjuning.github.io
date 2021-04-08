@@ -1,6 +1,6 @@
 # 洛竹的官方网站
 
-> powerd by Dumi
+<img src="./public/header.svg" width="500" height="250"/>
 
 ## Getting Started
 

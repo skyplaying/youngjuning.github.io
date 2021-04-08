@@ -47,6 +47,7 @@ export const device = [
     github: 'ovr/react-native-status-bar-height',
   },
 ];
+
 export const artist = [
   {
     title:
@@ -58,5 +59,15 @@ export const artist = [
     title: 'Adding an example app to your React Native library',
     outlink:
       'https://callstack.com/blog/adding-an-example-app-to-your-react-native-library/',
+  },
+];
+
+export const ui_module = [
+  {
+    title: 'react-native-color-picker-ios',
+    description: 'iOS14 Color Picker Module for React Native',
+    homepage:
+      'https://github.com/Naturalclar/react-native-color-picker-ios/blob/master/README.md',
+    github: 'Naturalclar/react-native-color-picker-ios',
   },
 ];
