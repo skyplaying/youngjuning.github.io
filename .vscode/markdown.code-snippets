@@ -50,7 +50,7 @@
     "prefix": "luozhu",
     "body": [
       "---",
-      "title: $1",
+      "title: $TM_FILENAME_BASE",
       "cover: $2",
       "tags: $3",
       "---",

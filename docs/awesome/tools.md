@@ -75,3 +75,17 @@ export default () => {
   return <CardList data={design} />;
 };
 ```
+
+## 文档工具
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { docs } from './tools';
+
+export default () => {
+  return <CardList data={docs} />;
+};
+```
