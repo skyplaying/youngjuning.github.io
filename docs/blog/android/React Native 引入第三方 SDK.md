@@ -1,7 +1,7 @@
 ---
 title: React Native 引入第三方 Android SDK
 cover: https://i.loli.net/2021/04/07/Vm2bOetv4HuB3Al.png
-tags: [掘金专栏]
+tags: [掘金专栏, 洛竹早茶馆]
 ---
 
 > 大家好，我是 [@洛竹](https://github.com/youngjuning)

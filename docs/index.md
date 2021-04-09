@@ -45,6 +45,10 @@ features:
     title: DevOps
     desc: DevOps 是一种重视 “软件开发人员” 和 “IT 运维技术人员” 之间沟通合作的文化、运动或惯例
     link: /blog/devops
+  - icon: https://i.loli.net/2021/04/10/VxHpIm4RXhrviaW.png
+    title: Android
+    desc: 基于 Linux 内核与其他开源软件的开放源代码的移动操作系统，由谷歌成立的开放手持设备联盟持续领导与开发。
+    link: /blog/android
 footer: Open-source MIT Licensed | Copyright ©俊宁 2020
 ---
 
