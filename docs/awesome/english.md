@@ -94,6 +94,7 @@ title: 计算机英文词汇
 - semantic：语义化的
 - scathing
 - self-serving
+- strung `[strʌŋ]`：v. 悬挂；用线串；给……装弦；去掉（豆荚）的筋；当特约记者；确定击球顺序；（非正式）欺骗（string 的过去式和过去分词）
 
 ## T
 
