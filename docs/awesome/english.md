@@ -47,6 +47,11 @@ title: 计算机英文词汇
 - exhaustive `/ɪgˈzɑstɪv/`：穷尽的
 - encounter `[ɪnˈkaʊntə(r)]`：v. 遭遇；邂逅；遇到；n. 遭遇；偶然碰见
 - enclosed
+- sanitization：卫生处理，https://github.com/rust-lang/rust/pull/81506
+
+## F
+
+- fuzzing：模糊化处理（安全测试）
 
 ## H
 
