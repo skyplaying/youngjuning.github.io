@@ -1,6 +1,6 @@
 ---
-title: [快讯]Android 加入了对 Rust 语言的支持
-cover: 
+title: 「快讯」Android 加入了对 Rust 语言的支持
+cover: https://i.loli.net/2021/04/09/WoasNCnz2DYrm7w.jpg
 tags: [掘金专栏]
 ---
 
@@ -14,7 +14,7 @@ tags: [掘金专栏]
 
 Google 官方安全博客宣布，Android 加入了对 Rust 语言的支持。
 
-Android 平台中代码的正确性是每一个 Android 版本安全性、稳定性和质量的重中之重。C 和 C++ 中的内存安全漏洞仍然是最难解决的不正确性原因。我们投入了大量的人力和物力来检测、修复和缓解这类 bug，这些努力有效¢¢地防止了大量的 bug 混入Android 发行版中。然而，尽管做出了这些努力，内存安全漏洞仍然是造成稳定性问题的首要因素，并且一直占到 Android 高严重性安全漏洞的 70% 左右。
+Android 平台中代码的正确性是每一个 Android 版本安全性、稳定性和质量的重中之重。C 和 C++ 中的内存安全漏洞仍然是最难解决的不正确性原因。我们投入了大量的人力和物力来检测、修复和缓解这类 bug，这些努力有效 ¢¢ 地防止了大量的 bug 混入 Android 发行版中。然而，尽管做出了这些努力，内存安全漏洞仍然是造成稳定性问题的首要因素，并且一直占到 Android 高严重性安全漏洞的 70% 左右。
 
 除了正在进行的和即将进行的改善内存错误检测的努力外，我们还在加紧努力在第一时间预防内存错误。内存安全语言是防止内存错误的性价比最高的手段。除了像 Kotlin 和 Java 这样的内存安全语言之外，我们很高兴地宣布，Android 开源项目（AOSP）现在支持 Rust 编程语言来开发操作系统本身。
 
@@ -55,7 +55,7 @@ C 和 C++ 语言不提供这些相同的安全保证，并且需要强大的隔�
 
 通过健壮的测试、[卫生处理](https://github.com/rust-lang/rust/pull/81506) 和 [模糊化处理](https://android-review.googlesource.com/c/platform/build/soong/+/1403607/) 进行错误检测对于提高所有软件的质量和正确性至关重要，包括用 Rust 编写的软件。对于最有效的内存安全检测技术来说，一个关键的限制是，错误的状态必须在工具代码中实际触发才能被检测到。即使是在测试/模糊化处理覆盖率很高的代码库中，这也会导致很多 bug 没有被检测到。
 
-另一个限制是 [bug检测的扩展速度比bug修复快](https://lore.kernel.org/dri-devel/20200710103910.GD1203263@kroah.com/)。在一些项目中，[被检测到的 bug 并不总是得到修复](https://syzkaller.appspot.com/upstream)。错误修复是一个漫长而昂贵的过程。
+另一个限制是 [bug 检测的扩展速度比 bug 修复快](https://lore.kernel.org/dri-devel/20200710103910.GD1203263@kroah.com/)。在一些项目中，[被检测到的 bug 并不总是得到修复](https://syzkaller.appspot.com/upstream)。错误修复是一个漫长而昂贵的过程。
 
 ![](https://1.bp.blogspot.com/-yKA0YZzuTrk/YGucd7kEQWI/AAAAAAAADqk/YdqlspJUtZsJ5P5c6l30mKofi0MrvEmfgCNcBGAsYHQ/s0/Limitations%2Bof%2Bdetection%2Bimage.png)
 
@@ -71,7 +71,7 @@ Rust 对一系列其他语言进行了现代化，从而提高了代码的正确
 - **数据并发**：防止数据竞赛。这让用户可以轻松地编写高效的、线程安全的代码，因此产生了 [Rust 无所畏惧的并发性](https://doc.rust-lang.org/book/ch16-00-concurrency.html) 口号。
 - **更具表现力的类型系统**：有助于防止逻辑编程错误（如 newtype 包装器、带内容的枚举变体）。
 - **默认情况下，引用和变量是不可变的**：帮助开发者遵循最小权限的安全原则，只有当他们真正打算让引用或变量变异时，才会将其标记为可变异。虽然 C++ 有 const，但它往往使用频率不高，而且不一致。相比之下，Rust 编译器通过为从未变异的可变异值提供警告来协助避免杂散的可变异性注释。
-- **在标准库中更好的错误处理**：将潜在的失败调用包裹在 `Result` 中，这使得编译器要求用户即使对不返回所需值的函数也要检查失败。这可以防止像 [对牢笼的愤怒](https://android.googlesource.com/platform/system/core/+/44db990d3a4ce0edbdd16fa7ac20693ef601b723%5E%21/) 这样因未处理错误而导致的漏洞。通过使其易于通过 `? ` 操作符传播错误，并优化 `Result` 以实现低开销，Rust 鼓励用户以同样的风格编写他们的易错函数并获得同样的保护。
+- **在标准库中更好的错误处理**：将潜在的失败调用包裹在 `Result` 中，这使得编译器要求用户即使对不返回所需值的函数也要检查失败。这可以防止像 [对牢笼的愤怒](https://android.googlesource.com/platform/system/core/+/44db990d3a4ce0edbdd16fa7ac20693ef601b723%5E%21/) 这样因未处理错误而导致的漏洞。通过使其易于通过 `?` 操作符传播错误，并优化 `Result` 以实现低开销，Rust 鼓励用户以同样的风格编写他们的易错函数并获得同样的保护。
 - **初始化**：要求在使用前对所有变量进行初始化。未初始化的内存漏洞历来是 Android 上 3-5% 的安全漏洞的根本原因。在 Android 11 中，我们开始了 [C/C++ 中自动初始化内存](https://android.googlesource.com/platform/system/core/+/44db990d3a4ce0edbdd16fa7ac20693ef601b723%5E%21/) 来减少这个问题。然而，初始化为零并不总是安全的，特别是对于像返回值这样的东西，这可能成为错误处理的新来源。Rust 要求每个变量在使用前初始化为其类型的合法成员，避免了无意中初始化为不安全值的问题。与 C/C++ 的 Clang 类似，Rust 编译器知道初始化要求，并避免了关于双初始化的任何潜在性能开销。
 - **更安全的整数处理** ：Rust debug builds 默认开启溢出清除功能，鼓励程序员在真正打算让计算溢出时指定 `wrapping_add`，或者在不打算溢出时指定 `saturating_add`。我们打算在 Android 的所有构建中启用溢出清理。此外，所有的整数类型转换都是显式的操作：开发者在向变量赋值时，或者在试图用其他类型进行运算时，不能在函数调用过程中意外地转换类型。
 
@@ -79,7 +79,7 @@ Rust 对一系列其他语言进行了现代化，从而提高了代码的正确
 
 在 Android 平台上添加一种新的语言是一项大工程。需要维护工具链和依赖关系、必须更新的测试基础设施和工具以及需要培训开发人员。在过去的 18 个月里，我们一直在为 Android 开源项目添加 Rust 支持，我们有一些早期采用的项目将在未来几个月内分享。将其扩展到更多的操作系统是一个多年的项目。敬请关注，我们将在这个博客上发布更多更新。
 
-__Java 是 Oracle 或其附属机构的注册商标。__
+**Java 是 Oracle 或其附属机构的注册商标。**
 
 感谢 Matthew Maurer、Bram Bonne 和 Lars Bergstrom 对本文的贡献。特别感谢我们的同事 Adrian Taylor 对内存漏洞年龄的洞察力，以及 Chris Palmer 对 “规则 2” 和 “沙盒的限制” 部分的编写工作。
 
