@@ -1,0 +1,24 @@
+export const article = [
+  {
+    title: '什么是架构师？',
+    outlink: 'https://zhuanlan.zhihu.com/p/38780884',
+  },
+  {
+    title: '如何画出一张合格的技术架构图？',
+    outlink: 'https://www.jiqizhixin.com/articles/2019-04-11-22',
+  },
+  {
+    title: '想要成为一个合格的架构师？看这篇文章就足够了',
+    outlink: 'https://cloud.tencent.com/developer/news/289881',
+  },
+];
+
+export const diagram = [
+  {
+    title: 'mermaid',
+    description:
+      'Generation of diagram and flowchart from text in a similar manner as markdown',
+    homepage: 'https://mermaid-js.github.io/mermaid/#/',
+    github: 'mermaid-js/mermaid',
+  },
+];

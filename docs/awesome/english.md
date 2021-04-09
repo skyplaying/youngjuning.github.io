@@ -14,6 +14,7 @@ title: 计算机英文词汇
 - underlying platform
 - `is inferred from`：从...推断得出
 - privacy boundary `/ˈprɪvəsi ˈbaʊndəri/`：私有性边界
+- ramping up
 
 ## A
 
@@ -73,6 +74,7 @@ title: 计算机英文词汇
 - pragmatic `/prægˈmætɪk/`：实用的
 - Performance-wise `/pərˈfɔrməns-waɪz/`：从性能角度来看
 - politics
+- portability：可移植性
 
 ## R
 

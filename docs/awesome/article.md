@@ -9,7 +9,7 @@ title: 文章
  * inline: true
  */
 import React from 'react';
-import { mac } from './artist';
+import { mac } from './article';
 
 export default () => {
   return <ArtistList data={mac} />;
