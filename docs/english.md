@@ -9,6 +9,12 @@ sidemenu: false
 
 - [toPhonetics](https://tophonetics.com/zh/)：国际音标在线转换
 
+## 缩写
+
+- SA
+  - System Architect，系统架构师 `[ˈɑːrkɪtekt]`
+  - Sales Associate，销售助理 `[əˈsoʊʃieɪt]`
+
 ## 短语
 
 - are gaining popularity `/ˌpɒpjʊˈlærɪti/`
@@ -32,6 +38,9 @@ sidemenu: false
   - 赋值语句
 - Australia `[ɔːˈstreɪljə]`
   - n. 澳大利亚，澳洲
+- audience
+  - n. 观众；听众；读者；接见；正式会见；拜会
+  - 受众
 
 ## B
 
@@ -50,6 +59,10 @@ sidemenu: false
   - n. 分隔
 - coincidence
   - n. 巧合；一致；同时发生
+- consideration `[kənˌsɪdəˈreɪʃn]`
+  - n. 考虑；原因；关心；报酬
+- connectivity `[kəˌnekˈtɪvəti]`
+  - n. 连通（性），联结（度）
 
 ## D
 
@@ -124,6 +137,8 @@ sidemenu: false
   - n. 政治，政治学；政治活动；政纲
 - portability `[ˌpɔːrtəˈbɪləti]`
   - n. [计] 可移植性；轻便；可携带性
+- persona `[pərˈsoʊnə]`
+  - n. 人物角色；伪装的外表
 
 ## R
 
@@ -140,7 +155,7 @@ sidemenu: false
 
 - syntax `[ˈsɪntæks]`
   - n. 语法；句法；有秩序的排列
-- subtle `subtle`
+- subtle
   - adj. 微妙的；精细的；敏感的；狡猾的；稀薄的
 - specifically
   - adv. 特别地；明确地；具体来讲
@@ -152,6 +167,9 @@ sidemenu: false
 - adj. 自私自利的，自私的
 - strung `[strʌŋ]`
   - v. 悬挂；用线串；给……装弦；去掉（豆荚）的筋；当特约记者；确定击球顺序；（非正式）欺骗（string 的过去式和过去分词）
+- significant `[sɪɡˈnɪfɪkənt]`
+  - adj. 重大的；有效的；有意义的；值得注意的；意味深长的
+  - n. 象征；有意义的事物
 
 ## T
 
@@ -168,12 +186,12 @@ sidemenu: false
   - [计] 扰动、翻转、倒转
   - vt. 使心烦；颠覆；扰乱
   - adj. 心烦的；混乱的；弄翻的
-- undermine
+- undermine `[ˌʌndərˈmaɪn]`
   - vt. 破坏，渐渐破坏；挖掘地基
 
 ## V
 
-- variant：`ˈvɛriənt/`
+- variant `ˈvɛriənt/`
   - 成员，变体
 
 ## W

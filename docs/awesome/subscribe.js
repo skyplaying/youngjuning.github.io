@@ -23,6 +23,11 @@ export const developer = [
       'WebAssembly 或者 wasm 是一个可移植、体积小、加载快并且兼容 Web 的全新格式',
     homepage: 'http://webassembly.org.cn/',
   },
+  {
+    title: '有道智云 AI 开发平台',
+    description: '有道智云 AI 开发平台',
+    homepage: 'https://ai.youdao.com/gw.s#/',
+  },
 ];
 
 export const i18n = [
