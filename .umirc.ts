@@ -81,5 +81,26 @@ export default defineConfig({
       },
     ],
   ],
+  hire: {
+    title: '涂鸦智能资深前端开发工程师',
+    content: `
+      <p><strong>职位描述：</strong></p>
+      <ul>
+        <li>负责各品类行业公版输出，帮助0成本实现产品智能化；</li>
+        <li>负责Tuya面板基础组件库开发及Tuya面板品类组件库开发；</li>
+        <li>负责Tuya RN跨平台基础设施搭建及Tuya 小程序SDK开发；</li>
+        <li>KA面板定制，实现各种酷炫交互。</li>
+      </ul>
+      <p><strong>职位要求：</strong></p>
+      <ul>
+        <li>熟悉前端相关技术，熟悉React、React Hook、TS及其生态圈；</li>
+        <li>热衷技术、追究原理、探究最佳实践，具备良好的沟通能力和优秀的团队协作精神，有一定业务敏感度；</li>
+        <li>对动画效果有一定钻研，对跨端技术（H5、RN、Futter）感兴趣并且有一定了解；</li>
+        <li>有一定的源码阅读和分析能力(不限语言/库/框架/包)。</li>
+      </ul>
+      `,
+    email: 'youngjuning@aliyun.com',
+    slogan: '在寻找心仪的工作吗？',
+  },
   // more config: https://d.umijs.org/config
 });
