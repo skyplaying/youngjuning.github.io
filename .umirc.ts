@@ -82,7 +82,7 @@ export default defineConfig({
     ],
   ],
   hire: {
-    title: '涂鸦智能「资深前端开发工程师 Hybrid」',
+    title: '涂鸦智能「资深前端开发工程师」',
     content: `
       <p><strong>职位描述：</strong></p>
       <ul>
