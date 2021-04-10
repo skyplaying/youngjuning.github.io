@@ -30,6 +30,7 @@ export default defineConfig({
       title: '翻译系列',
       // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
       children: [
+        { title: '计算机英文词汇', path: '/english' },
         { title: '《Go 语言教程》', path: '/golang-tutorial' },
         { title: 'Cobra 中文文档', path: '/cobra' },
         { title: 'Viper 中文文档', path: '/viper' },

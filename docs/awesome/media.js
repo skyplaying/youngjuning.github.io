@@ -25,6 +25,11 @@ export const design = [
     description: 'Fotor懒设计_在线设计神器_免费设计素材模板_平面设计作图软件',
     homepage: 'https://www.fotor.com.cn/',
   },
+  {
+    title: '创可贴',
+    description: '让设计触手可得',
+    homepage: 'https://www.chuangkit.com/',
+  },
 ];
 export const common = [
   {
