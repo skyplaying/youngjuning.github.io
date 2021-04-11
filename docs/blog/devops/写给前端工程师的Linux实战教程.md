@@ -785,6 +785,7 @@ Host aliyun
 $ ssh aliyun
 ```
 
+<!--
 ### 配置免密码登录
 
 1. 在客户机中生成密钥对（公钥和私钥）
@@ -815,6 +816,7 @@ $ ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@47.98
 **测试 Github 是否正确配置免密码登录：**
 
 `ssh -T git@github.com`
+-->
 
 ## Linux 网络
 
