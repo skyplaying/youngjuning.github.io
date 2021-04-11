@@ -1,7 +1,7 @@
 ---
 title: 「早茶」你不知道的 JavaScript 类特性
 cover: https://i.loli.net/2021/04/10/RcdiXZ3YxBTp4Cm.png
-tags: []
+tags: [搁置]
 ---
 
 > 大家好，我是 [@洛竹](https://github.com/youngjuning)
@@ -11,6 +11,8 @@ tags: []
 > 本文同步于公众号『洛竹早茶馆』，转载请联系作者。
 >
 > 创作不易，养成习惯，素质三连！
+
+> 建议添加：特性意义、示例、ts
 
 ## TC39 进程
 
