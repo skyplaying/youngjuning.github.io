@@ -316,16 +316,23 @@ order: 3
 - [Go 插件每日推荐之 air](https://juejin.cn/post/6947364192554844174)
 - [Go 插件每日推荐之 squirrel](https://juejin.cn/post/6947367309677690888)
 - [Go 插件每日推荐之 sprig](https://juejin.cn/post/6947357859529097230)
-- [ ] [Google slams Microsoft for trying ‘to break the way the open web works’](https://github.com/xitu/gold-miner/issues/8237)
+- [「快讯」Android 加入了对 Rust 语言的支持](https://youngjuning.js.org/blog/rust/android%20%E5%8A%A0%E5%85%A5%E4%BA%86%E5%AF%B9%20rust%20%E8%AF%AD%E8%A8%80%E7%9A%84%E6%94%AF%E6%8C%81)
+- [React Native 引入第三方 Android SDK](https://juejin.cn/post/6948361202393317384)
+- [谷歌抨击微软“试图破坏开放 web 的运作方式”](https://juejin.cn/post/6949401776751640583)
 - [ ] [Top Node.js Frameworks to use in 2021](https://github.com/xitu/gold-miner/issues/8301)
 - [ ] [Solutions Architect Tips — The 5 Types of Architecture Diagrams](https://github.com/xitu/gold-miner/issues/8303)
-- [ ] [These Modern Programming Languages Will Make You Suffer](https://github.com/xitu/gold-miner/issues/8367)
 - [ ] [Go 插件每日推荐之 lipgloss](https://github.com/charmbracelet/lipgloss)
-- [ ] 基于 Dumi 开发 React Native 组件库
 - [ ] https://golangbot.com/arrays-and-slices/ arrays
 - [ ] https://golangbot.com/arrays-and-slices/ slices
 - [ ] https://golangbot.com/variadic-functions/
 
 **掘力值**
 
-掘力值目前为 `5540`， 增长 210，离 7000 只剩 1460。
+掘力值目前为 `5575`， 增长 245，离 7000 只剩 1425。
+
+## 第二周 4 月 12 日 — 4 月 18 日
+
+**创作文章**
+
+- [ ] 基于 Dumi 开发 React Native 组件库
+- [ ] [These Modern Programming Languages Will Make You Suffer](https://github.com/xitu/gold-miner/issues/8367)
