@@ -440,23 +440,21 @@ $ docker run -d -p 8000:8000 -p 9000:9000 \
 
 ```nginx
 upstream portainer {
-    server 127.0.0.1:9000;
+    server 10.4.2.18:9000 max_fails=3 fail_timeout=6 weight=5;
+    keepalive 256;
 }
 
 server {
-  listen 80;
-
+  ...
+  
   location /portainer/ {
-      proxy_http_version 1.1;
-      proxy_set_header Connection "";
-      proxy_pass http://portainer/;
+    proxy_pass http://portainer/;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_read_timeout 86400;
   }
-  location /portainer/ws/ {
-      proxy_set_header Upgrade $http_upgrade;
-      proxy_set_header Connection "upgrade";
-      proxy_http_version 1.1;
-      proxy_pass http://portainer/ws/;
-  }
+  ...
 }
 ```
 
