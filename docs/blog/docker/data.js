@@ -34,4 +34,8 @@ export const article = [
       '颠覆性安装宝塔面板，只需三分钟完成原本半小时的操作-Docker全自动安装',
     outlink: 'https://baiyue.one/archives/469.html',
   },
+  {
+    title: 'Ubuntu下完全卸载nginx服务器',
+    outlink: 'https://blog.csdn.net/adley_app/article/details/79223221',
+  },
 ];
