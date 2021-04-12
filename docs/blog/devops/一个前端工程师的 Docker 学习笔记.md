@@ -127,8 +127,6 @@ For more examples and ideas, visit:
 
 ```json
 {
-  "ip": "127.0.0.1",
-  "experimental": false,
   "registry-mirrors": [
     "https://registry.docker-cn.com",
     "https://mirror.ccs.tencentyun.com",
@@ -144,6 +142,10 @@ For more examples and ideas, visit:
 $ systemctl daemon-reload
 $ systemctl restart docker.service
 ```
+
+> 注意：不要改默认的 `ip`，默认 `0.0.0.0` 可以被外网访问，`127.0.0.1` 如果不反向代理的话不能被外网访问，如下图：
+
+> ![image.png](https://i.loli.net/2021/04/12/XQkzs12w7LcpIZB.png)
 
 ## 使用 Docker 镜像
 
