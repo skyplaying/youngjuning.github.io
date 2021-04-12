@@ -12,8 +12,6 @@ tags: [掘金专栏, 洛竹早茶馆]
 >
 > 创作不易，养成习惯，素质三连！
 
-笔者使用的是 AliYun 服务器 ECS，镜像选择的是 Ubuntu，Ubuntu 的详细版本信息是：`Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-91-generic x86_64)`，如何购买云服务器不在本文讨论范围内，如果只是学习，那你完全可以使用 virtualbox 安装 Ubuntu。
-
 ```shell
 # 连接服务器
 $ ssh <username>@<hostname>
@@ -80,11 +78,11 @@ $ n prune
 
 > 修改 `~/.zshrc` 之后都需要执行 `source ~/.zshrc` 命令使之立即生效
 >
-> `echo $SHLL` 可以查看当前 Shell
+> `echo $SHELL` 可以查看当前 Shell
 
 - `apt install zsh`
 - `git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh`
-- `cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+- `cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc`
 - `nano ~/.zshrc`
 - 找到 `ZSH_THEME="robbyrussell"` ，把 `robbyrussell` 替换为 `ys`
 - 修改默认 Shell：`chsh -s /bin/zsh`
@@ -787,6 +785,7 @@ Host aliyun
 $ ssh aliyun
 ```
 
+<!--
 ### 配置免密码登录
 
 1. 在客户机中生成密钥对（公钥和私钥）
@@ -817,6 +816,7 @@ $ ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@47.98
 **测试 Github 是否正确配置免密码登录：**
 
 `ssh -T git@github.com`
+-->
 
 ## Linux 网络
 

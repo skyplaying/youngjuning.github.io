@@ -66,28 +66,10 @@ Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需�
 
 ## 安装配置
 
-- 操作系统：Linux ubuntu18 4.15.0-91-generic，通过 `uname -a` 查看
-- docker-ce 镜像：https://developer.aliyun.com/mirror/docker-ce?spm=a2c6h.13651102.0.0.52471b11cIp2pH
-
 ### 卸载旧版本
 
 ```shell
 $ apt remove docker docker-engine docker.io containerd runc
-```
-
-### 通过软件包安装
-
-```shell
-# step 1: 安装必要的一些系统工具
-sudo apt-get update
-sudo apt-get -y install apt-transport-https ca-certificates curl gnupg-agent pass software-properties-common
-# step 2: 安装GPG证书
-curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
-# Step 3: 写入软件源信息
-sudo add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
-# Step 4: 更新并安装Docker-CE
-sudo apt-get -y update
-sudo apt-get -y install docker-ce
 ```
 
 ### 通过脚本安装
@@ -98,22 +80,6 @@ $ sudo sh get-docker.sh --mirror Aliyun
 ```
 
 安装成功后，会自动启动 Docker 服务。用户可以使用 `systemctl is-enabled docker` 来确认 Docker 服务是否是开机自启动。
-
-### 可选配置
-
-**解决 `WARNING: Your kernel does not support cgroup swap limit capabilities`：**
-
-1、编辑 `/etc/default/grub` 文件
-
-```shell
-$ nano /etc/default/grub
-```
-
-2、找到 `GRUB_CMDLINE_LINUX=` 配置项，并追加 `cgroup_enable=memory swapaccount=1`。
-
-3、保存文件后执行一下命令：`sudo update-grub`
-
-4、重启服务器：`reboot`
 
 ### 测试 Docker 是否安装正确
 
@@ -462,35 +428,33 @@ $ docker logs -f <CONTAINER ID>
 
 ```shell
 $ docker volume create portainer_data
-$ docker run -d -p 9000:9000 \
+$ docker run -d -p 8000:8000 -p 9000:9000 \
+    --name portainer \
+		--restart always \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		-v portainer_data:/data \
-		--name portainer \
-		--restart always \
-		portainer/portainer
+		portainer/portainer-ce
 ```
 
 配置 `/etc/nginx/sites-enabled/dafulat` 文件：
 
 ```nginx
 upstream portainer {
-    server 127.0.0.1:9000;
+    server 10.4.2.18:9000 max_fails=3 fail_timeout=6 weight=5;
+    keepalive 256;
 }
 
 server {
-  listen 80;
-
+  ...
+  
   location /portainer/ {
-      proxy_http_version 1.1;
-      proxy_set_header Connection "";
-      proxy_pass http://portainer/;
+    proxy_pass http://portainer/;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_read_timeout 86400;
   }
-  location /portainer/ws/ {
-      proxy_set_header Upgrade $http_upgrade;
-      proxy_set_header Connection "upgrade";
-      proxy_http_version 1.1;
-      proxy_pass http://portainer/ws/;
-  }
+  ...
 }
 ```
 
