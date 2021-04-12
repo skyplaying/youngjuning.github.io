@@ -14,15 +14,15 @@ order: 3
 1. [ ] 完整刷一遍《JavaScript 高级程序设计》
 1. [ ] 至少读两册《你不知道的 JavaScript》
 1. [ ] 基本完成 `retalk/react-native-components` 插件
-1. [ ] 完成掘金小册《React 面试必知必会》
+1. [ ] 完成掘金小册《React Native 动画开发指南》
 1. [ ] 四月拍婚纱
 1. [ ] 五一回郑州确定婚纱酒店
 1. [ ] 十一回郑州办婚礼
 
 **行有余力：**
 
+1. [ ] 完成系列文章《React 面试必知必会》
 1. [ ] React Hooks 源码解析
-1. [ ] 完成掘金小册《React Native 动画开发指南》
 1. [ ] 学完《Google 资深工程师深度讲解 Go 语言》
 
 **放鸽子：**
@@ -274,11 +274,10 @@ order: 3
 
 - [ ] 不管多少篇，拿到 [Golang 主题学习月 ✏️ ｜写 Go 文章打卡，赢 Airpods 等精美礼品 🎁](https://juejin.cn/post/6942105417900097567) 第一名
 - [ ] 掘金翻译计划攒够 80 积分换一个树莓派
-- [ ] 复习 PHP 开发
 
 ### 第一周 3 月 29 日 — 4 月 04 日
 
-**创作文章**
+**创作文章（24）**
 
 - [《Go 语言教程》之数据类型](https://juejin.cn/post/6945485187380281351)
 - [《Go 语言教程》之常量](https://juejin.cn/post/6945503663527821349)
@@ -309,9 +308,9 @@ order: 3
 
 掘力值目前为 `5330`， 增长 243，离 7000 只剩 1670。
 
-### 第一周 4 月 5 日 — 4 月 11 日
+### 第二周 4 月 5 日 — 4 月 11 日
 
-**创作文章**
+**创作文章（6）**
 
 - [Go 插件每日推荐之 air](https://juejin.cn/post/6947364192554844174)
 - [Go 插件每日推荐之 squirrel](https://juejin.cn/post/6947367309677690888)
@@ -319,13 +318,13 @@ order: 3
 - [「快讯」Android 加入了对 Rust 语言的支持](https://youngjuning.js.org/blog/rust/android%20%E5%8A%A0%E5%85%A5%E4%BA%86%E5%AF%B9%20rust%20%E8%AF%AD%E8%A8%80%E7%9A%84%E6%94%AF%E6%8C%81)
 - [React Native 引入第三方 Android SDK](https://juejin.cn/post/6948361202393317384)
 - [谷歌抨击微软“试图破坏开放 web 的运作方式”](https://juejin.cn/post/6949401776751640583)
-- [解决方案架构师技巧：架构图的 5 种类型]((https://github.com/xitu/gold-miner/issues/8303)
+- [解决方案架构师技巧：架构图的 5 种类型](https://github.com/xitu/gold-miner/issues/8303)
 
 **掘力值**
 
 掘力值目前为 `5575`， 增长 245，离 7000 只剩 1425。
 
-## 第二周 4 月 12 日 — 4 月 18 日
+## 第三周 4 月 12 日 — 4 月 18 日
 
 **创作文章**
 
