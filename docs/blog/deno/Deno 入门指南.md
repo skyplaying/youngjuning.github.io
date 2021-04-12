@@ -1,7 +1,7 @@
 ---
-title: Deno 从入门到跑路
-cover: https://i.loli.net/2020/07/27/4ltXAYazmVvgWfZ.png
-tags: [掘金专栏]
+title: Deno 入门指南
+cover: https://i.loli.net/2021/04/12/YSELpjGDo8zWJvs.png
+tags: [掘金专栏, 洛竹早茶馆]
 ---
 
 > 大家好，我是 [@洛竹](https://github.com/youngjuning)
