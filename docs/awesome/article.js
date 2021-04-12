@@ -7,4 +7,8 @@ export const mac = [
     title: 'day01_Vue和React设计思路PK',
     outlink: 'https://learn.kaikeba.com/video/316979',
   },
+  {
+    title: '创建自己的 .js.org 域名网站',
+    outlink: 'https://www.tangshuang.net/7603.html',
+  },
 ];

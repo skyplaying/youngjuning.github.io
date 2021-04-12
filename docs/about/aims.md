@@ -319,12 +319,7 @@ order: 3
 - [「快讯」Android 加入了对 Rust 语言的支持](https://youngjuning.js.org/blog/rust/android%20%E5%8A%A0%E5%85%A5%E4%BA%86%E5%AF%B9%20rust%20%E8%AF%AD%E8%A8%80%E7%9A%84%E6%94%AF%E6%8C%81)
 - [React Native 引入第三方 Android SDK](https://juejin.cn/post/6948361202393317384)
 - [谷歌抨击微软“试图破坏开放 web 的运作方式”](https://juejin.cn/post/6949401776751640583)
-- [ ] [Top Node.js Frameworks to use in 2021](https://github.com/xitu/gold-miner/issues/8301)
-- [ ] [Solutions Architect Tips — The 5 Types of Architecture Diagrams](https://github.com/xitu/gold-miner/issues/8303)
-- [ ] [Go 插件每日推荐之 lipgloss](https://github.com/charmbracelet/lipgloss)
-- [ ] https://golangbot.com/arrays-and-slices/ arrays
-- [ ] https://golangbot.com/arrays-and-slices/ slices
-- [ ] https://golangbot.com/variadic-functions/
+- [解决方案架构师技巧：架构图的 5 种类型]((https://github.com/xitu/gold-miner/issues/8303)
 
 **掘力值**
 
@@ -336,3 +331,8 @@ order: 3
 
 - [ ] 基于 Dumi 开发 React Native 组件库
 - [ ] [These Modern Programming Languages Will Make You Suffer](https://github.com/xitu/gold-miner/issues/8367)
+- [ ] [Top Node.js Frameworks to use in 2021](https://github.com/xitu/gold-miner/issues/8301)
+- [ ] [Go 插件每日推荐之 lipgloss](https://github.com/charmbracelet/lipgloss)
+- [ ] https://golangbot.com/arrays-and-slices/ arrays
+- [ ] https://golangbot.com/arrays-and-slices/ slices
+- [ ] https://golangbot.com/variadic-functions/

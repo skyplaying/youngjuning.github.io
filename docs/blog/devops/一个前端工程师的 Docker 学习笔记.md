@@ -430,23 +430,24 @@ $ docker logs -f <CONTAINER ID>
 $ docker volume create portainer_data
 $ docker run -d -p 8000:8000 -p 9000:9000 \
     --name portainer \
-		--restart always \
-		-v /var/run/docker.sock:/var/run/docker.sock \
-		-v portainer_data:/data \
-		portainer/portainer-ce
+    --restart always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v portainer_data:/data \
+    portainer/portainer-ce
 ```
 
-配置 `/etc/nginx/sites-enabled/dafulat` 文件：
+> 此时，你就可以使用 `http://public_ip:9000` 访问 portainer 了！
+
+如果希望以 `http://public_ip/portainer` 的形式访问 `portainer`，可以配置 `/etc/nginx/sites-enabled/dafulat` 文件进行方向代理：
 
 ```nginx
 upstream portainer {
-    server 10.4.2.18:9000 max_fails=3 fail_timeout=6 weight=5;
+    server 127.0.0.1:9000 max_fails=3 fail_timeout=6 weight=5;
     keepalive 256;
 }
 
 server {
   ...
-  
   location /portainer/ {
     proxy_pass http://portainer/;
     proxy_http_version 1.1;
