@@ -42,9 +42,9 @@ features:
     desc: 一门赋予每个人构建可靠且高效软件能力的语言。
     link: /blog/rust
   - icon: https://i.loli.net/2021/01/31/hjIm2AXDY3Obdw7.png
-    title: DevOps
+    title: Docker
     desc: DevOps 是一种重视 “软件开发人员” 和 “IT 运维技术人员” 之间沟通合作的文化、运动或惯例
-    link: /blog/devops
+    link: /blog/docker
   - icon: https://i.loli.net/2021/04/10/VxHpIm4RXhrviaW.png
     title: Android
     desc: 基于 Linux 内核与其他开源软件的开放源代码的移动操作系统，由谷歌成立的开放手持设备联盟持续领导与开发。
