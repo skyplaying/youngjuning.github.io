@@ -27,3 +27,11 @@ export const tools = [
     homepage: 'https://www.portainer.io/',
   },
 ];
+
+export const article = [
+  {
+    title:
+      '颠覆性安装宝塔面板，只需三分钟完成原本半小时的操作-Docker全自动安装',
+    outlink: 'https://baiyue.one/archives/469.html',
+  },
+];

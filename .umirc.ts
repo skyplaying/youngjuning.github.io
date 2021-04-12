@@ -48,6 +48,10 @@ export default defineConfig({
           title: '力扣算法题',
           path: '/leetcode',
         },
+        {
+          title: '快捷脚本',
+          path: '/shell',
+        },
       ],
     },
     {

@@ -48,3 +48,17 @@ export default () => {
   return <CardList data={tools} />;
 };
 ```
+
+## 文章
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { article } from './data';
+
+export default () => {
+  return <CardList data={article} />;
+};
+```
