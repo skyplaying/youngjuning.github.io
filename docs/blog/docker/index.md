@@ -59,6 +59,6 @@ import React from 'react';
 import { article } from './data';
 
 export default () => {
-  return <CardList data={article} />;
+  return <ArtistList data={article} />;
 };
 ```
