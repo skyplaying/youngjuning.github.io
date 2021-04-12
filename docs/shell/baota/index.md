@@ -7,5 +7,5 @@ group:
 ## 安装
 
 ```sh
-curl -fsSL http://youngjuning.js.org/shell/baota/installsh | sh
+curl -fsSL http://youngjuning.js.org/shell/baota/install.sh | sh
 ```
