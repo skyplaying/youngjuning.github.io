@@ -7,7 +7,7 @@ group:
 ## Docker 安装
 
 ```sh
-curl -fsSL http://youngjuning.js.org/shell/baota/install.sh | sh
+curl -fsSL https://youngjuning.js.org/shell/baota/install.sh | sh
 ```
 
 **登录方式**
@@ -29,7 +29,7 @@ docker rm -f baota
 ## Docker 容器备份
 
 ```sh
-curl -fsSL http://youngjuning.js.org/shell/baota/backup.sh | sh
+curl -fsSL https://youngjuning.js.org/shell/baota/backup.sh | sh
 ```
 
 **载入镜像**
