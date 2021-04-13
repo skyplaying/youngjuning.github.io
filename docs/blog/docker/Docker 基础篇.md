@@ -296,8 +296,6 @@ $ docker run -it ubuntu:18.04 /bin/bash
 
 在使用 `-d` 参数时，容器启动后会进入后台。
 
-某些时候需要进入容器进行操作，推荐大家使用 `docker exec` 命令：
-
 ```shell
 $ docker run -dit alpine
 $ docker ps
@@ -305,8 +303,11 @@ CONTAINER ID        IMAGE                 COMMAND             CREATED           
 3d95dabef801        alpine                "/bin/sh"           21 seconds ago      Up 19 seconds                                  recursing_aryabhata
 ```
 
+某些时候需要进入容器进行操作，推荐大家使用 `docker exec` 命令：
+
 ```shell
-$ docker exec -it <CONTAINER ID>
+# COMMAND 一般为 bash
+$ docker exec -it <CONTAINER ID> <COMMAND>
 ```
 
 如果从这个 stdin 中 exit，不会导致容器的停止。
