@@ -26,6 +26,13 @@ export const tools = [
     description: '🚀 Fast and simple Node.js version manager, built in Rust',
     github: 'Schniz/fnm',
   },
+  {
+    title: 'Concurrently',
+    description:
+      'Run multiple commands concurrently. Like npm run watch-js & npm run watch-less but better.',
+    npm: 'concurrently',
+    github: 'Schniz/fnm',
+  },
 ];
 
 export const monorepo = [

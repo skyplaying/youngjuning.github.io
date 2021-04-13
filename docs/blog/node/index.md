@@ -3,7 +3,7 @@ title: Node
 ---
 
 <Alert type="info">
-  欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/awesome/node.js">新增数据</a> 并提交 PR.
+  欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/blog/node/data.js">新增数据</a> 并提交 PR.
 </Alert>
 
 ### CLI
@@ -13,7 +13,7 @@ title: Node
  * inline: true
  */
 import React from 'react';
-import { cli } from './node';
+import { cli } from './data';
 
 export default () => {
   return <CardList data={cli} />;
@@ -27,7 +27,7 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import { tools } from './node';
+import { tools } from './data';
 
 export default () => {
   return <CardList data={tools} />;
@@ -41,7 +41,7 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import { monorepo } from './node';
+import { monorepo } from './data';
 
 export default () => {
   return <CardList data={monorepo} />;
@@ -55,7 +55,7 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import { crawler } from './node';
+import { crawler } from './data';
 
 export default () => {
   return <CardList data={crawler} />;
