@@ -26,6 +26,8 @@ $ curl -fsSL https://get.docker.com -o get-docker.sh
 $ sudo sh get-docker.sh --mirror Aliyun
 ```
 
+> Docker 安装路径：`/var/lib/docker`
+
 安装成功后，会自动启动 Docker 服务。用户可以使用 `systemctl is-enabled docker` 来确认 Docker 服务是否是开机自启动。如果不是请使用 `systemctl enable docker` 设置自启动。
 
 ### 测试 Docker 是否安装正确
