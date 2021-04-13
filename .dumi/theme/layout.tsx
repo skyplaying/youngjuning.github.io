@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import type { IRouteComponentProps } from '@umijs/types';
 import {BackTop} from 'antd'
 import { context, Link } from 'dumi/theme';
-import 'gitalk/dist/gitalk.css';
-import GitalkComponent from 'gitalk/dist/gitalk-component';
+// import 'gitalk/dist/gitalk.css';
+// import GitalkComponent from 'gitalk/dist/gitalk-component';
 import shuffle from 'lodash.shuffle';
 import Badge from './builtins/Badge'
 import Alert from './builtins/Alert'
@@ -106,7 +106,7 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
           <img src={meta.cover} width="70%"/>
         </div>
         {children}
-        {location.pathname.indexOf('friends') >= 0 && (
+        {/* {location.pathname.indexOf('friends') >= 0 && (
           <div className="__dumi-default-layout-comment">
             <GitalkComponent
               options={{
@@ -119,7 +119,7 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
               }}
             />
           </div>
-        )}
+        )} */}
         {!showHero && !showFeatures && meta.filePath && !meta.gapless && (
           <div className="__dumi-default-layout-footer-meta">
             {repoPlatform && (
