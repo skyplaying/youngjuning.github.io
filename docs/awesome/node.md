@@ -3,7 +3,7 @@ title: Node
 ---
 
 <Alert type="info">
-  欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/blog/node/data.js">新增数据</a> 并提交 PR.
+  欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/awesome/node.js">新增数据</a> 并提交 PR.
 </Alert>
 
 ### CLI
@@ -13,7 +13,7 @@ title: Node
  * inline: true
  */
 import React from 'react';
-import { cli } from './data';
+import { cli } from './node';
 
 export default () => {
   return <CardList data={cli} />;
@@ -27,10 +27,24 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import { tools } from './data';
+import { tools } from './node';
 
 export default () => {
   return <CardList data={tools} />;
+};
+```
+
+### 构建
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { build } from './node';
+
+export default () => {
+  return <CardList data={build} />;
 };
 ```
 
@@ -41,7 +55,7 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import { monorepo } from './data';
+import { monorepo } from './node';
 
 export default () => {
   return <CardList data={monorepo} />;
@@ -55,7 +69,7 @@ export default () => {
  * inline: true
  */
 import React from 'react';
-import { crawler } from './data';
+import { crawler } from './node';
 
 export default () => {
   return <CardList data={crawler} />;

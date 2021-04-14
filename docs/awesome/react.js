@@ -5,6 +5,13 @@ export const componentization = [
     npm: 'theming',
     github: 'cssinjs/theming',
   },
+  {
+    title: 'React Live',
+    description: 'A flexible playground for live editing React code',
+    homepage: 'https://react-live.netlify.app/',
+    npm: 'react-live',
+    github: 'https://github.com/FormidableLabs/react-live',
+  },
 ];
 
 export const api = [
@@ -21,14 +28,5 @@ export const artist = [
   {
     title: '当我在头条写 React 时，我是如何考虑技术选型与设计的',
     outlink: 'https://mp.weixin.qq.com/s/7GDmCxbwVPTNBAHom1BgyA',
-  },
-];
-
-export const site_generator = [
-  {
-    title: 'docsify',
-    description: '一个神奇的文档网站生成器。',
-    homepage: 'https://docsify.js.org/#/zh-cn/',
-    github: 'docsifyjs/docsify',
   },
 ];

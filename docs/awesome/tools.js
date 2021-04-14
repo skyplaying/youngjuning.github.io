@@ -65,18 +65,3 @@ export const design = [
     homepage: 'https://balsamiq.com/wireframes/',
   },
 ];
-
-export const docs = [
-  {
-    title: 'documentation',
-    description: '📖 documentation for modern JavaScript',
-    homepage: 'http://documentation.js.org/',
-    github: 'documentationjs/documentation',
-  },
-  {
-    title: 'docsify',
-    description: 'A magical documentation site generator.',
-    homepage: 'https://docsify.js.org/#/',
-    github: 'docsifyjs/docsify',
-  },
-];

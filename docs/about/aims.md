@@ -328,10 +328,25 @@ order: 3
 
 **创作文章**
 
-- [ ] 基于 Dumi 开发 React Native 组件库
-- [ ] [These Modern Programming Languages Will Make You Suffer](https://github.com/xitu/gold-miner/issues/8367)
-- [ ] [Top Node.js Frameworks to use in 2021](https://github.com/xitu/gold-miner/issues/8301)
+- [Docker 安装配置宝塔面板](https://juejin.cn/post/6950558227490668557)
+- [使用 rollup 打包 React Native 插件并发布](https://juejin.cn/post/6952331374065877022)
+- [2021 年最值得使用的 Node.js 框架](https://github.com/xitu/gold-miner/pull/8472/files)
 - [ ] [Go 插件每日推荐之 lipgloss](https://github.com/charmbracelet/lipgloss)
 - [ ] https://golangbot.com/arrays-and-slices/ arrays
+
+**掘力值**
+
+掘力值目前为 `5700`， 增长 125，离 7000 只剩 1300。
+
+## 第四周 4 月 19 日 — 4 月 25 日
+
+**创作文章**
+
+- [ ] 基于 Dumi 开发 React Native 组件库
+- [ ] [These Modern Programming Languages Will Make You Suffer](https://github.com/xitu/gold-miner/issues/8367)
 - [ ] https://golangbot.com/arrays-and-slices/ slices
 - [ ] https://golangbot.com/variadic-functions/
+
+**掘力值**
+
+掘力值目前为 `5700`， 增长 125，离 7000 只剩 1300。

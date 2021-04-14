@@ -11,6 +11,10 @@ export const article = [
     title: '想要成为一个合格的架构师？看这篇文章就足够了',
     outlink: 'https://cloud.tencent.com/developer/news/289881',
   },
+  {
+    title: '程序员必备画图技能之——流程图',
+    outlink: 'https://www.cnblogs.com/54chensongxia/p/12091304.html',
+  },
 ];
 
 export const diagram = [
@@ -20,5 +24,8 @@ export const diagram = [
       'Generation of diagram and flowchart from text in a similar manner as markdown',
     homepage: 'https://mermaid-js.github.io/mermaid/#/',
     github: 'mermaid-js/mermaid',
+  },
+  {
+    homepage: 'https://plantuml.com/zh/',
   },
 ];

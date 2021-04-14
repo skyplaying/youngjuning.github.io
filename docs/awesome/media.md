@@ -7,10 +7,10 @@ title: 新媒体运营
  * inline: true
  */
 import React from 'react';
-import { common } from './media';
+import data from './media';
 
 export default () => {
-  return <CardList data={common} />;
+  return <CardList data={data} />;
 };
 ```
 
@@ -25,6 +25,20 @@ import { design } from './media';
 
 export default () => {
   return <CardList data={design} />;
+};
+```
+
+## 免费图源
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { picture } from './media';
+
+export default () => {
+  return <CardList data={picture} />;
 };
 ```
 

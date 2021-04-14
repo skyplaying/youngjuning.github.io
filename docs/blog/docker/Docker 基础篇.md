@@ -78,9 +78,8 @@ For more examples and ideas, visit:
 {
   "registry-mirrors": [
     "https://registry.docker-cn.com",
-    "https://mirror.ccs.tencentyun.com",
-    "http://docker.mirrors.ustc.edu.cn",
-    "http://hub-mirror.c.163.com"
+    "https://mirror.baidubce.com",
+    "https://hub-mirror.c.163.com"
   ]
 }
 ```

@@ -1,10 +1,17 @@
-export const design = [
+export default [
   {
-    title: 'unsplash',
-    description:
-      'The internet’s source of freely-usable images. Powered by creators everywhere.',
-    homepage: 'https://unsplash.com/',
+    title: '新榜',
+    description: '内容产业服务平台',
+    homepage: 'https://www.newrank.cn/',
   },
+  {
+    title: 'mdnice',
+    description: '让排版变 Nice',
+    homepage: 'https://www.mdnice.com/',
+  },
+];
+
+export const design = [
   {
     title: 'hathful',
     description: '数秒内即可创建酷炫的 logo',
@@ -30,17 +37,10 @@ export const design = [
     description: '让设计触手可得',
     homepage: 'https://www.chuangkit.com/',
   },
-];
-export const common = [
   {
-    title: '新榜',
-    description: '内容产业服务平台',
-    homepage: 'https://www.newrank.cn/',
-  },
-  {
-    title: 'mdnice',
-    description: '让排版变 Nice',
-    homepage: 'https://www.mdnice.com/',
+    title: '图怪兽',
+    description: '会打字就能用的作图神器',
+    homepage: 'https://818ps.com/',
   },
 ];
 
@@ -76,5 +76,19 @@ export const artist = [
   {
     title: '小白如何从零开始运营微信公众号？',
     outlink: 'https://www.zhihu.com/question/36397882',
+  },
+];
+
+export const picture = [
+  {
+    title: 'unsplash',
+    description:
+      'The internet’s source of freely-usable images. Powered by creators everywhere.',
+    homepage: 'https://unsplash.com/',
+  },
+  {
+    title: 'Pinterest',
+    description: '洛竹常用的图片素材库',
+    homepage: 'https://www.pinterest.jp/',
   },
 ];

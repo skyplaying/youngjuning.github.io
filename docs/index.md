@@ -24,7 +24,7 @@ features:
   - icon: https://i.loli.net/2021/01/07/3e2qXd1jYQSr6tD.png
     title: React
     desc: 用于构建用户界面的 JavaScript 库
-    link: /blog/react/
+    # link: /blog/react/
   - icon: https://i.loli.net/2021/01/07/LyrYFU7icZbGkQv.png
     title: React Native
     desc: 使用React来编写原生应用的框架
@@ -49,6 +49,14 @@ features:
     title: Android
     desc: 基于 Linux 内核与其他开源软件的开放源代码的移动操作系统，由谷歌成立的开放手持设备联盟持续领导与开发。
     link: /blog/android
+  - icon: https://i.loli.net/2021/04/14/8umNFlEYxBUOXaH.png
+    title: Linux
+    desc: 基于 Linux 内核与其他开源软件的开放源代码的移动操作系统，由谷歌成立的开放手持设备联盟持续领导与开发。
+    link: /blog/linux
+  - icon: https://i.loli.net/2021/04/14/ZcCDJ3mGth9vTLo.png
+    title: 其他
+    desc: 随笔、总结、调研以及不知如何分类的所有文章
+    link: /blog/others
 footer: Open-source MIT Licensed | Copyright ©俊宁 2020
 ---
 

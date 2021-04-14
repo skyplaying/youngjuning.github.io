@@ -36,6 +36,8 @@ sidemenu: false
 
 - assignment statement `[əˈsaɪnmənt ˈsteɪtmənt]`
   - 赋值语句
+- agile `[ˈædʒl]`
+  - adj. 敏捷的；机敏的；活泼的
 - Australia `[ɔːˈstreɪljə]`
   - n. 澳大利亚，澳洲
 - audience
@@ -63,6 +65,11 @@ sidemenu: false
   - n. 考虑；原因；关心；报酬
 - connectivity `[kəˌnekˈtɪvəti]`
   - n. 连通（性），联结（度）
+- concise `[kənˈsaɪs]`
+  - adj. 简明的，简洁的
+- comprehensive `[ˌkɑːmprɪˈhensɪv]`
+  - adj. 综合的；广泛的；有理解力的；全面的
+  - n. 综合学校；专业综合测验
 
 ## D
 
@@ -91,6 +98,8 @@ sidemenu: false
   - adj.（用墙等）围住的，封闭的；随函附上的；附上的；与外界隔绝的
 - sanitization `[ˌsænətaɪˈzeɪʃən]`
   - n. [计] 卫生处理，https://github.com/rust-lang/rust/pull/81506
+- establish `[ɪˈstæblɪʃ]`
+  - v. 建立，创立；确立；获得接受；查实，证实
 
 ## F
 
@@ -111,6 +120,9 @@ sidemenu: false
 - interaction `/ˌɪntərˈækʃən/`
   - n. 相互作用，相互影响；交流；[数] 交互作用；互动
   - 交互
+- ideal `[aɪˈdiːəl]`
+  - adj. 理想的；完美的；想象的；不切实际的
+  - n. 理想；典范
 
 ## J
 
@@ -139,6 +151,8 @@ sidemenu: false
   - n. [计] 可移植性；轻便；可携带性
 - persona `[pərˈsoʊnə]`
   - n. 人物角色；伪装的外表
+- prototyping `[ˈproʊtətaɪp]`
+  - n. [计] 样机研究；原型设计
 
 ## R
 
@@ -150,6 +164,8 @@ sidemenu: false
   - adj. 竞争的
 - diagram `[ˈdaɪəɡræm]`
   - n. 图表，框架
+- robust `[roʊˈbʌst]`
+  - adj. 强健的；健康的；粗野的；粗鲁的
 
 ## S
 
