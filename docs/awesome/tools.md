@@ -75,3 +75,17 @@ export default () => {
   return <CardList data={design} />;
 };
 ```
+
+## 收藏管理
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { box } from './tools';
+
+export default () => {
+  return <CardList data={box} />;
+};
+```

@@ -26,6 +26,8 @@ export const diagram = [
     github: 'mermaid-js/mermaid',
   },
   {
+    title: 'plantuml',
+    description: '使用简单的文字描述画 UML 图',
     homepage: 'https://plantuml.com/zh/',
   },
 ];

@@ -65,3 +65,18 @@ export const design = [
     homepage: 'https://balsamiq.com/wireframes/',
   },
 ];
+
+export const box = [
+  {
+    title: 'cubox',
+    description:
+      'Cubox 是一个现代化书签管理服务，帮助你从容收藏、自动管理碎片化网络信息。',
+    homepage: 'https://cubox.pro/',
+  },
+  {
+    title: '跨平台收藏工具',
+    description:
+      'Pinbox 是一款跨平台的收藏工具，您可以用它来记录灵感，稍后阅读，保存资料甚至网络上的任何内容',
+    homepage: 'https://withpinbox.com/',
+  },
+];
