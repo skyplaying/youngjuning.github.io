@@ -6,7 +6,7 @@ title: Node
   欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/awesome/node.js">新增数据</a> 并提交 PR.
 </Alert>
 
-### CLI
+## CLI
 
 ```jsx
 /**
@@ -20,7 +20,7 @@ export default () => {
 };
 ```
 
-### 工具
+## 工具
 
 ```jsx
 /**
@@ -34,7 +34,7 @@ export default () => {
 };
 ```
 
-### 构建
+## 构建
 
 ```jsx
 /**
@@ -48,7 +48,7 @@ export default () => {
 };
 ```
 
-### 单体式仓库
+## 单体式仓库
 
 ```jsx
 /**
@@ -62,7 +62,7 @@ export default () => {
 };
 ```
 
-### 爬虫
+## 爬虫
 
 ```jsx
 /**
@@ -73,5 +73,19 @@ import { crawler } from './node';
 
 export default () => {
   return <CardList data={crawler} />;
+};
+```
+
+## 格式转化相关
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { convert } from './node';
+
+export default () => {
+  return <CardList data={convert} />;
 };
 ```

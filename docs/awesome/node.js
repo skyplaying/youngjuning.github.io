@@ -115,3 +115,27 @@ export const crawler = [
     github: 'cheeriojs/cheerio',
   },
 ];
+
+export const convert = [
+  {
+    title: 'json2csv',
+    description:
+      'Converts json into csv with column titles and proper line endings.Can be used as a module and from the command line.',
+    homepage: 'https://mircozeiss.com/json2csv/',
+    npm: 'json2csv',
+    github: 'zemirco/json2csv',
+  },
+  {
+    title: 'exceljs',
+    description: '读取，操作并写入电子表格数据和样式到 XLSX 和 JSON 文件。',
+    homepage: 'https://github.com/exceljs/exceljs/blob/HEAD/README_zh.md',
+    npm: 'exceljs',
+    github: 'https://github.com/exceljs/exceljs',
+  },
+  {
+    title: 'sheetjs',
+    description: 'Parser and writer for various spreadsheet formats.',
+    homepage: 'https://sheetjs.com/',
+    github: 'sheetjs/sheetjs',
+  },
+];
