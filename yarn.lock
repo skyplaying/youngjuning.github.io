@@ -13111,11 +13111,6 @@ ultron@1.0.x:
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
   integrity sha1-rOEWq1V80Zc4ak6I9GhTeMiy5Po=
 
-umi-plugin-hire@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/umi-plugin-hire/-/umi-plugin-hire-1.0.3.tgz#68e341803f6b9cbc3b5a9dc5ade8dc9b891325e8"
-  integrity sha512-sEzQUEB5L14t4vRpRDaiPiEGh/Evk3L6AF9xCH0PibK1ztKBlsRhCa0SooEGLvzzCjBlnIK8gGcQh7wiEFpFRg==
-
 umi-plugin-react-native@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/umi-plugin-react-native/-/umi-plugin-react-native-0.4.0.tgz#c0b565edfab1bac4bf2f984d5454778e4fc0834a"

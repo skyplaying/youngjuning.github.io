@@ -26,3 +26,12 @@ export default [
     github: 'vuejs/vuepress',
   },
 ];
+
+export const deploy = [
+  {
+    title: '',
+    description: '',
+    homepage: 'https://vercel.com/',
+    github: 'vercel/vercel',
+  },
+];

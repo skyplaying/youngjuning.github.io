@@ -103,6 +103,12 @@ export const profile = [
     description: 'Style your readme using CSS with this simple trick',
     github: 'sindresorhus/css-in-readme-like-wat',
   },
+  {
+    title: 'antonkomarev/github-profile-views-counter',
+    description:
+      'It counts how many times your GitHub profile has been viewed. Free cloud micro-service.',
+    github: 'antonkomarev/github-profile-views-counter',
+  },
 ];
 
 export const ebook = [
