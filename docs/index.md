@@ -57,7 +57,7 @@ features:
     title: 其他
     desc: 随笔、总结、调研以及不知如何分类的所有文章
     link: /blog/others
-footer: Open-source MIT Licensed | Copyright ©俊宁 2020
+footer: Open-source MIT Licensed | Copyright ©俊宁 2021
 ---
 
 <img src="./header.svg"/>
