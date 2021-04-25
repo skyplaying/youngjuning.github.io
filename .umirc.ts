@@ -86,5 +86,8 @@ export default defineConfig({
       },
     ],
   ],
+  theme: {
+    '@c-primary': '#007fff',
+  },
   // more config: https://d.umijs.org/config
 });
