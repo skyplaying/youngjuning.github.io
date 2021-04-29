@@ -2,6 +2,11 @@
 title: Git
 ---
 
+## 教程
+
+- [猴子都能懂的 GIT 入门](https://backlog.com/git-tutorial/cn/)
+- [Git 简易指南](https://www.bootcss.com/p/git-guide/)
+
 ## tag 标签
 
 ### push tag
@@ -30,3 +35,7 @@ git push origin v0.0.1
 4. 抓取上游仓库：`git fetch upstream`
 5. 切换到 `main` 或 `master` 分支
 6. 合并上游的主分支：`git merge upstream/main`
+
+## git rebase
+
+- [彻底搞懂 Git-Rebase](http://jartto.wang/2018/12/11/git-rebase/)
