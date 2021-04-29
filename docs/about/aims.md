@@ -272,7 +272,6 @@ order: 3
 
 ## 四月
 
-- [ ] 不管多少篇，拿到 [Golang 主题学习月 ✏️ ｜写 Go 文章打卡，赢 Airpods 等精美礼品 🎁](https://juejin.cn/post/6942105417900097567) 第一名
 - [ ] 掘金翻译计划攒够 80 积分换一个树莓派
 
 ### 第一周 3 月 29 日 — 4 月 04 日
@@ -324,29 +323,28 @@ order: 3
 
 掘力值目前为 `5575`， 增长 245，离 7000 只剩 1425。
 
-## 第三周 4 月 12 日 — 4 月 18 日
+### 第三周 4 月 12 日 — 4 月 18 日
 
 **创作文章**
 
 - [Docker 安装配置宝塔面板](https://juejin.cn/post/6950558227490668557)
 - [使用 rollup 打包 React Native 插件并发布](https://juejin.cn/post/6952331374065877022)
 - [2021 年最值得使用的 Node.js 框架](https://github.com/xitu/gold-miner/pull/8472/files)
-- [ ] [Go 插件每日推荐之 lipgloss](https://github.com/charmbracelet/lipgloss)
-- [ ] https://golangbot.com/arrays-and-slices/ arrays
 
 **掘力值**
 
 掘力值目前为 `5700`， 增长 125，离 7000 只剩 1300。
 
-## 第四周 4 月 19 日 — 4 月 25 日
+### 第四周 4 月 19 日 — 4 月 25 日
 
 **创作文章**
 
-- [ ] 基于 Dumi 开发 React Native 组件库
 - [ ] [These Modern Programming Languages Will Make You Suffer](https://github.com/xitu/gold-miner/issues/8367)
 - [ ] https://golangbot.com/arrays-and-slices/ slices
-- [ ] https://golangbot.com/variadic-functions/
+- [ ] https://golangbot.com/arrays-and-slices/ slices
+- [ ] [Go 插件每日推荐之 lipgloss](https://github.com/charmbracelet/lipgloss)
+
 
 **掘力值**
 
-掘力值目前为 `5700`， 增长 125，离 7000 只剩 1300。
+掘力值目前为 `5881`， 增长 181，离 7000 只剩 1119。
