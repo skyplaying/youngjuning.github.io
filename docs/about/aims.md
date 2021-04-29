@@ -340,7 +340,7 @@ order: 3
 **创作文章**
 
 - [ ] [These Modern Programming Languages Will Make You Suffer](https://github.com/xitu/gold-miner/issues/8367)
-- [ ] https://golangbot.com/arrays-and-slices/ slices
+- [ ] https://golangbot.com/arrays-and-slices/ arrays
 - [ ] https://golangbot.com/arrays-and-slices/ slices
 - [ ] [Go 插件每日推荐之 lipgloss](https://github.com/charmbracelet/lipgloss)
 
