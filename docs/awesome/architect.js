@@ -30,4 +30,10 @@ export const diagram = [
     description: '使用简单的文字描述画 UML 图',
     homepage: 'https://plantuml.com/zh/',
   },
+  {
+    title: 'Draw.io Integration',
+    description: 'This unofficial extension integrates Draw.io into VS Code.',
+    homepage:
+      'https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio',
+  },
 ];
