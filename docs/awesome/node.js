@@ -25,6 +25,13 @@ export const cli = [
     npm: 'userhome',
     github: 'shama/userhome',
   },
+  {
+    title: 'shelljs',
+    description: '🐚 Portable Unix shell commands for Node.js',
+    homepage: 'https://documentup.com/shelljs/shelljs',
+    npm: 'shelljs',
+    github: 'shelljs/shelljs',
+  },
 ];
 
 export const tools = [

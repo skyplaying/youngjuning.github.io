@@ -60,6 +60,10 @@ export const artist = [
     outlink:
       'https://callstack.com/blog/adding-an-example-app-to-your-react-native-library/',
   },
+  {
+    title: '搭建 RN 组件库',
+    outlink: 'https://segmentfault.com/a/1190000022069781',
+  },
 ];
 
 export const ui_module = [

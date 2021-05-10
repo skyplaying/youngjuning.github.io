@@ -21,6 +21,7 @@ features:
   - icon: https://i.loli.net/2021/01/07/UB3wWQdMIPcmpVy.png
     title: Node.js
     desc: Node.js® 是一个基于 Chrome V8 引擎 的 JavaScript 运行时
+    link: /blog/nodejs/
   - icon: https://i.loli.net/2021/01/07/3e2qXd1jYQSr6tD.png
     title: React
     desc: 用于构建用户界面的 JavaScript 库
