@@ -32,6 +32,12 @@ export const cli = [
     npm: 'shelljs',
     github: 'shelljs/shelljs',
   },
+  {
+    title: 'shx',
+    description: 'shx is a wrapper around ShellJS Unix commands',
+    npm: 'shx',
+    github: 'shelljs/shx',
+  },
 ];
 
 export const tools = [

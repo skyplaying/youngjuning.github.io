@@ -1,6 +1,7 @@
 ---
 title: 我的目标
 order: 3
+hide: true
 ---
 
 - 制定时间：`2021年2月17日`
@@ -343,7 +344,6 @@ order: 3
 - [ ] https://golangbot.com/arrays-and-slices/ arrays
 - [ ] https://golangbot.com/arrays-and-slices/ slices
 - [ ] [Go 插件每日推荐之 lipgloss](https://github.com/charmbracelet/lipgloss)
-
 
 **掘力值**
 
