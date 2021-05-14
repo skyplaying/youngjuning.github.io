@@ -12,6 +12,15 @@ export const tools = [
     npm: 'create-react-native-module',
     github: 'brodybits/create-react-native-module',
   },
+  {
+    title: 'pod-install',
+    description:
+      'A fast, zero-dependency package for cutting down on common issues developers have when running pod install.',
+    homepage:
+      'https://github.com/expo/expo-cli/tree/master/packages/pod-install',
+    npm: 'pod-install',
+    github: 'expo/expo-cli',
+  },
 ];
 
 export const ui_libs = [
