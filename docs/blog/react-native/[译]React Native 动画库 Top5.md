@@ -20,7 +20,7 @@ tags: [翻译]
 
 使用 [Bit][Bit] 可以跨平台分享和重用 React 组件。作为一个团队在共享组件上进行协作，可以更敏捷地共同构建应用程序。让 Bit 做繁重的工作，这样你就可以轻松地发布、安装和更新你的个人组件而不需要任何开销。
 
-![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210512164319.gif)
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e1c5f1759c924881ba62904a329645ef~tplv-k3u1fbpfcp-zoom-1.image)
 
 ## react-native-animatable
 
@@ -36,7 +36,8 @@ yarn add react-native-animatable
 
 然后，让我们制作一个 slideInDown 动画效果！
 
-![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210512170322.png)
+
+![1_amBoBML8nY2DxpuNC5MbNQ.gif](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/abc35f9d7b304742b867c58f3d07f7e5~tplv-k3u1fbpfcp-watermark.image)
 
 我们的组件看起来如下：
 
@@ -166,7 +167,8 @@ export default AnimatableScreen;
 [lottie]: https://airbnb.io/lottie/#/
 [lottie-react-native]: http://lottie-react-native/
 
-![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210512171502.png)
+
+![1_audbt0qXd6H5RQl7ebkgeQ.gif](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fc00afe5e9ef421aa00ca61a5e7b5e8c~tplv-k3u1fbpfcp-watermark.image)
 
 这是迄今为止我最喜欢的库，Lottie 是一个由 Airbnb 创建的动画库，它将 After Effect 动画解析成 JSON 文件，你可以将其导出并在你的应用程序中使用，你可以在 ios、Android、Windows、Web 和 React Native 上使用 Lottie。
 
@@ -222,11 +224,11 @@ react-native-reanimated 提供了一个新的 Animated API 来让你替代 [Reac
 [saidhayani@]: https://saidhayani.medium.com/
 [rnal]: https://github.com/hayanisaid/rnal
 
-![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210512190519.png)
+![1_BLFTzAhn1uV5OLtHFUQJQg.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1772cb10093d489b9357f6c5c08f431e~tplv-k3u1fbpfcp-watermark.image)
 
 `rnal` , 是由 [SaidHayani@][saidhayani@] 创建的 React Native 动画库，它的目的是使 React Native 中使用动画变得足够简单，通过提供简单的封装来创建过渡效果，如 `Fade`，`Scale`，或 `rotation` 效果，并可选择创建自定义动画，要创建 `Fade` 效果，你可以只做以下事情：
 
-![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210512191809.png)
+![1_zuqjwJjTqPUMXAoOYGfYIw.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0259be58f06642e592bd39c55f263bc2~tplv-k3u1fbpfcp-watermark.image)
 
 你可以查看 [docs][rnal] 探索更多你可以使用的选项.
 
@@ -292,7 +294,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210512170958.png)
+![1_nhKMy9zlUPvCYWWbiGNFaQ.gif](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/15b7fc60d48d46ed94457eda63d5aa5d~tplv-k3u1fbpfcp-watermark.image)
 
 react-native-motion 为我们提供了一个简单的 API 来制作共享的过渡效果，该库的作者写了 [一篇关于共享过渡效果的文章](https://medium.com/react-native-motion/transition-challenge-9bc9fdef56c7)。值得注意的是。
 
