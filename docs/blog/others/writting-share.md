@@ -30,8 +30,6 @@
 
 一年的积累下来，集齐了两套完整的周边，以及各种单品。并在今年三月、四月获得了月榜的证书。
 
-<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f0033f65290149cf947e41a6735fd914~tplv-k3u1fbpfcp-watermark.image" style="zoom:50%;" />
-
 <img src="https://cdn.jsdelivr.net/gh/youngjuning/images/20210515143243.jpeg" style="zoom: 50%;" />
 
 ## 收益
