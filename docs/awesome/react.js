@@ -12,6 +12,13 @@ export const componentization = [
     npm: 'react-live',
     github: 'https://github.com/FormidableLabs/react-live',
   },
+  {
+    title: 'shineout',
+    description: '高性能React组件库',
+    homepage: 'https://shine.wiki/',
+    github: 'sheinsight/shineout',
+    npm: 'shineout',
+  },
 ];
 
 export const api = [
@@ -28,5 +35,10 @@ export const artist = [
   {
     title: '当我在头条写 React 时，我是如何考虑技术选型与设计的',
     outlink: 'https://mp.weixin.qq.com/s/7GDmCxbwVPTNBAHom1BgyA',
+  },
+  {
+    title: '【译】什么时候使用 useMemo 和 useCallback',
+    outlink:
+      'https://jancat.github.io/post/2019/translation-usememo-and-usecallback/',
   },
 ];
