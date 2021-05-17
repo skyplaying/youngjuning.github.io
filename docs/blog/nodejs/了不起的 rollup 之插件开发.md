@@ -23,35 +23,37 @@ tags:
 
 ```js
 // index.js
-export default function myExample () {
+export default function myExample() {
   return {
     name: 'my-example', // 名字会在 warnings 和 errors 中显示
-    resolveId ( source ) {
+    resolveId(source) {
       if (source === 'virtual-module') {
         return source; // 这表明 rollup 不应该询问其他插件或检查文件系统来寻找这个 ID。
       }
       return null; // 其他的 ID 应该按照通常的方式处理
     },
-    load ( id ) {
+    load(id) {
       if (id === 'virtual-module') {
         return 'export default "This is virtual!"'; // "virtual-module" 的源码
       }
       return null; // 其他的 ID 应该按照通常的方式处理
-    }
+    },
   };
 }
 
 // rollup.config.js
 import myExample from './index';
 
-export default ({
+export default {
   input: 'virtual-module', // 被我们的插件解析
   plugins: [myExample()],
-  output: [{
-    file: 'bundle.js',
-    format: 'es'
-  }]
-});
+  output: [
+    {
+      file: 'bundle.js',
+      format: 'es',
+    },
+  ],
+};
 ```
 
 ## 约定
@@ -72,18 +74,18 @@ export default ({
 
 插件的名字，在错误和警告信息中使用。
 
-## 构建 Hooks
+## 构建钩子函数
 
-为了与构建过程交互，你的插件对象需要包含一些 “hooks”。Hooks 是构建的各个阶段调用的函数。Hooks 可以影响构建执行方式、提供构建的信息或者在构建完成后修改构建。rollup 中有不同的 hooks：
+为了与构建过程交互，你的插件对象需要包含一些构建钩子函数。构建钩子是构建的各个阶段调用的函数。构建钩子函数可以影响构建执行方式、提供构建的信息或者在构建完成后修改构建。rollup 中有不同的构建钩子函数：
 
 - `async`：这类 hook 也可以返回一个解析为相同类型值的 promise;否则，hook 将被标记为 `sync`。
 - `first`：如果有多个插件实现了这个 hook，hook 将依次运行，直到钩子返回一个非 `null` 或非 `undefined` 的值。
 - `sequential`：如果有多个插件实现了这个 hook，所有的插件都将按照指定的插件顺序运行。如果一个 hook 是异步的，这种类型的后续 hook 将一直等待，直到当前 hook 被解析。
 - `parallel`：如果有多个插件实现了这个 hook，所有的插件都将按照指定的插件顺序运行。如果一个 hook 是异步的，这种类型的后续 hook 将并行运行，而不等待当前钩子。
 
-构建 Hooks 在构建阶段执行，它们被 `rollup.rollup(inputOptions)` 触发。它们主要关注在 Rollup 处理输入文件之前定位、提供和转换输入文件。构建阶段的第一个钩子是 `options`，最后一个钩子总是 `buildEnd`，除非有一个构建错误，在这种情况下 `closeBundle` 将在这之后被调用。
+构建钩子函数在构建阶段执行，它们被 `rollup.rollup(inputOptions)` 触发。它们主要关注在 Rollup 处理输入文件之前定位、提供和转换输入文件。构建阶段的第一个钩子是 `options`，最后一个钩子总是 `buildEnd`，除非有一个构建错误，在这种情况下 `closeBundle` 将在这之后被调用。
 
-此外，在观察模式下，`watchChange` 钩子可以在任何时候被触发，以通知新的运行将在当前运行产生其输出后被触发。另外，当 watcher 关闭时，closeWatcher 钩将被触发。
+此外，在观察模式下，`watchChange` 钩子可以在任何时候被触发，以通知新的运行将在当前运行产生其输出后被触发。另外，当 watcher 关闭时，closeWatcher 钩子函数将被触发。
 
 ### `buildEnd`
 
