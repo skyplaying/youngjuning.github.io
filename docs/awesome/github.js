@@ -80,6 +80,12 @@ export const repo = [
     homepage: 'http://blog.haoji.me/chrome-plugin-develop.html',
     github: 'sxei/chrome-plugin-demo',
   },
+  {
+    title: 'Probot',
+    description: '一个基于 Node.js 开发 GitHub Apps 的框架',
+    homepage: 'https://probot.github.io/',
+    github: 'probot/probot',
+  },
 ];
 
 export const profile = [

@@ -38,6 +38,34 @@ export const cli = [
     npm: 'shx',
     github: 'shelljs/shx',
   },
+  {
+    title: 'yargs',
+    description:
+      'Yargs helps you build interactive command line tools by parsing arguments and generating an elegant user interface.',
+    homepage: 'https://yargs.js.org/',
+    npm: 'yargs',
+    github: 'yargs/yargs',
+  },
+  {
+    title: 'create-probot-app',
+    description: '🤖📦 Create a new probot app',
+    homepage:
+      'https://github.com/probot/create-probot-app/blob/master/README.md',
+    npm: 'create-probot-app',
+    github: 'probot/create-probot-app',
+  },
+  {
+    title: 'chalk',
+    description: '🖍 Terminal string styling done right',
+    npm: 'chalk',
+    github: 'chalk/chalk',
+  },
+  {
+    title: 'minimatch',
+    description: 'A minimal matching utility.',
+    npm: 'minimatch',
+    github: 'isaacs/minimatch',
+  },
 ];
 
 export const tools = [
@@ -58,6 +86,14 @@ export const tools = [
     description: 'The UNIX command rm -rf for node.',
     npm: 'rimraf',
     github: 'isaacs/rimraf',
+  },
+  {
+    title: 'terminalizer',
+    description:
+      '🦄 Record your terminal and generate animated gif images or share a web player',
+    homepage: 'https://terminalizer.com/',
+    npm: 'terminalizer',
+    github: 'faressoft/terminalizer',
   },
 ];
 
@@ -150,5 +186,13 @@ export const convert = [
     description: 'Parser and writer for various spreadsheet formats.',
     homepage: 'https://sheetjs.com/',
     github: 'sheetjs/sheetjs',
+  },
+  {
+    title: 'prettyjson',
+    description:
+      'Package for formatting JSON data in a coloured YAML-style, perfect for CLI output.',
+    homepage: 'http://rafeca.com/prettyjson/',
+    npm: 'prettyjson',
+    github: 'rafeca/prettyjson',
   },
 ];

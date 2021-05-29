@@ -23,26 +23,18 @@
     ]
   },
   "devDependencies": {
-    "@babel/preset-flow": "^7.12.1",
     "@babel/preset-react": "^7.12.10",
     "@types/lodash.sortby": "^4.7.6",
-    "@types/tuya-panel-kit": "4.0.1",
     "antd": "^4.10.3",
     "babel-plugin-import": "^1.13.3",
     "dumi": "^1.1.9",
     "lint-staged": "^10.0.7",
     "lodash.sortby": "^4.7.0",
-    "prettier": "^1.19.1",
-    "react-helmet": "^6.1.0",
-    "react-native": "^0.63.4",
-    "sitemap": "^6.3.5",
-    "tuya-panel-kit": "https://github.com/tuya/tuya-panel-kit.git#tuya-panel-kit-v4.2.1-gitpkg",
-    "umi-plugin-react-native": "^0.4.0",
-    "yorkie": "^2.0.0"
-  },
-  "dependencies": {
     "lodash.shuffle": "^4.2.0",
-    "postcss": "^8.2.8"
+    "postcss": "^8.2.8",
+    "prettier": "^1.19.1",
+    "sitemap": "^6.3.5",
+    "yorkie": "^2.0.0"
   },
   "version": "0.0.1-0"
 }

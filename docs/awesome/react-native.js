@@ -46,6 +46,13 @@ export const ui_libs = [
     npm: 'react-native-elements',
     github: 'react-native-elements/react-native-elements',
   },
+  {
+    title: 'react-native-see-more-inline',
+    description:
+      'Show a "read more", "see more", "read less", "see less" inline with your text in React Native',
+    homepage: 'react-native-see-more-inline',
+    github: 'kashishgrover/react-native-see-more-inline',
+  },
 ];
 
 export const device = [

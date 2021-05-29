@@ -5,6 +5,8 @@ export default defineConfig({
   favicon: 'https://i.loli.net/2021/03/30/7jxQfy9EHbapqt3.jpg',
   logo: 'https://i.loli.net/2021/03/30/7jxQfy9EHbapqt3.jpg',
   mode: 'site',
+  hash: true,
+  ssr: { mode: 'stream' },
   exportStatic: {},
   locales: [
     ['zh-CN', '中文'],

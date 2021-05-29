@@ -14,6 +14,8 @@ sidemenu: false
 - SA
   - System Architect，系统架构师 `[ˈɑːrkɪtekt]`
   - Sales Associate，销售助理 `[əˈsoʊʃieɪt]`
+- imma
+  - I am going to，我将要
 
 ## 短语
 
@@ -23,6 +25,10 @@ sidemenu: false
   - 几个
 - business partner `/ˈbɪznɪs ˈpɑːtnə/`
   - 商业合作伙伴
+- For a walkthrough of `['wɔ:kθru:]`
+  - 浏览
+- granular permissions `[ˈɡrænjələ(r)]`
+  - 细粒度权限
 - underlying platform `[ˌʌndərˈlaɪɪŋ ˈplætfɔːrm]`
   - 底层平台
 - is inferred from `[ɪnˈfɜːr]`
@@ -100,6 +106,8 @@ sidemenu: false
   - n. [计] 卫生处理，https://github.com/rust-lang/rust/pull/81506
 - establish `[ɪˈstæblɪʃ]`
   - v. 建立，创立；确立；获得接受；查实，证实
+- extensibility `[ik,stensə'biləti]`
+  - n. 可扩展性
 
 ## F
 

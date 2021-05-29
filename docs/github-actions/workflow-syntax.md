@@ -1244,29 +1244,3 @@ Path patterns must match the whole path, and start from the repository's root.
 | `'**/migrate-*.sql'`                            | A file with the prefix `migrate-` and suffix `.sql` anywhere in the repository.                                                                                                               | `migrate-10909.sql`<br/><br/>`db/migrate-v1.0.sql`<br/><br/>`db/sept/migrate-v1.sql`    |
 | `*.md`<br/><br/>`!README.md`                    | Using an exclamation mark (`!`) in front of a pattern negates it. When a file matches a pattern and also matches a negative pattern defined later in the file, the file will not be included. | `hello.md`<br/><br/>_Does not match_<br/><br/>`README.md`<br/><br/>`docs/hello.md`      |
 | `*.md`<br/><br/>`!README.md`<br/><br/>`README*` | Patterns are checked sequentially. A pattern that negates a previous pattern will re-include file paths.                                                                                      | `hello.md`<br/><br/>`README.md`<br/><br/>`README.doc`                                   |
-
-```jsx
-/**
- * inline: true
- */
-import React from 'react';
-import { Helmet } from 'react-helmet';
-
-export default () => {
-  return (
-    <Helmet>
-      <style type="text/css">{`
-        .__dumi-default-layout-toc {
-          width: 276px;
-        }
-        .__dumi-default-layout {
-          padding-right: 334px
-        }
-        .__dumi-default-layout[data-site-mode='true'][data-show-slugs='true'] {
-          padding-right: 334px;
-        }
-      `}</style>
-    </Helmet>
-  );
-};
-```

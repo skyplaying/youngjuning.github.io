@@ -57,6 +57,12 @@ export const online = [
     homepage: 'https://sitdown.mdnice.com/',
     github: 'https://github.com/mdnice/sitdown',
   },
+  {
+    title: 'Glitch',
+    description:
+      "Create your next web project in your browser with no setup and we'll instantly deploy it.",
+    homepage: 'https://glitch.com/',
+  },
 ];
 export const design = [
   {
@@ -65,7 +71,6 @@ export const design = [
     homepage: 'https://balsamiq.com/wireframes/',
   },
 ];
-
 export const box = [
   {
     title: 'cubox',
