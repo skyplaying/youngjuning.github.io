@@ -1,6 +1,6 @@
 ---
 title: 基于 Probot 实现 GitHub NPM 发布机器人🤖
-cover:
+cover: https://cdn.jsdelivr.net/gh/youngjuning/images/20210601182136.png
 tags: [掘金专栏]
 ---
 
@@ -8,7 +8,7 @@ tags: [掘金专栏]
 
 ## 关于 Github Apps
 
-GitHub Apps 是 GitHub 中优秀的产品。一个 GitHub App 以自己的名义行事，通过 API 直接使用自己的身份进行操作，这意味着你不需要作为一个单独的用户维护一个机器人或服务账户。
+GitHub Apps 是 GitHub 中优秀的产品。一个 GitHub App 通过 API 直接使用自己的身份进行操作，这意味着你不需要作为一个单独的用户维护一个机器人或服务账户。
 
 GitHub Apps 可以被直接安装到组织或者用户账号上，并且可以赋予它们访问指定仓库的权限。它们带有内置的 webhook 和狭窄的特定权限。设置 GitHub 应用程序时，可以选择希望它访问的仓库。比如你可以设置一个叫 `MyGitHub` 的应用程序，该应用程序有且仅有 `octocat` 仓库的写入 `issues` 的权限。安装 GitHub App 需要你是组织的所有者或对仓库拥有 admin 权限。
 
@@ -146,9 +146,181 @@ INFO (server): Connected
 4. 点击 **Register a GitHub App** 按钮继续。
 5. 接着，你需要给你的 App 取一个没有被占用的名字，注意：如果你看到类似 `Name is reserved for the account @tuya` 的提示，这意味着你不能使用已存在的 GitHub organization 的名字作为 app 的名字（除非你是该组织的 owner）
 
-## Github Release 状态变化
+## GitHub Release 时 `npm publish`
 
 ![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210520153504.png)
+
+实现 GitHub CI 自动发布 NPM 包，主要是为了合理管理对外 npm 发布权限。而比较通用的发布时机是在 GitHub release 时。基于上面流程图的分析，我们可以看出 released 状态时执行 `npm publish` 最合适。
+
+我们实现的具体逻辑是，当 Probot app 监听到 `release.released` 事件时，处理发布前的操作。重要的是我们需要根据 `package.json` 中的 `version` 字段匹配出 tag，比如：
+
+- 1.0.0：tag 为 latest 的 1.0.0
+- 1.0.0-beta.0：tag 为 beta 的 1.0.0-beta.0
+- 1.0.0-alpha.0：tag 为 alpha 的 1.0.0-alpha
+
+## NPM 自动发布实现原理
+
+发布之前我们需要拉取仓库代码、取出版本和 tag、设置 NPM publish Token 等工作。先上核心代码，后面我们详细解析。
+
+```js
+app.on('release.released', async context => {
+  if (!isTuya(context)) return;
+  app.log('npm publishing');
+  const { repository: repo } = context.payload;
+  const downloadDefaultBranch = `${repo.full_name}#${context.payload.release.tag_name}`;
+  const downLoadTempDir = `${os.tmpdir()}/${repo.full_name}`;
+  await download(downloadDefaultBranch, downLoadTempDir);
+  const { version, scripts } = require(`${downLoadTempDir}/package.json`);
+  const tag = /^\d\.\d\.\d-(.*)\.\d$/.exec(version)
+    ? /^\d\.\d\.\d-(.*)\.\d$/.exec(version)[1]
+    : 'latest';
+  // 如果有 build 脚本则先执行 build 脚本
+  if (scripts.build) {
+    await execSh(`cd ${downLoadTempDir} && npm install && npm run build`);
+  }
+  try {
+    const result = await npmPublish({
+      package: `${downLoadTempDir}/package.json`,
+      token: process.env.NPM_AUTH_TOKEN,
+      registry: 'https://registry.npmjs.org/',
+      tag,
+    });
+    if (result.type === 'none') {
+      app.log.error(
+        `You can't publish duplicate version ${result.package}@${result.version}`,
+      );
+    }
+  } catch (error) {
+    app.log.error(error);
+  }
+});
+```
+
+### NPM Publish Token
+
+#### 申请 NPM Publish Token
+
+**1. 访问 npmjs.com 进入 Access Tokens 页面**
+
+![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210601121959.png)
+
+**2. 点击 Generate New Token 按钮**
+
+![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210601122042.png)
+
+**3. Token 类型选择 Publish**
+
+![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210601122113.png)
+
+#### 保证 NPM Publish Token 安全性
+
+NPM Token 是不能被别人看到的，为了达到这个目的，首先项目需要设置为私有的，然后将 Token 放到 `.env` 中，通过 `process.env.NPM_AUTH_TOKEN` 获取。另外谨记不要在日志中打印环境变量。
+
+#### 保证 GitHub App 安全性
+
+如果把 GitHub App 发布为 public 的，那么任何仓库都可以安装该应用，这不是我们想要的结果。解决办法有两个，一是将应用注册为 private 类型的，二是在监听回调中判断是否是允许的组织或者用户。我选择的是第二种方案，校验函数如下：
+
+```js
+const isTuya = context => {
+  const { full_name } = context.payload.repository;
+  return full_name.startsWith('youngjuning') || full_name.startsWith('tuya');
+};
+```
+
+### 下载源码
+
+我们选择了 download-git-repo 下载 git 仓库，但是该仓库不支持 Promise，我们做一下简单的改造：
+
+```js
+const download = require('download-git-repo');
+
+module.exports = (repo, tempDir) => {
+  return new Promise((resolve, reject) => {
+    download(repo, tempDir, err => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(null);
+      }
+    });
+  });
+};
+```
+
+### npmPublish
+
+我们选择了 @jsdevtools/npm-publish 执行发布动作，该仓库除了编程调用外，还可以作为 GitHub Action 和命令行工具使用。需要注意的是，我们需要用正则取出我们要发布的 tag：
+
+```js
+const tag = /^\d\.\d\.\d-(.*)\.\d$/.exec(version)
+  ? /^\d\.\d\.\d-(.*)\.\d$/.exec(version)[1]
+  : 'latest';
+```
+
+### lerna publish
+
+lerna 管理版本由于是一次可能发布多个仓库，所以无法使用上面提到的发布流程。针对 lerna，我设计的发布流程是监听到 push 动作后取最新的一条 commit，匹配是否包含 `chore(release): publish`。具体原理如下：
+
+1. 判断 push 分支是否是主分支且提交信息包含 `chore(release): publish`
+2. 因为是 lerna publish，所以需要使用 simple-git 这个库 clone 项目。
+3. 由于 lerna publish [不支持 token](https://github.com/lerna/lerna/issues/2404)，我们采用将 `//registry.npmjs.org/:_authToken=${process.env.NPM_AUTH_TOKEN}` 写入 `.npmrc` 的方式完成带 token 的发布。
+4. 最后，我们需要使用 `from-git` 的方式执行 `lerna publish`，`from-git` 的场景便是本地执行 `lerna version`，在 CI 中执行 `lerna publish`。
+
+完整代码如下：
+
+```js
+app.on('push', async context => {
+  if (!isTuya(context)) return;
+  if (
+    context.payload.ref.indexOf(context.payload.repository.default_branch) !==
+      -1 &&
+    context.payload.head_commit.message.indexOf('chore(release): publish') === 0
+  ) {
+    app.log('push event');
+    execSh(`git --version`);
+    const { repository: repo } = context.payload;
+    const cloneTempDir = `${os.tmpdir()}/${repo.full_name}`;
+    try {
+      await git.clone(repo.clone_url, cloneTempDir);
+      const { devDependencies } = require(`${cloneTempDir}/package.json`);
+      if (devDependencies['lerna']) {
+        app.log('lerna publishing');
+        await execSh(
+          `cd ${cloneTempDir} && echo //registry.npmjs.org/:_authToken=${process.env.NPM_AUTH_TOKEN} > .npmrc`,
+        );
+        await execSh(
+          `cd ${cloneTempDir} && npm install && npm run build && ./node_modules/.bin/lerna publish from-git --yes --no-verify-access`,
+        );
+      }
+      await execSh(`rm -rf ${cloneTempDir}`);
+    } catch (error) {
+      await execSh(`rm -rf ${cloneTempDir}`);
+    }
+  }
+});
+```
+
+## Glitch 部署
+
+如果你有自己的服务器，可以直接将机器人程序部署到自己的服务器。我这里使用官方推荐的 Glitch 服务部署。Glitch 可以免费托管 node 应用并且直接在浏览器中编辑他们。对于简单的应用完全够了。
+
+1. 注册并在 [Glitch](https://glitch.com/) 新建项目，选择 **Import from GitHub**，弹窗写上应用 github 地址，或者使用 https://github.com/behaviorbot/new-issue-welcome 作为模板导入后再将自己的代码复制过来。
+2. 打开 `.env` 文件使用以下内容替代：
+
+```
+APP_ID=<your app id>
+WEBHOOK_SECRET=<your app secret>
+PRIVATE_KEY_PATH=<your private_key>
+NODE_ENV=production
+NPM_AUTH_TOKEN=3c2c104e-9f1f-4fc5-903e-726610b75ce1
+INPUT_TOKEN=
+```
+
+4. 将 glitch 链接设置为 GitHub App 的 webhook 地址即可，之后更新代码，glitch 会自动更新部署。
+
+## 权限
+
+Probot App 的初始权限在 `app.yml` 文件中，如果 App 已经创建了，又想要更新权限，可以在 https://github.com/settings/apps 中更新。我所用的权限配置请点击 [app.yml](https://glitch.com/edit/#!/tuya-robot?path=app.yml%3A119%3A0) 查看。
 
 [probot]: https://probot.github.io/
 [github apps]: https://docs.github.com/en/developers/apps/about-apps
