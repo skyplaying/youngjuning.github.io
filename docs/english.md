@@ -40,6 +40,9 @@ sidemenu: false
 
 ## A
 
+- academic `[ˌækəˈdemɪk]`
+  - adj. 学术的；理论的；学院的
+  - n. 大学生，大学教师；学者
 - assignment statement `[əˈsaɪnmənt ˈsteɪtmənt]`
   - 赋值语句
 - agile `[ˈædʒl]`
@@ -57,6 +60,9 @@ sidemenu: false
 
 ## C
 
+- cause `[kɔːz]`
+  - n. 原因；**事业**；目标
+  - vt. 引起；使遭受
 - concurrency `kənˈkərənsē`
   - n. 并发
 - constraint `/kənˈstreɪnt/`
@@ -87,6 +93,8 @@ sidemenu: false
   - vi. 起源
 - descriptor `dəˈskriptər`
   - n. 修饰符、描述符
+- despite `[di'spait]`
+  - prep. 即使，尽管
 - distinct `dɪsˈtɪŋkt`
   - [计] 清楚的
   - adj. 明显的；独特的；清楚的；有区别的
@@ -174,6 +182,8 @@ sidemenu: false
   - n. 图表，框架
 - robust `[roʊˈbʌst]`
   - adj. 强健的；健康的；粗野的；粗鲁的
+- reputation `[ˌrepjuˈteɪʃn]`
+  - n. 名声，名誉；声望
 
 ## S
 

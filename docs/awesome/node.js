@@ -66,6 +66,12 @@ export const cli = [
     npm: 'minimatch',
     github: 'isaacs/minimatch',
   },
+  {
+    title: 'execa',
+    description: '人性化的进程执行工具',
+    homepage: 'https://github.com/sindresorhus/execa/blob/main/readme.md',
+    github: 'sindresorhus/execa',
+  },
 ];
 
 export const tools = [
