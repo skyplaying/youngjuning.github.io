@@ -90,4 +90,12 @@ export const ui_module = [
       'https://github.com/Naturalclar/react-native-color-picker-ios/blob/master/README.md',
     github: 'Naturalclar/react-native-color-picker-ios',
   },
+  {
+    title: 'react-native-switch-toggle',
+    description: 'Simple switch toggle component for react-native.',
+    homepage:
+      'https://github.com/hyochan/react-native-switch-toggle/blob/master/README.md',
+    npm: 'react-native-switch-toggle',
+    github: 'hyochan/react-native-switch-toggle',
+  },
 ];
