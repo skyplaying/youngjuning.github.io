@@ -1,6 +1,7 @@
 ---
 title: 基于 lerna 的多包 JavaScript 项目搭建维护笔记
 cover: https://i.loli.net/2020/11/14/2VMPXulGiLD6JU8.png
+tags: [掘金专栏]
 ---
 
 ## 开始
@@ -188,9 +189,9 @@ $ yarn add -W -D typescript
 
 - version: 当前仓库的版本，Independent mode 请设置为 `independent`
 - npmClient: 指定运行命令的客户端程序（默认是 npm）
+- ignoreChanges: 一个不包含在 `lerna changed/publish` 的 glob 数组。使用这个去阻止发布不必要的更新，比如修复 `README.md`
 - command
   - publish
-    - ignoreChanges: 一个不包含在 `lerna changed/publish` 的 glob 数组。使用这个去阻止发布不必要的更新，比如修复 `README.md`
     - message: 一个 publish 时的自定义 commit 信息。详情请查看[@lerna/version](https://github.com/lerna/lerna/blob/main/commands/version#--message-msg)
     - registry: 设置自定义的 npm 代理（比如使用 verdaccio 搭建的私服）
   - version
