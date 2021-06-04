@@ -57,3 +57,10 @@ export const nodejs = [
     outlink: 'https://segmentfault.com/a/1190000012262311',
   },
 ];
+
+export const maxStars = [
+  {
+    title: '【建议收藏】css晦涩难懂的点都在这啦',
+    outlink: 'https://juejin.cn/post/6888102016007176200',
+  },
+];
