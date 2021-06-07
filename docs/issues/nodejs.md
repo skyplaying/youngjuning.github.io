@@ -19,3 +19,15 @@ console.log(os.homedir());
 官方文档：
 
 http://nodejs.cn/api/os/os_homedir.html
+
+## 将指定版本设置为指定标签
+
+```sh
+npm dist-tag add @youngjuning/playground@1.0.3 latest|alpha|beta
+```
+
+## 展示 dist-tag
+
+```sh
+npm dist-tag ls @youngjuning/playground
+```
