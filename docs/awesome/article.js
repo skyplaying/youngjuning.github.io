@@ -63,4 +63,8 @@ export const maxStars = [
     title: '【建议收藏】css晦涩难懂的点都在这啦',
     outlink: 'https://juejin.cn/post/6888102016007176200',
   },
+  {
+    title: '总结TypeScript在项目开发中的应用实践体会',
+    outlink: 'https://juejin.cn/post/6970841540776329224',
+  },
 ];
