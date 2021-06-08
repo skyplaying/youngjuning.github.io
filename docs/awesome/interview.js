@@ -1,3 +1,13 @@
+export default [
+  {
+    title: '前端面试',
+    description:
+      '🔥🔥🔥 前端面试，独有前端面试题详解，前端面试刷题必备，1000+前端面试真题，Html、Css、JavaScript、Vue、React、Node、TypeScript、Webpack、算法、网络与安全、浏览器',
+    homepage: 'https://lgwebdream.github.io/FE-Interview/',
+    github: 'lgwebdream/FE-Interview',
+  },
+];
+
 export const nodejs = [
   {
     title: 'jimuyouyou/node-interview-questions',

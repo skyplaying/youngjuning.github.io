@@ -2,6 +2,18 @@
 title: 面试
 ---
 
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import data from './interview';
+
+export default () => {
+  return <CardList data={data} />;
+};
+```
+
 ## NodeJs
 
 ```jsx

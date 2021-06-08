@@ -34,6 +34,10 @@ export const sourceinsight = [
     title: '8年老前端独家分享阅读 Vue3 源码技巧',
     outlink: 'https://www.bilibili.com/video/BV1xy4y1178G',
   },
+  {
+    title: 'React 技术揭秘',
+    outlink: 'https://react.iamkasong.com/',
+  },
 ];
 
 export const nodeSpider = [
@@ -62,5 +66,9 @@ export const maxStars = [
   {
     title: '【建议收藏】css晦涩难懂的点都在这啦',
     outlink: 'https://juejin.cn/post/6888102016007176200',
+  },
+  {
+    title: '总结TypeScript在项目开发中的应用实践体会',
+    outlink: 'https://juejin.cn/post/6970841540776329224',
   },
 ];
