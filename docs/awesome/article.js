@@ -34,6 +34,10 @@ export const sourceinsight = [
     title: '8年老前端独家分享阅读 Vue3 源码技巧',
     outlink: 'https://www.bilibili.com/video/BV1xy4y1178G',
   },
+  {
+    title: 'React 技术揭秘',
+    outlink: 'https://react.iamkasong.com/',
+  },
 ];
 
 export const nodeSpider = [

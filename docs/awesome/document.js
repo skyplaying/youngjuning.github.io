@@ -25,12 +25,18 @@ export default [
     npm: 'vuepress',
     github: 'vuejs/vuepress',
   },
+  {
+    title: 'docusaurus',
+    description: 'Easy to maintain open source documentation websites.',
+    homepage: 'https://docusaurus.io/',
+    github: 'facebook/docusaurus',
+  },
 ];
 
 export const deploy = [
   {
-    title: '',
-    description: '',
+    title: 'vercel',
+    description: '快速部署应用',
     homepage: 'https://vercel.com/',
     github: 'vercel/vercel',
   },
