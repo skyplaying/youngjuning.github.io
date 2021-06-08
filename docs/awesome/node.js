@@ -72,6 +72,13 @@ export const cli = [
     homepage: 'https://github.com/sindresorhus/execa/blob/main/readme.md',
     github: 'sindresorhus/execa',
   },
+  {
+    title: 'npm-publish',
+    description: 'GitHub Action to publish to NPM',
+    homepage: 'https://jstools.dev/npm-publish/',
+    npm: '@jsdevtools/npm-publish',
+    github: 'JS-DevTools/npm-publish',
+  },
 ];
 
 export const tools = [

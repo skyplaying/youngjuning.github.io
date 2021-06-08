@@ -34,6 +34,11 @@ export const mac = [
     description: 'macOS Terminal Replacement',
     homepage: 'https://iterm2.com/',
   },
+  {
+    title: 'DeepL',
+    description: 'DeepL Translate',
+    homepage: 'https://www.deepl.com/translator',
+  },
 ];
 export const windows = [
   {
@@ -62,6 +67,12 @@ export const online = [
     description:
       "Create your next web project in your browser with no setup and we'll instantly deploy it.",
     homepage: 'https://glitch.com/',
+  },
+  {
+    title: 'crontab guru',
+    description:
+      'The quick and simple editor for cron schedule expressions by Cronitor',
+    homepage: 'https://crontab.guru/',
   },
 ];
 export const design = [
