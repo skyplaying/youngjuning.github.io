@@ -60,7 +60,11 @@ npm dist-tag ls @youngjuning/playground
     "miniapp",
     "weixin"
   ],
-  "author": "youngjuning",
+  "author": {
+    "name": "洛竹",
+    "email": "youngjuning@aliyun.com",
+    "url": "https://youngjuning.js.org"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/youngjuning/wx-promise-pro/issues"
