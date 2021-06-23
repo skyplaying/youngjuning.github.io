@@ -90,5 +90,9 @@ export default defineConfig({
   theme: {
     '@c-primary': '#007fff',
   },
+  publicPath:
+    process.env.NODE_ENV === 'production'
+      ? '//cdn.jsdelivr.net/gh/youngjuning/youngjuning.github.io@gh-pages/'
+      : '/',
   // more config: https://d.umijs.org/config
 });
