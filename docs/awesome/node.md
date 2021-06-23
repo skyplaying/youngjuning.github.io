@@ -89,3 +89,17 @@ export default () => {
   return <CardList data={convert} />;
 };
 ```
+
+## API 封装
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { apiWrapper } from './node';
+
+export default () => {
+  return <CardList data={apiWrapper} />;
+};
+```

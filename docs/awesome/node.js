@@ -209,3 +209,13 @@ export const convert = [
     github: 'rafeca/prettyjson',
   },
 ];
+
+export const apiWrapper = [
+  {
+    title: '@gitbeaker/node',
+    description:
+      '🤖 GitLab API NodeJS library with full support of all the Gitlab API services.',
+    npm: '@gitbeaker/node',
+    github: 'jdalrymple/gitbeaker',
+  },
+];
