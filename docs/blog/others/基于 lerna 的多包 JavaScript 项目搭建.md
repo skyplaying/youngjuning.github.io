@@ -132,15 +132,6 @@ $ pm2 unstartup launchd
 }
 ```
 
-```json
-// 各 package 的 package.json
-{
-  "publishConfig": {
-    "registry": "http://localhost:4873"
-  }
-}
-```
-
 ## commitlint & commitizen
 
 > 请参考我之前的文章 [一文搞定规范化 Git Commit](https://juejin.im/post/6877462747631026190)
