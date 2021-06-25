@@ -1,7 +1,7 @@
 ---
 title: 基于 Probot 实现 GitHub NPM 发布机器人🤖
 cover: https://cdn.jsdelivr.net/gh/youngjuning/images/20210601182136.png
-tags: [掘金专栏]
+tags: [掘金专栏, 洛竹早茶馆]
 ---
 
 > 怕什么真理无穷，进一寸有一寸的欢喜。大家好，我是[@洛竹](https://github.com/youngjuning)，一名热爱编程、热爱生活的终身学习实践者。
