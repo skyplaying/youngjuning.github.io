@@ -112,6 +112,35 @@ export const tools = [
 
 export const build = [
   {
+    title: 'rollup',
+    description:
+      'Rollup 是一个 JavaScript 模块打包器，可以将小块代码编译成大块复杂的代码，例如 library 或应用程序。',
+    homepage: 'https://www.rollupjs.com/',
+    npm: 'rollup',
+    github: 'rollup/rollup',
+  },
+  {
+    title: 'webpack',
+    description: 'Webpack is a module bundler.',
+    homepage: 'https://webpack.docschina.org/',
+    npm: 'webpack',
+    github: 'webpack/webpack',
+  },
+  {
+    title: 'esbuild',
+    description: 'An extremely fast JavaScript bundler and minifier',
+    homepage: 'https://esbuild.github.io/',
+    npm: 'esbuild',
+    github: 'evanw/esbuild',
+  },
+  {
+    title: 'swc',
+    description: 'Super fast javascript / typescript compiler',
+    homepage: 'https://swc.rs/',
+    npm: '@swc/core',
+    github: 'swc-project/swc',
+  },
+  {
     title: 'tsdx',
     description: 'Zero-config CLI for TypeScript package development',
     homepage: 'https://tsdx.io/',
