@@ -120,6 +120,12 @@ export const build = [
     github: 'rollup/rollup',
   },
   {
+    title: 'tapable',
+    description: 'Just a little module for plugins.',
+    npm: 'tapable',
+    github: 'webpack/tapable',
+  },
+  {
     title: 'webpack',
     description: 'Webpack is a module bundler.',
     homepage: 'https://webpack.docschina.org/',
