@@ -103,3 +103,17 @@ export default () => {
   return <CardList data={apiWrapper} />;
 };
 ```
+
+## mock
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { mock } from './node';
+
+export default () => {
+  return <CardList data={mock} />;
+};
+```

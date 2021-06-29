@@ -248,3 +248,12 @@ export const apiWrapper = [
     github: 'jdalrymple/gitbeaker',
   },
 ];
+
+export const mock = [
+  {
+    title: 'nock',
+    description: 'Node.js 的 HTTP 服务器 mock 和预判库',
+    npm: 'nock',
+    github: 'nock/nock',
+  },
+];
