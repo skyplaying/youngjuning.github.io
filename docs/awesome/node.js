@@ -79,6 +79,18 @@ export const cli = [
     npm: '@jsdevtools/npm-publish',
     github: 'JS-DevTools/npm-publish',
   },
+  {
+    title: 'del-cli',
+    description: 'Delete files and directories',
+    npm: 'del-cli',
+    github: 'sindresorhus/del-cli',
+  },
+  {
+    title: 'rimraf',
+    description: 'The UNIX command rm -rf for node.',
+    npm: 'rimraf',
+    github: 'isaacs/rimraf',
+  },
 ];
 
 export const tools = [
