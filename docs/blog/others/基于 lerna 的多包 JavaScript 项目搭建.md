@@ -4,18 +4,18 @@ cover: https://i.loli.net/2020/11/14/2VMPXulGiLD6JU8.png
 tags: [掘金专栏]
 ---
 
+将大型代码仓库分割成多个独立版本化的 软件包（package）对于代码共享来说非常有用。但是，如果某些更改 跨越了多个代码仓库的话将变得很 麻烦 并且难以跟踪，并且， 跨越多个代码仓库的测试将迅速变得非常复杂。
+
+为了解决这些（以及许多其它）问题，某些项目会将 代码仓库分割成多个软件包（package），并将每个软件包存放到独立的代码仓库中。但是，例如 Babel、 React、Angular、Ember、Meteor、Jest 等项目以及许多其他项目则是在 一个代码仓库中包含了多个软件包（package）并进行开发。
+
+Lerna 是一种工具，针对 使用 git 和 npm 管理多软件包代码仓库的工作流程进行优化。
+
 ## 开始
 
 ### 全局安装 lerna
 
 ```sh
 $ npm install lerna -g
-```
-
-### 新建一个 git 仓库
-
-```sh
-$ git init lerna-repo && cd lerna-repo
 ```
 
 ### 初始化 lerna 项目
@@ -42,7 +42,7 @@ $ lerna create module-2
 
 ## yarn workspaces & Lerna Hoisting
 
-使用 [yarn workspaces](https://yarnpkg.com/lang/zh-Hans/docs/workspaces/) 结合 Lerna useWorkspaces 可以实现 [Lerna Hoisting](https://github.com/lerna/lerna/blob/main/doc/hoist.md)。这并不是多此一举，这可以让你在统一的地方（根目录）管理依赖，这即节省时间又节省空间。
+使用 [yarn workspaces](https://yarnpkg.com/lang/zh-Hans/docs/workspaces/) 结合 Lerna `useWorkspaces` 可以实现 [Lerna Hoisting](https://github.com/lerna/lerna/blob/main/doc/hoist.md)。这并不是多此一举，这可以让你在统一的地方（根目录）管理依赖，这即节省时间又节省空间。
 
 配置 lerna.json:
 
@@ -78,8 +78,9 @@ $ npm install verdaccio -g
 
 配置 `~/.config/verdaccio/config.yaml` uplinks:
 
-```
-...
+```yml
+
+---
 # a list of other known repositories we can talk to
 uplinks:
   npmjs:
@@ -88,7 +89,6 @@ uplinks:
     url: https://registry.npm.taobao.org/
   tuya:
     url: https://registry-npm.tuya-inc.top/
-...
 ```
 
 ### 设置开机自启动
@@ -124,13 +124,20 @@ $ pm2 unstartup launchd
 {
   "command": {
     "publish": {
-      "ignoreChanges": ["ignored-file", "*.md"],
-      "message": "chore(release): publish %s",
+      "ignoreChanges": [
+        "ignored-file",
+        "**/__tests__/**",
+        "**/*.md",
+        "**/tsconfig.json"
+      ],
+      "message": "chore(release): publish",
       "registry": "http://localhost:4873"
     }
   }
 }
 ```
+
+> 你可以改变每个子包的 `publishConfig`
 
 ## commitlint & commitizen
 
@@ -142,8 +149,6 @@ $ pm2 unstartup launchd
 
 ```sh
 $ yarn install
-# or
-$ lerna bootstrap
 ```
 
 ### package 依赖
@@ -152,37 +157,27 @@ $ lerna bootstrap
 
 ```sh
 $ yarn workspace module-1 add lodash
-# or
-$ lerna add lodash --scope module-1
 ```
 
 给所有 package 安装依赖：
 
 ```sh
 $ yarn workspaces add dayjs
-# or
-$ lerna add dayjs
-```
-
-### workspace 依赖
-
-```sh
-$ lerna add module-2 --scope module-1
 ```
 
 ### 共用的工具依赖
 
 ```sh
-$ yarn add -W -D typescript
+$ yarn add -WD typescript
 ```
 
 ## lerna.json
 
 - version: 当前仓库的版本，Independent mode 请设置为 `independent`
 - npmClient: 指定运行命令的客户端程序（默认是 npm）
-- ignoreChanges: 一个不包含在 `lerna changed/publish` 的 glob 数组。使用这个去阻止发布不必要的更新，比如修复 `README.md`
 - command
   - publish
+    - ignoreChanges: 一个不包含在 `lerna changed/publish` 的 glob 数组。使用这个去阻止发布不必要的更新，比如修复 `README.md`
     - message: 一个 publish 时的自定义 commit 信息。详情请查看[@lerna/version](https://github.com/lerna/lerna/blob/main/commands/version#--message-msg)
     - registry: 设置自定义的 npm 代理（比如使用 verdaccio 搭建的私服）
   - version
