@@ -79,7 +79,6 @@ $ npm install verdaccio -g
 配置 `~/.config/verdaccio/config.yaml` uplinks:
 
 ```yml
-
 ---
 # a list of other known repositories we can talk to
 uplinks:
@@ -123,15 +122,18 @@ $ pm2 unstartup launchd
 // lerna.json
 {
   "command": {
+    "ignoreChanges": [
+      "ignored-file",
+      "**/__tests__/**",
+      "**/*.md",
+      "**/tsconfig.json"
+    ],
     "publish": {
-      "ignoreChanges": [
-        "ignored-file",
-        "**/__tests__/**",
-        "**/*.md",
-        "**/tsconfig.json"
-      ],
-      "message": "chore(release): publish",
       "registry": "http://localhost:4873"
+    },
+    "version": {
+      "conventionalCommits": true,
+      "message": "chore(release): publish"
     }
   }
 }
@@ -163,6 +165,14 @@ $ yarn workspace module-1 add lodash
 
 ```sh
 $ yarn workspaces add dayjs
+```
+
+### workspace 依赖
+
+给指定 package 安装依赖：
+
+```sh
+$ lerna add module-2 --scope module-1
 ```
 
 ### 共用的工具依赖
