@@ -1,5 +1,12 @@
 export default [
   {
+    title: 'dumi',
+    description: '📖 为组件开发场景而生的文档工具',
+    homepage: 'https://d.umijs.org/zh-CN',
+    npm: 'dumi',
+    github: 'umijs/dumi',
+  },
+  {
     title: 'docsify',
     description: '一个神奇的文档网站生成器。',
     homepage: 'https://docsify.js.org/#/zh-cn/',
