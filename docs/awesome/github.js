@@ -86,6 +86,14 @@ export const repo = [
     homepage: 'https://probot.github.io/',
     github: 'probot/probot',
   },
+  {
+    title: '提问的艺术',
+    description:
+      '本文原文由知名 Hacker Eric S. Raymond 所撰寫，教你如何正確的提出技術問題並獲得你滿意的答案。',
+    homepage:
+      'https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way#readme',
+    github: 'ryanhanwu/How-To-Ask-Questions-The-Smart-Way',
+  },
 ];
 
 export const profile = [
