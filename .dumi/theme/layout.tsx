@@ -51,7 +51,6 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
     meta,
     locale,
   } = useContext(context);
-  console.log("pathname:",location.pathname);
 
   const { url: repoUrl, branch, platform } = repository;
   const [menuCollapsed, setMenuCollapsed] = useState<boolean>(true);
@@ -107,7 +106,7 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
           <img src={meta.cover} width="70%"/>
         </div>
         {children}
-        {location.pathname.indexOf('friends') >= 0 && (
+        {showSlugs && (
           <div className="__dumi-default-layout-comment">
             <GitalkComponent
               options={{
@@ -116,7 +115,7 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
                 repo: 'youngjuning.github.io',
                 owner: 'youngjuning',
                 admin: ['youngjuning'],
-                id: location.pathname === 'friends'? location.pathname+'/': location.pathname
+                id: location.pathname
               }}
             />
           </div>
