@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import type { IRouteComponentProps } from '@umijs/types';
 import {BackTop} from 'antd'
+import ReactDOM from 'react-dom';
 import { context, Link } from 'dumi/theme';
 import 'gitalk/dist/gitalk.css';
-import GitalkComponent from 'gitalk/dist/gitalk-component';
+import Gitalk from 'gitalk';
 import shuffle from 'lodash.shuffle';
 import Badge from './builtins/Badge';
 import Navbar from './components/Navbar';
@@ -51,6 +52,24 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
     meta,
     locale,
   } = useContext(context);
+
+  useEffect(() => {
+    if (!showHero && !showFeatures) {
+      const container = document.getElementById('gitalk-container');
+      ReactDOM.unmountComponentAtNode(container);
+      container.innerHTML = '';
+      const gitalk = new Gitalk({
+        clientID: 'a6e0d6a84dbf93dd00f3',
+        clientSecret: '0c9c5fff9e132c7e85ccc08633629706acfc33e4',
+        repo: 'youngjuning.github.io',
+        owner: 'youngjuning',
+        admin: ['youngjuning'],
+        id: location.pathname,
+        title: meta.title
+      })
+      gitalk.render('gitalk-container')
+    }
+  }, [meta.title]);
 
   const { url: repoUrl, branch, platform } = repository;
   const [menuCollapsed, setMenuCollapsed] = useState<boolean>(true);
@@ -106,20 +125,7 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
           <img src={meta.cover} width="70%"/>
         </div>
         {children}
-        {!showHero && !showFeatures && (
-          <div className="__dumi-default-layout-comment">
-            <GitalkComponent
-              options={{
-                clientID: 'a6e0d6a84dbf93dd00f3',
-                clientSecret: '0c9c5fff9e132c7e85ccc08633629706acfc33e4',
-                repo: 'youngjuning.github.io',
-                owner: 'youngjuning',
-                admin: ['youngjuning'],
-                id: location.pathname
-              }}
-            />
-          </div>
-        )}
+          <div className="__dumi-default-layout-comment" id="gitalk-container"/>
         {!showHero && !showFeatures && meta.filePath && !meta.gapless && (
           <div className="__dumi-default-layout-footer-meta">
             {repoPlatform && (
