@@ -7,6 +7,9 @@ export default defineConfig({
   mode: 'site',
   hash: true,
   exportStatic: {},
+  history: {
+    type: 'hash',
+  },
   locales: [
     ['zh-CN', '中文'],
     ['en-US', 'English'],
