@@ -54,10 +54,10 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
   } = useContext(context);
 
   useEffect(() => {
+    const container = document.getElementById('gitalk-container');
+    ReactDOM.unmountComponentAtNode(container);
+    container.innerHTML = '';
     if (!showHero && !showFeatures) {
-      const container = document.getElementById('gitalk-container');
-      ReactDOM.unmountComponentAtNode(container);
-      container.innerHTML = '';
       const gitalk = new Gitalk({
         clientID: 'a6e0d6a84dbf93dd00f3',
         clientSecret: '0c9c5fff9e132c7e85ccc08633629706acfc33e4',
