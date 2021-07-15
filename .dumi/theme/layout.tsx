@@ -51,6 +51,8 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
     meta,
     locale,
   } = useContext(context);
+  console.log("pathname:",location.pathname);
+
   const { url: repoUrl, branch, platform } = repository;
   const [menuCollapsed, setMenuCollapsed] = useState<boolean>(true);
   const isSiteMode = mode === 'site';
