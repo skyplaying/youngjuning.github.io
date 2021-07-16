@@ -1,8 +1,10 @@
 ---
 title: 基于 lerna 的多包 JavaScript 项目搭建维护笔记
 cover: https://i.loli.net/2020/11/14/2VMPXulGiLD6JU8.png
-tags: [掘金专栏]
+tags: [掘金专栏, 洛竹早茶馆]
 ---
+
+> 大家好，我是[洛竹](https://github.com/youngjuning)🎋，一只住在杭城的木系前端 🧚🏻‍♀️，如果你喜欢我的文章 📚，可以通过点赞帮我聚集灵力 ⭐️。
 
 将大型代码仓库分割成多个独立版本化的 软件包（package）对于代码共享来说非常有用。但是，如果某些更改 跨越了多个代码仓库的话将变得很 麻烦 并且难以跟踪，并且， 跨越多个代码仓库的测试将迅速变得非常复杂。
 
@@ -159,17 +161,17 @@ $ yarn install
 
 ```sh
 $ yarn workspace module-1 add lodash
+# 或者
+$ lerna add lodash --scope=module-1
 ```
 
 给所有 package 安装依赖：
 
 ```sh
-$ yarn workspaces add dayjs
+$ lerna add lodash
 ```
 
-### workspace 依赖
-
-给指定 package 安装依赖：
+### workspace 之间的依赖
 
 ```sh
 $ lerna add module-2 --scope module-1
@@ -214,3 +216,10 @@ $ yarn add -WD typescript
 ## 链接
 
 - [lerna 管理前端模块最佳实践](https://juejin.im/post/6844903568751722509)
+
+关注公众号`洛竹早茶馆`，一个持续分享编程知识的地方。
+
+- `点赞`等于学会，`在看`等于精通
+- 最后祝大家 2021 学习进步，升职加薪
+
+> 本文首发于「[洛竹的官方网站](https://youngjuning.js.org/)」，同步于公众号「洛竹早茶馆」和「[掘金专栏](https://juejin.cn/user/325111174662855)」。
