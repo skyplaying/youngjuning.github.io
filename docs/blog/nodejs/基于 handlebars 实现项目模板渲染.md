@@ -1,5 +1,5 @@
 ---
-title: 基于 metalsmith 和 handlerbars 实现模板初始化
+title: 基于 handlebars 实现项目模板渲染
 cover:
 tags:
 ---
