@@ -160,9 +160,14 @@ $ yarn install
 给指定 package 安装依赖：
 
 ```sh
-$ yarn workspace module-1 add lodash
+# 或者（推荐）
+$ lerna add lodash packages/module-1
 # 或者
 $ lerna add lodash --scope=module-1
+# 或者
+$ lerna add lodash **/module-1
+# 或者
+$ yarn workspace module-1 add lodash
 ```
 
 给所有 package 安装依赖：
@@ -175,6 +180,8 @@ $ lerna add lodash
 
 ```sh
 $ lerna add module-2 --scope module-1
+# 或者
+$ lerna add module-2 packages/module-1
 ```
 
 ### 共用的工具依赖
@@ -222,4 +229,4 @@ $ yarn add -WD typescript
 - `点赞`等于学会，`在看`等于精通
 - 最后祝大家 2021 学习进步，升职加薪
 
-> 本文首发于「[洛竹的官方网站](https://youngjuning.js.org/)」，同步于公众号「洛竹早茶馆」和「[掘金专栏](https://juejin.cn/user/325111174662855)」。
+> 本文首发于「[洛竹的官方网站](https://youngjuning.js.org/)」，同步于公众号「[洛竹早茶馆](https://cdn.jsdelivr.net/gh/youngjuning/images/20210418112129.jpeg)」和「[掘金专栏](https://juejin.cn/user/325111174662855)」。
