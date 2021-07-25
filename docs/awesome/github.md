@@ -6,6 +6,29 @@ title: GitHub
   欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/awesome/github.js">新增数据</a> 并提交 PR.
 </Alert>
 
+## 评论系统
+
+### giscus
+
+A comments system powered by GitHub Discussions. :octocat: 💬 💎
+
+- Homepage：https://giscus.app/
+- GitHub：https://github.com/laymonage/giscus
+
+### utterances
+
+A lightweight comments widget built on GitHub issues. Use GitHub issues for blog comments, wiki pages and more!
+
+- Homepage：https://utteranc.es/
+- GitHub：https://github.com/utterance/utterances
+
+### gitalk
+
+Gitalk is a modern comment component based on Github Issue and Preact.
+
+- Homepage：https://gitalk.github.io/
+- GitHub：https://github.com/gitalk/gitalk
+
 ## 关注的用户
 
 ```jsx
