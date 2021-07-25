@@ -1,7 +1,8 @@
 ---
 title: nodejs
 nav:
-  title: '问题'
+  hide: true
+  title: 问题
 ---
 
 ## 跨平台的用户家目录

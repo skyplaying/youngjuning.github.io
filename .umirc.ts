@@ -35,18 +35,35 @@ export default defineConfig({
       // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
       children: [
         { title: '计算机英文词汇', path: '/english' },
-        { title: '《Go 语言教程》', path: '/golang-tutorial' },
+        { title: 'Go 语言教程系列', path: '/golang-tutorial' },
         { title: 'Cobra 中文文档', path: '/cobra' },
         { title: 'Viper 中文文档', path: '/viper' },
         { title: 'GitHub Actions', path: '/github-actions' },
       ],
     },
     {
+      title: '生态',
+      children: [
+        {
+          title: '掘金',
+          path: 'https://juejin.cn/user/325111174662855/posts',
+        },
+        {
+          title: '知乎',
+          path: 'https://www.zhihu.com/people/yangjunning',
+        },
+        {
+          title: 'GitHub',
+          path: 'https://github.com/youngjuning/youngjuning.github.io',
+        },
+      ],
+    },
+    {
       title: '其他',
       children: [
         {
-          title: '营养早茶馆',
-          path: '/health',
+          title: 'issues',
+          path: '/issues',
         },
         {
           title: '力扣算法题',
@@ -57,24 +74,6 @@ export default defineConfig({
           path: '/shell',
         },
       ],
-    },
-    {
-      title: '掘金',
-      path: 'https://juejin.cn/user/325111174662855/posts',
-    },
-    // {
-    //   title: '知乎',
-    //   path: 'https://www.zhihu.com/people/yangjunning',
-    //   children: [
-    //     {
-    //       title: '洛竹早茶馆',
-    //       path: 'https://www.zhihu.com/column/c_1341734653628149760',
-    //     },
-    //   ],
-    // },
-    {
-      title: 'GitHub',
-      path: 'https://github.com/youngjuning/youngjuning.github.io',
     },
   ],
   sitemap: {

@@ -1,7 +1,7 @@
 ---
 title: 洛竹友人帐
 nav:
-  title: 洛竹友人帐
+  title: 友人帐
 hero:
   title: 掘金开发者社区
   desc: 掘金，一个帮助开发者成长的技术社区
