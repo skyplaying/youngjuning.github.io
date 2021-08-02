@@ -1,7 +1,7 @@
 ---
-title: 通过构建你自己的 Babel 插件理解 AST
+title:「译」通过构建你自己的 Babel 插件理解 AST
 cover: https://cdn.jsdelivr.net/gh/youngjuning/images/20210517191449.png
-tags: [翻译, 掘金专栏]
+tags: [nodejs,翻译]
 ---
 
 > 怕什么真理无穷，进一寸有一寸的欢喜。大家好，我是[@洛竹](https://github.com/youngjuning)，一名热爱编程、热爱生活的终身学习实践者。

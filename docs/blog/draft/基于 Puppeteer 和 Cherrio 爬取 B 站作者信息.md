@@ -1,7 +1,7 @@
 ---
 title: 基于 Puppeteer 和 Cherrio 爬取 B 站作者信息
 cover: https://cdn.jsdelivr.net/gh/youngjuning/images/20210429200950.jpeg
-tags: [掘金专栏]
+tags: [nodejs]
 ---
 
 > 怕什么真理无穷，进一寸有一寸的欢喜。大家好，我是[@洛竹](https://github.com/youngjuning)，一名热爱编程、热爱生活的终身学习实践者。

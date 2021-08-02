@@ -1,7 +1,7 @@
 ---
 title: 了不起的 rollup 之插件开发
 cover: https://cdn.jsdelivr.net/gh/youngjuning/images/20210510182215.jpeg
-tags:
+tags: [nodejs]
 ---
 
 > 怕什么真理无穷，进一寸有一寸的欢喜。大家好，我是[@洛竹](https://github.com/youngjuning)，一名热爱编程、热爱生活的终身学习实践者。

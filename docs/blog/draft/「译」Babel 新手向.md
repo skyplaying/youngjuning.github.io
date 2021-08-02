@@ -1,7 +1,7 @@
 ---
-title: Babel 新手向
+title:「译」Babel 新手向
 cover:
-tags: [掘金专栏]
+tags: [nodejs, 翻译]
 ---
 
 > 怕什么真理无穷，进一寸有一寸的欢喜。大家好，我是[@洛竹](https://github.com/youngjuning)，一名热爱编程、热爱生活的终身学习实践者。
@@ -158,6 +158,7 @@ this.setState(ps => ({ count: ps.count + 1 }));
 
 render() {
 return (
+
 <div>
 <p>{ this.state.count }</p>
 <button onClick={this.incCount}>add one</button>
