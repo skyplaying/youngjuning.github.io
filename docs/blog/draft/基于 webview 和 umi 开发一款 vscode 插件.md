@@ -65,10 +65,20 @@ export default defineConfig({
     type: 'none',
   },
   routes: [{ path: '/', component: '@/pages/index' }],
-  fastRefresh: {}, // 快速刷新（Fast Refresh），开发时可以保持组件状态，同时编辑提供即时反馈。
-  mfsu: {}, // 开启 mfsu 可以大幅减少热更新所需的时间。在生产模式，也可以通过提前编译依赖，大幅提升部署效率。
+  fastRefresh: {},
+  history: {
+    type: 'memory',
+  },
+  devServer: {
+    writeToDisk: filePath =>
+      ['umi.js', 'umi.css'].some(name => filePath.endsWith(name)),
+  },
 } as IConfig);
 ```
+
+- Fast Refresh（ 快速刷新）：开发时可以保持组件状态，同时编辑提供即时反馈。
+- `history.type`：默认的类型是 `browser`，但是由于 vscode webview 环境不存在浏览器路由，改成 `memory` 和 `hash` 都可以
+- `devServer.writeToDisk`：开发阶段将 umi js 和 css 文件写入本地，方便调试。
 
 修改 `package.json` 加入 `name`、`version`、`description`：
 
@@ -134,10 +144,12 @@ node_modules
 ```json
 {
   "scripts": {
-    "vscode:prepublish": "rimraf out web/dist && yarn build:web && yarn compile",
+    "vscode:prepublish": "yarn build:web && yarn compile",
     "build:web": "yarn workspace web run build",
     "watch:web": "yarn workspace web run start",
+    "precompile": "rimraf out",
     "compile": "tsc -p ./",
+    "prewatch": "rimraf out",
     "watch": "tsc -watch -p ./",
     "pretest": "yarn compile && yarn lint",
     "lint": "eslint src --ext ts",
