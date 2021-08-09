@@ -2,20 +2,22 @@
 title: Vue.js
 ---
 
-<Alert type="info">
-  欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/awesome/vue.js">新增数据</a> 并提交 PR.
-</Alert>
+## 通用
 
-## vitejs
+### vitejs
 
-```jsx
-/**
- * inline: true
- */
-import React from 'react';
-import { vitejs } from './vue';
+> 下一代快速的前端工具.
 
-export default () => {
-  return <CardList data={vitejs} />;
-};
-```
+- Homepage：https://cn.vitejs.dev/
+- GitHub：https://github.com/vitejs/docs-cn
+- NPM：https://www.npmjs.com/package/vite
+
+## 工具
+
+### slidev
+
+> 为开发者提供的演示幻灯片.
+
+- Homepage：https://cn.sli.dev/
+- GitHub：https://github.com/slidevjs/slidev
+- NPM：https://www.npmjs.com/package/@slidev/cli
