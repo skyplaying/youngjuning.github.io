@@ -29,20 +29,6 @@ Gitalk is a modern comment component based on Github Issue and Preact.
 - Homepage：https://gitalk.github.io/
 - GitHub：https://github.com/gitalk/gitalk
 
-## 关注的用户
-
-```jsx
-/**
- * inline: true
- */
-import React from 'react';
-import { users } from './github';
-
-export default () => {
-  return <CardList data={users} />;
-};
-```
-
 ## Actions
 
 ```jsx
@@ -58,6 +44,13 @@ export default () => {
 ```
 
 ## profile-readme
+
+### waka-box
+
+> 📊 更新 github pinned 的 gist，包含你每周的 WakaTime 统计。
+
+- Homepage：https://github.com/matchai/waka-box#readme
+- GitHub：https://github.com/matchai/waka-box
 
 ```jsx
 /**
@@ -126,3 +119,13 @@ export default () => {
   return <ArtistList data={article} />;
 };
 ```
+
+## 关注
+
+### sxei
+
+> 技术永无止境~~小小程序猿一枚，曾经的 Javaer，现在的 Jser。
+
+- 昵称：小茗同学
+- Homepage：https://haoji.me/
+- GitHub：https://github.com/sxei

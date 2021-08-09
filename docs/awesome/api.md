@@ -2,18 +2,10 @@
 title: Api
 ---
 
-<Alert type="info">
-  欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/awesome/api.js">新增数据</a> 并提交 PR.
-</Alert>
+## 网易云音乐 API
 
-```jsx
-/**
- * inline: true
- */
-import React from 'react';
-import data from './api';
+> 网易云音乐 NodeJS 版 API
 
-export default () => {
-  return <CardList data={data} />;
-};
-```
+- Homepage：https://binaryify.github.io/NeteaseCloudMusicApi/
+- GitHub：https://github.com/Binaryify/NeteaseCloudMusicApi
+- NPM：https://www.npmjs.com/package/NeteaseCloudMusicApi

@@ -2,6 +2,10 @@
 title: 面试
 ---
 
+## 简历工具
+
+- [木及简历](https://resume.mdedit.online/editor/)
+
 ```jsx
 /**
  * inline: true

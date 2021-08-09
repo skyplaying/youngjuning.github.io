@@ -14,6 +14,15 @@ export default () => {
 };
 ```
 
+## 数据分析
+
+### 次幂数据
+
+> 公众号数据分析平台
+
+- Homepage：https://www.cimidata.com/
+- 功能：精准找号、公众号榜单、发文监控、爆款文章
+
 ## 设计
 
 ```jsx

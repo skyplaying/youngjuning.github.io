@@ -20,6 +20,8 @@ export default () => {
 
 ## vscode
 
+- [marketplace](https://marketplace.visualstudio.com/)
+
 ```jsx
 /**
  * inline: true

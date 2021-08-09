@@ -1,12 +1,3 @@
-export const users = [
-  {
-    title: '小茗同学',
-    description: '技术永无止境~~小小程序猿一枚，曾经的Javaer，现在的Jser。',
-    homepage: 'https://haoji.me/',
-    github: 'sxei',
-  },
-];
-
 export const actions = [
   {
     title: 'yakumioto/serverchan-action',

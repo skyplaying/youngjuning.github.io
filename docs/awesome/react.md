@@ -2,9 +2,13 @@
 title: React
 ---
 
-<Alert type="info">
-  欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/awesome/react.js">新增数据</a> 并提交 PR.
-</Alert>
+## 数据可视化
+
+### react-apexcharts
+
+- Homepage：https://apexcharts.com/
+- GitHub：https://github.com/apexcharts/react-apexcharts
+- NPM：https://www.npmjs.com/package/react-apexcharts
 
 ## 组件化
 

@@ -3,6 +3,7 @@ title: 关于洛竹
 order: 0
 nav:
   title: 关于
+  order: 5
 toc: false
 ---
 

@@ -2,10 +2,6 @@
 title: 工具
 ---
 
-<Alert type="info">
-  欢迎 <a href="https://github.com/youngjuning/youngjuning.github.io/edit/main/docs/awesome/tools.js">新增数据</a> 并提交 PR.
-</Alert>
-
 ## Mac
 
 ```jsx

@@ -96,3 +96,24 @@ export const box = [
     homepage: 'https://withpinbox.com/',
   },
 ];
+
+export const diagram = [
+  {
+    title: 'mermaid',
+    description:
+      'Generation of diagram and flowchart from text in a similar manner as markdown',
+    homepage: 'https://mermaid-js.github.io/mermaid/#/',
+    github: 'mermaid-js/mermaid',
+  },
+  {
+    title: 'plantuml',
+    description: '使用简单的文字描述画 UML 图',
+    homepage: 'https://plantuml.com/zh/',
+  },
+  {
+    title: 'Draw.io Integration',
+    description: 'This unofficial extension integrates Draw.io into VS Code.',
+    homepage:
+      'https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio',
+  },
+];

@@ -62,10 +62,6 @@ export default defineConfig({
       title: '其他',
       children: [
         {
-          title: 'issues',
-          path: '/issues',
-        },
-        {
           title: '力扣算法题',
           path: '/leetcode',
         },

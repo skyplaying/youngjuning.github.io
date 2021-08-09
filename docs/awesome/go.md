@@ -2,7 +2,7 @@
 title: Go
 nav:
   title: 收藏
-  order: 2
+  order: 4
 ---
 
 <Alert type="info">
