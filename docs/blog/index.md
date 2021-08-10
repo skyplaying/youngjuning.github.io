@@ -13,6 +13,6 @@ Dumi 并不是一个很好的博客工具，甚至就不是设计用来写博客
 
 <Alert type="success">`Less is more` — 创造内容就简简单单地用 Dumi 写，同步到公众号、掘金、知乎。</Alert>
 
-<Alert type="info">信条 — `The truth is endless, write it.`</Alert>
+<Alert type="info">信条 — `Truth is endless. Keep coding.`</Alert>
 
 ![](https://i.loli.net/2021/03/21/8a2neD4C3hFVpTr.png)
