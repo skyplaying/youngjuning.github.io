@@ -1,7 +1,7 @@
 ---
 title: 阅读清单
 nav:
-  title: 洛竹清单
+  title: 清单
   order: 3
 ---
 
