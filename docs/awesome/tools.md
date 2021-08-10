@@ -60,6 +60,13 @@ export default () => {
 
 ## 设计
 
+### IconPark
+
+- Homepage：https://iconpark.oceanengine.com/home
+- GitHub：https://github.com/bytedance/iconpark
+- @icon-park/react：https://www.npmjs.com/package/@icon-park/react
+- @icon-park/vue：https://www.npmjs.com/package/@icon-park/vue
+
 ```jsx
 /**
  * inline: true

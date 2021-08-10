@@ -10,6 +10,10 @@ title: React
 - GitHub：https://github.com/apexcharts/react-apexcharts
 - NPM：https://www.npmjs.com/package/react-apexcharts
 
+## 文档
+
+- React Cheat Sheet：https://reactcheatsheet.com/
+
 ## 组件化
 
 ```jsx

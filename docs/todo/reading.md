@@ -1,13 +1,11 @@
 ---
+title: 阅读清单
 nav:
-  title: 阅读
+  title: 洛竹清单
   order: 3
-sidemenu: false
 ---
 
 ## 2021 年八月
-
-### 待翻译
 
 ### 跨端
 
@@ -47,3 +45,6 @@ sidemenu: false
 4. [x] [How To Set Up GitHub Actions to Publish a Lerna Monorepo](https://stackoverflow.com/questions/57597367/how-to-set-up-github-actions-to-publish-a-lerna-monorepo)
 5. [x] [support --token=npmToken in lerna Publish](https://github.com/lerna/lerna/issues/2404)
 6. [x] [lerna in gitlab-ci ends up with ERR! EUNCOMMIT](https://github.com/lerna/lerna/issues/1901)
+7. [x] [Support having plugins as dependencies in shareable config](https://github.com/eslint/eslint/issues/3458)
+8. [x] [Fix eslint shareable config using rushstack/eslint-patch](https://github.com/facebook/create-react-app/commit/6e10091a235ba4e15097be79b003fdde1f373331)
+9. [x] [Disabling languages for Prettier (in VScode)](https://zellwk.com/blog/prettier-disable-languages/)
