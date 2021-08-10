@@ -15,7 +15,7 @@ nav:
 ### 前端
 
 1. [ ] [在 React 项目中优雅地使用 Typescript](https://segmentfault.com/a/1190000020536678)
-2. [ ] [监听文件变化并自动运行 npm script](https://www.kancloud.cn/sllyli/npm-script/1243460)
+2. [x] [监听文件变化并自动运行 npm script](https://www.kancloud.cn/sllyli/npm-script/1243460)
 3. [ ] [前端脚手架构建实践](https://zhuanlan.zhihu.com/p/101680922)
 4. [ ] [package.json 字段说明](https://www.cnblogs.com/mengfangui/p/11174583.html)
 5. [ ] [Lerna 中文教程详解](https://segmentfault.com/a/1190000019350611)
@@ -48,3 +48,4 @@ nav:
 7. [x] [Support having plugins as dependencies in shareable config](https://github.com/eslint/eslint/issues/3458)
 8. [x] [Fix eslint shareable config using rushstack/eslint-patch](https://github.com/facebook/create-react-app/commit/6e10091a235ba4e15097be79b003fdde1f373331)
 9. [x] [Disabling languages for Prettier (in VScode)](https://zellwk.com/blog/prettier-disable-languages/)
+10. [x] [[Bug] 开启 mfsu 之后 writeToDisk 没有生成 css 文件](https://github.com/umijs/umi/issues/7132)

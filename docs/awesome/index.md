@@ -8,6 +8,7 @@ nav:
 ## 持续关注
 
 - [Support having plugins as dependencies in shareable config](https://github.com/eslint/eslint/issues/3458)
+- [[Bug] 开启 mfsu 之后 writeToDisk 没有生成 css 文件](https://github.com/umijs/umi/issues/7132)
 
 ## 国外博客
 
