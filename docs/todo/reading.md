@@ -20,6 +20,7 @@ nav:
 4. [ ] [package.json 字段说明](https://www.cnblogs.com/mengfangui/p/11174583.html)
 5. [ ] [Lerna 中文教程详解](https://segmentfault.com/a/1190000019350611)
 6. [ ] [lerna 管理前端 packages 的最佳实践](http://www.sosout.com/2018/07/21/lerna-repo.html)
+7. [ ] [esModuleInterop 到底做了什么？](https://zhuanlan.zhihu.com/p/148081795)
 
 ### 后端
 
