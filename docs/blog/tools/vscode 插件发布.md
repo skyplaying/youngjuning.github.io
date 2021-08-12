@@ -1,6 +1,6 @@
 ---
 title: vscode 插件发布
-cover:
+cover: https://cdn.jsdelivr.net/gh/youngjuning/images/20210812204938.jpeg
 tags: [洛竹早茶馆]
 ---
 
