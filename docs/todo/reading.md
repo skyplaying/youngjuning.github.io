@@ -7,6 +7,11 @@ nav:
 
 ## 2021 年八月
 
+### 推文群月刊
+
+- [掌握这些 CSS 知识点，Coding 如飞！](https://mp.weixin.qq.com/s/-xWxxA-_djDnhfYlEl8V2g)
+- [多图详解，一次性搞懂 Webpack Loader](https://mp.weixin.qq.com/s/2v1uhw2j7yKsb1U5KE2qJA)
+
 ### 跨端
 
 1. [x] [react-native 打包命令](https://www.jianshu.com/p/76b41831f1e1)
@@ -21,6 +26,8 @@ nav:
 5. [ ] [Lerna 中文教程详解](https://segmentfault.com/a/1190000019350611)
 6. [ ] [lerna 管理前端 packages 的最佳实践](http://www.sosout.com/2018/07/21/lerna-repo.html)
 7. [ ] [esModuleInterop 到底做了什么？](https://zhuanlan.zhihu.com/p/148081795)
+8. [x] [Bigfish VSCode 插件开发实践](https://www.cnblogs.com/cczlovexw/p/13815877.html)
+9. [x] [Bundling Extensions](https://code.visualstudio.com/api/working-with-extensions/bundling-extension)
 
 ### 后端
 
@@ -50,3 +57,4 @@ nav:
 8. [x] [Fix eslint shareable config using rushstack/eslint-patch](https://github.com/facebook/create-react-app/commit/6e10091a235ba4e15097be79b003fdde1f373331)
 9. [x] [Disabling languages for Prettier (in VScode)](https://zellwk.com/blog/prettier-disable-languages/)
 10. [x] [[Bug] 开启 mfsu 之后 writeToDisk 没有生成 css 文件](https://github.com/umijs/umi/issues/7132)
+11. [x] [requiring vscode in a vscode extension](https://stackoverflow.com/questions/64372492/requiring-vscode-in-a-vscode-extension)
