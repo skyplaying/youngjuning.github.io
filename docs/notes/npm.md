@@ -5,13 +5,19 @@ title: NPM 使用笔记
 ## 将指定版本设置为指定标签
 
 ```sh
-npm dist-tag add @youngjuning/playground@1.0.3 latest|alpha|beta
+$ npm dist-tag add @youngjuning/playground@1.0.3 latest|alpha|beta
 ```
 
 ## 展示 dist-tag
 
 ```sh
-npm dist-tag ls @youngjuning/playground
+$ npm dist-tag ls @youngjuning/playground
+```
+
+## 废弃某个版本
+
+```sh
+$ npm deprecate @youngjuning/playground@1.0.3 "垃圾"
 ```
 
 ## package.json 字段解释
