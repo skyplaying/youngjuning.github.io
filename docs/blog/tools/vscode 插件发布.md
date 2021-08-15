@@ -18,7 +18,7 @@ $ npm install vsce -g
 
 ### 新建 Azure DevPos 组织
 
-1. 登录  Azure DevOps。
+1. 登录 [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/)。
 2. 点击 **New organization**。
 
 ![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210812201149.png)
