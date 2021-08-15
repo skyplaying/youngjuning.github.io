@@ -29,7 +29,7 @@ $ npm install vsce -g
 
 ![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210812201223.png)
 
-到这里，一个组织就创建成功了，之后随时登录到你的组织  https://dev.azure.com/tuyaworks。
+到这里，一个组织就创建成功了，之后随时登录到你的组织<https://dev.azure.com/tuyaworks>。
 
 ## 获取 Personal Access Token
 
