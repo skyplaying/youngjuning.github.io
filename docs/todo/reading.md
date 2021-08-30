@@ -58,3 +58,4 @@ nav:
 9. [x] [Disabling languages for Prettier (in VScode)](https://zellwk.com/blog/prettier-disable-languages/)
 10. [x] [[Bug] 开启 mfsu 之后 writeToDisk 没有生成 css 文件](https://github.com/umijs/umi/issues/7132)
 11. [x] [requiring vscode in a vscode extension](https://stackoverflow.com/questions/64372492/requiring-vscode-in-a-vscode-extension)
+12. [x] [Webview HTML layout weirdness](https://github.com/microsoft/vscode/issues/64647)
