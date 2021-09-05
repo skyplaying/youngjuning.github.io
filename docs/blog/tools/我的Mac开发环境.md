@@ -127,7 +127,7 @@ $ sudo npm install -g npm
 ### nrm 管理 registry
 
 ```shell
-$ sudo i -g nrm
+$ sudo npm install -g nrm
 # 列出可用的代理
 $ nrm ls
 # 添加私有代理
