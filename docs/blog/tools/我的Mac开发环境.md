@@ -31,22 +31,6 @@ $ chsh -s /bin/zsh
 $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-### Agnoster 主题配置
-
-> 我目前使用的是 ys 主题
-
-- 终端执行 `open ~/.zshrc`
-- 找到 ZSH_THEME 修改为: `ZSH_THEME="agnoster"`
-- `source ~/.zshrc`
-- 安装 Powerline 对应的字体库
-  - `git clone https://github.com/powerline/fonts.git`
-  - `cd fonts`
-  - `install.sh`
-  - `cd ..`
-  - `rm -rf fonts`
-  - 进入：终端 > 偏好设置 > 字体修改为 ：`Meslo LG S DZ Regular for Powerline`。
-    ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/066be2e07fdf4c5ea7e23c694e970698~tplv-k3u1fbpfcp-zoom-1.image)
-
 ### 插件
 
 #### zsh-syntax-highlighting
@@ -59,13 +43,11 @@ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/t
 
 #### WakaTime for Terminal
 
-- `sudo easy_install pip==20.3.4`
 - `sudo easy_install pip`
-- `sudo pip install wakatime` | 如果失败请使用 `pip install --target=/Library/Python/2.7/site-packages wakatime`
+- `sudo pip install wakatime`
 - `cd ~/.oh-my-zsh/custom/plugins`
 - `git clone https://github.com/sobolevn/wakatime-zsh-plugin.git wakatime`
 - 在你的 `~/.zshrc` 文件的 [list of plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/External-plugins) 添加 `wakatime`
-- 添加 `export PATH="/Users/luozhu/Library/Python/2.7/bin/"` 到 `~/.zshrc`
 - `source ~/.zshrc`
 - 确保你的 [~/.wakatime.cfg](https://github.com/wakatime/wakatime#configuring) 文件中配置了 [API key](https://wakatime.com/settings/api-key) 。
 
