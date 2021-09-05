@@ -7,6 +7,8 @@ tags: [掘金专栏]
 
 访问 [brew.sh](https://brew.sh/index_zh-cn) 安装。使用 Homebrew 安装 Apple（或您的 Linux 系统）没有预装但 [你需要的东西](https://formulae.brew.sh/formula/)。Homebrew 将大大降低维护环境的时间。本文后面将尽可能使用 Homebrew。
 
+> 网络问题请参考 [解决homebrew安装curl: (7) Failed to connect to http://raw.githubusercontent.com port 443错误](https://www.huaweicloud.com/articles/2378bf35864b07da2b8b30db035a9897.html) 解决。
+
 - `brew install`：安装
 - `brew uninstall`：卸载
 - `brew update`：更新 homebrew
