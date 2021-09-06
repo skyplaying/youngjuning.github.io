@@ -33,7 +33,7 @@ $ npm install vsce -g
 
 ## 获取 Personal Access Token
 
-下面的例子里，我们假设组织名为 vscode，从你的组织主页（例如：https://dev.azure.com/tuyaworks）进入 Personal access tokens 页面：
+下面的例子里，我们假设组织名为 vscode，从你的组织主页（例如：https://dev.azure.com/tuyaworks ） 进入 Personal access tokens 页面：
 
 ![](https://cdn.jsdelivr.net/gh/youngjuning/images/20210812201259.png)
 
