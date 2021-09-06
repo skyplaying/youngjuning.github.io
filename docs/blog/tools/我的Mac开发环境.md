@@ -3,11 +3,17 @@ title: 我的 Mac 开发环境
 tags: [掘金专栏]
 ---
 
+## Xcode Command Line Tools
+
+```sh
+$ xcode-select --install
+```
+
 ## Homebrew
 
 访问 [brew.sh](https://brew.sh/index_zh-cn) 安装。使用 Homebrew 安装 Apple（或您的 Linux 系统）没有预装但 [你需要的东西](https://formulae.brew.sh/formula/)。Homebrew 将大大降低维护环境的时间。本文后面将尽可能使用 Homebrew。
 
-> 网络问题请参考 [解决homebrew安装curl: (7) Failed to connect to http://raw.githubusercontent.com port 443错误](https://www.huaweicloud.com/articles/2378bf35864b07da2b8b30db035a9897.html) 解决。
+> 网络问题请参考 [解决 homebrew 安装 curl: (7) Failed to connect to http://raw.githubusercontent.com port 443 错误](https://www.huaweicloud.com/articles/2378bf35864b07da2b8b30db035a9897.html) 解决。
 
 - `brew install`：安装
 - `brew uninstall`：卸载
@@ -77,12 +83,12 @@ $ brew install git
 
 ```bash
 # 1、初始化设置
-$ git config --global user.name 'youngjuning'
+$ git config --global user.name '洛竹'
 $ git config --global user.email 'youngjuning@aliyun.com'
 # 2、将 `color.ui` 设置为 `auto` 可以让命令的输出拥有更高的可读性。
 $ git config --global color.ui auto
-# 3、git 记住用户名和密码
-$ git config --global credential.helper store
+# 3、忽略大小写
+$ git config --global core.ignorecase false
 # 4、core.autocrlf
 $ git config --global core.autocrlf input
 # 5、输出到terminal而不是vim
@@ -91,6 +97,15 @@ $ git config --global pager.branch false
 
 > Linux 或 Mac 系统使用 LF 作为行结束符，因此你不想 Git 在签出文件时进行自动的转换；当一个以 `CRLF` 为行结束符的文件不小心被引入时你肯定想进行修正，把 `core.autocrlf` 设置成 `input` 来告诉 Git 在提交时把 `CRLF` 转换成 `LF`，签出时不转换：
 > 这样会在 Windows 系统上的签出文件中保留 `CRLF`，会在 Mac 和 Linux 系统上，包括仓库中保留 `LF`。
+
+## 代理配置
+
+需要为 git 单独设置代理加速，`41091` 是 HTTP/HTTPS 代理端口，请按照自己的情况填写。
+
+```sh
+$ git config --global https.proxy http://127.0.0.1:41091
+$ git config --global http.proxy http://127.0.0.1:41091
+```
 
 ### 学习资料
 
@@ -134,9 +149,13 @@ $ nrm ls
 $ nrm add local http://127.0.0.0:4873 http://127.0.0.0:4873
 ```
 
+## VS Code
+
+[Visual Studio Code](https://code.visualstudio.com/) 是一个由微软开发，同时支持 Windows 、 Linux 和 macOS 等操作系统且开放源代码的代码编辑器，它支持测试，并内置了 Git 版本控制功能，同时也具有开发环境功能，例如代码补全、代码片段和代码重构等。
+
 ## d8
 
-> 不要使用 `brew install v8`，可用命令是不完整的
+> 不要使用 `brew install v8`，因为可用命令是不完整的。
 
 ### 预备条件
 
@@ -234,19 +253,21 @@ $ brew update
 $ brew install maven
 ```
 
-## MySql
+## 数据库
+
+### MySql
 
 ```shell
 $ brew install mysql
 ```
 
-### 修改配置文件
+#### 修改配置文件
 
 ```shell
 $ nano /usr/local/etc/my.cnf
 ```
 
-### 启动服务
+#### 启动服务
 
 ```shell
 brew services start mysql
@@ -258,7 +279,7 @@ brew services stop mysql
 
 > Or, if you don't want/need a background service you can just run: `mysql.server start`
 
-### 安全设置
+#### 安全设置
 
 ```shell
 $ mysql_secure_installation
@@ -266,87 +287,87 @@ $ mysql_secure_installation
 
 1. 建立密码验证插件
 
-   ```shell
-   Securing the MySQL server deployment.
+```shell
+Securing the MySQL server deployment.
 
-   Connecting to MySQL using a blank password.
+Connecting to MySQL using a blank password.
 
-   VALIDATE PASSWORD PLUGIN can be used to test passwords and improve security. It checks the strength of password and allows the users to set only those passwords which are secure enough. Would you like to setup VALIDATE PASSWORD plugin?
+VALIDATE PASSWORD PLUGIN can be used to test passwords and improve security. It checks the strength of password and allows the users to set only those passwords which are secure enough. Would you like to setup VALIDATE PASSWORD plugin?
 
-   Press y|Y for Yes, any other key for No: y
-   ```
+Press y|Y for Yes, any other key for No: y
+```
 
 2. 选择密码规则
 
-   ```shell
-   There are three levels of password validation policy:
+```shell
+There are three levels of password validation policy:
 
-   LOW    Length >= 8
-   #长度大于等于8
-   MEDIUM Length >= 8, numeric, mixed case, and special characters
-   #长度大于等于8，数字、大小写字母、特殊符号
-   STRONG Length >= 8, numeric, mixed case, special characters and dictionary                  file
-   #长度大于等于8，数字、大小写字母、特殊符号和字典文件（慎选！）
+LOW    Length >= 8
+#长度大于等于8
+MEDIUM Length >= 8, numeric, mixed case, and special characters
+#长度大于等于8，数字、大小写字母、特殊符号
+STRONG Length >= 8, numeric, mixed case, special characters and dictionary file
+#长度大于等于8，数字、大小写字母、特殊符号和字典文件（慎选！）
 
-   Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 1
-   Please set the password for root here.
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 1
+Please set the password for root here.
 
-   New password: （输入你的密码）
-   Re-enter new password: （再次输入你的密码）
-   ```
+New password: （输入你的密码）
+Re-enter new password: （再次输入你的密码）
+```
 
 3. 创建符合规则的新密码
 
-   ```shell
-   Estimated strength of the password: 50 		#密码强度
-   Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : y
-   ```
+```shell
+Estimated strength of the password: 50 		#密码强度
+Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : y
+```
 
 4. 删除匿名用户
 
-   ```
-   By default, a MySQL installation has an anonymous user, allowing anyone to log into MySQL without having to have a user account created for them. This is intended only for testing, and to make the installation go a bit smoother.
-   You should remove them before moving into a production environment.
+```
+By default, a MySQL installation has an anonymous user, allowing anyone to log into MySQL without having to have a user account created for them. This is intended only for testing, and to make the installation go a bit smoother.
+You should remove them before moving into a production environment.
 
-   Remove anonymous users? (Press y|Y for Yes, any other key for No) : y
-   Success.
-   ```
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : y
+Success.
+```
 
 5. 禁止远程登录
 
-   ```shell
-   Normally, root should only be allowed to connect from 'localhost'. This ensures that someone cannot guess at the root password from the network.
+```shell
+Normally, root should only be allowed to connect from 'localhost'. This ensures that someone cannot guess at the root password from the network.
 
-   Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y
-   Success.
-   ```
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y
+Success.
+```
 
 6. 删除测试数据表
 
-   ```shell
-   By default, MySQL comes with a database named 'test' that anyone can access. This is also intended only for testing, and should be removed before moving into a production environment.
+```shell
+By default, MySQL comes with a database named 'test' that anyone can access. This is also intended only for testing, and should be removed before moving into a production environment.
 
-   Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
-    - Dropping test database...
-   Success.
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
+- Dropping test database...
+Success.
 
-    - Removing privileges on test database...
-   Success.
-   ```
+- Removing privileges on test database...
+Success.
+```
 
 7. Done
 
-   ```shell
-   Reloading the privilege tables will ensure that all changes made so far will take effect immediately.
+```shell
+Reloading the privilege tables will ensure that all changes made so far will take effect immediately.
 
-   Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
-   #是否重新加载权限表
-   Success.
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
+#是否重新加载权限表
+Success.
 
-   All done!
-   ```
+All done!
+```
 
-#### Your password does not satisfy the current policy requirements.
+**Your password does not satisfy the current policy requirements：**
 
 如果你在选择密码规则的时候不小心选择了 2，也就是数字、大小写字母、特殊符号和字典文件的组合。这时你会发现 `mysql_secure_installation`不会再给你机会重新设置了。手动微笑，mmp。方法还是有的：
 
@@ -364,35 +385,35 @@ set global validate_password.length=4;
 #将密码规则设置为LOW，就可以使用纯数字纯字母密码
 ```
 
-### 登陆
+#### 登陆
 
 ```shell
 $ mysql -u root -p
 ```
 
-## mongodb
+### mongodb
 
 > 参考: [Mac OSX 平台安装 MongoDB](https://www.runoob.com/mongodb/mongodb-osx-install.html)、[Mac 下安装 MongoDB 数据库-启动-停止-开启验证-登陆](https://www.32e.top/system/mac/article-87.html)、[【环境搭建：二】Mac 安装、配置 MongoDB](https://uizph.com/article/5db177e4a9f13d7f535810c5)、[MongoDB 的用户创建更新及删除](https://www.jianshu.com/p/f5afc6488f9e)、[MongoDB 用户名密码登录 认证登陆](https://cloud.tencent.com/developer/article/1446551)
 
-### 下载安装
+#### 下载安装
 
 ```sh
 $ brew install mongodb/brew/mongodb-community
 $ mongod -version
 ```
 
-### 配置
+#### 配置
 
-#### 启动 mongo
+**启动 mongo**：
 
-1、新建 dbpath
+1. 新建 dbpath
 
 ```sh
 $ sudo mkdir ~/data/db
 $ sudo mkdir ~/data/log
 ```
 
-2、启动
+2. 启动
 
 ```sh
 $ sudo mongod --dbpath ~/data/db --fork --logpath ~/data/log/mongo.log
@@ -400,7 +421,7 @@ $ sudo mongod --dbpath ~/data/db --fork --logpath ~/data/log/mongo.log
 
 > 注意：Mac OS 10.15.1 版本之后， `/data/db` 文件夹消失了，重新创建文件夹提示 `mkdir: /data/db: Read-only file system`，解决办法也可以是 `sudo mkdir ~/data/db && sudo mongodb --dbpath ~/data/db`
 
-#### 设置验证和用户名密码
+**设置验证和用户名密码**：
 
 ```sh
 $ mongo
@@ -429,7 +450,7 @@ Successfully added user: {
 1
 ```
 
-### 开启验证模式登录
+**开启验证模式登录**：
 
 开启 mongod 时，指定 `--auth` 参数即可以验证模式打开：
 
@@ -437,7 +458,7 @@ Successfully added user: {
 $ sudo mongod --dbpath ~/data/db --fork --logpath ~/data/log/mongo.log --auth
 ```
 
-#### 登录时验证
+**登录时验证**：
 
 ```shell
 $ mongo 127.0.0.1:27017/admin -u admin -p 123456
@@ -445,7 +466,7 @@ $ mongo 127.0.0.1:27017/admin -u admin -p 123456
 $ mongo --port 27017 -u "adminUser" -p "adminPass" --authenticationDatabase "admin"
 ```
 
-#### 登录后验证
+**登录后验证**：
 
 ```shell
 $ mongo
@@ -453,29 +474,27 @@ $ mongo
 > ab.auth("admin","123456")
 ```
 
-### 退出 mongo
+#### 退出 mongodb
 
 ```sh
-#先停止mongod服务
+# 先停止 mongod 服务
 $ use admin;
 $ db.shutdownServer();
 
-然后退出mongo
-$exit；
+# 然后退出 mongo
+$ exit;
 ```
 
-## natapp
+## 更多
 
-开启您的内网穿透之旅,调试微信的利器，请至[官网](https://natapp.cn/)下载
+### natapp
 
-## IDE
+开启您的内网穿透之旅,调试微信的利器，请至[官网](https://natapp.cn/)下载。
 
-- [VSCode](https://code.visualstudio.com/): Visual Studio Code 是一个由微软开发，同时支持 Windows 、 Linux 和 macOS 等操作系统且开放源代码的代码编辑器，它支持测试，并内置了 Git 版本控制功能，同时也具有开发环境功能，例如代码补全、代码片段和代码重构等。
-
-## 设置 SSH Key
+### 设置 SSH Key
 
 在用户主目录下，看看有没有 `.ssh` 目录，如果有，再看看这个目录下有没有 `id_rsa` 和 `id_rsa.pub` 这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开 Shell（Windows 下打开 Git Bash），创建 SSH Key：
 
 ```bash
-$ ssh-keygen -t rsa -C "young_email@aliyun.com"
+$ ssh-keygen -t rsa -C "youngjuning@aliyun.com"
 ```
