@@ -1,5 +1,5 @@
 ---
-title: 我的 Mac 开发环境
+title: 洛竹的 MacBook 开发环境
 tags: [掘金专栏]
 ---
 
