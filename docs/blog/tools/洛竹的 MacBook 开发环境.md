@@ -91,8 +91,10 @@ $ git config --global color.ui auto
 $ git config --global core.ignorecase false
 # 4、core.autocrlf
 $ git config --global core.autocrlf input
-# 5、输出到terminal而不是vim
+# 5、输出到 terminal 而不是 vim
 $ git config --global pager.branch false
+# 6、设置默认 branch 为 main
+$ git config --global init.defaultBranch main
 ```
 
 > Linux 或 Mac 系统使用 LF 作为行结束符，因此你不想 Git 在签出文件时进行自动的转换；当一个以 `CRLF` 为行结束符的文件不小心被引入时你肯定想进行修正，把 `core.autocrlf` 设置成 `input` 来告诉 Git 在提交时把 `CRLF` 转换成 `LF`，签出时不转换：
